@@ -1,4 +1,4 @@
-# README.md
+# Fushigi Backend
 
 ## Notes
 
@@ -8,6 +8,6 @@ Migrating the journal entries postgresql database and backend API, written in Go
 
 Created via ChartDB:
 
-![Alt text](fushigi-backend)
-<img src="./database/fushigi-bunpo.chartdb.svg">
+![Alt text](fushigi-database)
+<img src="./database/fushigi-database.png">
 
