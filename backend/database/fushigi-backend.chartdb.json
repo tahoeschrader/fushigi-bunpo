@@ -1,0 +1,840 @@
+{
+  "id": "0",
+  "name": "fushigi-backend",
+  "createdAt": "2024-12-22T06:13:09.445Z",
+  "updatedAt": "2024-12-22T06:13:09.445Z",
+  "databaseType": "postgresql",
+  "tables": [
+    {
+      "id": "1",
+      "name": "grammar_tags",
+      "x": 1376.393202250021,
+      "y": -343.8926261462365,
+      "fields": [
+        {
+          "id": "2",
+          "name": "id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1734838586559
+        },
+        {
+          "id": "3",
+          "name": "grammar_id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734838611251
+        },
+        {
+          "id": "4",
+          "name": "tag_id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734838622498
+        }
+      ],
+      "indexes": [],
+      "color": "#9ef07a",
+      "createdAt": 1734838586559,
+      "isView": false,
+      "order": 9,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "5",
+      "name": "sentence_example",
+      "x": 2100,
+      "y": 100,
+      "fields": [
+        {
+          "id": "6",
+          "name": "id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1734842853660
+        },
+        {
+          "id": "7",
+          "name": "grammar_id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734842882505
+        },
+        {
+          "id": "8",
+          "name": "content",
+          "type": {
+            "name": "text",
+            "id": "text"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734842915389
+        }
+      ],
+      "indexes": [],
+      "color": "#42e0c0",
+      "createdAt": 1734842853660,
+      "isView": false,
+      "order": 11,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "9",
+      "name": "grammar",
+      "x": 1700,
+      "y": 100,
+      "fields": [
+        {
+          "id": "10",
+          "name": "id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1734835682321
+        },
+        {
+          "id": "11",
+          "name": "name",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734838323949
+        },
+        {
+          "id": "12",
+          "name": "level_id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734838801182
+        },
+        {
+          "id": "13",
+          "name": "notes",
+          "type": {
+            "name": "text",
+            "id": "text"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734838812328
+        },
+        {
+          "id": "14",
+          "name": "style_id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734838894186
+        }
+      ],
+      "indexes": [],
+      "color": "#ff6b8a",
+      "createdAt": 1734835682322,
+      "isView": false,
+      "order": 2,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "15",
+      "name": "level",
+      "x": 1823.606797749979,
+      "y": 575.5282581475767,
+      "fields": [
+        {
+          "id": "16",
+          "name": "id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1734838742442
+        },
+        {
+          "id": "17",
+          "name": "name",
+          "type": {
+            "name": "text",
+            "id": "text"
+          },
+          "unique": true,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734838759361
+        }
+      ],
+      "indexes": [],
+      "color": "#ff6363",
+      "createdAt": 1734838742442,
+      "isView": false,
+      "order": 10,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "18",
+      "name": "topic",
+      "x": 117.54078057199685,
+      "y": 681.5942753255588,
+      "fields": [
+        {
+          "id": "19",
+          "name": "id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1734837105129
+        },
+        {
+          "id": "20",
+          "name": "name",
+          "type": {
+            "name": "text",
+            "id": "text"
+          },
+          "unique": true,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734837592536
+        }
+      ],
+      "indexes": [],
+      "color": "#ff6b8a",
+      "createdAt": 1734837105129,
+      "isView": false,
+      "order": 8,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "21",
+      "name": "tag",
+      "x": 1776.393202250021,
+      "y": -343.8926261462365,
+      "fields": [
+        {
+          "id": "22",
+          "name": "id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1734838414640
+        },
+        {
+          "id": "23",
+          "name": "name",
+          "type": {
+            "name": "text",
+            "id": "text"
+          },
+          "unique": true,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734838426129
+        }
+      ],
+      "indexes": [],
+      "color": "#8a61f5",
+      "createdAt": 1734838414640,
+      "isView": false,
+      "order": 8,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "24",
+      "name": "style",
+      "x": 1376.3932022500212,
+      "y": 543.8926261462366,
+      "fields": [
+        {
+          "id": "25",
+          "name": "id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1734836787503
+        },
+        {
+          "id": "26",
+          "name": "name",
+          "type": {
+            "name": "text",
+            "id": "text"
+          },
+          "unique": true,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734837735116
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "createdAt": 1734836787503,
+      "isView": false,
+      "order": 7,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "27",
+      "name": "journal_entry",
+      "x": 100,
+      "y": 100,
+      "fields": [
+        {
+          "id": "28",
+          "name": "id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1734835612330
+        },
+        {
+          "id": "29",
+          "name": "title",
+          "type": {
+            "name": "text",
+            "id": "text"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734836914648
+        },
+        {
+          "id": "30",
+          "name": "topic_id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734837091465
+        },
+        {
+          "id": "31",
+          "name": "content",
+          "type": {
+            "name": "text",
+            "id": "text"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734836923734
+        },
+        {
+          "id": "32",
+          "name": "created_at",
+          "type": {
+            "name": "timestamp with time zone",
+            "id": "timestamp_with_time_zone"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734836932797
+        },
+        {
+          "id": "33",
+          "name": "user_id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734838038753
+        },
+        {
+          "id": "34",
+          "name": "style_id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734838923810
+        }
+      ],
+      "indexes": [],
+      "color": "#c05dcf",
+      "createdAt": 1734835612330,
+      "isView": false,
+      "order": 0,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "35",
+      "name": "user",
+      "x": 500,
+      "y": 100,
+      "fields": [
+        {
+          "id": "36",
+          "name": "id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1734835663917
+        },
+        {
+          "id": "37",
+          "name": "username",
+          "type": {
+            "name": "text",
+            "id": "text"
+          },
+          "unique": true,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734838073521
+        },
+        {
+          "id": "38",
+          "name": "password_hash",
+          "type": {
+            "name": "text",
+            "id": "text"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734838107058
+        }
+      ],
+      "indexes": [],
+      "color": "#ffe374",
+      "createdAt": 1734835663917,
+      "isView": false,
+      "order": 1,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "39",
+      "name": "sentence_tag",
+      "x": 1300,
+      "y": 100,
+      "fields": [
+        {
+          "id": "40",
+          "name": "id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1734836676110
+        },
+        {
+          "id": "41",
+          "name": "sentence_id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734837934558
+        },
+        {
+          "id": "42",
+          "name": "grammar_id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734837956593
+        },
+        {
+          "id": "43",
+          "name": "user_id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734838168383
+        }
+      ],
+      "indexes": [],
+      "color": "#ff9f74",
+      "createdAt": 1734836676110,
+      "isView": false,
+      "order": 5,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "44",
+      "name": "comment",
+      "x": 500,
+      "y": 600,
+      "fields": [
+        {
+          "id": "45",
+          "name": "id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1734836726932
+        },
+        {
+          "id": "46",
+          "name": "journal_entry_id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734837335942
+        },
+        {
+          "id": "47",
+          "name": "user_id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734837345722
+        },
+        {
+          "id": "48",
+          "name": "content",
+          "type": {
+            "name": "text",
+            "id": "text"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734837368748
+        }
+      ],
+      "indexes": [],
+      "color": "#7175fa",
+      "createdAt": 1734836726932,
+      "isView": false,
+      "order": 6,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "49",
+      "name": "sentence",
+      "x": 900,
+      "y": 100,
+      "fields": [
+        {
+          "id": "50",
+          "name": "id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1734836653013
+        },
+        {
+          "id": "51",
+          "name": "journal_entry_id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734837504396
+        },
+        {
+          "id": "52",
+          "name": "user_id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1734838180589
+        }
+      ],
+      "indexes": [],
+      "color": "#ff9f74",
+      "createdAt": 1734836653013,
+      "isView": false,
+      "order": 3,
+      "diagramId": "dwndyvtezxac"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "53",
+      "name": "comment_journal_entry_id_fk",
+      "sourceTableId": "44",
+      "targetTableId": "27",
+      "sourceFieldId": "46",
+      "targetFieldId": "28",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1734843131001,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "54",
+      "name": "comment_user_id_fk",
+      "sourceTableId": "44",
+      "targetTableId": "35",
+      "sourceFieldId": "47",
+      "targetFieldId": "36",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1734842995716,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "55",
+      "name": "grammar_level_id_fk",
+      "sourceTableId": "9",
+      "targetTableId": "15",
+      "sourceFieldId": "12",
+      "targetFieldId": "16",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1734843489160,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "56",
+      "name": "grammar_tags_grammar_id_fk",
+      "sourceTableId": "1",
+      "targetTableId": "9",
+      "sourceFieldId": "3",
+      "targetFieldId": "10",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1734843525718,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "57",
+      "name": "grammar_tags_tag_id_fk",
+      "sourceTableId": "1",
+      "targetTableId": "21",
+      "sourceFieldId": "4",
+      "targetFieldId": "22",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1734843531838,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "58",
+      "name": "journal_entry_style_id_fk",
+      "sourceTableId": "27",
+      "targetTableId": "24",
+      "sourceFieldId": "34",
+      "targetFieldId": "25",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1734843037908,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "59",
+      "name": "journal_entry_topic_id_fk",
+      "sourceTableId": "27",
+      "targetTableId": "18",
+      "sourceFieldId": "30",
+      "targetFieldId": "19",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1734843017778,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "60",
+      "name": "journal_entry_user_id_fk",
+      "sourceTableId": "27",
+      "targetTableId": "35",
+      "sourceFieldId": "33",
+      "targetFieldId": "36",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1734842968322,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "61",
+      "name": "sentence_example_grammar_id_fk",
+      "sourceTableId": "5",
+      "targetTableId": "9",
+      "sourceFieldId": "7",
+      "targetFieldId": "10",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1734843072306,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "62",
+      "name": "sentence_journal_entry_id_fk",
+      "sourceTableId": "49",
+      "targetTableId": "27",
+      "sourceFieldId": "51",
+      "targetFieldId": "28",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1734843062359,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "63",
+      "name": "sentence_tag_grammar_id_fk",
+      "sourceTableId": "39",
+      "targetTableId": "9",
+      "sourceFieldId": "42",
+      "targetFieldId": "10",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1734843450446,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "64",
+      "name": "sentence_tag_sentence_id_fk",
+      "sourceTableId": "39",
+      "targetTableId": "49",
+      "sourceFieldId": "41",
+      "targetFieldId": "50",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1734843431126,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "65",
+      "name": "sentence_tag_user_id_fk",
+      "sourceTableId": "39",
+      "targetTableId": "35",
+      "sourceFieldId": "43",
+      "targetFieldId": "36",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1734842988243,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "66",
+      "name": "sentence_user_id_fk",
+      "sourceTableId": "49",
+      "targetTableId": "35",
+      "sourceFieldId": "52",
+      "targetFieldId": "36",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1734842977923,
+      "diagramId": "dwndyvtezxac"
+    },
+    {
+      "id": "67",
+      "name": "style_id_fk",
+      "sourceTableId": "24",
+      "targetTableId": "9",
+      "sourceFieldId": "25",
+      "targetFieldId": "14",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1734843502721,
+      "diagramId": "dwndyvtezxac"
+    }
+  ],
+  "dependencies": []
+}
