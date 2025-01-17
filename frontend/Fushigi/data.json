@@ -3338,133 +3338,153 @@
       ]
     },
     {
-      "name": "",
+      "name": "N＋(に対して|に対する)",
       "tags": [
-        ""
+        "describing"
       ],
-      "notes": "",
+      "notes": "in regards to, towardss",
       "example": [
-        ""
+        "デパートの店員はお客に対して、丁寧に話します"
       ]
     },
     {
-      "name": "",
+      "name": "(辞書形|イA|ナA)＋やら",
       "tags": [
-        ""
+        "lists",
+        "similiarity"
       ],
-      "notes": "",
+      "notes": "things like; whether ___ or ___",
       "example": [
-        ""
+        "毎月食費やら家賃やら、どんどんお金が出て行きます",
+        "しばらく掃除をしていないので、私の部屋は漫画やら雑誌やらで散らかっています"
       ]
     },
     {
-      "name": "",
+      "name": "N＋(なんて|なんか|など)",
       "tags": [
-        ""
+        "lists"
       ],
-      "notes": "",
+      "notes": "such as, things like this, etc.",
       "example": [
-        ""
+        "スキーなんて難しい、ちょっと練習すれば、すぐできるようになるよ"
       ]
     },
     {
-      "name": "",
+      "name": "１助数詞＋として。。。ない",
       "tags": [
-        ""
+        "negative",
+        "limits"
       ],
-      "notes": "",
+      "notes": "not a single one",
       "example": [
-        ""
+        "私の家は火事で焼けてしまいました、家族の思い出の品はもう一つとしてありません"
       ]
     },
     {
-      "name": "",
+      "name": "普通形＋と言うものだ",
       "tags": [
-        ""
+        "seems",
+        "set-phrase",
+        "quoting"
       ],
-      "notes": "",
+      "notes": "impression that; criticism/conclusion, this sort of thing",
       "example": [
-        ""
+        "電車の中で眠っていて、財布を盗まれたなんて不注意と言うものだ"
       ]
     },
     {
-      "name": "",
+      "name": "普通形＋とは限らない",
       "tags": [
-        ""
+        "limits",
+        "negative"
       ],
-      "notes": "",
+      "notes": "no guarantee that; not limited to",
       "example": [
-        ""
+        "健康に気をつけている人がみんな長生きするとは限りません"
       ]
     },
     {
-      "name": "",
+      "name": "N＋とともに",
       "tags": [
-        ""
+        "time",
+        "lists"
       ],
-      "notes": "",
+      "notes": "together with; at the same time",
       "example": [
-        ""
+        "毎年、冬休みは家族とともに過ごすことにしている"
       ]
     },
     {
-      "name": "",
+      "name": "辞書形＋しかない",
       "tags": [
-        ""
+        "limits",
+        "negative"
       ],
-      "notes": "",
+      "notes": "no choice but; only",
       "example": [
-        ""
+        "あまり行きたくないけど、先輩に誘われたら、行くしかないなあ"
       ]
     },
     {
-      "name": "",
+      "name": "ナイ形＋ではいられない",
       "tags": [
-        ""
+        "limits",
+        "sentence-ender",
+        "set-phrase",
+        "must"
       ],
-      "notes": "",
+      "notes": "can't help but to ___; cannot resist",
       "example": [
-        ""
+        "私は、新しいゲームが発売されると、買わないではいられません",
+        "この国の日中はとても暑いので、昼寝をせずにはいられないそうです"
       ]
     },
     {
-      "name": "",
+      "name": "普通形(ナAな|ナAである|Nである)＋一方(で)",
       "tags": [
-        ""
+        "time",
+        "contradiction",
+        "lists"
       ],
-      "notes": "",
+      "notes": "meanwhile; on the other hand",
       "example": [
-        ""
+        "東京の気候は、夏は蒸し暑い一方で、冬は乾燥する"
       ]
     },
     {
-      "name": "",
+      "name": "「あ」＋(せられる|される)",
       "tags": [
-        ""
+        "cause-and-effect",
+        "使役受身形"
       ],
-      "notes": "",
+      "notes": "to be caused by; に is the causer",
       "example": [
-        ""
+        "カリフォルニアの火事になったと言うニュースに驚かされた"
       ]
     },
     {
-      "name": "",
+      "name": "普通形(ナAである|Nである)＋のみならず",
       "tags": [
-        ""
+        "formal",
+        "lists",
+        "comparisons"
       ],
-      "notes": "",
+      "notes": "not only; but also",
       "example": [
-        ""
+        "環境問題は、この国のみならず、世界中の問題だ",
+        "この辺りは駅から近くて便利であるのみならず、公園もあって住みやすい環境だ"
       ]
     },
     {
-      "name": "",
+      "name": "普通形(ナAである|Nである)＋と同時に",
       "tags": [
-        ""
+        "time",
+        "simultaneous",
+        "limits"
       ],
-      "notes": "",
+      "notes": "at the same time",
       "example": [
-        ""
+        "先生はチャイムと同時に、教室に入ってきた"
       ]
     },
     {
