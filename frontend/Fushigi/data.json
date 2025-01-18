@@ -3488,83 +3488,118 @@
       ]
     },
     {
-      "name": "",
+      "name": "N＋によって",
       "tags": [
-        ""
+        "cause-and-effect"
       ],
-      "notes": "",
+      "notes": "way; means of using something; via",
       "example": [
-        ""
+        "どのクラスに入るかはテストの結果によって決められます",
+        "最近はメールやSNSなど、文字によるコミュニケーションが増えている"
       ]
     },
     {
-      "name": "",
+      "name": "普通形(ナAな|ナAである|Nな|Nである)＋だけに",
       "tags": [
-        ""
+        "sure-and-unsure",
+        "certainty"
       ],
-      "notes": "",
+      "notes": "as expected, strong reason because (not resulting from quality or nature)",
       "example": [
-        ""
+        "一年間毎日頑張って勉強しただけに、合格できて本当に嬉しいです",
+        "やっぱり連休中だけに、人がとても多かったよ"
       ]
     },
     {
-      "name": "",
+      "name": "普通形＋としても",
       "tags": [
-        ""
+        "contradiction",
+        "becoming"
       ],
-      "notes": "",
+      "notes": "even if; assuming",
       "example": [
-        ""
+        "この大学に合格するのが難しいとしても、私はこの大学を受験したいです",
+        "遅れたとしても、連絡はくれるはずだよ"
       ]
     },
     {
-      "name": "",
+      "name": "(辞書形|N)＋に先立って",
       "tags": [
-        ""
+        "time"
       ],
-      "notes": "",
+      "notes": "prior to",
       "example": [
-        ""
+        "遊園地の開業に先立って、オープニングイベントが行われます"
       ]
     },
     {
-      "name": "",
+      "name": "どちらかというと",
       "tags": [
-        ""
+        "set-phrase"
       ],
-      "notes": "",
+      "notes": "if I had to say; if I had to pick something",
       "example": [
-        ""
+        "どちらかと言うと和食かなあ",
+        "今日は金曜日だし、どちらかというと、居酒屋に行きたいかな"
       ]
     },
     {
-      "name": "",
+      "name": "普通形(ナAな|ナAである|Nである)＋ばかりでなく。。。も",
       "tags": [
-        ""
+        "formal",
+        "lists"
       ],
-      "notes": "",
+      "notes": "not only; but also (more formal)",
       "example": [
-        ""
+        "彼女は歌手であるばかりでなく、有名な漫画家でもある"
       ]
     },
     {
-      "name": "",
+      "name": "タ形＋かというと",
       "tags": [
-        ""
+        "quoting",
+        "simultaneous",
+        "contradiction"
       ],
-      "notes": "",
+      "notes": "just when I thought that ...",
       "example": [
-        ""
+        "やっと一つ仕事が終わったと思ったら、すぐ次の仕事を頼まれた"
       ]
     },
     {
-      "name": "",
+      "name": "(テ形|イAくて|ナAで)＋ならない",
       "tags": [
-        ""
+        "must",
+        "high-level"
       ],
-      "notes": "",
+      "notes": "extremely; can't help but",
       "example": [
-        ""
+        "彼は明日の面接試験でうまく話せるかどうか、不安でならない",
+        "この写真を見ると、昔のことが思い出されてならない"
+      ]
+    },
+    {
+      "name": "普通形(ナAな|Nな)＋ことは。。。が",
+      "tags": [
+        "contradiction",
+        "describing"
+      ],
+      "notes": "its true that ___, but... (use same word in both spots)",
+      "example": [
+        "インターネットは便利なことは便利だが、子供が使うには問題もある",
+        "行くことは行くけど、３０分ぐらい遅刻するかもしれない"
+      ]
+    },
+    {
+      "name": "N＋によっては",
+      "tags": [
+        "cause-and-effect",
+        "becoming"
+      ],
+      "notes": "depending on ___, ___ also exists",
+      "example": [
+        "年末年始は多くの会社が休みます、でも、会社によっては休みません",
+        "関東地方の人は納豆好きだが、人によっては納豆を見るのも嫌だと言う人もいる"
       ]
     },
     {
@@ -3692,6 +3727,21 @@
     },
     {
       "name": "観光地の案内のこと"
+    },
+    {
+      "name": "気持ちが落ち込んだ時、身近な人ん身状況を話してアドバイスをもらうこと"
+    },
+    {
+      "name": "運動習慣と体力のこと"
+    },
+    {
+      "name": "好きな作品の大まかなストーリーと見どころを紹介すること"
+    },
+    {
+      "name": "大切にしている物について、修理を依頼すること"
+    },
+    {
+      "name": "客からの無理な注文異対して、それができない事情を説明すること"
     }
   ],
   "styles": [
