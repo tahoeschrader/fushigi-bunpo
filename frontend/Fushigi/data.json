@@ -3603,6 +3603,316 @@
       ]
     },
     {
+      "name": "普通形(ナAである|Nである)＋からには",
+      "tags": [
+        ""
+      ],
+      "notes": "as long as, since",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "普通形(ナAである・な|Nである・な)＋どころか",
+      "tags": [
+        ""
+      ],
+      "notes": "let alone, far from",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "マス形＋える｜えない",
+      "tags": [
+        ""
+      ],
+      "notes": "can, can't (not based on personal abilities)",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "N＋限らず",
+      "tags": [
+        ""
+      ],
+      "notes": "not only, but also; not limited to",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "イA｜ナA＋げ",
+      "tags": [
+        ""
+      ],
+      "notes": "seemingly, appears (emotions and feelings)",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "タ形＋とたんに",
+      "tags": [
+        ""
+      ],
+      "notes": "the instant/moment that one thing happened",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "なんて＋普通形（ナAな｜Nな）＋んだろう",
+      "tags": [
+        ""
+      ],
+      "notes": "definitely, extremely",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "テ形｜N＋以来",
+      "tags": [
+        ""
+      ],
+      "notes": "ever since",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "N＋といった",
+      "tags": [
+        ""
+      ],
+      "notes": "such as",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "N＋を通して・を通じで",
+      "tags": [
+        ""
+      ],
+      "notes": "through, via, using",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "N＋関して",
+      "tags": [
+        ""
+      ],
+      "notes": "concerning, related to",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "普通形（ナAな・である｜Nである）＋ばかりに",
+      "tags": [
+        ""
+      ],
+      "notes": "simply because, just because (not normal/bad result)",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "辞書形｜タ形＋か＋ナイ形＋かのうちに",
+      "tags": [
+        ""
+      ],
+      "notes": "as soon as, just as, right when this thing happened",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "辞書形｜ナイ形＋ことだ",
+      "tags": [
+        ""
+      ],
+      "notes": "should, ought, giving advice",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "テ形|イAくて｜ナAで＋しかたがない｜しょうがない",
+      "tags": [
+        ""
+      ],
+      "notes": "really, extremely, can't help but",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "普通形（ナAな・である｜Nである）＋ばかりに",
+      "tags": [
+        ""
+      ],
+      "notes": "instead of, substitute, the opposite also, this too",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "普通形＋（としたら｜とすれば｜とすると）",
+      "tags": [
+        ""
+      ],
+      "notes": "if it were the case that",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "マス形＋かねない",
+      "tags": [
+        ""
+      ],
+      "notes": "might be; could be",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "テ形＋からでないと｜からでなければ",
+      "tags": [
+        ""
+      ],
+      "notes": "not unless, not until",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "辞書形｜ナイ形＋わけにはいかない",
+      "tags": [
+        ""
+      ],
+      "notes": "can't afford to",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "タ形＋物だ",
+      "tags": [
+        ""
+      ],
+      "notes": "used to",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "N＋にかけては",
+      "tags": [
+        ""
+      ],
+      "notes": "when it comes to ___, ___",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "N＋はともかく（として）",
+      "tags": [
+        ""
+      ],
+      "notes": "setting aside, apart from",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "ナイ形｜イAく｜ナAで｜Nで＋ないことはない",
+      "tags": [
+        ""
+      ],
+      "notes": "it's not that",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "N＋も＋条件形＋N＋も",
+      "tags": [
+        ""
+      ],
+      "notes": "___ and ___",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "N＋にわたって｜にわたる｜にわたるN",
+      "tags": [
+        ""
+      ],
+      "notes": "across, throughout",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "マス形＋きる｜きれる｜きれない",
+      "tags": [
+        ""
+      ],
+      "notes": "completely, totally, utterly",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "普通形（ナAである｜Nである）＋にもかかわらず",
+      "tags": [
+        ""
+      ],
+      "notes": "despite, without being affected by",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "N＋からいうと｜からいって｜からいえば",
+      "tags": [
+        ""
+      ],
+      "notes": "speaking in terms of",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "普通形（ナAだ｜Nだ）＋となると｜となれば｜となったら",
+      "tags": [
+        ""
+      ],
+      "notes": "when it becomes",
+      "example": [
+        ""
+      ]
+    },
+    {
+      "name": "N＋次第だ",
+      "tags": [
+        ""
+      ],
+      "notes": "because, this situation, these circumstances",
+      "example": [
+        ""
+      ]
+    },
+    {
       "name": "",
       "tags": [
         ""
