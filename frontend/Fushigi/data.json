@@ -3605,101 +3605,123 @@
     {
       "name": "普通形(ナAである|Nである)＋からには",
       "tags": [
-        ""
+        "time",
+        "simultaneous",
+        "limits"
       ],
       "notes": "as long as, since",
       "example": [
-        ""
+        "学校の代表として、スピーチコンテストに出場するからには、１位になりたい。",
+        "約束したからは、守るのが当然だ。"
       ]
     },
     {
       "name": "普通形(ナAである・な|Nである・な)＋どころか",
       "tags": [
-        ""
+        "negative",
+        "contradiction"
       ],
       "notes": "let alone, far from",
       "example": [
-        ""
+        "天気予報では晴れると言っていたのに、晴れるどころか大雨だ。",
+        "薬を飲んだのに、体調が良くなるどころか、もっと悪くなった。"
       ]
     },
     {
       "name": "マス形＋える｜えない",
       "tags": [
-        ""
+        "probability"
       ],
       "notes": "can, can't (not based on personal abilities)",
       "example": [
-        ""
+        "考え得る方法は全部やってみたけど、うまくいかなかった。",
+        "恋人と別れた時の気持ちは、どんな言葉を使っても、表し得ない。"
       ]
     },
     {
       "name": "N＋限らず",
       "tags": [
-        ""
+        "lists",
+        "limits"
       ],
       "notes": "not only, but also; not limited to",
       "example": [
-        ""
+        "私はりんごに限らず、赤いならなんでも好きだ。",
+        "京都は休日に限らず、平日観光地が多い。"
       ]
     },
     {
       "name": "イA｜ナA＋げ",
       "tags": [
-        ""
+        "seems",
+        "feelings-emotions"
       ],
       "notes": "seemingly, appears (emotions and feelings)",
       "example": [
-        ""
+        "田中さんは何か言いたげだったが、何も言わずに部屋を出て行った。",
+        "面接試験の順番を待つ学生は、とても緊張して不安げだ。"
       ]
     },
     {
       "name": "タ形＋とたんに",
       "tags": [
-        ""
+        "time",
+        "simultaneous"
       ],
       "notes": "the instant/moment that one thing happened",
       "example": [
-        ""
+        "国の母に電話をかけた。母の声を聞いたとたんに、涙が出てきた。",
+        "テレビで紹介されて有名になったとたんに、お店のサービスが悪くなった。"
       ]
     },
     {
       "name": "なんて＋普通形（ナAな｜Nな）＋んだろう",
       "tags": [
-        ""
+        "sure-and-unsure",
+        "certainty",
+        "high-level"
       ],
       "notes": "definitely, extremely",
       "example": [
-        ""
+        "東京はなんて人が多いんだろう。",
+        "初めてピザを食べた時はなんて美味しいんだろうと思いました。"
       ]
     },
     {
       "name": "テ形｜N＋以来",
       "tags": [
-        ""
+        "time",
+        "after",
+        "continuing"
       ],
       "notes": "ever since",
       "example": [
-        ""
+        "私の人身事故以来、自転車に乗るのが怖くなった。",
+        "日本へ来て以来、毎週ラーメンを食べている。"
       ]
     },
     {
       "name": "N＋といった",
       "tags": [
-        ""
+        "lists",
+        "example"
       ],
       "notes": "such as",
       "example": [
-        ""
+        "京都や日光と言った有名な観光地へ行ってみたい。",
+        "日本の会社では、トヨタやソニーと言った会社が有名です。"
       ]
     },
     {
       "name": "N＋を通して・を通じで",
       "tags": [
-        ""
+        "method",
+        "defining"
       ],
       "notes": "through, via, using",
       "example": [
-        ""
+        "私は日本のアニメを通して、日本人の生活や習慣を知りました。",
+        "旅行の前に、インタネットを通じて、宿泊するホテルを予約した。"
       ]
     },
     {
