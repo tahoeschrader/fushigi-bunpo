@@ -1,131 +1,92 @@
-use std::{error::Error, io};
-
+use color_eyre::Result;
+use crossterm::event;
 use ratatui::{
-    backend::{Backend, CrosstermBackend},
-    crossterm::{
-        event::{self, DisableMouseCapture, EnableMouseCapture, Event, KeyCode, KeyEventKind},
-        execute,
-        terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
-    },
-    Terminal,
+    buffer::Buffer,
+    layout::{Constraint, Direction, Layout, Rect},
+    style::Stylize,
+    symbols::border,
+    text::Text,
+    widgets::{Block, Widget},
+    DefaultTerminal, Frame,
 };
+use tui_textarea::{Input, Key, TextArea};
+mod utils;
+use crate::utils::center_widget;
 
-mod app;
-mod ui;
-use crate::{
-    app::{App, CurrentScreen, CurrentlyEditing},
-    ui::ui,
-};
-
-fn main() -> Result<(), Box<dyn Error>> {
-    // setup terminal
-    enable_raw_mode()?;
-    let mut stderr = io::stderr(); // This is a special case. Normally using stdout is fine
-    execute!(stderr, EnterAlternateScreen, EnableMouseCapture)?;
-    let backend = CrosstermBackend::new(stderr);
-    let mut terminal = Terminal::new(backend)?;
-
-    // create app and run it
-    let mut app = App::new();
-    let res = run_app(&mut terminal, &mut app);
-
-    // restore terminal
-    disable_raw_mode()?;
-    execute!(
-        terminal.backend_mut(),
-        LeaveAlternateScreen,
-        DisableMouseCapture
-    )?;
-    terminal.show_cursor()?;
-
-    if let Ok(do_print) = res {
-        if do_print {
-            app.print_json()?;
-        }
-    } else if let Err(err) = res {
-        println!("{err:?}");
-    }
-
-    Ok(())
+#[derive(Debug, Default)]
+struct App {
+    username: TextArea<'static>, // why does this need to be static to work
+    password: String,
+    exit: bool,
 }
 
-fn run_app<B: Backend>(terminal: &mut Terminal<B>, app: &mut App) -> io::Result<bool> {
-    loop {
-        terminal.draw(|f| ui(f, app))?;
-        if let Event::Key(key) = event::read()? {
-            if key.kind == event::KeyEventKind::Release {
-                // Skip events that are not KeyEventKind::Press
-                continue;
-            }
-            match app.current_screen {
-                CurrentScreen::Main => match key.code {
-                    KeyCode::Char('e') => {
-                        app.current_screen = CurrentScreen::Editing;
-                        app.currently_editing = Some(CurrentlyEditing::Key);
-                    }
-                    KeyCode::Char('q') => {
-                        app.current_screen = CurrentScreen::Exiting;
-                    }
-                    _ => {}
-                },
-                CurrentScreen::Exiting => match key.code {
-                    KeyCode::Char('y') => {
-                        return Ok(true);
-                    }
-                    KeyCode::Char('n') | KeyCode::Char('q') => {
-                        return Ok(false);
-                    }
-                    _ => {}
-                },
-                CurrentScreen::Editing if key.kind == KeyEventKind::Press => match key.code {
-                    KeyCode::Enter => {
-                        if let Some(editing) = &app.currently_editing {
-                            match editing {
-                                CurrentlyEditing::Key => {
-                                    app.currently_editing = Some(CurrentlyEditing::Value);
-                                }
-                                CurrentlyEditing::Value => {
-                                    app.save_key_value();
-                                    app.current_screen = CurrentScreen::Main;
-                                }
-                            }
-                        }
-                    }
-                    KeyCode::Backspace => {
-                        if let Some(editing) = &app.currently_editing {
-                            match editing {
-                                CurrentlyEditing::Key => {
-                                    app.key_input.pop();
-                                }
-                                CurrentlyEditing::Value => {
-                                    app.value_input.pop();
-                                }
-                            }
-                        }
-                    }
-                    KeyCode::Esc => {
-                        app.current_screen = CurrentScreen::Main;
-                        app.currently_editing = None;
-                    }
-                    KeyCode::Tab => {
-                        app.toggle_editing();
-                    }
-                    KeyCode::Char(value) => {
-                        if let Some(editing) = &app.currently_editing {
-                            match editing {
-                                CurrentlyEditing::Key => {
-                                    app.key_input.push(value);
-                                }
-                                CurrentlyEditing::Value => {
-                                    app.value_input.push(value);
-                                }
-                            }
-                        }
-                    }
-                    _ => {}
-                },
-                _ => {}
-            }
+impl App {
+    pub fn new() -> Self {
+        let username = TextArea::default();
+        let password = String::from("");
+
+        Self {
+            username,
+            password,
+            exit: false,
         }
     }
+
+    pub fn run(&mut self, terminal: &mut DefaultTerminal) -> Result<()> {
+        while !self.exit {
+            terminal.draw(|frame| self.render(frame))?;
+            self.handle_events()?;
+        }
+        Ok(())
+    }
+
+    fn render(&self, frame: &mut Frame) {
+        frame.render_widget(self, frame.area());
+    }
+
+    fn handle_events(&mut self) -> Result<()> {
+        match event::read()?.into() {
+            Input { key: Key::Esc, .. } => self.exit = true,
+            input => {
+                self.username.input(input);
+            }
+        };
+        Ok(())
+    }
+}
+
+impl Widget for &App {
+    fn render(self, area: Rect, buf: &mut Buffer) {
+        let centered_rect = center_widget(area, Constraint::Length(50), Constraint::Length(5));
+        let unbordered_rect = Rect {
+            x: centered_rect.x + 1,
+            y: centered_rect.y + 1,
+            width: centered_rect.width - 2,
+            height: centered_rect.height - 2,
+        };
+        // Split it into three lines
+        let lines = Layout::default()
+            .direction(Direction::Vertical)
+            .constraints([
+                Constraint::Length(1),
+                Constraint::Length(1),
+                Constraint::Length(1),
+            ])
+            .split(unbordered_rect);
+
+        Block::bordered()
+            .border_set(border::THICK)
+            .render(centered_rect, buf);
+        Text::from("Fushigi".bold()).render(lines[0], buf);
+        self.username.render(lines[1], buf);
+        Text::from(self.password.clone()).render(lines[2], buf);
+    }
+}
+
+fn main() -> Result<()> {
+    color_eyre::install()?;
+    let mut terminal = ratatui::init();
+    let result = App::new().run(&mut terminal);
+    ratatui::restore();
+    result
 }
