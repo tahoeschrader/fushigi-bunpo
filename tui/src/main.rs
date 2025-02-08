@@ -1,13 +1,10 @@
 mod components;
 mod utils;
-use crate::components::login::Login;
+use crate::components::{home::Home, login::Login};
 
 use color_eyre::Result;
 use crossterm::event::{self, Event, KeyCode, KeyEventKind};
-use ratatui::{
-    buffer::Buffer, layout::Rect, style::Stylize, text::Text, widgets::Widget, DefaultTerminal,
-    Frame,
-};
+use ratatui::{buffer::Buffer, layout::Rect, widgets::Widget, DefaultTerminal, Frame};
 
 fn main() -> Result<()> {
     color_eyre::install()?;
@@ -19,6 +16,7 @@ fn main() -> Result<()> {
 
 struct App {
     login: Login,
+    home: Home,
     exit: bool,
 }
 
@@ -26,6 +24,7 @@ impl App {
     pub fn new() -> Self {
         Self {
             login: Login::new(),
+            home: Home::new(),
             exit: false,
         }
     }
@@ -47,13 +46,10 @@ impl App {
             Event::Key(key) if key.kind == KeyEventKind::Press && key.code == KeyCode::Esc => {
                 self.exit = true;
             }
-            login_event => {
-                if self.login.is_authenticated() {
-                    //hello
-                } else {
-                    self.login.handle_event(login_event)?;
-                }
-            }
+            login_event => match self.login.is_authenticated() {
+                true => self.home.handle_event(login_event)?,
+                false => self.login.handle_event(login_event)?,
+            },
         };
         Ok(())
     }
@@ -61,10 +57,9 @@ impl App {
 
 impl Widget for &App {
     fn render(self, area: Rect, buf: &mut Buffer) {
-        if self.login.is_authenticated() {
-            Text::from("Success".bold()).render(area, buf);
-        } else {
-            self.login.render(area, buf);
+        match self.login.is_authenticated() {
+            true => self.home.render(area, buf),
+            false => self.login.render(area, buf),
         }
     }
 }
