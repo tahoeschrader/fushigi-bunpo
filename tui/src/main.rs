@@ -4,7 +4,10 @@ use crate::components::login::Login;
 
 use color_eyre::Result;
 use crossterm::event::{self, Event, KeyCode, KeyEventKind};
-use ratatui::{buffer::Buffer, layout::Rect, widgets::Widget, DefaultTerminal, Frame};
+use ratatui::{
+    buffer::Buffer, layout::Rect, style::Stylize, text::Text, widgets::Widget, DefaultTerminal,
+    Frame,
+};
 
 fn main() -> Result<()> {
     color_eyre::install()?;
@@ -40,12 +43,16 @@ impl App {
     }
 
     fn handle_events(&mut self) -> Result<()> {
-        match event::read()?.into() {
+        match event::read()? {
             Event::Key(key) if key.kind == KeyEventKind::Press && key.code == KeyCode::Esc => {
                 self.exit = true;
             }
             login_event => {
-                self.login.handle_event(login_event)?;
+                if self.login.is_authenticated() {
+                    //hello
+                } else {
+                    self.login.handle_event(login_event)?;
+                }
             }
         };
         Ok(())
@@ -54,6 +61,10 @@ impl App {
 
 impl Widget for &App {
     fn render(self, area: Rect, buf: &mut Buffer) {
-        self.login.render(area, buf);
+        if self.login.is_authenticated() {
+            Text::from("Success".bold()).render(area, buf);
+        } else {
+            self.login.render(area, buf);
+        }
     }
 }

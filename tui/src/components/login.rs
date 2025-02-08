@@ -1,4 +1,4 @@
-use crate::utils::center_widget;
+use crate::utils::{center_widget, wipe_text_area};
 use color_eyre::Result;
 use crossterm::event::Event;
 use ratatui::{
@@ -11,11 +11,11 @@ use ratatui::{
 };
 use tui_textarea::{Input, Key, TextArea};
 
-fn inactivate(textarea: &mut TextArea<'_>) {
+fn inactivate(textarea: &mut TextArea) {
     textarea.set_cursor_style(Style::default());
 }
 
-fn activate(textarea: &mut TextArea<'_>) {
+fn activate(textarea: &mut TextArea) {
     textarea.set_cursor_style(Style::default().add_modifier(Modifier::REVERSED));
 }
 
@@ -24,9 +24,17 @@ enum ActiveInput {
     Password,
 }
 
+#[derive(PartialEq)]
+enum AuthState {
+    Default,
+    Failed,
+    Success,
+}
+
 pub struct Login {
-    username: TextArea<'static>,
+    username: TextArea<'static>, // need to understand why it needs this marking
     password: TextArea<'static>,
+    auth_state: AuthState,
     active_input: ActiveInput,
 }
 
@@ -44,7 +52,26 @@ impl Login {
         Self {
             username,
             password,
+            auth_state: AuthState::Default,
             active_input: ActiveInput::Username,
+        }
+    }
+
+    pub fn is_authenticated(&self) -> bool {
+        self.auth_state == AuthState::Success
+    }
+
+    fn login(&mut self) {
+        let success = self.username.lines()[0] == "test" && self.password.lines()[0] == "test";
+        if !success {
+            self.auth_state = AuthState::Failed;
+            wipe_text_area(&mut self.username);
+            wipe_text_area(&mut self.password);
+            self.active_input = ActiveInput::Username;
+            activate(&mut self.username);
+            inactivate(&mut self.password);
+        } else {
+            self.auth_state = AuthState::Success;
         }
     }
 
@@ -62,6 +89,9 @@ impl Login {
                     self.active_input = ActiveInput::Username;
                 }
             },
+            Input {
+                key: Key::Enter, ..
+            } => self.login(),
             input => {
                 let active_input = match self.active_input {
                     ActiveInput::Username => &mut self.username,
@@ -101,6 +131,11 @@ impl Widget for &Login {
 
         Block::bordered()
             .border_set(border::THICK)
+            .border_style(Style::default().fg(match self.auth_state {
+                AuthState::Default => Color::Gray,
+                AuthState::Failed => Color::Red,
+                AuthState::Success => Color::Green,
+            }))
             .render(centered_rect, buf);
         Text::from("Fushigi".bold()).render(lines[0], buf);
         Text::from("Username: ".bold()).render(username_rect[0], buf);
