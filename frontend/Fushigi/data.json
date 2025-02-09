@@ -3727,211 +3727,371 @@
     {
       "name": "N＋関して",
       "tags": [
-        ""
+        "explaining",
+        "conditions"
       ],
       "notes": "concerning, related to",
       "example": [
-        ""
+        "私はこの街の歴史に関して図書館で調べてみた。",
+        "ビザや学費に関することは、学校の事務室に相談してください。"
       ]
     },
     {
       "name": "普通形（ナAな・である｜Nである）＋ばかりに",
       "tags": [
-        ""
+        "describing",
+        "limits"
       ],
       "notes": "simply because, just because (not normal/bad result)",
       "example": [
-        ""
+        "この子は最近オスマートフォンがほしいばかりに、母親の財布からお金を盗んだ。",
+        "私は字が下手なばかりに、色々な場面で損をしている。"
       ]
     },
     {
       "name": "辞書形｜タ形＋か＋ナイ形＋かのうちに",
       "tags": [
-        ""
+        "simultaneous",
+        "time",
+        "after"
       ],
       "notes": "as soon as, just as, right when this thing happened",
       "example": [
-        ""
+        "バスが止まるが止まらないかのうちに席を立つ人が多い。",
+        "昨夜は疲れていたので、ベッドに横になったかならないかのうちに、眠ってしまった。"
       ]
     },
     {
       "name": "辞書形｜ナイ形＋ことだ",
       "tags": [
-        ""
+        "recommendations",
+        "advice"
       ],
       "notes": "should, ought, giving advice",
       "example": [
-        ""
+        "自分一人ではどうしていいかわからない時は、誰かに聞くことだよ。",
+        "太りたくないなら、毎日散歩することだ。"
       ]
     },
     {
       "name": "テ形|イAくて｜ナAで＋しかたがない｜しょうがない",
       "tags": [
-        ""
+        "high-level",
+        "must"
       ],
       "notes": "really, extremely, can't help but",
       "example": [
-        ""
+        "日本へ来て、初めて一人暮らしをしているので、寂しくてしかたがない。",
+        "ホームシックになってしまった。国の家族に会いたくてしようがない。"
       ]
     },
     {
       "name": "普通形（ナAな・である｜Nである）＋ばかりに",
       "tags": [
-        ""
+        "contradiction",
+        "lists"
       ],
       "notes": "instead of, substitute, the opposite also, this too",
       "example": [
-        ""
+        "佐藤さんに日本語を教えてもらう代わりに、私は佐藤さんに英語を教えてあげる。",
+        "パソコンで書いた手紙は、文字が読みやすい代わりに、温かみがないように思います。"
       ]
     },
     {
       "name": "普通形＋（としたら｜とすれば｜とすると）",
       "tags": [
-        ""
+        "hypothetical",
+        "becoming",
+        "conditions"
       ],
       "notes": "if it were the case that",
       "example": [
-        ""
+        "もし、ドキにでも旅行に行けるとしたら、どこへ行きたいですか"
       ]
     },
     {
       "name": "マス形＋かねない",
       "tags": [
-        ""
+        "probability",
+        "negative"
       ],
       "notes": "might be; could be",
       "example": [
-        ""
+        "スピードを出しすぎると、事故を起こしかねない。",
+        "こんなに寒いところにいたら、風邪を引きかねない。"
       ]
     },
     {
       "name": "テ形＋からでないと｜からでなければ",
       "tags": [
-        ""
+        "conditions",
+        "timing",
+        "limits"
       ],
       "notes": "not unless, not until",
       "example": [
-        ""
+        "書類の内容を読んでから出ないと、印鑑を押すことはできません。",
+        "私の国では、２０歳になってからでなければ、お酒を飲むことができません。"
       ]
     },
     {
       "name": "辞書形｜ナイ形＋わけにはいかない",
       "tags": [
-        ""
+        "reasons",
+        "excuse",
+        "negative"
       ],
-      "notes": "can't afford to",
+      "notes": "wan't to but cant for some reason",
       "example": [
-        ""
+        "ちょっと眠いけど、今は授業中なので寝るわけにはいかない。"
       ]
     },
     {
       "name": "タ形＋物だ",
       "tags": [
-        ""
+        "past",
+        "describing"
       ],
       "notes": "used to",
       "example": [
-        ""
+        "子供の頃は、よく甘いものを食べたものだ。",
+        "国ではよく友達とサッカをしたものだ。"
       ]
     },
     {
       "name": "N＋にかけては",
       "tags": [
-        ""
+        "high-level",
+        "comparisons",
+        "describing"
       ],
-      "notes": "when it comes to ___, ___",
+      "notes": "when it comes to ___, ___　(focus on ability and higher than others)",
       "example": [
-        ""
+        "かんさんは人を笑わせることにかけては、クラスで一番だ。"
       ]
     },
     {
       "name": "N＋はともかく（として）",
       "tags": [
-        ""
+        "lists",
+        "describing",
+        "topic-change"
       ],
       "notes": "setting aside, apart from",
       "example": [
-        ""
+        "このシャツはデザインはともかくとして、色があまり好きじゃない。"
       ]
     },
     {
       "name": "ナイ形｜イAく｜ナAで｜Nで＋ないことはない",
       "tags": [
-        ""
+        "negative",
+        "contradiction",
+        "describing"
       ],
       "notes": "it's not that",
       "example": [
-        ""
+        "新宿からなら歩けないことはないけど、大変だよ。",
+        "時間をもらえれば、やれないことはないと思います。"
       ]
     },
     {
       "name": "N＋も＋条件形＋N＋も",
       "tags": [
-        ""
+        "simultaneous",
+        "lists"
       ],
       "notes": "___ and ___",
       "example": [
-        ""
+        "父は酒も飲めば、とばこも吸うので、体を壊さないか心配です。",
+        "人生には山もあれば、谷もある。"
       ]
     },
     {
       "name": "N＋にわたって｜にわたる｜にわたるN",
       "tags": [
-        ""
+        "time",
+        "continuing"
       ],
       "notes": "across, throughout",
       "example": [
-        ""
+        "この店は５０年にわたって、伝統の味を守り続けている。",
+        "４時間にわたる会議がやっと終わりました。"
       ]
     },
     {
       "name": "マス形＋きる｜きれる｜きれない",
       "tags": [
-        ""
+        "high-level",
+        "limits"
       ],
       "notes": "completely, totally, utterly",
       "example": [
-        ""
+        "５００ページもある本を１日で読み切るなんて無理です。",
+        "こんなにたくさんの料理、私一人では食べきれない。"
       ]
     },
     {
       "name": "普通形（ナAである｜Nである）＋にもかかわらず",
       "tags": [
-        ""
+        "contradiction",
+        "method"
       ],
       "notes": "despite, without being affected by",
       "example": [
-        ""
+        "今日は結婚する日であるにもかかわらず、田中さんはあまり嬉しそうに見えない。",
+        "家族が反対したにもかかわらず、彼は軍に入会する。"
       ]
     },
     {
       "name": "N＋からいうと｜からいって｜からいえば",
       "tags": [
-        ""
+        "describing",
+        "quoting",
+        "defining"
       ],
       "notes": "speaking in terms of",
       "example": [
-        ""
+        "値段から言うと、単品料理をたくさん頼むより、コース料理の方がお得だ。",
+        "実力から言って、この大会ではブラジルが優勝するだろう。",
+        "品質から言えば、これが一番いいけれど、こんなに高いものは私には買えない。"
       ]
     },
     {
       "name": "普通形（ナAだ｜Nだ）＋となると｜となれば｜となったら",
       "tags": [
-        ""
+        "becoming",
+        "cause-and-effect",
+        "conditions"
       ],
       "notes": "when it becomes",
       "example": [
-        ""
+        "今買い物をすると８％の税金がかかる。これが１０％に上がるとなれば、国民の生活はさらに大変になるだろう。",
+        "早く国へ帰りたいと思っているが、本当に帰国するとなったら、寂しさを感じるかもしれない。"
       ]
     },
     {
       "name": "N＋次第だ",
       "tags": [
-        ""
+        "cause-and-effect",
+        "conditions",
+        "reasons"
       ],
       "notes": "because, this situation, these circumstances",
       "example": [
-        ""
+        "明日のイベントに行くかどうかは、天気次第です。",
+        "やる気次第で、うまく行くかどうかは決まると思う。"
+      ]
+    },
+    {
+      "name": "マス形＋ぬく",
+      "tags": [
+        "high-level",
+        "method"
+      ],
+      "notes": "completely; to the bitter end",
+      "example": [
+        "どんな苦しくても途中で諦めない。最後までやり抜くつもりだ。",
+        "祖父は戦後の苦しい時代を何とか生き抜く、今は孫に囲まれる幸せに暮らしている。"
+      ]
+    },
+    {
+      "name": "マス形＋つつ",
+      "tags": [
+        "timing",
+        "simultaneous"
+      ],
+      "notes": "while ___",
+      "example": [
+        "古い友人たちと酒を飲みつつ、学生時代の懐かしい話をした。",
+        "結婚するのことは恋人と相談しつつ、決めるつもりだ。"
+      ]
+    },
+    {
+      "name": "N（っ）きりだ",
+      "tags": [
+        "limits"
+      ],
+      "notes": "only; just",
+      "example": [
+        "あの人会ったのは一回きりだから、まだどんな人かはよくわからない。",
+        "クリスマスを一人きりですごそのは本当に寂しいものだ。"
+      ]
+    },
+    {
+      "name": "テ形＋初めて",
+      "tags": [
+        "time",
+        "limits"
+      ],
+      "notes": "first time; preceeding; this first",
+      "example": [
+        "病気になって初めて、家族の大切さがわかった。",
+        "一人暮らしになって初めて、母親のありがたさがわかった。"
+      ]
+    },
+    {
+      "name": "普通形（ナである｜Nである）＋にすぎない",
+      "tags": [
+        "limits",
+        "negative"
+      ],
+      "notes": "only; just; no more than",
+      "example": [
+        "漢字を習ったと言っても、１００字ぐらい覚えたにすぎない。",
+        "ドイツ語がわかると言っても、日常会話んみすぎません。"
+      ]
+    },
+    {
+      "name": "辞書形｜N＋にあたって",
+      "tags": [
+        "simultaneous",
+        "conditions",
+        "explaining"
+      ],
+      "notes": "when doing this",
+      "example": [
+        "留学にあたって、必要な書類を準備しました。",
+        "帰国するにあたって、先生のところへ挨拶に行った。"
+      ]
+    },
+    {
+      "name": "N+を問わず",
+      "tags": [
+        "relation",
+        "negative",
+        "contradiction"
+      ],
+      "notes": "whether or not",
+      "example": [
+        "コンビニは昼夜を問わず、営業しています。",
+        "北海度は季節を問わず、多くの観光客で賑わっています。"
+      ]
+    },
+    {
+      "name": "辞書形｜Nの＋上で",
+      "tags": [
+        "conditions",
+        "timing",
+        "simultaneous"
+      ],
+      "notes": "when; upon (not after); in that exact moment",
+      "example": [
+        "仕事を進める上で、みんなの協力が必要だ。",
+        "共同生活をする上で大切なのは、お互いにルールを守ることです。"
+      ]
+    },
+    {
+      "name": "辞書形（ナAな・ナAである｜Nである）＋反面",
+      "tags": [
+        "contradiction",
+        "positive",
+        "negative"
+      ],
+      "notes": "while; on the other hand (can't be too opinionated?)",
+      "example": [
+        "就職活動は準備が大変である反面、自分自身を知るチャンスでもある。",
+        "スマートフォンは日本語を勉強のために便利な反面、ストレスを与える道具でもある。"
       ]
     },
     {
