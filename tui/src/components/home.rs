@@ -1,4 +1,7 @@
-use crate::components::{content::Content, sidebar::Sidebar};
+use crate::components::{
+    content::Content,
+    sidebar::{Pages, Sidebar},
+};
 use crate::utils::area_minus_border;
 use color_eyre::Result;
 use crossterm::event::{Event, KeyCode, KeyEventKind};
@@ -7,6 +10,7 @@ use ratatui::{
     layout::{Constraint, Direction, Layout, Rect},
     style::{Color, Style},
     symbols::border,
+    text::Text,
     widgets::{Block, Widget},
 };
 
@@ -74,6 +78,16 @@ impl Widget for &Home {
             }))
             .render(tab_area, buf);
         self.sidebar.render(area_minus_border(sidebar_area), buf);
-        self.content.render(area_minus_border(tab_area), buf);
+        match self.sidebar.active_page {
+            Pages::Grammar => {
+                self.content.render(area_minus_border(tab_area), buf);
+            }
+            Pages::Journal => {
+                Text::from("Under Construction").render(area_minus_border(tab_area), buf);
+            }
+            Pages::Social => {
+                Text::from("Under Construction").render(area_minus_border(tab_area), buf);
+            }
+        }
     }
 }

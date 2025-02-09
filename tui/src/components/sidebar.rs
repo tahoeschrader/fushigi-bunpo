@@ -7,14 +7,14 @@ use ratatui::{
     widgets::{List, ListItem, Widget},
 };
 
-enum Pages {
+pub enum Pages {
     Grammar = 0,
     Journal = 1,
     Social = 2,
 }
 
 pub struct Sidebar {
-    active_page: Pages,
+    pub active_page: Pages,
     list_location: i32,
 }
 
