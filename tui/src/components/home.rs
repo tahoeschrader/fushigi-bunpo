@@ -1,7 +1,7 @@
 use crate::components::{content::Content, sidebar::Sidebar};
 use crate::utils::area_minus_border;
 use color_eyre::Result;
-use crossterm::event::Event;
+use crossterm::event::{Event, KeyCode, KeyEventKind};
 use ratatui::{
     buffer::Buffer,
     layout::{Constraint, Direction, Layout, Rect},
@@ -9,7 +9,6 @@ use ratatui::{
     symbols::border,
     widgets::{Block, Widget},
 };
-use tui_textarea::{Input, Key};
 
 pub struct Home {
     active_pane: ActivePane,
@@ -33,15 +32,22 @@ impl Home {
 
     pub fn handle_event(&mut self, event: Event) -> Result<()> {
         match event.into() {
-            Input { key: Key::Tab, .. } => match self.active_pane {
+            Event::Key(key) if key.kind == KeyEventKind::Press && key.code == KeyCode::Tab => {
+                match self.active_pane {
+                    ActivePane::Sidebar => {
+                        self.active_pane = ActivePane::Content;
+                    }
+                    ActivePane::Content => {
+                        self.active_pane = ActivePane::Sidebar;
+                    }
+                }
+            }
+            navigation_event => match self.active_pane {
                 ActivePane::Sidebar => {
-                    self.active_pane = ActivePane::Content;
+                    self.sidebar.handle_event(navigation_event)?;
                 }
-                ActivePane::Content => {
-                    self.active_pane = ActivePane::Sidebar;
-                }
+                ActivePane::Content => {}
             },
-            _ => {}
         };
         Ok(())
     }

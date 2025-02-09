@@ -1,7 +1,6 @@
 mod components;
 mod utils;
 use crate::components::{home::Home, login::Login};
-
 use color_eyre::Result;
 use crossterm::event::{self, Event, KeyCode, KeyEventKind};
 use ratatui::{buffer::Buffer, layout::Rect, widgets::Widget, DefaultTerminal, Frame};
