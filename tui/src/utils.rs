@@ -15,3 +15,12 @@ pub fn wipe_text_area(textarea: &mut TextArea) {
         textarea.delete_line_by_head();
     }
 }
+
+pub fn area_minus_border(area: Rect) -> Rect {
+    Rect {
+        x: area.x + 1,
+        y: area.y + 1,
+        width: area.width - 2,
+        height: area.height - 2,
+    }
+}
