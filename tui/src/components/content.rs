@@ -1,12 +1,43 @@
-use unicode_width::UnicodeWidthStr;
-
+use color_eyre::Result;
+use crossterm::event::{Event, KeyCode, KeyEventKind};
 use ratatui::{
     buffer::Buffer,
     layout::{Constraint, Layout, Rect},
-    style::Style,
-    text::Text,
+    style::{Color, Style},
+    text::{Line, Text},
     widgets::{Cell, Row, Table, Tabs, Widget},
 };
+use strum::{Display, EnumIter, FromRepr, IntoEnumIterator};
+use unicode_width::UnicodeWidthStr;
+
+#[derive(Default, Clone, Copy, Display, FromRepr, EnumIter)]
+enum ContentTabs {
+    #[default]
+    #[strum(to_string = "All Grammar Points")]
+    All,
+    #[strum(to_string = "Grouped by Tags")]
+    Tags,
+}
+
+impl ContentTabs {
+    /// Get the previous tab, if there is no previous tab return the current tab.
+    fn previous(self) -> Self {
+        let current_index: usize = self as usize;
+        let previous_index = current_index.saturating_sub(1);
+        Self::from_repr(previous_index).unwrap_or(self)
+    }
+
+    /// Get the next tab, if there is no next tab return the current tab.
+    fn next(self) -> Self {
+        let current_index = self as usize;
+        let next_index = current_index.saturating_add(1);
+        Self::from_repr(next_index).unwrap_or(self)
+    }
+
+    fn title(self) -> Line<'static> {
+        Line::from(format!("  {self}  "))
+    }
+}
 
 struct Data {
     name: String,
@@ -44,6 +75,7 @@ impl Data {
 
 pub struct Content {
     items: Vec<Data>,
+    current_tab: ContentTabs,
     longest_items: (u16, u16, u16, u16),
 }
 
@@ -52,8 +84,29 @@ impl Content {
         let data = fetch_data();
         Self {
             longest_items: constraint_len_calculator(&data),
+            current_tab: ContentTabs::All,
             items: data,
         }
+    }
+
+    pub fn handle_event(&mut self, event: Event) -> Result<()> {
+        match event {
+            Event::Key(key) if key.kind == KeyEventKind::Press => match key.code {
+                KeyCode::Char('h') | KeyCode::Left => self.previous_tab(),
+                KeyCode::Char('l') | KeyCode::Right => self.next_tab(),
+                _ => {}
+            },
+            _ => {}
+        };
+        Ok(())
+    }
+
+    pub fn next_tab(&mut self) {
+        self.current_tab = self.current_tab.next();
+    }
+
+    pub fn previous_tab(&mut self) {
+        self.current_tab = self.current_tab.previous();
     }
 }
 
@@ -62,33 +115,49 @@ impl Widget for &Content {
         // Render tabs
         let vertical = Layout::vertical([Constraint::Length(1), Constraint::Min(0)]);
         let [tab_header_area, tab_content_area] = vertical.areas(area);
-        Tabs::new(["All", "Tags"]).render(tab_header_area, buf);
+        let titles = ContentTabs::iter().map(ContentTabs::title);
+        let highlight_style = (Color::default(), Color::Magenta);
+        let selected_tab_index = self.current_tab as usize;
+        Tabs::new(titles)
+            .highlight_style(highlight_style)
+            .select(selected_tab_index)
+            .padding("", "")
+            .divider(" ")
+            .render(tab_header_area, buf);
 
         // Now, render the table
-        let table_header = ["Point", "Tags", "Note", "Examples"]
-            .into_iter()
-            .map(Cell::from)
-            .collect::<Row>()
-            .height(1);
-        let rows = self.items.iter().enumerate().map(|(_i, data)| {
-            let item = data.ref_array();
-            item.into_iter()
-                .map(|content| Cell::from(Text::from(format!("\n{content}\n"))))
-                .collect::<Row>()
-                .style(Style::new())
-                .height(4)
-        });
-        let t = Table::new(
-            rows,
-            [
-                Constraint::Min(self.longest_items.0 + 1),
-                Constraint::Min(self.longest_items.1 + 1),
-                Constraint::Min(self.longest_items.2 + 1),
-                Constraint::Min(self.longest_items.3),
-            ],
-        )
-        .header(table_header);
-        t.render(tab_content_area, buf);
+        match self.current_tab {
+            ContentTabs::All => {
+                let table_header = ["Point", "Tags", "Note", "Examples"]
+                    .into_iter()
+                    .map(Cell::from)
+                    .collect::<Row>()
+                    .height(1);
+                let rows = self.items.iter().enumerate().map(|(_i, data)| {
+                    let item = data.ref_array();
+                    item.into_iter()
+                        .map(|content| Cell::from(Text::from(format!("\n{content}\n"))))
+                        .collect::<Row>()
+                        .style(Style::new())
+                        .height(4)
+                });
+                let t = Table::new(
+                    rows,
+                    [
+                        Constraint::Min(self.longest_items.0 + 1),
+                        Constraint::Min(self.longest_items.1 + 1),
+                        Constraint::Min(self.longest_items.2 + 1),
+                        Constraint::Min(self.longest_items.3),
+                    ],
+                )
+                .header(table_header);
+                t.render(tab_content_area, buf);
+            }
+
+            ContentTabs::Tags => {
+                Text::from("Under Construction").render(tab_content_area, buf);
+            }
+        }
     }
 }
 

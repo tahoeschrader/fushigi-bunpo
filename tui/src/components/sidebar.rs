@@ -3,19 +3,32 @@ use crossterm::event::{Event, KeyCode, KeyEventKind};
 use ratatui::{
     buffer::Buffer,
     layout::Rect,
-    style::{Color, Style},
-    widgets::{List, ListItem, Widget},
+    style::Color,
+    widgets::{List, ListItem, ListState, StatefulWidget, Widget},
 };
 
+use strum::{Display, EnumCount, EnumIter, FromRepr, IntoEnumIterator};
+
+#[derive(Default, Display, FromRepr, Copy, Clone, EnumIter, EnumCount)]
 pub enum Pages {
-    Grammar = 0,
-    Journal = 1,
-    Social = 2,
+    #[default]
+    #[strum(to_string = "Grammar")]
+    Grammar,
+    #[strum(to_string = "Journal")]
+    Journal,
+    #[strum(to_string = "Social")]
+    Social,
+}
+
+impl Pages {
+    fn list_item(self) -> ListItem<'static> {
+        ListItem::from(format!("  {self}  "))
+    }
 }
 
 pub struct Sidebar {
     pub active_page: Pages,
-    list_location: i32,
+    list_location: i8,
 }
 
 impl Sidebar {
@@ -29,55 +42,29 @@ impl Sidebar {
     pub fn handle_event(&mut self, event: Event) -> Result<()> {
         match event {
             Event::Key(key) if key.kind == KeyEventKind::Press => match key.code {
-                KeyCode::Char('k') => {
-                    self.list_location = (self.list_location - 1).rem_euclid(3);
+                KeyCode::Char('k') | KeyCode::Up => {
+                    self.list_location = (self.list_location - 1).rem_euclid(Pages::COUNT as i8);
                 }
-                KeyCode::Char('j') => {
-                    self.list_location = (self.list_location + 1).rem_euclid(3);
+                KeyCode::Char('j') | KeyCode::Down => {
+                    self.list_location = (self.list_location + 1).rem_euclid(Pages::COUNT as i8);
                 }
                 _ => {}
             },
             _ => {}
         };
-        self.set_active_page();
+        self.active_page = Pages::from_repr(self.list_location as usize).expect("Unreachable!");
         Ok(())
-    }
-
-    fn set_active_page(&mut self) {
-        match self.list_location {
-            0 => {
-                self.active_page = Pages::Grammar;
-            }
-            1 => {
-                self.active_page = Pages::Journal;
-            }
-            2 => {
-                self.active_page = Pages::Social;
-            }
-            _ => unreachable!(),
-        }
     }
 }
 
 impl Widget for &Sidebar {
     fn render(self, area: Rect, buf: &mut Buffer) {
-        let pages = match self.active_page {
-            Pages::Grammar => [
-                ListItem::new("> Grammar").style(Style::new().fg(Color::Magenta)),
-                ListItem::new("  Journal"),
-                ListItem::new("  Social"),
-            ],
-            Pages::Journal => [
-                ListItem::new("  Grammar"),
-                ListItem::new("> Journal").style(Style::new().fg(Color::Magenta)),
-                ListItem::new("  Social"),
-            ],
-            Pages::Social => [
-                ListItem::new("  Grammar"),
-                ListItem::new("  Journal"),
-                ListItem::new("> Social").style(Style::new().fg(Color::Magenta)),
-            ],
-        };
-        List::new(pages).render(area, buf);
+        let mut state = ListState::default();
+        state.select(Some(self.active_page as usize));
+        let highlight_style = (Color::Magenta, Color::default());
+        let list = List::new(Pages::iter().map(Pages::list_item))
+            .highlight_style(highlight_style)
+            .highlight_symbol(">");
+        StatefulWidget::render(list, area, buf, &mut state);
     }
 }

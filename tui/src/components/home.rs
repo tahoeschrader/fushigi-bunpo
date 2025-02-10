@@ -50,7 +50,9 @@ impl Home {
                 ActivePane::Sidebar => {
                     self.sidebar.handle_event(navigation_event)?;
                 }
-                ActivePane::Content => {}
+                ActivePane::Content => {
+                    self.content.handle_event(navigation_event)?;
+                }
             },
         };
         Ok(())
