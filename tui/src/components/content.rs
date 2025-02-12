@@ -1,14 +1,49 @@
 use color_eyre::Result;
-use crossterm::event::{Event, KeyCode, KeyEventKind};
+use crossterm::event::{Event, KeyCode, KeyEventKind, KeyModifiers};
 use ratatui::{
     buffer::Buffer,
-    layout::{Constraint, Layout, Rect},
-    style::{Color, Style},
+    layout::{Constraint, Layout, Margin, Rect},
+    style::{self, Color, Modifier, Style},
     text::{Line, Text},
-    widgets::{Cell, Row, Table, Tabs, Widget},
+    widgets::{
+        Cell, HighlightSpacing, Row, Scrollbar, ScrollbarOrientation, ScrollbarState,
+        StatefulWidget, Table, TableState, Tabs, Widget,
+    },
 };
 use strum::{Display, EnumIter, FromRepr, IntoEnumIterator};
+use style::palette::tailwind;
 use unicode_width::UnicodeWidthStr;
+
+const ITEM_HEIGHT: usize = 4;
+
+const PALETTES: [tailwind::Palette; 4] = [
+    tailwind::BLUE,
+    tailwind::EMERALD,
+    tailwind::INDIGO,
+    tailwind::RED,
+];
+
+struct TableColors {
+    header_bg: Color,
+    header_fg: Color,
+    row_fg: Color,
+    selected_row_style_fg: Color,
+    normal_row_color: Color,
+    alt_row_color: Color,
+}
+
+impl TableColors {
+    const fn new(color: &tailwind::Palette) -> Self {
+        Self {
+            header_bg: Color::Magenta,
+            header_fg: Color::White,
+            row_fg: Color::White,
+            selected_row_style_fg: color.c400,
+            normal_row_color: tailwind::SLATE.c950,
+            alt_row_color: tailwind::SLATE.c900,
+        }
+    }
+}
 
 #[derive(Default, Clone, Copy, Display, FromRepr, EnumIter)]
 enum ContentTabs {
@@ -77,25 +112,40 @@ pub struct Content {
     items: Vec<Data>,
     current_tab: ContentTabs,
     longest_items: (u16, u16, u16, u16),
+    colors: TableColors,
+    color_index: usize,
+    current_scroll: usize,
+    current_table_item: usize,
 }
 
 impl Content {
     pub fn new() -> Self {
         let data = fetch_data();
         Self {
+            current_table_item: 0,
+            current_scroll: 0,
             longest_items: constraint_len_calculator(&data),
             current_tab: ContentTabs::All,
             items: data,
+            color_index: 0,
+            colors: TableColors::new(&PALETTES[0]),
         }
     }
 
     pub fn handle_event(&mut self, event: Event) -> Result<()> {
         match event {
-            Event::Key(key) if key.kind == KeyEventKind::Press => match key.code {
-                KeyCode::Char('h') | KeyCode::Left => self.previous_tab(),
-                KeyCode::Char('l') | KeyCode::Right => self.next_tab(),
-                _ => {}
-            },
+            Event::Key(key) if key.kind == KeyEventKind::Press => {
+                let shift_pressed = key.modifiers.contains(KeyModifiers::SHIFT);
+                match key.code {
+                    KeyCode::Char('h') | KeyCode::Left if shift_pressed => self.previous_tab(),
+                    KeyCode::Char('l') | KeyCode::Right if shift_pressed => self.next_tab(),
+                    KeyCode::Char('j') | KeyCode::Down => self.next_row(),
+                    KeyCode::Char('k') | KeyCode::Up => self.previous_row(),
+                    KeyCode::Char(' ') => self.next_color(),
+                    _ => {}
+                };
+                self.set_colors();
+            }
             _ => {}
         };
         Ok(())
@@ -107,6 +157,28 @@ impl Content {
 
     pub fn previous_tab(&mut self) {
         self.current_tab = self.current_tab.previous();
+    }
+
+    pub fn next_row(&mut self) {
+        if self.current_table_item < self.items.len() - 1 {
+            self.current_table_item += 1;
+            self.current_scroll = self.current_table_item * ITEM_HEIGHT;
+        };
+    }
+
+    pub fn previous_row(&mut self) {
+        if self.current_table_item != 0 {
+            self.current_table_item -= 1;
+            self.current_scroll = self.current_table_item * ITEM_HEIGHT;
+        };
+    }
+
+    pub fn next_color(&mut self) {
+        self.color_index = (self.color_index + 1) % PALETTES.len();
+    }
+
+    pub fn set_colors(&mut self) {
+        self.colors = TableColors::new(&PALETTES[self.color_index]);
     }
 }
 
@@ -128,19 +200,34 @@ impl Widget for &Content {
         // Now, render the table
         match self.current_tab {
             ContentTabs::All => {
+                let mut state = TableState::new().with_selected(self.current_table_item);
+                let mut scroll = ScrollbarState::new((self.items.len() - 1) * ITEM_HEIGHT)
+                    .position(self.current_scroll);
+                let header_style = Style::default()
+                    .fg(self.colors.header_fg)
+                    .bg(self.colors.header_bg);
+                let selected_row_style = Style::default()
+                    .add_modifier(Modifier::REVERSED)
+                    .fg(self.colors.selected_row_style_fg);
                 let table_header = ["Point", "Tags", "Note", "Examples"]
                     .into_iter()
                     .map(Cell::from)
                     .collect::<Row>()
+                    .style(header_style)
                     .height(1);
-                let rows = self.items.iter().enumerate().map(|(_i, data)| {
+                let rows = self.items.iter().enumerate().map(|(i, data)| {
+                    let color = match i % 2 {
+                        0 => self.colors.normal_row_color,
+                        _ => self.colors.alt_row_color,
+                    };
                     let item = data.ref_array();
                     item.into_iter()
                         .map(|content| Cell::from(Text::from(format!("\n{content}\n"))))
                         .collect::<Row>()
-                        .style(Style::new())
+                        .style(Style::new().fg(self.colors.row_fg).bg(color))
                         .height(4)
                 });
+                let bar = " █ ";
                 let t = Table::new(
                     rows,
                     [
@@ -150,8 +237,29 @@ impl Widget for &Content {
                         Constraint::Min(self.longest_items.3),
                     ],
                 )
-                .header(table_header);
-                t.render(tab_content_area, buf);
+                .header(table_header)
+                .row_highlight_style(selected_row_style)
+                .highlight_symbol(Text::from(vec![
+                    "".into(),
+                    bar.into(),
+                    bar.into(),
+                    "".into(),
+                ]))
+                .highlight_spacing(HighlightSpacing::Always);
+                StatefulWidget::render(t, tab_content_area, buf, &mut state);
+                StatefulWidget::render(
+                    Scrollbar::default()
+                        .orientation(ScrollbarOrientation::VerticalRight)
+                        .begin_symbol(None)
+                        .thumb_style(Color::default())
+                        .end_symbol(None),
+                    area.inner(Margin {
+                        vertical: 2,
+                        horizontal: 1,
+                    }),
+                    buf,
+                    &mut scroll,
+                );
             }
 
             ContentTabs::Tags => {
@@ -195,7 +303,7 @@ fn constraint_len_calculator(items: &[Data]) -> (u16, u16, u16, u16) {
 fn fetch_data() -> Vec<Data> {
     use fakeit::words;
 
-    (0..10)
+    (0..30)
         .map(|_| {
             let name = words::word();
             let tags = vec![words::word(), words::word(), words::word()];
