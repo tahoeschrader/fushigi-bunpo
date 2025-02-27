@@ -4095,6 +4095,244 @@
       ]
     },
     {
+      "name": "普通形（ナAだ｜Nだ）＋というか",
+      "tags": [
+        "opinion",
+        "feelings-emotions",
+        "quoting",
+        "contradiction"
+      ],
+      "notes": "is more of a...; or perhaps I should say; rather than",
+      "example": [
+        "元気というか、うるさいよ。"
+      ]
+    },
+    {
+      "name": "普通形＋（ナAである｜Nである）＋以上は｜上は；辞書形・タ形＋上は",
+      "tags": [
+        "reasons",
+        "cause-and-effect",
+        "becoming"
+      ],
+      "notes": "since; now that; because",
+      "example": [
+        "試合に出場する以上、絶対勝ってみせる。",
+        "書類にサインした以上は、キャンセルはできません。"
+      ]
+    },
+    {
+      "name": "辞書形・Nの＋限り",
+      "tags": [
+        "limits",
+        "continuing",
+        "simultaneous"
+      ],
+      "notes": "as long as; while; to the limit possible",
+      "example": [
+        "難民たちは持てる限りの荷物を持って、逃げてきた。",
+        "映画が好きなので、時間とお金の許す限り、映画館へ見に行っています。"
+      ]
+    },
+    {
+      "name": "テ形＋いただけないでしょうか",
+      "tags": [
+        "丁寧語",
+        "receiving-and-giving",
+        "favors",
+        "polite-speech"
+      ],
+      "notes": "could I please get some...",
+      "example": [
+        "もう少しゆっくり話していただけないでしょうか。",
+        "アンケートに協力していただけないでしょうか。"
+      ]
+    },
+    {
+      "name": "普通形（ナAな｜Nの）＋ところを",
+      "tags": [
+        "conditions",
+        "polite-speech"
+      ],
+      "notes": "while I'm interrupting... I'm sorry but",
+      "example": [
+        "もしもし、先生、お休みのところ、お電話してすみません。実は。。。"
+      ]
+    },
+    {
+      "name": "テ形＋いただけないかと思って",
+      "tags": [
+        "丁寧語",
+        "polite-speech",
+        "favors"
+      ],
+      "notes": "was wondering if you could help",
+      "example": [
+        "大学の資料を見せていただけないかと思って。。。",
+        "次の説明会の予定を教えていただけないかと思って。。。"
+      ]
+    },
+    {
+      "name": "マス形＋つつも",
+      "tags": [
+        "contradiction",
+        "conditions",
+        "negative"
+      ],
+      "notes": "despite ___ing; even while ___",
+      "example": [
+        "体に悪いと知りつつ、つい一体タバコを吸ってしまう。",
+        "友達と遊びたいと思いつつも、忙しくてその暇がない。"
+      ]
+    },
+    {
+      "name": "マス形＋っぱなし",
+      "tags": [
+        "continuing",
+        "conditions",
+        "negative"
+      ],
+      "notes": "leaving something as; casually negative statement",
+      "example": [
+        "誰もいないのに、電気もエアコンも付けっぱなしだ。",
+        "窓を開けっぱなしで寝たので、風邪をひいてしまいました。"
+      ]
+    },
+    {
+      "name": "辞書形＋ことなく",
+      "tags": [
+        "conditions",
+        "describing"
+      ],
+      "notes": "without ___ ing",
+      "example": [
+        "初めてマラソン大会に出場したが、途中で一度も止まるこたなく、走り抜いた。",
+        "彼は何度失敗しても構うことなく、のんびりする。"
+      ]
+    },
+    {
+      "name": "普通形（ナAな・である｜Nの・である）＋上に",
+      "tags": [
+        "lists"
+      ],
+      "notes": "in addition to; as well as",
+      "example": [
+        "この会社は給料が高い上に、休みも多い。",
+        "このレストランは安い上に、美味しいので、いつも混んでいる。"
+      ]
+    },
+    {
+      "name": "N＋向きだ・に・のN",
+      "tags": [
+        "describing",
+        "relation"
+      ],
+      "notes": "suitable for; meant for",
+      "example": [
+        "この山はそんなに高くないし、日帰りで行けるので、登山の初心者向きだ。",
+        "ここは独身者向きのマンションで家族で住むには狭いようだ。"
+      ]
+    },
+    {
+      "name": "意向形＋にも＋ナイ形",
+      "tags": [
+        "probability",
+        "negative"
+      ],
+      "notes": "cannot even if you try",
+      "example": [
+        "荷物が重すぎて、私一人では持とうにも持てなかった。",
+        "今朝、頭が痛くて、起きようにも起きられなかったんです。"
+      ]
+    },
+    {
+      "name": "辞書形・N＋したがって",
+      "tags": [
+        "simultaneous",
+        "time",
+        "cause-and-effect"
+      ],
+      "notes": "as this happens; following this; sometimes written in kanji",
+      "example": [
+        "工事が進むにしたがって、建物の全体が見えてきた。",
+        "冬が近づいているに従って、気温が下がります。"
+      ]
+    },
+    {
+      "name": "N＋に他ならない",
+      "tags": [
+        "limits"
+      ],
+      "notes": "nothing but, only this option",
+      "example": [
+        "彼がうつ病になったのは努力の結果に他ならない。",
+        "両親が子供に淋しくするのは、子供を愛しているからに他ならない。"
+      ]
+    },
+    {
+      "name": "タ形・Nの＋挙げ句",
+      "tags": [
+        "negative",
+        "time",
+        "after"
+      ],
+      "notes": "read as あげく; after (in a troublesome/negative way)",
+      "example": [
+        "５時間も話し合いを続けたあげく、何も決まらなかった。",
+        "彼は散々悩んだ挙げ句、会社を辞めることに決めた。"
+      ]
+    },
+    {
+      "name": "マス形＋ようがない",
+      "tags": [
+        "probability",
+        "negative",
+        "high-level"
+      ],
+      "notes": "want to but can't; impossible",
+      "example": [
+        "これは現代の医学では、治しようがない病気だ。",
+        "台風で交通機関が全部止まっているので、学校に行きたくても生きようがない。"
+      ]
+    },
+    {
+      "name": "普通形（ナAな・である｜Nの・である）＋わけがない",
+      "tags": [
+        "probability",
+        "negative",
+        "high-level"
+      ],
+      "notes": "impossible; no way that",
+      "example": [
+        "２月に桜が咲くわけがないよ。梅の花じゃない。",
+        "毎日遊んでばかりいたら、試験に合格するわけがない。"
+      ]
+    },
+    {
+      "name": "普通形＋（ナAな・である｜Nである）＋ことだろう・ことか",
+      "tags": [
+        "high-level",
+        "sentence-ender"
+      ],
+      "notes": "god knows; how extremely this feeling/thought",
+      "example": [
+        "もう２年も家族に合っていない。家族は私のことをどんなに心配していることか。",
+        "この曲が大好きだ。今まで何度聞いたことだろう。"
+      ]
+    },
+    {
+      "name": "普通形（ナAである｜Nである）＋に違いない",
+      "tags": [
+        "probability",
+        "high-level",
+        "sure-and-unsure"
+      ],
+      "notes": "theres no doubt; I'm sure that; there's no mistaking",
+      "example": [
+        "アンナさんは日本生きて１０年になるとのことだから、ペラペラであるに違いない。",
+        "彼は足って泣いて、困っているに違いない。"
+      ]
+    },
+    {
       "name": "",
       "tags": [
         ""
