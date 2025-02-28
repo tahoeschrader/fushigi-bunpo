@@ -1,0 +1,8068 @@
+{
+  "grammar": [
+    {
+      "usage": "いらっしゃいます",
+      "meaning": "replacement for 行く, 来る, and いる",
+      "level": "",
+      "tags": [
+        "greeting",
+        "respectful-honorific"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "「」はいらっしゃいますか",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "今週末どこへいらっしゃいますか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "「」と申します",
+      "meaning": "introducing your name",
+      "level": "",
+      "tags": [
+        "humble-honorific",
+        "greeting",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "初めまして、タホと申します",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "参ります",
+      "meaning": "replacement for 行く, and 来る",
+      "level": "",
+      "tags": [
+        "humble-honorific"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "今年の３月に参りました",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "今年の１０月に大阪へ参ります",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜ので",
+      "meaning": "basic cause and effect",
+      "level": "",
+      "tags": [
+        "causal",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "札幌には夢がたくさんあるのでスキーをしたいです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "私の犬の種類は「ヒーラー」なので、私はいつも疲れます",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "可能動詞",
+      "meaning": "「え」る, られる, できる -- basic potential form",
+      "level": "",
+      "tags": [
+        "potential-form",
+        "basic-verb-forms"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "私の犬はずっと遊べる",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "わたしはプログラミングことができる",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "私は朝早く起きられない",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜なら",
+      "meaning": "if it's this",
+      "level": "",
+      "tags": [
+        "conditional",
+        "noun-modifier"
+      ],
+      "notes": "...",
+      "examples": [
+        {
+          "japanese": "中国の料理は辛物なら食べられない",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "雨なら、傘を持ってきてください",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "パソコンなら、マックブックを買うといいです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜のが",
+      "meaning": "specifically describing an action turned into a noun",
+      "level": "",
+      "tags": [
+        "nominalization",
+        "辞書形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "アニメを見るのが好きです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "スキーをするのが上手です",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "長い時間に寝るのが嫌いです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜のは",
+      "meaning": "basic describing an action turned into a noun",
+      "level": "",
+      "tags": [
+        "nominalization",
+        "辞書形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ゲームをするのは楽しいです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "値段が安いのは、トヨタの車です",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜ようになります",
+      "meaning": "an action becoming possible",
+      "level": "",
+      "tags": [
+        "potential-form",
+        "change",
+        "可能形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "2026までに日本語が話せるようになりたいです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "簡単料理が作れるようになりました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜そうです",
+      "meaning": "how something seems based on your senses",
+      "level": "",
+      "tags": [
+        "appearance",
+        "adjective-modifer"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "そのゲームは面白そうです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "そのホテルは安くなさそうです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "私のルームメイトは静かじゃなさそうです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜みます",
+      "meaning": "try something",
+      "level": "",
+      "tags": [
+        "verb-modifier",
+        "テ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "あの山を登ってみます",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "この上着を着てみたいです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜もらえませんか",
+      "meaning": "receiving a favor",
+      "level": "",
+      "tags": [
+        "polite",
+        "giving-receiving",
+        "テ形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "光を消えてもらえませんか",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "結婚式の写真を見せてもらえませんか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜すぎます",
+      "meaning": "describing something/something you did as too much",
+      "level": "",
+      "tags": [
+        "adjective-modifer",
+        "マス形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ボストンには私のアパートが高すぎました",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "私は食べすぎました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜やすいです",
+      "meaning": "describing something as too easy",
+      "level": "",
+      "tags": [
+        "マス形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "この小説は読みやすいです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜にくいです",
+      "meaning": "describing something as too hard",
+      "level": "",
+      "tags": [
+        "マス形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "日本語の宿題が多いですから、プログラミングをしにくいです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜あります",
+      "meaning": "after an action was done and left by someone",
+      "level": "",
+      "tags": [
+        "テ形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "駅の近くに地図が貼ってあります",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "何と読みますかー「」と読みます",
+      "meaning": "asking/describing how to read something",
+      "level": "",
+      "tags": [
+        "question-form"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "これは何と読みますか",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "「」と読みますよ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "「」と書いてあります",
+      "meaning": "after a writing action was done and left by someone",
+      "level": "",
+      "tags": [
+        "question-form",
+        "combination"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "「」と書いてあります",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "どういう意味ですかー「」という意味です",
+      "meaning": "asking/describing the meaning of a word",
+      "level": "",
+      "tags": [
+        "question-form"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "「」はどういう意味ですか",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "「」と言う意味です",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "「」だと言う意味です",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜にします",
+      "meaning": "ordering/choosing a specific thing",
+      "level": "",
+      "tags": [
+        "conditional",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "からあげのセットにします",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "このレストランにしましょう",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜すぎです",
+      "meaning": "pointing out something someone else did too much",
+      "level": "",
+      "tags": [
+        "マス形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "タホさん、飲みすぎですよ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜ら",
+      "meaning": "once this happens,",
+      "level": "",
+      "tags": [
+        "conditional",
+        "タ形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "日本語学校を卒業したら、日本の会社で働きたいです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "夏休みになったら、新しい本を読む",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "コンサートに行ったら、人がたくさん並んでいました",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "区役所へ行ったら、誰もいませんでした",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "今週末電話したらどうですか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜と思っています",
+      "meaning": "80% sure",
+      "level": "",
+      "tags": [
+        "likelihood",
+        "certainty",
+        "意向形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "今週末日本語の聴解を練習しようと思っています",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜つもりです",
+      "meaning": "120% sure",
+      "level": "",
+      "tags": [
+        "likelihood",
+        "certainty",
+        "辞書形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "8月に友達と一緒に大阪へ行くつもりです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜つもりです",
+      "meaning": "120% sure",
+      "level": "",
+      "tags": [
+        "likelihood",
+        "certainty",
+        "ナイ形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "今年私の母国へ帰らないつもりです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "疑問詞＋普通形＋か",
+      "meaning": "unsure of a question",
+      "level": "",
+      "tags": [
+        "certainty",
+        "question-form"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "どの会社がいいか、調べます",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "何を食べるか、まだ決めていません",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜かどうか",
+      "meaning": "unsure of a fact",
+      "level": "",
+      "tags": [
+        "certainty",
+        "question-form",
+        "普通形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "母国へ帰るかどうか、まだ決めていません",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "ホテルを予約するかどうか、確認します",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜のために",
+      "meaning": "purpose/reason for something",
+      "level": "",
+      "tags": [
+        "causal",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "就職のために、毎日プログラミングを練習しています",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜ために",
+      "meaning": "purpose/reason for something",
+      "level": "",
+      "tags": [
+        "causal",
+        "辞書形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "日本語を話すために、日本に来た",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜んです",
+      "meaning": "adding extra information/explaining",
+      "level": "",
+      "tags": [
+        "question-form",
+        "explanation",
+        "普通形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "タホさんはこの本を読んだんですか",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "あれはソダさんの？",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "それを食べているんですか",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "どうして日本に来たんですか",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "何してんだよ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜ければなりません",
+      "meaning": "must not do",
+      "level": "",
+      "tags": [
+        "fixed-expression",
+        "conditional",
+        "polite",
+        "combination",
+        "ナイ形",
+        "verb-modifier"
+      ],
+      "notes": "drop the い",
+      "examples": [
+        {
+          "japanese": "金曜日までに宿題をしなければなりません",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "母は私に野菜を食べなければなりませんと言っていました",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "クラスのベルが鳴る前に来ることになっています",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "今冬両親の家へ行かないことになっているんです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜んですが",
+      "meaning": "giving a reason for an incoming question / topic switch",
+      "level": "",
+      "tags": [
+        "question-form",
+        "explanation",
+        "conjunctive",
+        "普通形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "今冬スキーをしたいんですが、一緒に行きませんか",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "卒業をしたら、日本の会社で働きたいんですが、いい会社を紹介してもらえませんか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜なら",
+      "meaning": "if it's this",
+      "level": "",
+      "tags": [
+        "conditional",
+        "普通形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "日本語のが話せるようになりたいなら、毎日小説を読むのがいいですよ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜らしいです",
+      "meaning": "rumors / something you heard from someone",
+      "level": "",
+      "tags": [
+        "likelihood",
+        "certainty",
+        "タ形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "彼は昨日、映画を見たらしい",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜といいです",
+      "meaning": "giving advice",
+      "level": "",
+      "tags": [
+        "conditional",
+        "suggestion",
+        "辞書形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "スキーをしたいので、札幌へ行くといいです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "この食べ物は辛いので、牛乳を飲むといいです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜までに＿＿＿",
+      "meaning": "deadline",
+      "level": "",
+      "tags": [
+        "temporal",
+        "conditional",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "2026までに日本語のが話せなければなりません",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "今週末までにチケットを買わなければなりません",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜と、〜があります",
+      "meaning": "giving directions",
+      "level": "",
+      "tags": [
+        "spatial",
+        "conditional",
+        "辞書形",
+        "noun-modifier",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "駅から5分くらいまっすぐ歩くと、右に私のアパートがあります",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜じゃなくて",
+      "meaning": "correcting someone",
+      "level": "",
+      "tags": [
+        "conditional",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ウイリアムじゃなくて、タホですよ",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "オーストラリア人じゃなくて、アメリカ人です",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜んじゃなくて",
+      "meaning": "correcting someone",
+      "level": "",
+      "tags": [
+        "conditional",
+        "辞書形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "彼は行くんじゃなくて、帰るんです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜なら",
+      "meaning": "if it's this",
+      "level": "",
+      "tags": [
+        "conditional",
+        "adjective-modifer",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "暑いなら、セーターを持っていってください",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "日本語なら、私が読みます",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜しまいました",
+      "meaning": "accidentally or unexpected, in advance",
+      "level": "",
+      "tags": [
+        "combination",
+        "explanation",
+        "テ形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "傘を忘れてしまいました",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "スマホを落としちゃった",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "ご飯を食べてしまいます",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "部屋を掃除してしまいます",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜かもしれません",
+      "meaning": "50% unsure",
+      "level": "",
+      "tags": [
+        "likelihood",
+        "certainty",
+        "普通形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "来年の夏に私の両親は日本へ来るかもしれません",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜のあとで",
+      "meaning": "after this",
+      "level": "",
+      "tags": [
+        "temporal",
+        "conditional",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "卒業のあとで、会社で働き始めた",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜あとで",
+      "meaning": "after this",
+      "level": "",
+      "tags": [
+        "temporal",
+        "conditional",
+        "タ形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "クラスが終わったあとで、買い物をしよう",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "家に帰ったあとで、シャワーを浴びました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜いただけませんか",
+      "meaning": "humble form of もらう (to receive)",
+      "level": "",
+      "tags": [
+        "honorific",
+        "giving-receiving",
+        "テ形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "漢字の書き方を教えていただけませんか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜くて | 〜で",
+      "meaning": "connects two ideas with adjectives",
+      "level": "",
+      "tags": [
+        "conjunctive",
+        "adjective-modifer"
+      ],
+      "notes": "drop the い or just add if its a noun adjective",
+      "examples": [
+        {
+          "japanese": "このケーキは甘くて、おいしいです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "この部屋は静かで、広いです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜テ形、〜",
+      "meaning": "giving a reason for what comes next",
+      "level": "",
+      "tags": [
+        "causal",
+        "conjunctive",
+        "テ形",
+        "basic-verb-forms"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "自転車が盗まれて、遅れました",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "お酒を飲みすぎて、二日酔いです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜くて、〜",
+      "meaning": "connecting a negative quality with the rest of a sentence",
+      "level": "",
+      "tags": [
+        "conjunctive",
+        "ナイ形",
+        "verb-modifier"
+      ],
+      "notes": "drop the い",
+      "examples": [
+        {
+          "japanese": "この問題は難しくなくて、簡単です",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜たら、〜",
+      "meaning": "once this happened,",
+      "level": "",
+      "tags": [
+        "conditional",
+        "change",
+        "conjunctive",
+        "タ形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "カバンを開けたら、財布がありませんでした",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜ましょうか",
+      "meaning": "invitation or request to do by yourself",
+      "level": "",
+      "tags": [
+        "polite",
+        "combination",
+        "favor",
+        "マス形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "レストランに行きましょうか",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "家を掃除しましょうか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜し、〜",
+      "meaning": "listing actions",
+      "level": "",
+      "tags": [
+        "enumeration",
+        "conjunctive",
+        "普通形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "東京になたくさん店もあるし、美味しい食べ物も食べるし、安いホテルもある",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜のは〜です",
+      "meaning": "used to choose an option or give an answer",
+      "level": "",
+      "tags": [
+        "explanation",
+        "普通形",
+        "verb-modifier",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "車の値段が安いのはホンダです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜そうです",
+      "meaning": "how something seems based on your senses",
+      "level": "",
+      "tags": [
+        "appearance",
+        "adjective-modifer"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "この図書館は静かそうです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "このホテルは安そうです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜そうです",
+      "meaning": "how something seems based on your senses",
+      "level": "",
+      "tags": [
+        "appearance",
+        "マス形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "深夜雨が降りそうです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "秋の間に京都が混みそうです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "皿が落ちそうです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "ゴミ袋を破れそうです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜そう(に|も|にも)ありません",
+      "meaning": "how something seems based on your senses",
+      "level": "",
+      "tags": [
+        "appearance",
+        "マス形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "彼は勝ちそうにありません",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜おきます",
+      "meaning": "do something in advance, leave in place",
+      "level": "",
+      "tags": [
+        "combination",
+        "テ形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "クラスの前にカバンをまとめておきます",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "ビールを冷蔵庫に入れておきます",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "そのままにしておきます",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜あります",
+      "meaning": "already finished",
+      "level": "",
+      "tags": [
+        "combination",
+        "テ形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "もう宿題を終わってあります",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "お〜になります",
+      "meaning": "create keigo out of any verb",
+      "level": "",
+      "tags": [
+        "honorific",
+        "combination",
+        "fixed-expression",
+        "マス形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "どちらそれをお買いになりましたか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "尊敬動詞の受身形",
+      "meaning": "create sonkeigo out of basic verbs",
+      "level": "",
+      "tags": [
+        "respectful-honorific",
+        "basic-verb-forms"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "タホさんは全部たべられました",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "みんなさん映画へ行かれました",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "ソダさんよく釣りをされる",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "尊敬語(行く|来る|いる)",
+      "meaning": "replacement for 行く, 来る, and いる",
+      "level": "",
+      "tags": [
+        "respectful-honorific",
+        "basic-verb-forms"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "部長はいらっしゃいますか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "尊敬語(食べる|飲む)",
+      "meaning": "replacement for 食べる, and 飲む",
+      "level": "",
+      "tags": [
+        "respectful-honorific",
+        "basic-verb-forms"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "もうご飯を召し上がりましたか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "尊敬語(くれる)",
+      "meaning": "replacement for くれる",
+      "level": "",
+      "tags": [
+        "respectful-honorific",
+        "basic-verb-forms"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "こちらでお待ちください",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "ご注意ください",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "尊敬語(言う)",
+      "meaning": "replacement for 言う",
+      "level": "",
+      "tags": [
+        "respectful-honorific",
+        "basic-verb-forms"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "お母さんは帰りなさいとおっしゃいました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "尊敬語(する)",
+      "meaning": "replacement for する",
+      "level": "",
+      "tags": [
+        "respectful-honorific",
+        "basic-verb-forms"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "今冬スキーをなさりますか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "尊敬語(見る)",
+      "meaning": "replacement for 見る",
+      "level": "",
+      "tags": [
+        "respectful-honorific",
+        "basic-verb-forms"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "映画をご覧になりましたか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "尊敬語(知っている)",
+      "meaning": "replacement for 知っている",
+      "level": "",
+      "tags": [
+        "respectful-honorific",
+        "basic-verb-forms"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "このアニメをご存じですか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "尊敬語(etc.)",
+      "meaning": "other various sonkeigo phrases",
+      "level": "",
+      "tags": [
+        "respectful-honorific",
+        "basic-verb-forms"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "日本の生活はいかがですか",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "どちらいらっしゃいますか",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "どなたこれを召し上がりましたか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "ご〜します",
+      "meaning": "creating kenjougo from nouns",
+      "level": "",
+      "tags": [
+        "humble-honorific",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "奥さんをご紹介します",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "お〜します",
+      "meaning": "creating kenjougo from verbs",
+      "level": "",
+      "tags": [
+        "humble-honorific",
+        "マス形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ソダさん、お手伝いしましょうか",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "荷物をお待ちします",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜く〜",
+      "meaning": "creating a basic adverb",
+      "level": "",
+      "tags": [
+        "combination",
+        "イ形容詞",
+        "adjective-modifer"
+      ],
+      "notes": "drop the い and add any verb after",
+      "examples": [
+        {
+          "japanese": "野菜を薄く切ります",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜に〜",
+      "meaning": "creating a basic adverb",
+      "level": "",
+      "tags": [
+        "combination",
+        "noun-modifier",
+        "na-adjective-modifer"
+      ],
+      "notes": "dont include the な; add any verb to end",
+      "examples": [
+        {
+          "japanese": "彼は静かに勉強している",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "野菜を半分に切ります",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "火を弱火にしてください",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜いる間に",
+      "meaning": "while",
+      "level": "",
+      "tags": [
+        "temporal",
+        "テ形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "肉を焼きている間に、ビールを飲む",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "「」に〜あげます",
+      "meaning": "does it for に/を",
+      "level": "",
+      "tags": [
+        "giving-receiving",
+        "テ形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ソダさんはタホに釣り旅行の写真を見せてあげます",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "ソダさんはタホを奥多摩へ連れて行ってあげました",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "タホさんは両親のテレビを治してあげました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "「」に〜もらいます",
+      "meaning": "receives from に",
+      "level": "",
+      "tags": [
+        "giving-receiving",
+        "テ形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "タホさんはソダさんに中国語を教えてもらいました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "「」に〜くれます",
+      "meaning": "does it for the speaker (dropped  に usually)",
+      "level": "",
+      "tags": [
+        "giving-receiving",
+        "テ形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ソダさんが釣り旅行の写真を見せてくれました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "「」に「」をいただきます",
+      "meaning": "receives from に",
+      "level": "",
+      "tags": [
+        "giving-receiving"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "私は誕生日プレゼントをいただきました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "「」に「」をくださいます",
+      "meaning": "does it for に",
+      "level": "",
+      "tags": [
+        "giving-receiving"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ソダさんが誕生日プレゼントをくださいました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "「」に〜いただきます",
+      "meaning": "receives from に",
+      "level": "",
+      "tags": [
+        "giving-receiving",
+        "テ形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "私は母に料理を教えていただきました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "「」に〜くださいます",
+      "meaning": "does it for に",
+      "level": "",
+      "tags": [
+        "giving-receiving",
+        "テ形",
+        "verb-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ソダさんが私に釣り方を教えてくださいました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "条件形、〜",
+      "meaning": "if it's this",
+      "level": "",
+      "tags": [
+        "conditional",
+        "イ形容詞",
+        "条件形",
+        "basic-verb-forms"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "毎日勉強すれば、日本語能力試験を合格できます",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "寒ければ、手袋を持ってきてください",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "日本語が分からなければ、日本に住むのは難しいです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "質問があれば、先生に聞いてください",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "条件形、〜",
+      "meaning": "if it's this",
+      "level": "",
+      "tags": [
+        "conditional",
+        "na-adjective-modifer",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "明日なら、空いています",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "時間があるなら、一緒に映画を見に行きましょう",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書|ナイ)形＋ように、＿＿＿",
+      "meaning": "so that",
+      "level": "",
+      "tags": [
+        "change"
+      ],
+      "notes": "... happens",
+      "examples": [
+        {
+          "japanese": "忘れないように毎日勉強します",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "タオル流を早く乾くように外に掛ける",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書|ナイ)形＋ようにしてください",
+      "meaning": "so that",
+      "level": "",
+      "tags": [
+        "change"
+      ],
+      "notes": "... happens as a command",
+      "examples": [
+        {
+          "japanese": "廊下に走らないようにしてください",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "質問があれば、先生に聞くようにしてください",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書|ナイ)形＋ことになっています",
+      "meaning": "something has been decided (plan, rules) out of your control",
+      "level": "",
+      "tags": [
+        "change"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "来月から東京に転勤することになっています",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "ここでは写真を撮らないことになっています",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "ご＋N＋ください",
+      "meaning": "creating kenjougo from nouns",
+      "level": "",
+      "tags": [
+        "humble-honorific",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ご注意ください",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "ご覧ください",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "お＋マス形＋ください",
+      "meaning": "creating kenjougo from verbs",
+      "level": "",
+      "tags": [
+        "humble-honorific",
+        "マス形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "お待ちください",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "V[ましょう]の友達言葉",
+      "meaning": "a friendlier version of ましょう",
+      "level": "",
+      "tags": [
+        "volitional-form"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "食べよう",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "行こう",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "受身形",
+      "meaning": "to be done by; subject is receiver",
+      "level": "",
+      "tags": [
+        "giving-receiving",
+        "passive-voice"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "タホさんは先生に呼ばれました",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "私は知らない人に質問を聞かれた",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "財布を盗まれた",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "今週末からチケットは買われる",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "ハリーポッターはJKローランによって書かれました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "辞書形＋のに、＿＿＿",
+      "meaning": "in order to",
+      "level": "",
+      "tags": [
+        "causal",
+        "conjunctive",
+        "辞書形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "野菜ジュースを作るのに便利です",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "この靴は山を登るのにいいです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋ようです",
+      "meaning": "seems like but with more emphasis on speakers own conclusion",
+      "level": "",
+      "tags": [
+        "appearance",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "電車の事故があったようです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "雨のようです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "このレストランのラーメンを美味しいようです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋みたいです",
+      "meaning": "how something seems based on direct observation, casually; looks like a",
+      "level": "",
+      "tags": [
+        "appearance",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "その食べ物は美味しいみたいです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "学校みたいな建物です",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "コンサートが始まるみたいだ",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "このジュースが健康みたいです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|テ形いる|タ形)＋ところです",
+      "meaning": "just before, during, or immediately after",
+      "level": "",
+      "tags": [
+        "temporal",
+        "辞書形",
+        "タ形",
+        "テ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "雨が降るところです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "晩ご飯を作っているところです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "宿題を終わったところです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋が＋テ形＋きます",
+      "meaning": "coming towards",
+      "level": "",
+      "tags": [
+        "combination",
+        "spatial",
+        "テ形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "あの鳥が飛んできました",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "先生が入ってきます",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋が＋テ形＋いきます",
+      "meaning": "going away",
+      "level": "",
+      "tags": [
+        "combination",
+        "spatial",
+        "テ形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "犬が走っていきます",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "A＋そうに＋V",
+      "meaning": "in a way that seems like; seems to be",
+      "level": "",
+      "tags": [
+        "appearance"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "子供たちは楽しそうに遊んでいます",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "ソダさんが心配そうに待っています",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "辞書形＋ようになります",
+      "meaning": "new habit or ability, change over time",
+      "level": "",
+      "tags": [
+        "fixed-expression",
+        "change",
+        "辞書形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "最近たくさんアニメを見るようになりました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "ナイ形＋くなります",
+      "meaning": "decrease in frequency, quantity; becoming less",
+      "level": "",
+      "tags": [
+        "change",
+        "ナイ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "最近お酒を飲まなくなりました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "タ形＋ばかりです",
+      "meaning": "just finished",
+      "level": "",
+      "tags": [
+        "temporal",
+        "タ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "日本に来たばかりです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "アルバイトを始めたばかりなので、まだ仕事に慣れません",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "仕事を辞めたばかりなのに、もう新しい仕事を見つけた",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "マス形＋ながら、＿＿＿",
+      "meaning": "doing two things at once",
+      "level": "",
+      "tags": [
+        "combination",
+        "conjunctive",
+        "マス形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "歩きながら、食べている",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "仕事をしながら、日本語を勉強している",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋と言っていました",
+      "meaning": "quoting something said",
+      "level": "",
+      "tags": [
+        "nominalization",
+        "fixed-expression",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "彼がそのレストランはいいと言っていました",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "彼はスポーツが好きだと言っていました",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "先生が明日は休むと言っていました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "命令形",
+      "meaning": "positive command; super casual",
+      "level": "",
+      "tags": [
+        "imperative"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "走れ",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "行け",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "辞書形な",
+      "meaning": "negative command; super casual",
+      "level": "",
+      "tags": [
+        "imperative",
+        "辞書形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "諦めるな",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜個＋も＋V",
+      "meaning": "surprise at a high number",
+      "level": "",
+      "tags": [
+        "counting"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "お酒は6杯も飲みました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(〜個|N)＋しか＋V[ません]",
+      "meaning": "surprise at a low number",
+      "level": "",
+      "tags": [
+        "counting",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "昨日は3時間しか寝られなかった",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "週末しか自分で料理を作らない",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "ナイ形＋で、＿＿＿",
+      "meaning": "don't do this, do that",
+      "level": "",
+      "tags": [
+        "suggestion",
+        "imperative",
+        "conjunctive",
+        "ナイ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "毎日肉を食べないで、時々豆腐を食べます",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "テ形＋V",
+      "meaning": "an action that involves two",
+      "level": "",
+      "tags": [
+        "combination",
+        "conditional",
+        "テ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "砂糖を入れて飲めます",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "ナイ形＋で＋V",
+      "meaning": "an action that involves two, negatively",
+      "level": "",
+      "tags": [
+        "combination",
+        "conditional",
+        "ナイ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "砂糖を入れないで飲めません",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "タ形＋らどうですか",
+      "meaning": "what about this",
+      "level": "",
+      "tags": [
+        "suggestion",
+        "fixed-expression",
+        "タ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "留学生の就職について話を聞くのはどうですか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋らしいです",
+      "meaning": "a rumor you heard, something people say",
+      "level": "",
+      "tags": [
+        "certainty",
+        "explanation",
+        "fixed-expression",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "プロテインは体にいいらしいです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "二日酔いだとたくさん寝るはいいらしいです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "5時午後からそのレストランは無料らしいです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋に、＿＿＿",
+      "meaning": "for this specifically, in order to",
+      "level": "",
+      "tags": [
+        "conjunctive",
+        "conditional",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "この食べ物はダイエットにいいです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋のに、＿＿＿",
+      "meaning": "even though ___",
+      "level": "",
+      "tags": [
+        "conjunctive",
+        "conditional",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "毎日聴解を練習したのに、日本語が聞き取らない",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|ナイ形)＋ようにしています",
+      "meaning": "effort, habit, goal that has started or quit",
+      "level": "",
+      "tags": [
+        "change",
+        "fixed-expression",
+        "辞書形",
+        "ナイ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "私はできるだけ毎日勉強するようにしている",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "たくさんテレビを見ないようにしています",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|ナイ形)＋ことにします",
+      "meaning": "a choice, resolution to do something",
+      "level": "",
+      "tags": [
+        "fixed-expression",
+        "change",
+        "辞書形",
+        "ナイ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "多すぎるお酒を飲まないことにします",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "スポーツジムを通うことにします",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "使役動詞",
+      "meaning": "basic causative, に receives the command",
+      "level": "",
+      "tags": [
+        "causal",
+        "giving-receiving"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "親は子供を塾に通わせます",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "親は子供に野菜を食べさせます",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "母親は娘に好きなものを買わせます",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "使役受身",
+      "meaning": "was caused, に gives the command",
+      "level": "",
+      "tags": [
+        "causal",
+        "giving-receiving"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "私は妻にタバコをやめさせられました",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "私は先輩に酒を飲まされた",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "使役動詞テ形＋(くれます|もらいます)",
+      "meaning": "was told to as a favor / was given permission; に is the grantor",
+      "level": "",
+      "tags": [
+        "causal",
+        "giving-receiving",
+        "polite",
+        "テ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "母は私に日本語を習わせてくれました",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "私は母に外で遊ばせてくれませんでした",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "私は先輩に小説を買わせてもらいました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|テ形いる|タ形)＋のを見ました",
+      "meaning": "something seen happening recently",
+      "level": "",
+      "tags": [
+        "change",
+        "appearance",
+        "fixed-expression",
+        "explanation",
+        "habitual",
+        "辞書形",
+        "タ形",
+        "テ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "子供たちが公園で元気に遊んでいるのを見ました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "テ形＋いました",
+      "meaning": "something that used to happen",
+      "level": "",
+      "tags": [
+        "explanation",
+        "combination",
+        "habitual",
+        "テ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "子供の頃、毎日友達と遊んでいました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋ばかり＋テ形＋います",
+      "meaning": "negative emphasis on something only happening",
+      "level": "",
+      "tags": [
+        "explanation",
+        "habitual",
+        "テ形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ゲームばかりしています",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "テ形＋ばかりいます",
+      "meaning": "negative emphasis on something only happening",
+      "level": "",
+      "tags": [
+        "explanation",
+        "habitual",
+        "テ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ゲームをしてばかりいます",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋って何ですか",
+      "meaning": "casual way of saying と when quoting",
+      "level": "",
+      "tags": [
+        "question-form",
+        "explanation",
+        "nominalization",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "水族館って何ですか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋というのは＋＿＿＿です",
+      "meaning": "describing something said, rephrasing",
+      "level": "",
+      "tags": [
+        "explanation",
+        "nominalization",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ランドセルというのは小学生が使うカバンです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋と言われています",
+      "meaning": "a rumor you heard, something people say",
+      "level": "",
+      "tags": [
+        "nominalization",
+        "explanation",
+        "fixed-expression",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ニンジンは目にいいと言われています",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋のような＋N",
+      "meaning": "explaining as a type of something similiar",
+      "level": "",
+      "tags": [
+        "description",
+        "comparative",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "将棋というのはギターのような楽器です",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(普通形|意向形)＋かな",
+      "meaning": "wondering something to yourself",
+      "level": "",
+      "tags": [
+        "certainty",
+        "question-form",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "今夜どこへ行こうかな",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "何を買おうかな",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋なんかどうですか",
+      "meaning": "what about this",
+      "level": "",
+      "tags": [
+        "conditional",
+        "suggestion",
+        "question-form",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "恋人のプレゼントなら、時計なんかどうですか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "A＋がっています",
+      "meaning": "a third persons feelings not in the conversation",
+      "level": "",
+      "tags": [
+        "explanation",
+        "combination"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "弟はドイツへ行きたがっている",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "母は新しい車を欲しがっている",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋からです",
+      "meaning": "giving a reason at the end of a sentence",
+      "level": "",
+      "tags": [
+        "explanation",
+        "causal",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "祖母にカメの置物をあげました、カメは長生きのシンボルからです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋んだって",
+      "meaning": "explaining something you saw",
+      "level": "",
+      "tags": [
+        "explanation",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "インダーネットで調べたんだけど、今週末花火があるんだって",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "辞書形＋のはどうですか",
+      "meaning": "what about this",
+      "level": "",
+      "tags": [
+        "question-form",
+        "suggestion",
+        "nominalization",
+        "辞書形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "毎朝ジョギングをするのはどうですか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋だけじゃなくて、＿＿＿も＿＿＿",
+      "meaning": "not just this exists, also this",
+      "level": "",
+      "tags": [
+        "enumeration",
+        "explanation",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "日本のアニメを見たいだけじゃなくて、外国のアニメも見たいです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "イA＋くないと、＿＿＿",
+      "meaning": "if not this, then",
+      "level": "",
+      "tags": [
+        "causal",
+        "conditional",
+        "イ形容詞"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "もっと安くないと、誰も買いません",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(ナA|N)＋じゃないと、＿＿＿",
+      "meaning": "if not this, then",
+      "level": "",
+      "tags": [
+        "causal",
+        "conditional",
+        "ナ形容詞",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "さくら図書館は市民じゃないと本が借りられません",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "ナイ形＋と、＿＿＿",
+      "meaning": "if not this, then",
+      "level": "",
+      "tags": [
+        "causal",
+        "conditional",
+        "ナイ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ゆっくり話さないと、聞き取りません",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "テ形＋きます",
+      "meaning": "explaining a past trend",
+      "level": "",
+      "tags": [
+        "explanation",
+        "temporal",
+        "テ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "最近交通事故がだんだん増えてきました",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "最近交通事故がだんだん減ってきました",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "ガソリンの値段がどんどん増えてきました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "テ形＋いきます",
+      "meaning": "guessing a future trend",
+      "level": "",
+      "tags": [
+        "explanation",
+        "temporal",
+        "テ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "これからも減っていくと思います",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "これからは増えていくと思います",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋ために、＿＿＿",
+      "meaning": "giving a reason",
+      "level": "",
+      "tags": [
+        "explanation",
+        "causal",
+        "conjunctive",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ここはとても危険なために、立ち入り禁止になりました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "＿＿＿よね",
+      "meaning": "don't you know?",
+      "level": "",
+      "tags": [
+        "explanation",
+        "combination"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "このバンド本当にかっこいいよね",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋とか＋普通形＋とか＋＿＿＿",
+      "meaning": "list examples",
+      "level": "",
+      "tags": [
+        "enumeration",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "そのレストランはたくさん食べ物を注文できる、ラーメンとか、ハンバーガーとかかな",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋(だけ|だけの)",
+      "meaning": "as much as you want, limits to the full extent of what its attached to",
+      "level": "",
+      "tags": [
+        "combination",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "今日は飲み放題なので、すきなだけ飲んでください",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "できるだけ早く走ってください",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋(でしょう|だろう)",
+      "meaning": "questioning the likelihood of something",
+      "level": "",
+      "tags": [
+        "question-form",
+        "likelihood",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "今夜雨が降るでしょう",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋から＋N＋にかけて＋＿＿＿",
+      "meaning": "a polite form of time boxing instead of まで",
+      "level": "",
+      "tags": [
+        "polite",
+        "temporal",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "明日は夕方から夜にかけて晴れそうだ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋と、(A|V)",
+      "meaning": "something 100% of the time results in something else",
+      "level": "",
+      "tags": [
+        "causal",
+        "likelihood",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "今夜は寒くなるから、では手袋を持っていくと、便利だよ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋がきっかけで＋＿＿＿",
+      "meaning": "due to; the original cause",
+      "level": "",
+      "tags": [
+        "causal",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "アニメがきっかけで、日本語の勉強を始めました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(マス形|N)＋っぽい",
+      "meaning": "special vocab to describe a person",
+      "level": "",
+      "tags": [
+        "nominalization",
+        "マス形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "私は忘れっぽいせいかくで、よく傘をどこかへ置いてきてしまいます",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "彼女は男っぽい性格です",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋でも",
+      "meaning": "even this; indicates a bit of surprise",
+      "level": "",
+      "tags": [
+        "conditional",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "かの問題は難しいので、先生でも間違えます",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋に限り",
+      "meaning": "limited to a condition",
+      "level": "",
+      "tags": [
+        "conditional",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "この交流会に参加できるのは、外国人に限ります",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋によって",
+      "meaning": "depending on the",
+      "level": "",
+      "tags": [
+        "conditional",
+        "noun-modifier"
+      ],
+      "notes": "...",
+      "examples": [
+        {
+          "japanese": "味のお好みは国によって違います",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|ナイ形|A|N)＋うちに＋＿＿＿＿",
+      "meaning": "before a condition changes",
+      "level": "",
+      "tags": [
+        "temporal",
+        "conditional",
+        "辞書形",
+        "ナイ形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "忘れてしまわないうちに、メモします",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋わりに＋＿＿＿＿",
+      "meaning": "contrary to",
+      "level": "",
+      "tags": [
+        "comparative",
+        "普通形"
+      ],
+      "notes": "...",
+      "examples": [
+        {
+          "japanese": "あのレストランは高い割に、あまり美味しくなかった",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "＿＿＿＋(が)いいんじゃない",
+      "meaning": "giving a recommendation; isn't it?; don't you think?",
+      "level": "",
+      "tags": [
+        "fixed-expression",
+        "suggestion"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "電子辞書を買わないで、スマホを使えばいいんじゃない",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|ナイ形)＋ようになっている",
+      "meaning": "an automatic result of some condition",
+      "level": "",
+      "tags": [
+        "fixed-expression",
+        "causal",
+        "辞書形",
+        "ナイ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "自動ドアは、ここに立つと開くようになっています",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋こそ|普通形＋からこそ",
+      "meaning": "calling out a specific reason",
+      "level": "",
+      "tags": [
+        "causal",
+        "conditional",
+        "普通形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "明日こそ、早く起きよう",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "毎日仕事をしているからこそ、休みが嬉しいんだよ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋につき",
+      "meaning": "formal version of due to (だから)",
+      "level": "",
+      "tags": [
+        "polite",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "雨天につき、本日のイベントは中止になりました",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "＿＿＿と言うことだ",
+      "meaning": "summarize something heard / some general truth",
+      "level": "",
+      "tags": [
+        "fixed-expression"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "じゃあ、卒業したら、国へ帰るということですね",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋でしょうか",
+      "meaning": "wondering something",
+      "level": "",
+      "tags": [
+        "question-form",
+        "polite",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "どのくらい時間が掛かるでしょうか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋はずだ",
+      "meaning": "expectation",
+      "level": "",
+      "tags": [
+        "combination",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "9時に出れば11時前に到着できるはずだよ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋向け",
+      "meaning": "meant for",
+      "level": "",
+      "tags": [
+        "combination",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "この漫画は子供向けですが大人が見ても十分面白いです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋において|N＋における＋N",
+      "meaning": "replacement for で",
+      "level": "",
+      "tags": [
+        "polite",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "2024年パーリーにおいて、次回の夏のオリンピックが開かれます",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "私の健康テーマは、日本における自動車産業の欠点です",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "タ形＋上で|N＋の上で",
+      "meaning": "a replacement for てから and あとで",
+      "level": "",
+      "tags": [
+        "polite",
+        "temporal",
+        "タ形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "書類の内容を読んだ上で、サインをお願いします",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "てほしい|てもらいたい",
+      "meaning": "something you wish to happen",
+      "level": "",
+      "tags": [
+        "combination",
+        "fixed-expression"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "暑い日が続いています。早く寒くなくてほしい",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "みんなレストランに行ってもらいたい",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋はずがない",
+      "meaning": "an action is impossible, no way it will happen",
+      "level": "",
+      "tags": [
+        "likelihood",
+        "fixed-expression",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ソダさんは真面目な人だから、ウソをつくはずがない",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋なんて",
+      "meaning": "emphasis on an example",
+      "level": "",
+      "tags": [
+        "explanation",
+        "conditional",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "新婚旅行がVegasなんて、いいなぁ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "条件形、辞書形＋ほど",
+      "meaning": "more of a specifc thing; the more ___, the more",
+      "level": "",
+      "tags": [
+        "explanation",
+        "conditional",
+        "fixed-expression",
+        "辞書形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "練習すればするほど、上手になります",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "安ければ安いほどいいんですが",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N(＋助詞)＋でも",
+      "meaning": "gives a single example, ignoring the other options",
+      "level": "",
+      "tags": [
+        "enumeration",
+        "suggestion",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "あそこでお茶でも飲みませんか",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "北海道にでも行こうか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "こんな・そんな・あんな・どんな＋N",
+      "meaning": "that / this / what kind of; like みたい and のような",
+      "level": "",
+      "tags": [
+        "description",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "あー、かわいい。僕もこんな彼女が欲しいな",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "こんな・そんな・あんな・どんな・こういう・そういう・ああいう・どういう＋ふうに",
+      "meaning": "that kind of style; similiar to ように and みたいに",
+      "level": "",
+      "tags": [
+        "description"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "お休みの日はどんな風に過ごしていますか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋ことで",
+      "meaning": "due to this specific thing",
+      "level": "",
+      "tags": [
+        "explanation",
+        "causal",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "寝る前に日記を書くことで、毎日の生活を見直しています",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "文＋なあ",
+      "meaning": "letting someone know your personal thoughts; wondering out loud",
+      "level": "",
+      "tags": [
+        "appearance",
+        "explanation"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "おなかがすいたなあ、何か食べよう",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "この映画、面白そうだったなあ",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "もしお金があったら、家を買いたいなあ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|ナイ形)＋こと(が|も)ある",
+      "meaning": "this happens, sometimes this happens, this is possible",
+      "level": "",
+      "tags": [
+        "nominalization",
+        "fixed-expression",
+        "辞書形",
+        "ナイ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "私はいつも自分で料理を作りますが、たまに作らないことがあります",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "宿題をしているのはたいてい家でする。図書館ですることもあるよ。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋にとって",
+      "meaning": "something thats true for someone; specific opinions/facts",
+      "level": "",
+      "tags": [
+        "conditional",
+        "explanation",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "私にとって、大切な人は妻です",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋ことだし",
+      "meaning": "many reasons exist, but this one is good enough; since ___, ___",
+      "level": "",
+      "tags": [
+        "enumeration",
+        "description",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "天気もいいことだし、飲みに行かない？",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "せっかく日本にいることだし、富士山に登りたいなあと思っています",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "テ形＋くれない",
+      "meaning": "won't you do it for me?",
+      "level": "",
+      "tags": [
+        "favor",
+        "polite",
+        "テ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "消しゴムを忘れたので、貸してくれない？",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋んじゃない",
+      "meaning": "i think this, don't you?",
+      "level": "",
+      "tags": [
+        "question-form",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "顔色が悪いけど、大丈夫？早く帰ったほうがいいんじゃない？",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "あのカバンが可愛い。でも高いんじゃない？",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "お/ご＋ます/する＋です",
+      "meaning": "creating keigo from nouns",
+      "level": "",
+      "tags": [
+        "respectful-honorific"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "お客様、ご注文はお決まりでしょうか？",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "お箸をご利用でしょうか？",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋場合",
+      "meaning": "describing a situation, case, circumstance",
+      "level": "",
+      "tags": [
+        "conditional",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "火事の場合は、１１９番に電話してください",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "ナイ形＋ことには＋ナイ形",
+      "meaning": "without this, it's impossible or difficult",
+      "level": "",
+      "tags": [
+        "conditional",
+        "description",
+        "ナイ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "経験者でないことには、うまくやることはできないだろう",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "たいことがあるんですが",
+      "meaning": "polite way of asking for something, asking if it exists",
+      "level": "",
+      "tags": [
+        "polite",
+        "question-form",
+        "fixed-expression"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "お願いしたいことがあるんですが",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "ご相談したいことがあるんですが",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "意向形＋とする",
+      "meaning": "try to, attempt to",
+      "level": "",
+      "tags": [
+        "description",
+        "fixed-expression",
+        "conjunctive"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "寒い朝は、布団から起きようとしても、なかなか出られない",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(みたい|よう)＋なんですが",
+      "meaning": "politely informing something you noticed",
+      "level": "",
+      "tags": [
+        "polite",
+        "appearance",
+        "fixed-expression"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "あのう、すみません、これは違うみたいなんですが",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "あのう、すみません、外に誰か運動していたようなんですが",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "テ形＋いただきたいんですが",
+      "meaning": "polite way of asking for a favor or help",
+      "level": "",
+      "tags": [
+        "polite",
+        "giving-receiving",
+        "fixed-expression",
+        "テ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "先生、私の作文を直していただきたいんですが",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "面談の時間を変えていただきたいんですが",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "辞書形＋には",
+      "meaning": "in order to",
+      "level": "",
+      "tags": [
+        "causal",
+        "conditional",
+        "辞書形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "利用するには、事前の申し込みが必要なんだって",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "本を借りるには、図書館利用者カードが必要です",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜に関わらず",
+      "meaning": "regardless of",
+      "level": "",
+      "tags": [
+        "certainty",
+        "fixed-expression",
+        "conjunctive"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "サッカーの試合は天候に関わらず、行われます",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "お酒を飲む飲まないに関わらず、明日の飲み会の会費は全員３千円です",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "テストの後は、点数のいい悪いに関わらず、間違えたところをよく復習してください",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "マス形＋次第",
+      "meaning": "as soon as (involves speakers will)",
+      "level": "",
+      "tags": [
+        "temporal",
+        "conditional",
+        "マス形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "準備が出来次第、発表を始めましょう",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "仕事が終わり次第、すぐそちらに向かいます",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|N＋の)＋途中",
+      "meaning": "in the middle of; on the way",
+      "level": "",
+      "tags": [
+        "change",
+        "explanation",
+        "temporal",
+        "辞書形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "学校から渋谷駅向かう途中で、急に雨が降ったきた",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "電車で会社に行く途中で、急に気分悪くなった",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋を＋N＋として",
+      "meaning": "as a ___; ___ being used as a ___",
+      "level": "",
+      "tags": [
+        "description",
+        "fixed-expression",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "要らなくなったプリントを紙の飛行機として使っています",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "この試験では７０点以上を合格とする",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋を背にして",
+      "meaning": "with your back facing (used for directions)",
+      "level": "",
+      "tags": [
+        "fixed-expression",
+        "description",
+        "spatial",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "じゃ、西口を背にして、本屋と花屋の間の道をまっすぐ行くと、右側にありますよ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋に沿って",
+      "meaning": "along; in accordance with",
+      "level": "",
+      "tags": [
+        "spatial",
+        "description",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "この道に沿ってずっと行くと、私の家がある",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋によって",
+      "meaning": "depending on or according to",
+      "level": "",
+      "tags": [
+        "explanation",
+        "causal",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "雷雨の影響によって、電車が遅れています",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(普通形|N＋の)＋恐れがある",
+      "meaning": "there is a risk that",
+      "level": "",
+      "tags": [
+        "fixed-expression",
+        "普通形",
+        "noun-modifier"
+      ],
+      "notes": "...",
+      "examples": [
+        {
+          "japanese": "今夜から明日にかけて東日本で大雪の恐れがある",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "今週末、関東地方で激しい雨が降る恐れがあります。ご注意ください。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "マス形＋そうにないんですが",
+      "meaning": "its unlikely that",
+      "level": "",
+      "tags": [
+        "fixed-expression",
+        "マス形"
+      ],
+      "notes": "...",
+      "examples": [
+        {
+          "japanese": "店長、電車が止まっているので、アルバイトの時間に合いそうにないんですが",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "文＋とか",
+      "meaning": "heard this or something like that",
+      "level": "",
+      "tags": [
+        "enumeration",
+        "appearance"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ええ、よくわからないんですが、ドアが故障したとかで、動かないみたいですよ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "テ形＋しまったようなんです",
+      "meaning": "it seems this may have happened",
+      "level": "",
+      "tags": [
+        "explanation",
+        "appearance",
+        "fixed-expression",
+        "テ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "転んだ時は足をひねってしまったようなんですが",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|ている|タ形|イA)＋ところ(に|を)",
+      "meaning": "time/place where something was discovered (short time); を implies another person",
+      "level": "",
+      "tags": [
+        "explanation",
+        "change",
+        "temporal",
+        "spatial",
+        "辞書形",
+        "タ形",
+        "イ形容詞"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "家を出ようとしたところに、雨が降ってきた",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "昨日、階段で転んだところを人に見られて、とても恥ずかしかった",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|N)＋につれて",
+      "meaning": "as, along with ___",
+      "level": "",
+      "tags": [
+        "explanation",
+        "辞書形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "台風が近づくにつれて、雨が強くなってきた",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "暑くなるにつれて、アイスの売り上げが伸びてきた",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|ナイ形)＋ものだ",
+      "meaning": "should be; this type of thing",
+      "level": "",
+      "tags": [
+        "explanation",
+        "辞書形",
+        "ナイ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "人との約束に遅れそうな時は、伝えるものだ",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "たくさんの人の前で話すのは、誰でも心配するものだよ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|タ形|N＋の)＋通りに",
+      "meaning": "in line with; exactly/precisely this",
+      "level": "",
+      "tags": [
+        "explanation",
+        "辞書形",
+        "タ形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "先生の指示の通りに避難してください",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "私の思った通り、事がうまく続いている",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "期待どおり、Aチームが優秀した",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|タ形)＋際に",
+      "meaning": "when this happens, but less regular than using 時",
+      "level": "",
+      "tags": [
+        "explanation",
+        "temporal",
+        "辞書形",
+        "タ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "電車を降りる際は、お忘れ物のないようご注意ください",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|ナイ形|N＋の)＋こと",
+      "meaning": "this is specifically a command to do something",
+      "level": "",
+      "tags": [
+        "explanation",
+        "imperative",
+        "辞書形",
+        "ナイ形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "避難の際は、エレベーターを使用しないこと",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "試験の時は辞書を使わないこと",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(タ形|ナイ形|イAい|ナAな|N＋の)＋まま",
+      "meaning": "left as is",
+      "level": "",
+      "tags": [
+        "conditional",
+        "description",
+        "タ形",
+        "ナイ形",
+        "イ形容詞",
+        "ナ形容詞",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "新幹線が混んでいて、東京から大阪までずっと立ったままだ",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "父は時々、家の鍵をかけないまま出かける",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋だらけ",
+      "meaning": "to be covered in something; slightly negative feeling",
+      "level": "",
+      "tags": [
+        "description",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "どうしたの？その血だらけの足？大丈夫？",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "何ですか？この部屋は、服だらけじゃない！！！",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋(に囲まれている|に囲まれた＋N)",
+      "meaning": "to be completely enclosed by; surrounded by",
+      "level": "",
+      "tags": [
+        "description",
+        "spatial",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "日本は海に囲まれた国です",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "この村は山林に囲まれています",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋をしめる",
+      "meaning": "made up of; consists of; is covered by",
+      "level": "",
+      "tags": [
+        "description",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "海が地球全体の７０％を占めている",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "睡眠が１日の約３分の１を占めている",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(マス形|N)＋がち",
+      "meaning": "mostly; tending towards but in a negative way",
+      "level": "",
+      "tags": [
+        "description",
+        "マス形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "彼は最近遅刻しがちで、出席率が下がってきています",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "このような間違いは初心者にありがちなことだ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋に比べて",
+      "meaning": "comparisons; use と instead for direct opposites",
+      "level": "",
+      "tags": [
+        "comparative",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "東京に比べて、寒くて乾燥した場所だね",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "田舎は都会に比べて、不便です",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋に備えて",
+      "meaning": "in preparation of",
+      "level": "",
+      "tags": [
+        "temporal",
+        "description",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "地震に備えて、非常持ち出し袋を用意しようと思います",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋に代わって",
+      "meaning": "in place of; in substitute of",
+      "level": "",
+      "tags": [
+        "spatial",
+        "description",
+        "comparative",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "紙に代わって、タブレットが使われるようになった",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋のような",
+      "meaning": "this type of; is like a",
+      "level": "",
+      "tags": [
+        "comparative",
+        "description",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "私はアイスのような甘い食べ物が好きです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "Monster Energyのような飲み物がいいんじゃない",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋として",
+      "meaning": "as a ___",
+      "level": "",
+      "tags": [
+        "description",
+        "comparative",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "Aさんは１０年前に留学生として日本に来て、日本語を勉強した",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|ナイ形|A|N)＋に限る",
+      "meaning": "this specific point marks something as the BEST; limited to ___",
+      "level": "",
+      "tags": [
+        "description",
+        "conditional",
+        "辞書形",
+        "ナイ形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ストレスが溜まった時には、休憩するに限ります",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "旅行するなら、冬に限るよ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋を中心に(して)",
+      "meaning": "mainly; focused on; centered on",
+      "level": "",
+      "tags": [
+        "description",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "このチームはタホさんを中心によくまとまっている",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "健康のために野菜を中心とした食事をするようにといつも母に言われている",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋をはじめ",
+      "meaning": "starting with; mostly as an example rather than literally time based",
+      "level": "",
+      "tags": [
+        "enumeration",
+        "description",
+        "conjunctive",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "アメリカにはバーベキューをはじめ、美味しい食べ物がたくさんあります",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "冬はスキーを始め、楽しいスポーツがいろいろある",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋を通して",
+      "meaning": "throughout (time); via (tool)",
+      "level": "",
+      "tags": [
+        "description",
+        "temporal",
+        "conjunctive",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "この地方は、一年を通じて、暑いです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "この町では、四季を通して、さまざまな果物が食べられる",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋ことから",
+      "meaning": "because of",
+      "level": "",
+      "tags": [
+        "description",
+        "conjunctive",
+        "causal",
+        "nominalization",
+        "普通形"
+      ],
+      "notes": "...",
+      "examples": [
+        {
+          "japanese": "この辺は富士山がよく見えることから、富士見町と呼ばれるようになった",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(N|普通形)＋といえば",
+      "meaning": "speaking of; if it's ___ we're talking about",
+      "level": "",
+      "tags": [
+        "conditional",
+        "description",
+        "普通形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "もう直ぐ春がくる。春といえば、祭が楽しみだ。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "アメリカのお土産というと、「I <3NY」 のT-シャツが一番有名だ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|N)＋どころじゃない",
+      "meaning": "not the time for; out of the question",
+      "level": "",
+      "tags": [
+        "temporal",
+        "description",
+        "辞書形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "映画を見に行くどころじゃないんだ。ごめんね。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "最近毎日が降っていたので、観光どころじゃなかったんだよ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "タ形＋ところ",
+      "meaning": "once discovered",
+      "level": "",
+      "tags": [
+        "temporal",
+        "spatial",
+        "description",
+        "タ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "新しいパソコンを買ったところ、とても使いやすかった",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|ナイ形|イAーい|Nという)＋ことになった",
+      "meaning": "something decided by someone else, or everyone (not just you)",
+      "level": "",
+      "tags": [
+        "change",
+        "passive-voice",
+        "nominalization",
+        "辞書形",
+        "ナイ形",
+        "イ形容詞",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "みんなで相談して、バーベキューは７００円という位ことになった",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "希望していた奨学金がもらえることになった",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋限り",
+      "meaning": "as long as, always the same; limited to this exactly",
+      "level": "",
+      "tags": [
+        "comparative",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "卒業しても、仕事が見つからない限りはその店のバイトを続けるつもりです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "満員電車について、東京が首都である限り、変わらないよ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜かなと思って",
+      "meaning": "wondering something; frequently used after んじゃない",
+      "level": "",
+      "tags": [
+        "fixed-expression",
+        "certainty"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "昨日お菓子を作ったんだけど、ソダさん、食べるかなと思って持ってきたんだ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(普通形|N or A ＋である)＋にしては",
+      "meaning": "considering this; for something thats this; opposite of expectation; more specific than の割りに",
+      "level": "",
+      "tags": [
+        "description",
+        "conjunctive",
+        "普通形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "このアパートは便利なところにあるにしては、値段が安い",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "ただの風邪にしては、熱が高いんじゃないかな",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "数量詞１＋につき＋数量詞２",
+      "meaning": "every",
+      "level": "",
+      "tags": [
+        "counting"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "このクーポンは１枚につき、５名様までご利用になれます",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(普通形|A)＋(ものだ|もんだ)",
+      "meaning": "it's a ___ thing; obvious summary",
+      "level": "",
+      "tags": [
+        "description",
+        "comparative",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "日本にいる間に、一度は富士山に登りたいものだなあ",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "いつか結婚してみたいものです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(マス形|ナイ形|イA|N＋であり)＋ながらも",
+      "meaning": "even while",
+      "level": "",
+      "tags": [
+        "combination",
+        "conjunctive",
+        "マス形",
+        "ナイ形",
+        "イ形容詞",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "試験の前の日、勉強しなきゃと思いながらも、テレビを見ちゃった",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "あの子はまだ小学生ながらも、有名な歌手です",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "辞書形＋につけ",
+      "meaning": "every time; related to feelings only; NOT actions",
+      "level": "",
+      "tags": [
+        "temporal",
+        "conditional",
+        "辞書形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "私はこの写真を見につけ、昔の友達を思い出します",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(N|N＋に|N＋で)＋さえ",
+      "meaning": "even ___ (a limit not hit)",
+      "level": "",
+      "tags": [
+        "limitation",
+        "likelihood",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "今日は朝からとても忙しくて、食べる時間さえありませんでした",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "卵かけご飯なんて、子供でさえ作れますよ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋に反して",
+      "meaning": "contrary to; opposite to; opposite of 通り",
+      "level": "",
+      "tags": [
+        "description",
+        "conjunctive",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "親の期待に反して、彼はDJになった",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|ている形|ナイ形)＋うちに",
+      "meaning": "while/during something remaining unchanged",
+      "level": "",
+      "tags": [
+        "temporal",
+        "change",
+        "conjunctive",
+        "辞書形",
+        "ナイ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "勉強しているうちに、だんだん上手になるよ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋からして",
+      "meaning": "objective opinion based on; judging from",
+      "level": "",
+      "tags": [
+        "causal",
+        "description",
+        "subjective",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "このホテルは写真からして立派だ",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "この本は表紙からして、面白そうだ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "＋のことなんですが",
+      "meaning": "polite introduction to a topic",
+      "level": "",
+      "tags": [
+        "fixed-expression",
+        "conjunctive",
+        "description",
+        "polite"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "スポーツの試合のことなんだけど、私たちのチームは２０点差で負けた",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "「あ」せていただけませんか",
+      "meaning": "asking for permission; asking to be allowed to do something",
+      "level": "",
+      "tags": [
+        "polite",
+        "giving-receiving",
+        "imperative"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "あのうすみませんがお休ませていただけませんか",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "犬を飼うために、早く帰らせていただけませんか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(普通形|N＋な)＋(ものですから|ものだから|もので)",
+      "meaning": "explain or give excuses for a certain action",
+      "level": "",
+      "tags": [
+        "fixed-expression",
+        "conjunctive",
+        "description",
+        "普通形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "手帳に書かなかったもので、ゴミの曜日がよく分からなかったんです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "彼女とのデートなものだから、寝坊しちゃって",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋(の代わりに|に代わって)",
+      "meaning": "in place of; in substitute of",
+      "level": "",
+      "tags": [
+        "conjunctive",
+        "description",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ノートの代わりにスマホにメモした",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "タホに代わってソダさんが係ことになった",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋おかげで",
+      "meaning": "thanks to, in a positive way",
+      "level": "",
+      "tags": [
+        "causal",
+        "affirmation",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "みんなが手伝ってくれたおかげで、迷った犬を見つけました",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "両親のおかげで、留学できたので、とても感謝しています",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋くせに",
+      "meaning": "even though; despite",
+      "level": "",
+      "tags": [
+        "negation",
+        "causal",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "先輩は「全部やる」と言うくせに、何もしません",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋せいで",
+      "meaning": "thanks to, in a blaming way",
+      "level": "",
+      "tags": [
+        "causal",
+        "negation",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "声が出ないのは、病気のせいだ",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "せっかく新幹線を予約したのに、友達が遅刻したせいで、乗れなかった",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋にきまっている",
+      "meaning": "surely bound to; certainly",
+      "level": "",
+      "tags": [
+        "certainty",
+        "change",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "面接は誰でも好きじゃないにきまっている",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "ソダさんが作った料理なら、美味しいにきまっている",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "使役形: 「あ」せる",
+      "meaning": "causative verb from; make, let, cause",
+      "level": "",
+      "tags": [
+        "causal",
+        "basic-verb-forms"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ソダさんは、いつも面白いことを言って、みんなを笑わせる",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "辞書形＋ことはない",
+      "meaning": "there's no need to",
+      "level": "",
+      "tags": [
+        "fixed-expression",
+        "negation",
+        "辞書形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "またチャンスあるよ。不安になることはない",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "私のを貸してあげるから、わざわざスーツケースを買うことはない",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋のことになると",
+      "meaning": "if it becomes this topic of conversation",
+      "level": "",
+      "tags": [
+        "fixed-expression",
+        "conjunctive",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ソダさんはいつもはあまり話さない静かな人だが、釣りのことになると、目がキラキラする",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋(にしたら|にすれば|にしてみたら)",
+      "meaning": "from the point of view of",
+      "level": "",
+      "tags": [
+        "change",
+        "fixed-expression",
+        "conjunctive",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "学生にしたら、安い食べ物を買うの方がいいだろう",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|N＋の)＋たびに",
+      "meaning": "every time",
+      "level": "",
+      "tags": [
+        "counting",
+        "辞書形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "１２月になるたびに、家族を思い出します",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(ば|なら|たら)。。。たのに",
+      "meaning": "if it was ___ then ___, but",
+      "level": "",
+      "tags": [
+        "conditional",
+        "negation"
+      ],
+      "notes": "...",
+      "examples": [
+        {
+          "japanese": "時間があったら、テストが全部できたのに、時間が足りなくて、できなかった",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "マス形＋がたい",
+      "meaning": "difficult or hard to do; not related to personal abilities",
+      "level": "",
+      "tags": [
+        "stem-combo",
+        "negation",
+        "マス形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "私にとって、日本での留学生活は忘れがたい思い出です",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "全然お皿を洗わないなんて、許し難い",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋ように",
+      "meaning": "exactly like; note that 同じ is a special conjugation",
+      "level": "",
+      "tags": [
+        "description",
+        "similiarity",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "母が教えてくれたように作ったら、美味しくできた",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "みんなと同じように、うまくできません",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "来月から、ゴミ回収日は以下のように変わります",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|N)＋とともに",
+      "meaning": "together at same time (not caused by one though)",
+      "level": "",
+      "tags": [
+        "temporal",
+        "辞書形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "時間が経つとともに、私の悩みも消えていました",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "時代とともに、人権も変わる",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋をもとに",
+      "meaning": "based on",
+      "level": "",
+      "tags": [
+        "similiarity",
+        "change",
+        "description",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ひらがなやカタカナは漢字を元にして作られた",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "この小説は真実をもとに、書かれたそうです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋(でしょう|だろう)",
+      "meaning": "isn't it?",
+      "level": "",
+      "tags": [
+        "explanation",
+        "hypothetical",
+        "sentence-final",
+        "普通形"
+      ],
+      "notes": "... right?...",
+      "examples": [
+        {
+          "japanese": "今度のバス旅行、ソダさんも行くでしょう",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "文＋っけ",
+      "meaning": "what was it",
+      "level": "",
+      "tags": [
+        "sentence-final",
+        "explanation",
+        "certainty",
+        "questions"
+      ],
+      "notes": "...; wondering to yourself but outloud",
+      "examples": [
+        {
+          "japanese": "休みって、いつまでだったっけ？",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "今日、アルバイトだったっけ？",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋(と言うわけだ|わけだ)",
+      "meaning": "that's why; that's why it's said; that's why it's called",
+      "level": "",
+      "tags": [
+        "fixed-expression",
+        "sentence-final",
+        "explanation",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "そうなんだ、通りで英語がペラペラなわけだ",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "なるほど、それで、機嫌が悪いわけだ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "マス形＋っこない",
+      "meaning": "an action is impossible, no way it will happen",
+      "level": "",
+      "tags": [
+        "likelihood",
+        "limitation",
+        "negation",
+        "マス形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "今から急いで行っても、間に合いっこない",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "スキー旅行は行きっこないよ、寒いところは嫌いだって言っていたから",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋(もん|だもん)",
+      "meaning": "because of",
+      "level": "",
+      "tags": [
+        "description",
+        "explanation",
+        "childish",
+        "普通形"
+      ],
+      "notes": "...; it's a ___ thing; giving a reason",
+      "examples": [
+        {
+          "japanese": "どうして買わないの？だから、高すぎるんだもん！",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋(ほど|ぐらい|くらい)",
+      "meaning": "something done to the extent that ___ happens",
+      "level": "",
+      "tags": [
+        "comparative",
+        "description",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "この料理は口から火が出るほど辛かった",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "今回の試験のために、死ねほど勉強するつもり",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "辞書形＋ところだった",
+      "meaning": "almost; on the verge of; about to",
+      "level": "",
+      "tags": [
+        "temporal",
+        "spatial",
+        "explanation",
+        "辞書形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "もう少しで１００点取れるところだったのに。９５点だった。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "テ形＋たまらない",
+      "meaning": "can't help but to ___",
+      "level": "",
+      "tags": [
+        "likelihood",
+        "テ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "私の部屋は窓もないし、エアコンもないので、夏は暑くてたまらない",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "アルバイトが疲れてたまらない。もうやめたい。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋(わけではない|と言うわけではない)",
+      "meaning": "that's NOT the reason; that's NOT why",
+      "level": "",
+      "tags": [
+        "negation",
+        "explanation",
+        "fixed-expression",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "デザートを食べないけど甘いものが嫌いなわけではないんだ。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋(くらい|ぐらい)",
+      "meaning": "small thing; about ___ much; close to",
+      "level": "",
+      "tags": [
+        "comparative",
+        "description",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "もう子供じゃないでしょう？部屋を掃除するぐらい自分でしなさい！",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋といったら",
+      "meaning": "can not express how; don't confuse with other いったら forms",
+      "level": "",
+      "tags": [
+        "description",
+        "fixed-expression",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "妻の美しさと言ったら、言葉では表現できません",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "日本料理のおいしさと言ったら、言葉では表現できません",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "とても＋ナイ形",
+      "meaning": "not at all; cannot possibly",
+      "level": "",
+      "tags": [
+        "likelihood",
+        "negation",
+        "ナイ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "一度もこんなにたくさんの言葉はとても覚えられない",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "そんな難しい本、私にはとても読めない",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋(はもちろん|はもとより)",
+      "meaning": "of course this",
+      "level": "",
+      "tags": [
+        "enumeration",
+        "confirmation",
+        "certainty",
+        "noun-modifier"
+      ],
+      "notes": "... but also...",
+      "examples": [
+        {
+          "japanese": "東京ディズニーランドは日曜日はもちろん、平日でも人が多い",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "「ワンピース」は、子供はもとより大人も楽しめます",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "使役形＋いただきます",
+      "meaning": "polite way to express your pleasure of doing something",
+      "level": "",
+      "tags": [
+        "polite",
+        "sentence-final"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "これから発表について、始めさせていただきます",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(ご＋N|お＋マス形)＋いたします",
+      "meaning": "polite speech for your own actions",
+      "level": "",
+      "tags": [
+        "humble-honorific",
+        "polite",
+        "sentence-final",
+        "マス形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "お客様にお知らせいたします",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "必要なものはこちらでご用意いたしますので、お気軽にご参加ください",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(タ形|ている形|A|N)＋つもりだ",
+      "meaning": "think something but it turned out differently",
+      "level": "",
+      "tags": [
+        "change",
+        "contrast",
+        "タ形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "教科書を鞄に入れたつもりだったんですがないです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(N＋の|A＋な|普通形)＋ように思う",
+      "meaning": "politely point out you thought something but aren't sure",
+      "level": "",
+      "tags": [
+        "certainty",
+        "contrast",
+        "fixed-expression",
+        "普通形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "東口の前に無くしたように思うんですが、はっきりと覚えていないんです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "テ形＋おります",
+      "meaning": "this is just basic self polite speech for ています",
+      "level": "",
+      "tags": [
+        "humble-honorific",
+        "polite",
+        "basic-verb-forms",
+        "テ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "当店の営業時間は９時から５時までとなっております",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "マス形＋かねます",
+      "meaning": "personal opinion that you cannot do something",
+      "level": "",
+      "tags": [
+        "subjective",
+        "negation",
+        "certainty",
+        "マス形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "あいにくこちらでは分かりかねます。あちらのカウンタで尋ねください",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(タ形|いA|A＋な)＋ことに",
+      "meaning": "extremely or especially; think とても",
+      "level": "",
+      "tags": [
+        "limitation",
+        "タ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "残縁なことに、昼ご飯を食べよう思ったレストランは休みでした",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋だけあって",
+      "meaning": "as one would expect; it's natural that",
+      "level": "",
+      "tags": [
+        "certainty",
+        "change",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "たくさん練習しただけあって、Aさんのスピーチは素晴らしかった",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|タ形|N＋の)＋ついでに",
+      "meaning": "while you're at it",
+      "level": "",
+      "tags": [
+        "temporal",
+        "conjunctive",
+        "辞書形",
+        "タ形",
+        "noun-modifier"
+      ],
+      "notes": "...",
+      "examples": [
+        {
+          "japanese": "コンビニへ行くついでに、この手紙をポストに入れてきてくれない",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "と言うことだ・とのことだ",
+      "meaning": "it is said that; that is the thing they call",
+      "level": "",
+      "tags": [
+        "description",
+        "explanation",
+        "quotation"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ニュースによると、外国人がもっと増えると言うことだ",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "昨夜の天気予報は、今日は暑くなると言うことが、それほど暑くなかった",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋に対して",
+      "meaning": "towards; compared to; whereas",
+      "level": "",
+      "tags": [
+        "comparative",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "長男が神経質であるのに対して、次男は呑気な性格だ",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "このクラスには、女子学生が１５人いるのに対して、男子学生は３人しかいません",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋(ものの|とは言うものの)",
+      "meaning": "although; even though",
+      "level": "",
+      "tags": [
+        "comparative",
+        "contrast",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "新しい靴を買ったものの、ずっと天気が悪くて、一度もはいていない",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋と言っても",
+      "meaning": "even though (it is said)",
+      "level": "",
+      "tags": [
+        "quotation",
+        "comparative",
+        "contrast",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "食べたと言っても、パン一枚だけだよ。時間がなかったからね。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋とは＋普通形＋(ことだ|と言うことだ)",
+      "meaning": "defining something",
+      "level": "",
+      "tags": [
+        "definition",
+        "fixed-expression",
+        "quotation",
+        "普通形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "留学とは他の国で勉強することだ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋(にしても|にしろ|にせよ)",
+      "meaning": "even if it's ___; even though it's ___; some opposite thing",
+      "level": "",
+      "tags": [
+        "conjunctive",
+        "contrast",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "いくら忙しかったにしても、返信する時間ぐらいはあったでしょ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "マス形＋つつある",
+      "meaning": "in the process of; while; -ing",
+      "level": "",
+      "tags": [
+        "stem-combo",
+        "temporal",
+        "similiarity",
+        "マス形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "大型の台風が日本に接近しつつあります",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "父は病状は、徐々に治りつつあるとのことで、安心した",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(タ形|N＋の)＋結果",
+      "meaning": "as a result of",
+      "level": "",
+      "tags": [
+        "causal",
+        "タ形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "川の水が減った結果、魚がいなくなってしまった",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "マス形＋づらい",
+      "meaning": "difficult to do something",
+      "level": "",
+      "tags": [
+        "combination",
+        "conditional",
+        "マス形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "好きな人できたことを友達には言えるけど、両親には言いづらいなあ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋んだから",
+      "meaning": "giving a reason for something you feel someone should already know; of course it's ___",
+      "level": "",
+      "tags": [
+        "reasons",
+        "confirmation",
+        "sentence-final",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ここに書いてあるんだから、自分で見ればいいでしょ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋(からすると|からすれば|から見ると|から見れば)",
+      "meaning": "from the point of view of; analytic/observational",
+      "level": "",
+      "tags": [
+        "judgement",
+        "perspective",
+        "subjective",
+        "conjunctive",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "テストが必要なのはわかるけど、学生からすると、テストが多いのは面倒臭い",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋と言うより",
+      "meaning": "rather than saying ___, ___",
+      "level": "",
+      "tags": [
+        "contrast",
+        "quotation",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "この絵はとても細かいところまで描かれていて、絵と言うよりまるで写真のすうです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "のではないでしょうか・じゃないでしょうか",
+      "meaning": "don't you think?",
+      "level": "",
+      "tags": [
+        "rhetorical-question",
+        "question-form",
+        "subjective",
+        "questions",
+        "fixed-expression"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "子供が自由に使ったら、スマホは、危ない目に合うことが多いんじゃないでしょうか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋(にしても|にしろ|にせよ)＋普通形＋(にしても|にしろ|にせよ)",
+      "meaning": "whether it's ___ or ___; regardless if its ___ or ___",
+      "level": "",
+      "tags": [
+        "comparative",
+        "confirmation",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "唐揚げにしてもピザにしても、私が好きなものはカロリーが高い",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "辞書形＋(ばかりだ|一方だ)",
+      "meaning": "only keeps on ___ ing; keeps ___ ing",
+      "level": "",
+      "tags": [
+        "temporal",
+        "continuous",
+        "limitation",
+        "辞書形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "雨は強くなるばかりで、全然やみそうにない",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "東京の車の数は増加する一方だ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(マス形|N)＋気味",
+      "meaning": "a little bit; 少し",
+      "level": "",
+      "tags": [
+        "limitation",
+        "negation",
+        "description",
+        "マス形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "最近、忙しくて、疲れ気味だから、ゆっくり休みたい",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "外食ばかりしているので、お金が不足気味かもしれないと心配です",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋からと言って",
+      "meaning": "just because",
+      "level": "",
+      "tags": [
+        "limitation",
+        "quotation",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "美味しいからと言って、食べすぎてはいけません",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "友達からと言って、なんでも頼むのは良くない",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋に応じて",
+      "meaning": "based on; judging from (when both things are changing)",
+      "level": "",
+      "tags": [
+        "causal",
+        "reasons",
+        "conjunctive",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "水道料金は使用量に応じて、支払います",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(マス形＋さえ＋すれば)・(N＋さえ＋条件形)・(Aく・Aで・Nで＋さえ＋あれば)",
+      "meaning": "if only ___; as long as ___; さえ is a limiter",
+      "level": "",
+      "tags": [
+        "limitation",
+        "conditional",
+        "マス形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "私はあなたさえいれば、幸せです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "私はあなたが意さえすれば、幸せです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "カップラーメンはお湯さえ入れれば、食べられる",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "カップラーメンはお湯を入れさえすれば、食べられる",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "私は給料さえよければ、どんな仕事でもします",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "私は給料がよくさえあれば、どんな仕事でもします",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "年をとっても体さえ丈夫なら、何でもできます",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "年をとっても体が丈夫さえあれば、何でもできます",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋(に対して|に対する)",
+      "meaning": "in regards to, towardss",
+      "level": "",
+      "tags": [
+        "description",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "デパートの店員はお客に対して、丁寧に話します",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|イA|ナA)＋やら",
+      "meaning": "things like; whether ___ or ___",
+      "level": "",
+      "tags": [
+        "enumeration",
+        "similiarity",
+        "辞書形",
+        "イ形容詞",
+        "ナ形容詞"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "毎月食費やら家賃やら、どんどんお金が出て行きます",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "しばらく掃除をしていないので、私の部屋は漫画やら雑誌やらで散らかっています",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋(なんて|なんか|など)",
+      "meaning": "such as, things like this, etc",
+      "level": "",
+      "tags": [
+        "enumeration",
+        "noun-modifier"
+      ],
+      "notes": ".",
+      "examples": [
+        {
+          "japanese": "スキーなんて難しい、ちょっと練習すれば、すぐできるようになるよ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "１助数詞＋として。。。ない",
+      "meaning": "not a single one",
+      "level": "",
+      "tags": [
+        "negation",
+        "limitation"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "私の家は火事で焼けてしまいました、家族の思い出の品はもう一つとしてありません",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋と言うものだ",
+      "meaning": "impression that; criticism/conclusion, this sort of thing",
+      "level": "",
+      "tags": [
+        "appearance",
+        "fixed-expression",
+        "quotation",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "電車の中で眠っていて、財布を盗まれたなんて不注意と言うものだ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋とは限らない",
+      "meaning": "no guarantee that; not limited to",
+      "level": "",
+      "tags": [
+        "limitation",
+        "negation",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "健康に気をつけている人がみんな長生きするとは限りません",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋とともに",
+      "meaning": "together with; at the same time",
+      "level": "",
+      "tags": [
+        "temporal",
+        "enumeration",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "毎年、冬休みは家族とともに過ごすことにしている",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "辞書形＋しかない",
+      "meaning": "no choice but; only",
+      "level": "",
+      "tags": [
+        "limitation",
+        "negation",
+        "辞書形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "あまり行きたくないけど、先輩に誘われたら、行くしかないなあ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "ナイ形＋ではいられない",
+      "meaning": "can't help but to ___; cannot resist",
+      "level": "",
+      "tags": [
+        "limitation",
+        "sentence-final",
+        "fixed-expression",
+        "must",
+        "ナイ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "私は、新しいゲームが発売されると、買わないではいられません",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "この国の日中はとても暑いので、昼寝をせずにはいられないそうです",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形(ナAな|ナAである|Nである)＋一方(で)",
+      "meaning": "meanwhile; on the other hand",
+      "level": "",
+      "tags": [
+        "temporal",
+        "contrast",
+        "enumeration",
+        "普通形",
+        "ナ形容詞",
+        "noun-modifier",
+        "noun-copula"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "東京の気候は、夏は蒸し暑い一方で、冬は乾燥する",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "「あ」＋(せられる|される)",
+      "meaning": "to be caused by; に is the causer",
+      "level": "",
+      "tags": [
+        "causal",
+        "使役受身形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "カリフォルニアの火事になったと言うニュースに驚かされた",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形(ナAである|Nである)＋のみならず",
+      "meaning": "not only; but also",
+      "level": "",
+      "tags": [
+        "formal",
+        "enumeration",
+        "comparative",
+        "普通形",
+        "ナ形容詞",
+        "noun-modifier",
+        "noun-copula"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "環境問題は、この国のみならず、世界中の問題だ",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "この辺りは駅から近くて便利であるのみならず、公園もあって住みやすい環境だ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形(ナAである|Nである)＋と同時に",
+      "meaning": "at the same time",
+      "level": "",
+      "tags": [
+        "temporal",
+        "concurrent",
+        "limitation",
+        "普通形",
+        "ナ形容詞",
+        "noun-modifier",
+        "noun-copula"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "先生はチャイムと同時に、教室に入ってきた",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋によって",
+      "meaning": "way; means of using something; via",
+      "level": "",
+      "tags": [
+        "causal",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "どのクラスに入るかはテストの結果によって決められます",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "最近はメールやSNSなど、文字によるコミュニケーションが増えている",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形(ナAな|ナAである|Nな|Nである)＋だけに",
+      "meaning": "as expected, strong reason because (not resulting from quality or nature)",
+      "level": "",
+      "tags": [
+        "certainty",
+        "普通形",
+        "ナ形容詞",
+        "noun-modifier",
+        "noun-copula"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "一年間毎日頑張って勉強しただけに、合格できて本当に嬉しいです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "やっぱり連休中だけに、人がとても多かったよ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋としても",
+      "meaning": "even if; assuming",
+      "level": "",
+      "tags": [
+        "contrast",
+        "change",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "この大学に合格するのが難しいとしても、私はこの大学を受験したいです",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "遅れたとしても、連絡はくれるはずだよ",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(辞書形|N)＋に先立って",
+      "meaning": "prior to",
+      "level": "",
+      "tags": [
+        "temporal",
+        "辞書形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "遊園地の開業に先立って、オープニングイベントが行われます",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "どちらかというと",
+      "meaning": "if I had to say; if I had to pick something",
+      "level": "",
+      "tags": [
+        "fixed-expression"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "どちらかと言うと和食かなあ",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "今日は金曜日だし、どちらかというと、居酒屋に行きたいかな",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形(ナAな|ナAである|Nである)＋ばかりでなく。。。も",
+      "meaning": "not only; but also (more formal)",
+      "level": "",
+      "tags": [
+        "formal",
+        "enumeration",
+        "普通形",
+        "ナ形容詞",
+        "noun-modifier",
+        "noun-copula"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "彼女は歌手であるばかりでなく、有名な漫画家でもある",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "タ形＋かというと",
+      "meaning": "just when I thought that",
+      "level": "",
+      "tags": [
+        "quotation",
+        "concurrent",
+        "contrast",
+        "タ形"
+      ],
+      "notes": "...",
+      "examples": [
+        {
+          "japanese": "やっと一つ仕事が終わったと思ったら、すぐ次の仕事を頼まれた",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "(テ形|イAくて|ナAで)＋ならない",
+      "meaning": "extremely; can't help but",
+      "level": "",
+      "tags": [
+        "must",
+        "advanced-usage",
+        "テ形",
+        "イ形容詞",
+        "ナ形容詞"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "彼は明日の面接試験でうまく話せるかどうか、不安でならない",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "この写真を見ると、昔のことが思い出されてならない",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形(ナAな|Nな)＋ことは。。。が",
+      "meaning": "its true that ___, but",
+      "level": "",
+      "tags": [
+        "contrast",
+        "description",
+        "普通形",
+        "ナ形容詞",
+        "noun-modifier"
+      ],
+      "notes": "... (use same word in both spots)",
+      "examples": [
+        {
+          "japanese": "インターネットは便利なことは便利だが、子供が使うには問題もある",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "行くことは行くけど、３０分ぐらい遅刻するかもしれない",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋によっては",
+      "meaning": "depending on ___, ___ also exists",
+      "level": "",
+      "tags": [
+        "causal",
+        "change",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "年末年始は多くの会社が休みます、でも、会社によっては休みません",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "関東地方の人は納豆好きだが、人によっては納豆を見るのも嫌だと言う人もいる",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形(ナAである|Nである)＋からには",
+      "meaning": "as long as, since",
+      "level": "",
+      "tags": [
+        "temporal",
+        "concurrent",
+        "limitation",
+        "普通形",
+        "ナ形容詞",
+        "noun-modifier",
+        "noun-copula"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "学校の代表として、スピーチコンテストに出場するからには、１位になりたい。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "約束したからは、守るのが当然だ。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形(ナAである・な|Nである・な)＋どころか",
+      "meaning": "let alone, far from",
+      "level": "",
+      "tags": [
+        "negation",
+        "contrast",
+        "普通形",
+        "ナ形容詞",
+        "noun-modifier",
+        "noun-copula"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "天気予報では晴れると言っていたのに、晴れるどころか大雨だ。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "薬を飲んだのに、体調が良くなるどころか、もっと悪くなった。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "マス形＋える｜えない",
+      "meaning": "can, can't (not based on personal abilities)",
+      "level": "",
+      "tags": [
+        "likelihood",
+        "マス形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "考え得る方法は全部やってみたけど、うまくいかなかった。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "恋人と別れた時の気持ちは、どんな言葉を使っても、表し得ない。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋限らず",
+      "meaning": "not only, but also; not limited to",
+      "level": "",
+      "tags": [
+        "enumeration",
+        "limitation",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "私はりんごに限らず、赤いならなんでも好きだ。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "京都は休日に限らず、平日観光地が多い。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "イA｜ナA＋げ",
+      "meaning": "seemingly, appears (emotions and feelings)",
+      "level": "",
+      "tags": [
+        "appearance",
+        "emotional",
+        "イ形容詞",
+        "ナ形容詞"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "田中さんは何か言いたげだったが、何も言わずに部屋を出て行った。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "面接試験の順番を待つ学生は、とても緊張して不安げだ。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "タ形＋とたんに",
+      "meaning": "the instant/moment that one thing happened",
+      "level": "",
+      "tags": [
+        "temporal",
+        "concurrent",
+        "タ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "国の母に電話をかけた。母の声を聞いたとたんに、涙が出てきた。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "テレビで紹介されて有名になったとたんに、お店のサービスが悪くなった。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "なんて＋普通形（ナAな｜Nな）＋んだろう",
+      "meaning": "definitely, extremely",
+      "level": "",
+      "tags": [
+        "certainty",
+        "advanced-usage",
+        "普通形",
+        "ナ形容詞",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "東京はなんて人が多いんだろう。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "初めてピザを食べた時はなんて美味しいんだろうと思いました。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "テ形｜N＋以来",
+      "meaning": "ever since",
+      "level": "",
+      "tags": [
+        "temporal",
+        "sequential",
+        "continuous",
+        "テ形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "私の人身事故以来、自転車に乗るのが怖くなった。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "日本へ来て以来、毎週ラーメンを食べている。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋といった",
+      "meaning": "such as",
+      "level": "",
+      "tags": [
+        "enumeration",
+        "exemplification",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "京都や日光と言った有名な観光地へ行ってみたい。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "日本の会社では、トヨタやソニーと言った会社が有名です。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋を通して・を通じで",
+      "meaning": "through, via, using",
+      "level": "",
+      "tags": [
+        "methodology",
+        "definition",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "私は日本のアニメを通して、日本人の生活や習慣を知りました。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "旅行の前に、インタネットを通じて、宿泊するホテルを予約した。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋関して",
+      "meaning": "concerning, related to",
+      "level": "",
+      "tags": [
+        "explanation",
+        "conditional",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "私はこの街の歴史に関して図書館で調べてみた。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "ビザや学費に関することは、学校の事務室に相談してください。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形（ナAな・である｜Nである）＋ばかりに",
+      "meaning": "simply because, just because (not normal/bad result)",
+      "level": "",
+      "tags": [
+        "description",
+        "limitation",
+        "普通形",
+        "ナ形容詞",
+        "noun-modifier",
+        "noun-copula"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "この子は最近オスマートフォンがほしいばかりに、母親の財布からお金を盗んだ。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "私は字が下手なばかりに、色々な場面で損をしている。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "辞書形｜タ形＋か＋ナイ形＋かのうちに",
+      "meaning": "as soon as, just as, right when this thing happened",
+      "level": "",
+      "tags": [
+        "concurrent",
+        "temporal",
+        "sequential",
+        "辞書形",
+        "タ形",
+        "ナイ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "バスが止まるが止まらないかのうちに席を立つ人が多い。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "昨夜は疲れていたので、ベッドに横になったかならないかのうちに、眠ってしまった。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "辞書形｜ナイ形＋ことだ",
+      "meaning": "should, ought, giving advice",
+      "level": "",
+      "tags": [
+        "suggestion",
+        "advisory",
+        "辞書形",
+        "ナイ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "自分一人ではどうしていいかわからない時は、誰かに聞くことだよ。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "太りたくないなら、毎日散歩することだ。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "テ形|イAくて｜ナAで＋しかたがない｜しょうがない",
+      "meaning": "really, extremely, can't help but",
+      "level": "",
+      "tags": [
+        "advanced-usage",
+        "must",
+        "テ形",
+        "イ形容詞",
+        "ナ形容詞"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "日本へ来て、初めて一人暮らしをしているので、寂しくてしかたがない。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "ホームシックになってしまった。国の家族に会いたくてしようがない。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形（ナAな・である｜Nである）＋ばかりに",
+      "meaning": "instead of, substitute, the opposite also, this too",
+      "level": "",
+      "tags": [
+        "contrast",
+        "enumeration",
+        "普通形",
+        "ナ形容詞",
+        "noun-modifier",
+        "noun-copula"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "佐藤さんに日本語を教えてもらう代わりに、私は佐藤さんに英語を教えてあげる。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "パソコンで書いた手紙は、文字が読みやすい代わりに、温かみがないように思います。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋（としたら｜とすれば｜とすると）",
+      "meaning": "if it were the case that",
+      "level": "",
+      "tags": [
+        "hypothetical",
+        "change",
+        "conditional",
+        "普通形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "もし、ドキにでも旅行に行けるとしたら、どこへ行きたいですか",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "マス形＋かねない",
+      "meaning": "might be; could be",
+      "level": "",
+      "tags": [
+        "likelihood",
+        "negation",
+        "マス形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "スピードを出しすぎると、事故を起こしかねない。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "こんなに寒いところにいたら、風邪を引きかねない。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "テ形＋からでないと｜からでなければ",
+      "meaning": "not unless, not until",
+      "level": "",
+      "tags": [
+        "conditional",
+        "timing",
+        "limitation",
+        "テ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "書類の内容を読んでから出ないと、印鑑を押すことはできません。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "私の国では、２０歳になってからでなければ、お酒を飲むことができません。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "辞書形｜ナイ形＋わけにはいかない",
+      "meaning": "wan't to but cant for some reason",
+      "level": "",
+      "tags": [
+        "reasons",
+        "excuse",
+        "negation",
+        "辞書形",
+        "ナイ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "ちょっと眠いけど、今は授業中なので寝るわけにはいかない。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "タ形＋物だ",
+      "meaning": "used to",
+      "level": "",
+      "tags": [
+        "past",
+        "description",
+        "タ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "子供の頃は、よく甘いものを食べたものだ。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "国ではよく友達とサッカをしたものだ。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋にかけては",
+      "meaning": "when it comes to ___, ___　(focus on ability and higher than others)",
+      "level": "",
+      "tags": [
+        "advanced-usage",
+        "comparative",
+        "description",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "かんさんは人を笑わせることにかけては、クラスで一番だ。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋はともかく（として）",
+      "meaning": "setting aside, apart from",
+      "level": "",
+      "tags": [
+        "enumeration",
+        "description",
+        "topic-shift",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "このシャツはデザインはともかくとして、色があまり好きじゃない。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "ナイ形｜イAく｜ナAで｜Nで＋ないことはない",
+      "meaning": "it's not that",
+      "level": "",
+      "tags": [
+        "negation",
+        "contrast",
+        "description",
+        "ナイ形",
+        "イ形容詞",
+        "ナ形容詞",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "新宿からなら歩けないことはないけど、大変だよ。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "時間をもらえれば、やれないことはないと思います。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋も＋条件形＋N＋も",
+      "meaning": "___ and ___",
+      "level": "",
+      "tags": [
+        "concurrent",
+        "enumeration",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "父は酒も飲めば、とばこも吸うので、体を壊さないか心配です。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "人生には山もあれば、谷もある。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋にわたって｜にわたる｜にわたるN",
+      "meaning": "across, throughout",
+      "level": "",
+      "tags": [
+        "temporal",
+        "continuous",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "この店は５０年にわたって、伝統の味を守り続けている。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "４時間にわたる会議がやっと終わりました。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "マス形＋きる｜きれる｜きれない",
+      "meaning": "completely, totally, utterly",
+      "level": "",
+      "tags": [
+        "advanced-usage",
+        "limitation",
+        "マス形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "５００ページもある本を１日で読み切るなんて無理です。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "こんなにたくさんの料理、私一人では食べきれない。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形（ナAである｜Nである）＋にもかかわらず",
+      "meaning": "despite, without being affected by",
+      "level": "",
+      "tags": [
+        "contrast",
+        "methodology",
+        "普通形",
+        "ナ形容詞",
+        "noun-modifier",
+        "noun-copula"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "今日は結婚する日であるにもかかわらず、田中さんはあまり嬉しそうに見えない。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "家族が反対したにもかかわらず、彼は軍に入会する。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋からいうと｜からいって｜からいえば",
+      "meaning": "speaking in terms of",
+      "level": "",
+      "tags": [
+        "description",
+        "quotation",
+        "definition",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "値段から言うと、単品料理をたくさん頼むより、コース料理の方がお得だ。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "実力から言って、この大会ではブラジルが優勝するだろう。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "品質から言えば、これが一番いいけれど、こんなに高いものは私には買えない。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形（ナAだ｜Nだ）＋となると｜となれば｜となったら",
+      "meaning": "when it becomes",
+      "level": "",
+      "tags": [
+        "change",
+        "causal",
+        "conditional",
+        "普通形",
+        "ナ形容詞",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "今買い物をすると８％の税金がかかる。これが１０％に上がるとなれば、国民の生活はさらに大変になるだろう。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "早く国へ帰りたいと思っているが、本当に帰国するとなったら、寂しさを感じるかもしれない。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋次第だ",
+      "meaning": "because, this situation, these circumstances",
+      "level": "",
+      "tags": [
+        "causal",
+        "conditional",
+        "reasons",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "明日のイベントに行くかどうかは、天気次第です。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "やる気次第で、うまく行くかどうかは決まると思う。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "マス形＋ぬく",
+      "meaning": "completely; to the bitter end",
+      "level": "",
+      "tags": [
+        "advanced-usage",
+        "methodology",
+        "マス形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "どんな苦しくても途中で諦めない。最後までやり抜くつもりだ。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "祖父は戦後の苦しい時代を何とか生き抜く、今は孫に囲まれる幸せに暮らしている。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "マス形＋つつ",
+      "meaning": "while ___",
+      "level": "",
+      "tags": [
+        "timing",
+        "concurrent",
+        "マス形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "古い友人たちと酒を飲みつつ、学生時代の懐かしい話をした。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "結婚するのことは恋人と相談しつつ、決めるつもりだ。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N（っ）きりだ",
+      "meaning": "only; just",
+      "level": "",
+      "tags": [
+        "limitation",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "あの人会ったのは一回きりだから、まだどんな人かはよくわからない。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "クリスマスを一人きりですごそのは本当に寂しいものだ。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "テ形＋初めて",
+      "meaning": "first time; preceeding; this first",
+      "level": "",
+      "tags": [
+        "temporal",
+        "limitation",
+        "テ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "病気になって初めて、家族の大切さがわかった。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "一人暮らしになって初めて、母親のありがたさがわかった。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形（ナである｜Nである）＋にすぎない",
+      "meaning": "only; just; no more than",
+      "level": "",
+      "tags": [
+        "limitation",
+        "negation",
+        "普通形",
+        "noun-modifier",
+        "noun-copula"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "漢字を習ったと言っても、１００字ぐらい覚えたにすぎない。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "ドイツ語がわかると言っても、日常会話んみすぎません。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "辞書形｜N＋にあたって",
+      "meaning": "when doing this",
+      "level": "",
+      "tags": [
+        "concurrent",
+        "conditional",
+        "explanation",
+        "辞書形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "留学にあたって、必要な書類を準備しました。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "帰国するにあたって、先生のところへ挨拶に行った。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N+を問わず",
+      "meaning": "whether or not",
+      "level": "",
+      "tags": [
+        "relation",
+        "negation",
+        "contrast",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "コンビニは昼夜を問わず、営業しています。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "北海度は季節を問わず、多くの観光客で賑わっています。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "辞書形｜Nの＋上で",
+      "meaning": "when; upon (not after); in that exact moment",
+      "level": "",
+      "tags": [
+        "conditional",
+        "timing",
+        "concurrent",
+        "辞書形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "仕事を進める上で、みんなの協力が必要だ。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "共同生活をする上で大切なのは、お互いにルールを守ることです。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "辞書形（ナAな・ナAである｜Nである）＋反面",
+      "meaning": "while; on the other hand (can't be too opinionated?)",
+      "level": "",
+      "tags": [
+        "contrast",
+        "affirmation",
+        "negation",
+        "辞書形",
+        "ナ形容詞",
+        "noun-modifier",
+        "noun-copula"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "就職活動は準備が大変である反面、自分自身を知るチャンスでもある。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "スマートフォンは日本語を勉強のために便利な反面、ストレスを与える道具でもある。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形（ナAだ｜Nだ）＋というか",
+      "meaning": "is more of a",
+      "level": "",
+      "tags": [
+        "subjective",
+        "emotional",
+        "quotation",
+        "contrast",
+        "普通形",
+        "ナ形容詞",
+        "noun-modifier"
+      ],
+      "notes": "...; or perhaps I should say; rather than",
+      "examples": [
+        {
+          "japanese": "元気というか、うるさいよ。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋（ナAである｜Nである）＋以上は｜上は；辞書形・タ形＋上は",
+      "meaning": "since; now that; because",
+      "level": "",
+      "tags": [
+        "reasons",
+        "causal",
+        "change",
+        "普通形",
+        "辞書形",
+        "タ形",
+        "ナ形容詞",
+        "noun-modifier",
+        "noun-copula"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "試合に出場する以上、絶対勝ってみせる。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "書類にサインした以上は、キャンセルはできません。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "辞書形・Nの＋限り",
+      "meaning": "as long as; while; to the limit possible",
+      "level": "",
+      "tags": [
+        "limitation",
+        "continuous",
+        "concurrent",
+        "辞書形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "難民たちは持てる限りの荷物を持って、逃げてきた。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "映画が好きなので、時間とお金の許す限り、映画館へ見に行っています。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "テ形＋いただけないでしょうか",
+      "meaning": "could I please get some",
+      "level": "",
+      "tags": [
+        "polite",
+        "giving-receiving",
+        "favor",
+        "テ形"
+      ],
+      "notes": "...",
+      "examples": [
+        {
+          "japanese": "もう少しゆっくり話していただけないでしょうか。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "アンケートに協力していただけないでしょうか。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形（ナAな｜Nの）＋ところを",
+      "meaning": "while I'm interrupting",
+      "level": "",
+      "tags": [
+        "conditional",
+        "polite",
+        "普通形",
+        "ナ形容詞",
+        "noun-modifier"
+      ],
+      "notes": "... I'm sorry but",
+      "examples": [
+        {
+          "japanese": "もしもし、先生、お休みのところ、お電話してすみません。実は。。。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "テ形＋いただけないかと思って",
+      "meaning": "was wondering if you could help",
+      "level": "",
+      "tags": [
+        "polite",
+        "favor",
+        "テ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "大学の資料を見せていただけないかと思って。。。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "次の説明会の予定を教えていただけないかと思って。。。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "マス形＋つつも",
+      "meaning": "despite ___ing; even while ___",
+      "level": "",
+      "tags": [
+        "contrast",
+        "conditional",
+        "negation",
+        "マス形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "体に悪いと知りつつ、つい一体タバコを吸ってしまう。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "友達と遊びたいと思いつつも、忙しくてその暇がない。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "マス形＋っぱなし",
+      "meaning": "leaving something as; casually negative statement",
+      "level": "",
+      "tags": [
+        "continuous",
+        "conditional",
+        "negation",
+        "マス形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "誰もいないのに、電気もエアコンも付けっぱなしだ。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "窓を開けっぱなしで寝たので、風邪をひいてしまいました。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "辞書形＋ことなく",
+      "meaning": "without ___ ing",
+      "level": "",
+      "tags": [
+        "conditional",
+        "description",
+        "辞書形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "初めてマラソン大会に出場したが、途中で一度も止まるこたなく、走り抜いた。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "彼は何度失敗しても構うことなく、のんびりする。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形（ナAな・である｜Nの・である）＋上に",
+      "meaning": "in addition to; as well as",
+      "level": "",
+      "tags": [
+        "enumeration",
+        "普通形",
+        "ナ形容詞",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "この会社は給料が高い上に、休みも多い。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "このレストランは安い上に、美味しいので、いつも混んでいる。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋向きだ・に・のN",
+      "meaning": "suitable for; meant for",
+      "level": "",
+      "tags": [
+        "description",
+        "relation",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "この山はそんなに高くないし、日帰りで行けるので、登山の初心者向きだ。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "ここは独身者向きのマンションで家族で住むには狭いようだ。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "意向形＋にも＋ナイ形",
+      "meaning": "cannot even if you try",
+      "level": "",
+      "tags": [
+        "likelihood",
+        "negation",
+        "ナイ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "荷物が重すぎて、私一人では持とうにも持てなかった。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "今朝、頭が痛くて、起きようにも起きられなかったんです。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "辞書形・N＋したがって",
+      "meaning": "as this happens; following this; sometimes written in kanji",
+      "level": "",
+      "tags": [
+        "concurrent",
+        "temporal",
+        "causal",
+        "辞書形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "工事が進むにしたがって、建物の全体が見えてきた。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "冬が近づいているに従って、気温が下がります。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "N＋に他ならない",
+      "meaning": "nothing but, only this option",
+      "level": "",
+      "tags": [
+        "limitation",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "彼がうつ病になったのは努力の結果に他ならない。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "両親が子供に淋しくするのは、子供を愛しているからに他ならない。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "タ形・Nの＋挙げ句",
+      "meaning": "read as あげく; after (in a troublesome/negative way)",
+      "level": "",
+      "tags": [
+        "negation",
+        "temporal",
+        "sequential",
+        "タ形",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "５時間も話し合いを続けたあげく、何も決まらなかった。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "彼は散々悩んだ挙げ句、会社を辞めることに決めた。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "マス形＋ようがない",
+      "meaning": "want to but can't; impossible",
+      "level": "",
+      "tags": [
+        "likelihood",
+        "negation",
+        "advanced-usage",
+        "マス形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "これは現代の医学では、治しようがない病気だ。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "台風で交通機関が全部止まっているので、学校に行きたくても生きようがない。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形（ナAな・である｜Nの・である）＋わけがない",
+      "meaning": "impossible; no way that",
+      "level": "",
+      "tags": [
+        "likelihood",
+        "negation",
+        "advanced-usage",
+        "普通形",
+        "ナ形容詞",
+        "noun-modifier"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "２月に桜が咲くわけがないよ。梅の花じゃない。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "毎日遊んでばかりいたら、試験に合格するわけがない。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形＋（ナAな・である｜Nである）＋ことだろう・ことか",
+      "meaning": "god knows; how extremely this feeling/thought",
+      "level": "",
+      "tags": [
+        "advanced-usage",
+        "sentence-final",
+        "普通形",
+        "ナ形容詞",
+        "noun-modifier",
+        "noun-copula"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "もう２年も家族に合っていない。家族は私のことをどんなに心配していることか。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "この曲が大好きだ。今まで何度聞いたことだろう。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "普通形（ナAである｜Nである）＋に違いない",
+      "meaning": "theres no doubt; I'm sure that; there's no mistaking",
+      "level": "",
+      "tags": [
+        "likelihood",
+        "advanced-usage",
+        "certainty",
+        "普通形",
+        "ナ形容詞",
+        "noun-modifier",
+        "noun-copula"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "アンナさんは日本生きて１０年になるとのことだから、ペラペラであるに違いない。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "彼は足って泣いて、困っているに違いない。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "",
+      "meaning": "",
+      "level": "",
+      "tags": [
+        ""
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    }
+  ]
+}
