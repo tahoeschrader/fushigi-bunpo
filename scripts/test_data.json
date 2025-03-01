@@ -1,0 +1,55 @@
+{
+  "grammar": [
+    {
+      "usage": "〜（ことだろう・ことか）",
+      "meaning": "god knows; how extremely this feeling/thought",
+      "level": "",
+      "tags": [
+        "advanced-usage",
+        "sentence-final",
+        "普通形",
+        "na-adjective-modifier",
+        "noun-modifier"
+      ],
+      "notes": "noun needs である, adjective can use な or である",
+      "examples": [
+        {
+          "japanese": "もう２年も家族に合っていない。家族は私のことをどんなに心配していることか。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "この曲が大好きだ。今まで何度聞いたことだろう。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    },
+    {
+      "usage": "〜に違いない",
+      "meaning": "theres no doubt; I'm sure that; there's no mistaking",
+      "level": "",
+      "tags": [
+        "likelihood",
+        "advanced-usage",
+        "certainty",
+        "普通形",
+        "na-adjective-modifier",
+        "noun-modifier"
+      ],
+      "notes": "noun and adjective need である",
+      "examples": [
+        {
+          "japanese": "アンナさんは日本生きて１０年になるとのことだから、ペラペラであるに違いない。",
+          "romaji": "",
+          "english": ""
+        },
+        {
+          "japanese": "彼は足って泣いて、困っているに違いない。",
+          "romaji": "",
+          "english": ""
+        }
+      ]
+    }
+  ]
+}
