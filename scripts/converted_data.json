@@ -23,13 +23,14 @@
       ]
     },
     {
-      "usage": "「」と申します",
+      "usage": "〜と申します",
       "meaning": "introducing your name",
       "level": "",
       "tags": [
         "humble-honorific",
         "greeting",
-        "noun-modifier"
+        "noun-modifier",
+        "fixed-expression"
       ],
       "notes": "",
       "examples": [
@@ -85,13 +86,13 @@
     },
     {
       "usage": "可能動詞",
-      "meaning": "「え」る, られる, できる -- basic potential form",
+      "meaning": "can be done -- basic potential form",
       "level": "",
       "tags": [
         "potential-form",
         "basic-verb-forms"
       ],
-      "notes": "",
+      "notes": "「え」る, られる, できる",
       "examples": [
         {
           "japanese": "私の犬はずっと遊べる",
@@ -118,7 +119,7 @@
         "conditional",
         "noun-modifier"
       ],
-      "notes": "...",
+      "notes": "",
       "examples": [
         {
           "japanese": "中国の料理は辛物なら食べられない",
@@ -241,7 +242,6 @@
       "meaning": "try something",
       "level": "",
       "tags": [
-        "verb-modifier",
         "テ形"
       ],
       "notes": "",
@@ -265,8 +265,7 @@
       "tags": [
         "polite",
         "giving-receiving",
-        "テ形",
-        "verb-modifier"
+        "テ形"
       ],
       "notes": "",
       "examples": [
@@ -287,9 +286,8 @@
       "meaning": "describing something/something you did as too much",
       "level": "",
       "tags": [
-        "adjective-modifer",
-        "マス形",
-        "verb-modifier"
+        "i-adjective-modifer",
+        "マス形"
       ],
       "notes": "",
       "examples": [
@@ -310,8 +308,7 @@
       "meaning": "describing something as too easy",
       "level": "",
       "tags": [
-        "マス形",
-        "verb-modifier"
+        "マス形"
       ],
       "notes": "",
       "examples": [
@@ -327,8 +324,7 @@
       "meaning": "describing something as too hard",
       "level": "",
       "tags": [
-        "マス形",
-        "verb-modifier"
+        "マス形"
       ],
       "notes": "",
       "examples": [
@@ -344,8 +340,7 @@
       "meaning": "after an action was done and left by someone",
       "level": "",
       "tags": [
-        "テ形",
-        "verb-modifier"
+        "テ形"
       ],
       "notes": "",
       "examples": [
@@ -361,7 +356,8 @@
       "meaning": "asking/describing how to read something",
       "level": "",
       "tags": [
-        "question-form"
+        "question-form",
+        "fixed-expression"
       ],
       "notes": "",
       "examples": [
@@ -378,12 +374,13 @@
       ]
     },
     {
-      "usage": "「」と書いてあります",
+      "usage": "〜と書いてあります",
       "meaning": "after a writing action was done and left by someone",
       "level": "",
       "tags": [
         "question-form",
-        "combination"
+        "combination",
+        "fixed-expression"
       ],
       "notes": "",
       "examples": [
@@ -399,7 +396,8 @@
       "meaning": "asking/describing the meaning of a word",
       "level": "",
       "tags": [
-        "question-form"
+        "question-form",
+        "fixed-expression"
       ],
       "notes": "",
       "examples": [
@@ -460,13 +458,12 @@
       ]
     },
     {
-      "usage": "〜ら",
+      "usage": "〜たら",
       "meaning": "once this happens,",
       "level": "",
       "tags": [
         "conditional",
-        "タ形",
-        "verb-modifier"
+        "タ形"
       ],
       "notes": "",
       "examples": [
@@ -504,8 +501,7 @@
       "tags": [
         "likelihood",
         "certainty",
-        "意向形",
-        "verb-modifier"
+        "意向形"
       ],
       "notes": "",
       "examples": [
@@ -524,7 +520,7 @@
         "likelihood",
         "certainty",
         "辞書形",
-        "verb-modifier"
+        "ナイ形"
       ],
       "notes": "",
       "examples": [
@@ -532,21 +528,7 @@
           "japanese": "8月に友達と一緒に大阪へ行くつもりです",
           "romaji": "",
           "english": ""
-        }
-      ]
-    },
-    {
-      "usage": "〜つもりです",
-      "meaning": "120% sure",
-      "level": "",
-      "tags": [
-        "likelihood",
-        "certainty",
-        "ナイ形",
-        "verb-modifier"
-      ],
-      "notes": "",
-      "examples": [
+        },
         {
           "japanese": "今年私の母国へ帰らないつもりです",
           "romaji": "",
@@ -583,8 +565,7 @@
       "tags": [
         "certainty",
         "question-form",
-        "普通形",
-        "verb-modifier"
+        "普通形"
       ],
       "notes": "",
       "examples": [
@@ -601,33 +582,21 @@
       ]
     },
     {
-      "usage": "〜のために",
-      "meaning": "purpose/reason for something",
-      "level": "",
-      "tags": [
-        "causal",
-        "noun-modifier"
-      ],
-      "notes": "",
-      "examples": [
-        {
-          "japanese": "就職のために、毎日プログラミングを練習しています",
-          "romaji": "",
-          "english": ""
-        }
-      ]
-    },
-    {
       "usage": "〜ために",
       "meaning": "purpose/reason for something",
       "level": "",
       "tags": [
         "causal",
         "辞書形",
-        "verb-modifier"
+        "noun-modifier"
       ],
-      "notes": "",
+      "notes": "nouns need the の",
       "examples": [
+        {
+          "japanese": "就職のために、毎日プログラミングを練習しています",
+          "romaji": "",
+          "english": ""
+        },
         {
           "japanese": "日本語を話すために、日本に来た",
           "romaji": "",
@@ -642,8 +611,7 @@
       "tags": [
         "question-form",
         "explanation",
-        "普通形",
-        "verb-modifier"
+        "普通形"
       ],
       "notes": "",
       "examples": [
@@ -679,12 +647,9 @@
       "meaning": "must not do",
       "level": "",
       "tags": [
-        "fixed-expression",
         "conditional",
         "polite",
-        "combination",
-        "ナイ形",
-        "verb-modifier"
+        "ナイ形"
       ],
       "notes": "drop the い",
       "examples": [
@@ -718,8 +683,7 @@
         "question-form",
         "explanation",
         "conjunctive",
-        "普通形",
-        "verb-modifier"
+        "普通形"
       ],
       "notes": "",
       "examples": [
@@ -741,8 +705,7 @@
       "level": "",
       "tags": [
         "conditional",
-        "普通形",
-        "verb-modifier"
+        "普通形"
       ],
       "notes": "",
       "examples": [
@@ -760,8 +723,7 @@
       "tags": [
         "likelihood",
         "certainty",
-        "タ形",
-        "verb-modifier"
+        "タ形"
       ],
       "notes": "",
       "examples": [
@@ -779,8 +741,7 @@
       "tags": [
         "conditional",
         "suggestion",
-        "辞書形",
-        "verb-modifier"
+        "辞書形"
       ],
       "notes": "",
       "examples": [
@@ -797,7 +758,7 @@
       ]
     },
     {
-      "usage": "〜までに＿＿＿",
+      "usage": "〜までに",
       "meaning": "deadline",
       "level": "",
       "tags": [
@@ -820,7 +781,7 @@
       ]
     },
     {
-      "usage": "〜と、〜があります",
+      "usage": "N と、V があります",
       "meaning": "giving directions",
       "level": "",
       "tags": [
@@ -828,7 +789,7 @@
         "conditional",
         "辞書形",
         "noun-modifier",
-        "verb-modifier"
+        "fixed-expression"
       ],
       "notes": "",
       "examples": [
@@ -867,8 +828,7 @@
       "level": "",
       "tags": [
         "conditional",
-        "辞書形",
-        "verb-modifier"
+        "辞書形"
       ],
       "notes": "",
       "examples": [
@@ -909,8 +869,7 @@
       "tags": [
         "combination",
         "explanation",
-        "テ形",
-        "verb-modifier"
+        "テ形"
       ],
       "notes": "",
       "examples": [
@@ -943,8 +902,7 @@
       "tags": [
         "likelihood",
         "certainty",
-        "普通形",
-        "verb-modifier"
+        "普通形"
       ],
       "notes": "",
       "examples": [
@@ -980,8 +938,7 @@
       "tags": [
         "temporal",
         "conditional",
-        "タ形",
-        "verb-modifier"
+        "タ形"
       ],
       "notes": "",
       "examples": [
@@ -1004,8 +961,7 @@
       "tags": [
         "honorific",
         "giving-receiving",
-        "テ形",
-        "verb-modifier"
+        "テ形"
       ],
       "notes": "",
       "examples": [
@@ -1017,7 +973,7 @@
       ]
     },
     {
-      "usage": "〜くて | 〜で",
+      "usage": "〜くて ・ 〜で",
       "meaning": "connects two ideas with adjectives",
       "level": "",
       "tags": [
@@ -1068,8 +1024,7 @@
       "level": "",
       "tags": [
         "conjunctive",
-        "ナイ形",
-        "verb-modifier"
+        "ナイ形"
       ],
       "notes": "drop the い",
       "examples": [
@@ -1088,8 +1043,7 @@
         "conditional",
         "change",
         "conjunctive",
-        "タ形",
-        "verb-modifier"
+        "タ形"
       ],
       "notes": "",
       "examples": [
@@ -1108,8 +1062,7 @@
         "polite",
         "combination",
         "favor",
-        "マス形",
-        "verb-modifier"
+        "マス形"
       ],
       "notes": "",
       "examples": [
@@ -1132,8 +1085,7 @@
       "tags": [
         "enumeration",
         "conjunctive",
-        "普通形",
-        "verb-modifier"
+        "普通形"
       ],
       "notes": "",
       "examples": [
@@ -1145,14 +1097,12 @@
       ]
     },
     {
-      "usage": "〜のは〜です",
+      "usage": "V のは N です",
       "meaning": "used to choose an option or give an answer",
       "level": "",
       "tags": [
         "explanation",
-        "普通形",
-        "verb-modifier",
-        "noun-modifier"
+        "普通形"
       ],
       "notes": "",
       "examples": [
@@ -1191,8 +1141,7 @@
       "level": "",
       "tags": [
         "appearance",
-        "マス形",
-        "verb-modifier"
+        "マス形"
       ],
       "notes": "",
       "examples": [
@@ -1219,13 +1168,12 @@
       ]
     },
     {
-      "usage": "〜そう(に|も|にも)ありません",
+      "usage": "〜そう（に・も・にも）ありません",
       "meaning": "how something seems based on your senses",
       "level": "",
       "tags": [
         "appearance",
-        "マス形",
-        "verb-modifier"
+        "マス形"
       ],
       "notes": "",
       "examples": [
@@ -1242,8 +1190,7 @@
       "level": "",
       "tags": [
         "combination",
-        "テ形",
-        "verb-modifier"
+        "テ形"
       ],
       "notes": "",
       "examples": [
@@ -1270,8 +1217,7 @@
       "level": "",
       "tags": [
         "combination",
-        "テ形",
-        "verb-modifier"
+        "テ形"
       ],
       "notes": "",
       "examples": [
@@ -1290,8 +1236,7 @@
         "honorific",
         "combination",
         "fixed-expression",
-        "マス形",
-        "verb-modifier"
+        "マス形"
       ],
       "notes": "",
       "examples": [
@@ -1330,7 +1275,7 @@
       ]
     },
     {
-      "usage": "尊敬語(行く|来る|いる)",
+      "usage": "尊敬語（行く・来る・いる）",
       "meaning": "replacement for 行く, 来る, and いる",
       "level": "",
       "tags": [
@@ -1347,7 +1292,7 @@
       ]
     },
     {
-      "usage": "尊敬語(食べる|飲む)",
+      "usage": "尊敬語（食べる・飲む）",
       "meaning": "replacement for 食べる, and 飲む",
       "level": "",
       "tags": [
@@ -1364,7 +1309,7 @@
       ]
     },
     {
-      "usage": "尊敬語(くれる)",
+      "usage": "尊敬語（くれる）",
       "meaning": "replacement for くれる",
       "level": "",
       "tags": [
@@ -1386,7 +1331,7 @@
       ]
     },
     {
-      "usage": "尊敬語(言う)",
+      "usage": "尊敬語（言う）",
       "meaning": "replacement for 言う",
       "level": "",
       "tags": [
@@ -1403,7 +1348,7 @@
       ]
     },
     {
-      "usage": "尊敬語(する)",
+      "usage": "尊敬語（する）",
       "meaning": "replacement for する",
       "level": "",
       "tags": [
@@ -1420,7 +1365,7 @@
       ]
     },
     {
-      "usage": "尊敬語(見る)",
+      "usage": "尊敬語（見る）",
       "meaning": "replacement for 見る",
       "level": "",
       "tags": [
@@ -1437,7 +1382,7 @@
       ]
     },
     {
-      "usage": "尊敬語(知っている)",
+      "usage": "尊敬語（知っている）",
       "meaning": "replacement for 知っている",
       "level": "",
       "tags": [
@@ -1454,7 +1399,7 @@
       ]
     },
     {
-      "usage": "尊敬語(etc.)",
+      "usage": "尊敬語（etc.）",
       "meaning": "other various sonkeigo phrases",
       "level": "",
       "tags": [
@@ -1503,13 +1448,12 @@
       "level": "",
       "tags": [
         "humble-honorific",
-        "マス形",
-        "verb-modifier"
+        "マス形"
       ],
       "notes": "",
       "examples": [
         {
-          "japanese": "ソダさん、お手伝いしましょうか",
+          "japanese": "タホさん、お手伝いしましょうか",
           "romaji": "",
           "english": ""
         },
@@ -1521,13 +1465,12 @@
       ]
     },
     {
-      "usage": "〜く〜",
+      "usage": "〜く V",
       "meaning": "creating a basic adverb",
       "level": "",
       "tags": [
         "combination",
-        "イ形容詞",
-        "adjective-modifer"
+        "i-adjective-modifier"
       ],
       "notes": "drop the い and add any verb after",
       "examples": [
@@ -1539,7 +1482,7 @@
       ]
     },
     {
-      "usage": "〜に〜",
+      "usage": "〜に V",
       "meaning": "creating a basic adverb",
       "level": "",
       "tags": [
@@ -1547,7 +1490,7 @@
         "noun-modifier",
         "na-adjective-modifer"
       ],
-      "notes": "dont include the な; add any verb to end",
+      "notes": "dont include the な; add any verb after",
       "examples": [
         {
           "japanese": "彼は静かに勉強している",
@@ -1572,8 +1515,7 @@
       "level": "",
       "tags": [
         "temporal",
-        "テ形",
-        "verb-modifier"
+        "テ形"
       ],
       "notes": "",
       "examples": [
@@ -1590,8 +1532,7 @@
       "level": "",
       "tags": [
         "giving-receiving",
-        "テ形",
-        "verb-modifier"
+        "テ形"
       ],
       "notes": "",
       "examples": [
@@ -1618,8 +1559,7 @@
       "level": "",
       "tags": [
         "giving-receiving",
-        "テ形",
-        "verb-modifier"
+        "テ形"
       ],
       "notes": "",
       "examples": [
@@ -1636,8 +1576,7 @@
       "level": "",
       "tags": [
         "giving-receiving",
-        "テ形",
-        "verb-modifier"
+        "テ形"
       ],
       "notes": "",
       "examples": [
@@ -1686,8 +1625,7 @@
       "level": "",
       "tags": [
         "giving-receiving",
-        "テ形",
-        "verb-modifier"
+        "テ形"
       ],
       "notes": "",
       "examples": [
@@ -1704,13 +1642,12 @@
       "level": "",
       "tags": [
         "giving-receiving",
-        "テ形",
-        "verb-modifier"
+        "テ形"
       ],
       "notes": "",
       "examples": [
         {
-          "japanese": "ソダさんが私に釣り方を教えてくださいました",
+          "japanese": "タホさんが私に釣り方を教えてくださいました",
           "romaji": "",
           "english": ""
         }
@@ -1722,11 +1659,11 @@
       "level": "",
       "tags": [
         "conditional",
-        "イ形容詞",
+        "i-adjective-modifier",
         "条件形",
         "basic-verb-forms"
       ],
-      "notes": "",
+      "notes": "remove い and add ければ; or use standard 条件形",
       "examples": [
         {
           "japanese": "毎日勉強すれば、日本語能力試験を合格できます",
@@ -1751,15 +1688,15 @@
       ]
     },
     {
-      "usage": "条件形、〜",
-      "meaning": "if it's this",
+      "usage": "〜なら",
+      "meaning": "if it's this, then",
       "level": "",
       "tags": [
         "conditional",
         "na-adjective-modifer",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "can also use the verb ある",
       "examples": [
         {
           "japanese": "明日なら、空いています",
@@ -1774,13 +1711,15 @@
       ]
     },
     {
-      "usage": "(辞書|ナイ)形＋ように、＿＿＿",
-      "meaning": "so that",
+      "usage": "〜ように、〜",
+      "meaning": "so that ... happens",
       "level": "",
       "tags": [
-        "change"
+        "change",
+        "辞書形",
+        "ナイ形"
       ],
-      "notes": "... happens",
+      "notes": "",
       "examples": [
         {
           "japanese": "忘れないように毎日勉強します",
@@ -1795,13 +1734,15 @@
       ]
     },
     {
-      "usage": "(辞書|ナイ)形＋ようにしてください",
-      "meaning": "so that",
+      "usage": "〜ようにしてください",
+      "meaning": "so that... happens (as a command)",
       "level": "",
       "tags": [
-        "change"
+        "change",
+        "辞書形",
+        "ナイ形"
       ],
-      "notes": "... happens as a command",
+      "notes": "",
       "examples": [
         {
           "japanese": "廊下に走らないようにしてください",
@@ -1816,11 +1757,13 @@
       ]
     },
     {
-      "usage": "(辞書|ナイ)形＋ことになっています",
+      "usage": "〜ことになっています",
       "meaning": "something has been decided (plan, rules) out of your control",
       "level": "",
       "tags": [
-        "change"
+        "change",
+        "辞書形",
+        "ナイ形"
       ],
       "notes": "",
       "examples": [
@@ -1837,7 +1780,7 @@
       ]
     },
     {
-      "usage": "ご＋N＋ください",
+      "usage": "ご〜ください",
       "meaning": "creating kenjougo from nouns",
       "level": "",
       "tags": [
@@ -1859,7 +1802,7 @@
       ]
     },
     {
-      "usage": "お＋マス形＋ください",
+      "usage": "お〜ください",
       "meaning": "creating kenjougo from verbs",
       "level": "",
       "tags": [
@@ -1876,11 +1819,12 @@
       ]
     },
     {
-      "usage": "V[ましょう]の友達言葉",
-      "meaning": "a friendlier version of ましょう",
+      "usage": "友達言葉の移行形",
+      "meaning": "a friendlier version of ましょう for invitations",
       "level": "",
       "tags": [
-        "volitional-form"
+        "volitional-form",
+        "移行形"
       ],
       "notes": "",
       "examples": [
@@ -1902,7 +1846,9 @@
       "level": "",
       "tags": [
         "giving-receiving",
-        "passive-voice"
+        "passive-voice",
+        "basic-verb-forms",
+        "受身形"
       ],
       "notes": "",
       "examples": [
@@ -1934,7 +1880,7 @@
       ]
     },
     {
-      "usage": "辞書形＋のに、＿＿＿",
+      "usage": "〜のに、〜",
       "meaning": "in order to",
       "level": "",
       "tags": [
@@ -1957,7 +1903,7 @@
       ]
     },
     {
-      "usage": "普通形＋ようです",
+      "usage": "〜ようです",
       "meaning": "seems like but with more emphasis on speakers own conclusion",
       "level": "",
       "tags": [
@@ -1984,7 +1930,7 @@
       ]
     },
     {
-      "usage": "普通形＋みたいです",
+      "usage": "〜みたいです",
       "meaning": "how something seems based on direct observation, casually; looks like a",
       "level": "",
       "tags": [
@@ -2016,7 +1962,7 @@
       ]
     },
     {
-      "usage": "(辞書形|テ形いる|タ形)＋ところです",
+      "usage": "〜ところです",
       "meaning": "just before, during, or immediately after",
       "level": "",
       "tags": [
@@ -2045,14 +1991,13 @@
       ]
     },
     {
-      "usage": "N＋が＋テ形＋きます",
+      "usage": "N が〜きます",
       "meaning": "coming towards",
       "level": "",
       "tags": [
         "combination",
         "spatial",
-        "テ形",
-        "noun-modifier"
+        "テ形"
       ],
       "notes": "",
       "examples": [
@@ -2069,14 +2014,13 @@
       ]
     },
     {
-      "usage": "N＋が＋テ形＋いきます",
+      "usage": "N が〜いきます",
       "meaning": "going away",
       "level": "",
       "tags": [
         "combination",
         "spatial",
-        "テ形",
-        "noun-modifier"
+        "テ形"
       ],
       "notes": "",
       "examples": [
@@ -2088,11 +2032,12 @@
       ]
     },
     {
-      "usage": "A＋そうに＋V",
+      "usage": "〜そうに V",
       "meaning": "in a way that seems like; seems to be",
       "level": "",
       "tags": [
-        "appearance"
+        "appearance",
+        "adjective-modifer"
       ],
       "notes": "",
       "examples": [
@@ -2109,11 +2054,10 @@
       ]
     },
     {
-      "usage": "辞書形＋ようになります",
+      "usage": "〜ようになります",
       "meaning": "new habit or ability, change over time",
       "level": "",
       "tags": [
-        "fixed-expression",
         "change",
         "辞書形"
       ],
@@ -2127,7 +2071,7 @@
       ]
     },
     {
-      "usage": "ナイ形＋くなります",
+      "usage": "〜くなります",
       "meaning": "decrease in frequency, quantity; becoming less",
       "level": "",
       "tags": [
@@ -2144,7 +2088,7 @@
       ]
     },
     {
-      "usage": "タ形＋ばかりです",
+      "usage": "〜ばかりです",
       "meaning": "just finished",
       "level": "",
       "tags": [
@@ -2171,12 +2115,12 @@
       ]
     },
     {
-      "usage": "マス形＋ながら、＿＿＿",
+      "usage": "〜ながら",
       "meaning": "doing two things at once",
       "level": "",
       "tags": [
-        "combination",
-        "conjunctive",
+        "timing",
+        "temporal",
         "マス形"
       ],
       "notes": "",
@@ -2194,12 +2138,11 @@
       ]
     },
     {
-      "usage": "普通形＋と言っていました",
+      "usage": "〜と言っていました",
       "meaning": "quoting something said",
       "level": "",
       "tags": [
         "nominalization",
-        "fixed-expression",
         "普通形"
       ],
       "notes": "",
@@ -2226,7 +2169,9 @@
       "meaning": "positive command; super casual",
       "level": "",
       "tags": [
-        "imperative"
+        "imperative",
+        "basic-verb-forms",
+        "命令形"
       ],
       "notes": "",
       "examples": [
@@ -2243,7 +2188,7 @@
       ]
     },
     {
-      "usage": "辞書形な",
+      "usage": "〜な",
       "meaning": "negative command; super casual",
       "level": "",
       "tags": [
@@ -2260,11 +2205,12 @@
       ]
     },
     {
-      "usage": "〜個＋も＋V",
+      "usage": "個 も V",
       "meaning": "surprise at a high number",
       "level": "",
       "tags": [
-        "counting"
+        "counting",
+        "fixed-expression"
       ],
       "notes": "",
       "examples": [
@@ -2276,12 +2222,12 @@
       ]
     },
     {
-      "usage": "(〜個|N)＋しか＋V[ません]",
+      "usage": "（個・N）しか〜",
       "meaning": "surprise at a low number",
       "level": "",
       "tags": [
         "counting",
-        "noun-modifier"
+        "ナイ形"
       ],
       "notes": "",
       "examples": [
@@ -2298,7 +2244,7 @@
       ]
     },
     {
-      "usage": "ナイ形＋で、＿＿＿",
+      "usage": "〜で",
       "meaning": "don't do this, do that",
       "level": "",
       "tags": [
@@ -2317,7 +2263,7 @@
       ]
     },
     {
-      "usage": "テ形＋V",
+      "usage": "テ形 V",
       "meaning": "an action that involves two",
       "level": "",
       "tags": [
@@ -2335,7 +2281,7 @@
       ]
     },
     {
-      "usage": "ナイ形＋で＋V",
+      "usage": "ナイ形 で V",
       "meaning": "an action that involves two, negatively",
       "level": "",
       "tags": [
@@ -2353,12 +2299,11 @@
       ]
     },
     {
-      "usage": "タ形＋らどうですか",
+      "usage": "〜たらどうですか",
       "meaning": "what about this",
       "level": "",
       "tags": [
         "suggestion",
-        "fixed-expression",
         "タ形"
       ],
       "notes": "",
@@ -2371,13 +2316,12 @@
       ]
     },
     {
-      "usage": "普通形＋らしいです",
+      "usage": "〜らしいです",
       "meaning": "a rumor you heard, something people say",
       "level": "",
       "tags": [
         "certainty",
         "explanation",
-        "fixed-expression",
         "普通形"
       ],
       "notes": "",
@@ -2400,7 +2344,7 @@
       ]
     },
     {
-      "usage": "N＋に、＿＿＿",
+      "usage": "〜に〜",
       "meaning": "for this specifically, in order to",
       "level": "",
       "tags": [
@@ -2418,7 +2362,7 @@
       ]
     },
     {
-      "usage": "普通形＋のに、＿＿＿",
+      "usage": "〜のに、〜",
       "meaning": "even though ___",
       "level": "",
       "tags": [
@@ -2436,7 +2380,7 @@
       ]
     },
     {
-      "usage": "(辞書形|ナイ形)＋ようにしています",
+      "usage": "〜ようにしています",
       "meaning": "effort, habit, goal that has started or quit",
       "level": "",
       "tags": [
@@ -2460,7 +2404,7 @@
       ]
     },
     {
-      "usage": "(辞書形|ナイ形)＋ことにします",
+      "usage": "〜ことにします",
       "meaning": "a choice, resolution to do something",
       "level": "",
       "tags": [
@@ -2484,12 +2428,13 @@
       ]
     },
     {
-      "usage": "使役動詞",
+      "usage": "「あ」せます、させます",
       "meaning": "basic causative, に receives the command",
       "level": "",
       "tags": [
         "causal",
-        "giving-receiving"
+        "giving-receiving",
+        "basic-verb-forms"
       ],
       "notes": "",
       "examples": [
@@ -2511,12 +2456,15 @@
       ]
     },
     {
-      "usage": "使役受身",
+      "usage": "「あ」せられる・「あ」される・させられる",
       "meaning": "was caused, に gives the command",
       "level": "",
       "tags": [
         "causal",
-        "giving-receiving"
+        "passive-voice",
+        "giving-receiving",
+        "basic-verb-forms",
+        "使役動詞"
       ],
       "notes": "",
       "examples": [
@@ -2533,14 +2481,15 @@
       ]
     },
     {
-      "usage": "使役動詞テ形＋(くれます|もらいます)",
+      "usage": "使役動詞〜（くれます・もらいます）",
       "meaning": "was told to as a favor / was given permission; に is the grantor",
       "level": "",
       "tags": [
         "causal",
         "giving-receiving",
         "polite",
-        "テ形"
+        "テ形",
+        "使役動詞"
       ],
       "notes": "",
       "examples": [
@@ -2562,13 +2511,12 @@
       ]
     },
     {
-      "usage": "(辞書形|テ形いる|タ形)＋のを見ました",
+      "usage": "〜のを見ました",
       "meaning": "something seen happening recently",
       "level": "",
       "tags": [
         "change",
         "appearance",
-        "fixed-expression",
         "explanation",
         "habitual",
         "辞書形",
@@ -2585,7 +2533,7 @@
       ]
     },
     {
-      "usage": "テ形＋いました",
+      "usage": "〜いました",
       "meaning": "something that used to happen",
       "level": "",
       "tags": [
@@ -2604,7 +2552,7 @@
       ]
     },
     {
-      "usage": "N＋ばかり＋テ形＋います",
+      "usage": "〜ばかり〜います",
       "meaning": "negative emphasis on something only happening",
       "level": "",
       "tags": [
@@ -2623,7 +2571,7 @@
       ]
     },
     {
-      "usage": "テ形＋ばかりいます",
+      "usage": "〜ばかりいます",
       "meaning": "negative emphasis on something only happening",
       "level": "",
       "tags": [
@@ -2641,7 +2589,7 @@
       ]
     },
     {
-      "usage": "N＋って何ですか",
+      "usage": "〜って何ですか",
       "meaning": "casual way of saying と when quoting",
       "level": "",
       "tags": [
@@ -2660,13 +2608,14 @@
       ]
     },
     {
-      "usage": "N＋というのは＋＿＿＿です",
+      "usage": "〜というのは〜です",
       "meaning": "describing something said, rephrasing",
       "level": "",
       "tags": [
         "explanation",
         "nominalization",
-        "noun-modifier"
+        "noun-modifier",
+        "fixed-expression"
       ],
       "notes": "",
       "examples": [
@@ -2678,7 +2627,7 @@
       ]
     },
     {
-      "usage": "普通形＋と言われています",
+      "usage": "〜と言われています",
       "meaning": "a rumor you heard, something people say",
       "level": "",
       "tags": [
@@ -2697,7 +2646,7 @@
       ]
     },
     {
-      "usage": "N＋のような＋N",
+      "usage": "〜のような〜",
       "meaning": "explaining as a type of something similiar",
       "level": "",
       "tags": [
@@ -2715,13 +2664,14 @@
       ]
     },
     {
-      "usage": "(普通形|意向形)＋かな",
+      "usage": "〜かな",
       "meaning": "wondering something to yourself",
       "level": "",
       "tags": [
         "certainty",
         "question-form",
-        "普通形"
+        "普通形",
+        "意向形"
       ],
       "notes": "",
       "examples": [
@@ -2738,7 +2688,7 @@
       ]
     },
     {
-      "usage": "N＋なんかどうですか",
+      "usage": "〜なんかどうですか",
       "meaning": "what about this",
       "level": "",
       "tags": [
@@ -2757,12 +2707,13 @@
       ]
     },
     {
-      "usage": "A＋がっています",
+      "usage": "〜がっています",
       "meaning": "a third persons feelings not in the conversation",
       "level": "",
       "tags": [
         "explanation",
-        "combination"
+        "combination",
+        "noun-modifier"
       ],
       "notes": "",
       "examples": [
@@ -2779,7 +2730,7 @@
       ]
     },
     {
-      "usage": "普通形＋からです",
+      "usage": "〜からです",
       "meaning": "giving a reason at the end of a sentence",
       "level": "",
       "tags": [
@@ -2797,7 +2748,7 @@
       ]
     },
     {
-      "usage": "普通形＋んだって",
+      "usage": "〜んだって",
       "meaning": "explaining something you saw",
       "level": "",
       "tags": [
@@ -2814,7 +2765,7 @@
       ]
     },
     {
-      "usage": "辞書形＋のはどうですか",
+      "usage": "〜のはどうですか",
       "meaning": "what about this",
       "level": "",
       "tags": [
@@ -2833,7 +2784,7 @@
       ]
     },
     {
-      "usage": "普通形＋だけじゃなくて、＿＿＿も＿＿＿",
+      "usage": "〜だけじゃなくて、〜も〜",
       "meaning": "not just this exists, also this",
       "level": "",
       "tags": [
@@ -2851,13 +2802,13 @@
       ]
     },
     {
-      "usage": "イA＋くないと、＿＿＿",
+      "usage": "〜くないと、〜",
       "meaning": "if not this, then",
       "level": "",
       "tags": [
         "causal",
         "conditional",
-        "イ形容詞"
+        "i-adjective-modifer"
       ],
       "notes": "",
       "examples": [
@@ -2869,13 +2820,13 @@
       ]
     },
     {
-      "usage": "(ナA|N)＋じゃないと、＿＿＿",
+      "usage": "〜じゃないと、〜",
       "meaning": "if not this, then",
       "level": "",
       "tags": [
         "causal",
         "conditional",
-        "ナ形容詞",
+        "na-adjective-modifer",
         "noun-modifier"
       ],
       "notes": "",
@@ -2888,7 +2839,7 @@
       ]
     },
     {
-      "usage": "ナイ形＋と、＿＿＿",
+      "usage": "〜と、〜",
       "meaning": "if not this, then",
       "level": "",
       "tags": [
@@ -2906,7 +2857,7 @@
       ]
     },
     {
-      "usage": "テ形＋きます",
+      "usage": "〜きます",
       "meaning": "explaining a past trend",
       "level": "",
       "tags": [
@@ -2934,7 +2885,7 @@
       ]
     },
     {
-      "usage": "テ形＋いきます",
+      "usage": "〜いきます",
       "meaning": "guessing a future trend",
       "level": "",
       "tags": [
@@ -2957,7 +2908,7 @@
       ]
     },
     {
-      "usage": "普通形＋ために、＿＿＿",
+      "usage": "〜ために、〜",
       "meaning": "giving a reason",
       "level": "",
       "tags": [
@@ -2976,7 +2927,7 @@
       ]
     },
     {
-      "usage": "＿＿＿よね",
+      "usage": "〜よね",
       "meaning": "don't you know?",
       "level": "",
       "tags": [
@@ -2993,7 +2944,7 @@
       ]
     },
     {
-      "usage": "普通形＋とか＋普通形＋とか＋＿＿＿",
+      "usage": "〜とか〜とか〜",
       "meaning": "list examples",
       "level": "",
       "tags": [
@@ -3010,7 +2961,7 @@
       ]
     },
     {
-      "usage": "普通形＋(だけ|だけの)",
+      "usage": "〜（だけ・だけの）",
       "meaning": "as much as you want, limits to the full extent of what its attached to",
       "level": "",
       "tags": [
@@ -3032,7 +2983,7 @@
       ]
     },
     {
-      "usage": "普通形＋(でしょう|だろう)",
+      "usage": "〜（でしょう・だろう）",
       "meaning": "questioning the likelihood of something",
       "level": "",
       "tags": [
@@ -3050,7 +3001,7 @@
       ]
     },
     {
-      "usage": "N＋から＋N＋にかけて＋＿＿＿",
+      "usage": "〜から〜にかけて",
       "meaning": "a polite form of time boxing instead of まで",
       "level": "",
       "tags": [
@@ -3068,7 +3019,7 @@
       ]
     },
     {
-      "usage": "普通形＋と、(A|V)",
+      "usage": "〜と、〜",
       "meaning": "something 100% of the time results in something else",
       "level": "",
       "tags": [
@@ -3086,7 +3037,7 @@
       ]
     },
     {
-      "usage": "N＋がきっかけで＋＿＿＿",
+      "usage": "〜がきっかけで",
       "meaning": "due to; the original cause",
       "level": "",
       "tags": [
@@ -3103,7 +3054,7 @@
       ]
     },
     {
-      "usage": "(マス形|N)＋っぽい",
+      "usage": "〜っぽい",
       "meaning": "special vocab to describe a person",
       "level": "",
       "tags": [
@@ -3126,7 +3077,7 @@
       ]
     },
     {
-      "usage": "N＋でも",
+      "usage": "〜でも",
       "meaning": "even this; indicates a bit of surprise",
       "level": "",
       "tags": [
@@ -3143,7 +3094,7 @@
       ]
     },
     {
-      "usage": "N＋に限り",
+      "usage": "〜に限り",
       "meaning": "limited to a condition",
       "level": "",
       "tags": [
@@ -3160,14 +3111,14 @@
       ]
     },
     {
-      "usage": "N＋によって",
+      "usage": "〜によって",
       "meaning": "depending on the",
       "level": "",
       "tags": [
         "conditional",
         "noun-modifier"
       ],
-      "notes": "...",
+      "notes": "",
       "examples": [
         {
           "japanese": "味のお好みは国によって違います",
@@ -3177,7 +3128,7 @@
       ]
     },
     {
-      "usage": "(辞書形|ナイ形|A|N)＋うちに＋＿＿＿＿",
+      "usage": "〜うちに",
       "meaning": "before a condition changes",
       "level": "",
       "tags": [
@@ -3185,7 +3136,8 @@
         "conditional",
         "辞書形",
         "ナイ形",
-        "noun-modifier"
+        "noun-modifier",
+        "adjective-modifer"
       ],
       "notes": "",
       "examples": [
@@ -3197,14 +3149,14 @@
       ]
     },
     {
-      "usage": "普通形＋わりに＋＿＿＿＿",
+      "usage": "〜わりに",
       "meaning": "contrary to",
       "level": "",
       "tags": [
         "comparative",
         "普通形"
       ],
-      "notes": "...",
+      "notes": "",
       "examples": [
         {
           "japanese": "あのレストランは高い割に、あまり美味しくなかった",
@@ -3214,7 +3166,7 @@
       ]
     },
     {
-      "usage": "＿＿＿＋(が)いいんじゃない",
+      "usage": "〜いいんじゃない",
       "meaning": "giving a recommendation; isn't it?; don't you think?",
       "level": "",
       "tags": [
@@ -3231,11 +3183,10 @@
       ]
     },
     {
-      "usage": "(辞書形|ナイ形)＋ようになっている",
+      "usage": "〜ようになっている",
       "meaning": "an automatic result of some condition",
       "level": "",
       "tags": [
-        "fixed-expression",
         "causal",
         "辞書形",
         "ナイ形"
@@ -3250,7 +3201,7 @@
       ]
     },
     {
-      "usage": "N＋こそ|普通形＋からこそ",
+      "usage": "〜こそ・〜からこそ",
       "meaning": "calling out a specific reason",
       "level": "",
       "tags": [
@@ -3259,7 +3210,7 @@
         "普通形",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "use から for the verbs",
       "examples": [
         {
           "japanese": "明日こそ、早く起きよう",
@@ -3274,7 +3225,7 @@
       ]
     },
     {
-      "usage": "N＋につき",
+      "usage": "〜につき",
       "meaning": "formal version of due to (だから)",
       "level": "",
       "tags": [
@@ -3291,7 +3242,7 @@
       ]
     },
     {
-      "usage": "＿＿＿と言うことだ",
+      "usage": "〜と言うことだ",
       "meaning": "summarize something heard / some general truth",
       "level": "",
       "tags": [
@@ -3307,7 +3258,7 @@
       ]
     },
     {
-      "usage": "普通形＋でしょうか",
+      "usage": "〜でしょうか",
       "meaning": "wondering something",
       "level": "",
       "tags": [
@@ -3325,7 +3276,7 @@
       ]
     },
     {
-      "usage": "普通形＋はずだ",
+      "usage": "〜はずだ",
       "meaning": "expectation",
       "level": "",
       "tags": [
@@ -3342,7 +3293,7 @@
       ]
     },
     {
-      "usage": "N＋向け",
+      "usage": "〜向け",
       "meaning": "meant for",
       "level": "",
       "tags": [
@@ -3359,7 +3310,7 @@
       ]
     },
     {
-      "usage": "N＋において|N＋における＋N",
+      "usage": "〜において・〜における〜",
       "meaning": "replacement for で",
       "level": "",
       "tags": [
@@ -3381,7 +3332,7 @@
       ]
     },
     {
-      "usage": "タ形＋上で|N＋の上で",
+      "usage": "〜上で・〜の上で",
       "meaning": "a replacement for てから and あとで",
       "level": "",
       "tags": [
@@ -3390,7 +3341,7 @@
         "タ形",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun uses の",
       "examples": [
         {
           "japanese": "書類の内容を読んだ上で、サインをお願いします",
@@ -3400,12 +3351,13 @@
       ]
     },
     {
-      "usage": "てほしい|てもらいたい",
+      "usage": "〜ほしい・〜もらいたい",
       "meaning": "something you wish to happen",
       "level": "",
       "tags": [
         "combination",
-        "fixed-expression"
+        "fixed-expression",
+        "テ形"
       ],
       "notes": "",
       "examples": [
@@ -3422,7 +3374,7 @@
       ]
     },
     {
-      "usage": "普通形＋はずがない",
+      "usage": "〜はずがない",
       "meaning": "an action is impossible, no way it will happen",
       "level": "",
       "tags": [
@@ -3440,7 +3392,7 @@
       ]
     },
     {
-      "usage": "普通形＋なんて",
+      "usage": "〜なんて",
       "meaning": "emphasis on an example",
       "level": "",
       "tags": [
@@ -3458,14 +3410,15 @@
       ]
     },
     {
-      "usage": "条件形、辞書形＋ほど",
+      "usage": "「条件形」「辞書形」 ほど",
       "meaning": "more of a specifc thing; the more ___, the more",
       "level": "",
       "tags": [
         "explanation",
         "conditional",
         "fixed-expression",
-        "辞書形"
+        "辞書形",
+        "条件形"
       ],
       "notes": "",
       "examples": [
@@ -3482,7 +3435,7 @@
       ]
     },
     {
-      "usage": "N(＋助詞)＋でも",
+      "usage": "〜でも",
       "meaning": "gives a single example, ignoring the other options",
       "level": "",
       "tags": [
@@ -3505,7 +3458,7 @@
       ]
     },
     {
-      "usage": "こんな・そんな・あんな・どんな＋N",
+      "usage": "（こんな・そんな・あんな・どんな）N",
       "meaning": "that / this / what kind of; like みたい and のような",
       "level": "",
       "tags": [
@@ -3522,7 +3475,7 @@
       ]
     },
     {
-      "usage": "こんな・そんな・あんな・どんな・こういう・そういう・ああいう・どういう＋ふうに",
+      "usage": "（こんな・そんな・あんな・どんな・こういう・そういう・ああいう・どういう）ふうに",
       "meaning": "that kind of style; similiar to ように and みたいに",
       "level": "",
       "tags": [
@@ -3538,7 +3491,7 @@
       ]
     },
     {
-      "usage": "普通形＋ことで",
+      "usage": "〜ことで",
       "meaning": "due to this specific thing",
       "level": "",
       "tags": [
@@ -3556,7 +3509,7 @@
       ]
     },
     {
-      "usage": "文＋なあ",
+      "usage": "〜なあ",
       "meaning": "letting someone know your personal thoughts; wondering out loud",
       "level": "",
       "tags": [
@@ -3583,7 +3536,7 @@
       ]
     },
     {
-      "usage": "(辞書形|ナイ形)＋こと(が|も)ある",
+      "usage": "〜こと（が・も）ある",
       "meaning": "this happens, sometimes this happens, this is possible",
       "level": "",
       "tags": [
@@ -3607,7 +3560,7 @@
       ]
     },
     {
-      "usage": "N＋にとって",
+      "usage": "〜にとって",
       "meaning": "something thats true for someone; specific opinions/facts",
       "level": "",
       "tags": [
@@ -3625,7 +3578,7 @@
       ]
     },
     {
-      "usage": "普通形＋ことだし",
+      "usage": "〜ことだし",
       "meaning": "many reasons exist, but this one is good enough; since ___, ___",
       "level": "",
       "tags": [
@@ -3648,7 +3601,7 @@
       ]
     },
     {
-      "usage": "テ形＋くれない",
+      "usage": "〜くれない",
       "meaning": "won't you do it for me?",
       "level": "",
       "tags": [
@@ -3666,7 +3619,7 @@
       ]
     },
     {
-      "usage": "普通形＋んじゃない",
+      "usage": "〜んじゃない",
       "meaning": "i think this, don't you?",
       "level": "",
       "tags": [
@@ -3688,7 +3641,7 @@
       ]
     },
     {
-      "usage": "お/ご＋ます/する＋です",
+      "usage": "（お・ご）（ます・する）です",
       "meaning": "creating keigo from nouns",
       "level": "",
       "tags": [
@@ -3709,7 +3662,7 @@
       ]
     },
     {
-      "usage": "普通形＋場合",
+      "usage": "〜場合",
       "meaning": "describing a situation, case, circumstance",
       "level": "",
       "tags": [
@@ -3726,7 +3679,7 @@
       ]
     },
     {
-      "usage": "ナイ形＋ことには＋ナイ形",
+      "usage": "〜ことには〜",
       "meaning": "without this, it's impossible or difficult",
       "level": "",
       "tags": [
@@ -3744,13 +3697,14 @@
       ]
     },
     {
-      "usage": "たいことがあるんですが",
+      "usage": "〜たいことがあるんですが",
       "meaning": "polite way of asking for something, asking if it exists",
       "level": "",
       "tags": [
         "polite",
         "question-form",
-        "fixed-expression"
+        "fixed-expression",
+        "マス形"
       ],
       "notes": "",
       "examples": [
@@ -3767,13 +3721,14 @@
       ]
     },
     {
-      "usage": "意向形＋とする",
+      "usage": "〜とする",
       "meaning": "try to, attempt to",
       "level": "",
       "tags": [
         "description",
         "fixed-expression",
-        "conjunctive"
+        "conjunctive",
+        "意向形"
       ],
       "notes": "",
       "examples": [
@@ -3785,7 +3740,7 @@
       ]
     },
     {
-      "usage": "(みたい|よう)＋なんですが",
+      "usage": "（みたい・よう）なんですが",
       "meaning": "politely informing something you noticed",
       "level": "",
       "tags": [
@@ -3808,13 +3763,12 @@
       ]
     },
     {
-      "usage": "テ形＋いただきたいんですが",
+      "usage": "〜いただきたいんですが",
       "meaning": "polite way of asking for a favor or help",
       "level": "",
       "tags": [
         "polite",
         "giving-receiving",
-        "fixed-expression",
         "テ形"
       ],
       "notes": "",
@@ -3832,7 +3786,7 @@
       ]
     },
     {
-      "usage": "辞書形＋には",
+      "usage": "〜には",
       "meaning": "in order to",
       "level": "",
       "tags": [
@@ -3883,7 +3837,7 @@
       ]
     },
     {
-      "usage": "マス形＋次第",
+      "usage": "〜次第",
       "meaning": "as soon as (involves speakers will)",
       "level": "",
       "tags": [
@@ -3906,7 +3860,7 @@
       ]
     },
     {
-      "usage": "(辞書形|N＋の)＋途中",
+      "usage": "〜途中",
       "meaning": "in the middle of; on the way",
       "level": "",
       "tags": [
@@ -3916,7 +3870,7 @@
         "辞書形",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "nouns need the の",
       "examples": [
         {
           "japanese": "学校から渋谷駅向かう途中で、急に雨が降ったきた",
@@ -3931,7 +3885,7 @@
       ]
     },
     {
-      "usage": "N＋を＋N＋として",
+      "usage": "〜を〜として",
       "meaning": "as a ___; ___ being used as a ___",
       "level": "",
       "tags": [
@@ -3954,7 +3908,7 @@
       ]
     },
     {
-      "usage": "N＋を背にして",
+      "usage": "〜を背にして",
       "meaning": "with your back facing (used for directions)",
       "level": "",
       "tags": [
@@ -3973,7 +3927,7 @@
       ]
     },
     {
-      "usage": "N＋に沿って",
+      "usage": "〜に沿って",
       "meaning": "along; in accordance with",
       "level": "",
       "tags": [
@@ -3991,7 +3945,7 @@
       ]
     },
     {
-      "usage": "N＋によって",
+      "usage": "〜によって",
       "meaning": "depending on or according to",
       "level": "",
       "tags": [
@@ -4009,7 +3963,7 @@
       ]
     },
     {
-      "usage": "(普通形|N＋の)＋恐れがある",
+      "usage": "〜恐れがある",
       "meaning": "there is a risk that",
       "level": "",
       "tags": [
@@ -4017,7 +3971,7 @@
         "普通形",
         "noun-modifier"
       ],
-      "notes": "...",
+      "notes": "noun uses の",
       "examples": [
         {
           "japanese": "今夜から明日にかけて東日本で大雪の恐れがある",
@@ -4032,14 +3986,14 @@
       ]
     },
     {
-      "usage": "マス形＋そうにないんですが",
+      "usage": "〜そうにないんですが",
       "meaning": "its unlikely that",
       "level": "",
       "tags": [
-        "fixed-expression",
+        "likelihood",
         "マス形"
       ],
-      "notes": "...",
+      "notes": "",
       "examples": [
         {
           "japanese": "店長、電車が止まっているので、アルバイトの時間に合いそうにないんですが",
@@ -4049,7 +4003,7 @@
       ]
     },
     {
-      "usage": "文＋とか",
+      "usage": "〜とか",
       "meaning": "heard this or something like that",
       "level": "",
       "tags": [
@@ -4066,7 +4020,7 @@
       ]
     },
     {
-      "usage": "テ形＋しまったようなんです",
+      "usage": "〜しまったようなんです",
       "meaning": "it seems this may have happened",
       "level": "",
       "tags": [
@@ -4085,7 +4039,7 @@
       ]
     },
     {
-      "usage": "(辞書形|ている|タ形|イA)＋ところ(に|を)",
+      "usage": "〜ところ（に・を）",
       "meaning": "time/place where something was discovered (short time); を implies another person",
       "level": "",
       "tags": [
@@ -4095,7 +4049,8 @@
         "spatial",
         "辞書形",
         "タ形",
-        "イ形容詞"
+        "テ形いる",
+        "i-adjective-modifier"
       ],
       "notes": "",
       "examples": [
@@ -4112,7 +4067,7 @@
       ]
     },
     {
-      "usage": "(辞書形|N)＋につれて",
+      "usage": "〜につれて",
       "meaning": "as, along with ___",
       "level": "",
       "tags": [
@@ -4135,7 +4090,7 @@
       ]
     },
     {
-      "usage": "(辞書形|ナイ形)＋ものだ",
+      "usage": "〜ものだ",
       "meaning": "should be; this type of thing",
       "level": "",
       "tags": [
@@ -4158,7 +4113,7 @@
       ]
     },
     {
-      "usage": "(辞書形|タ形|N＋の)＋通りに",
+      "usage": "〜通りに",
       "meaning": "in line with; exactly/precisely this",
       "level": "",
       "tags": [
@@ -4167,7 +4122,7 @@
         "タ形",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "nouns need the の",
       "examples": [
         {
           "japanese": "先生の指示の通りに避難してください",
@@ -4187,7 +4142,7 @@
       ]
     },
     {
-      "usage": "(辞書形|タ形)＋際に",
+      "usage": "〜際に",
       "meaning": "when this happens, but less regular than using 時",
       "level": "",
       "tags": [
@@ -4206,7 +4161,7 @@
       ]
     },
     {
-      "usage": "(辞書形|ナイ形|N＋の)＋こと",
+      "usage": "〜こと",
       "meaning": "this is specifically a command to do something",
       "level": "",
       "tags": [
@@ -4216,7 +4171,7 @@
         "ナイ形",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "nouns need the の",
       "examples": [
         {
           "japanese": "避難の際は、エレベーターを使用しないこと",
@@ -4231,7 +4186,7 @@
       ]
     },
     {
-      "usage": "(タ形|ナイ形|イAい|ナAな|N＋の)＋まま",
+      "usage": "〜まま",
       "meaning": "left as is",
       "level": "",
       "tags": [
@@ -4239,11 +4194,11 @@
         "description",
         "タ形",
         "ナイ形",
-        "イ形容詞",
-        "ナ形容詞",
+        "i-adjective-modifier",
+        "na-adjective-modifer",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "nouns need the の, noun adjective needs the な",
       "examples": [
         {
           "japanese": "新幹線が混んでいて、東京から大阪までずっと立ったままだ",
@@ -4258,7 +4213,7 @@
       ]
     },
     {
-      "usage": "N＋だらけ",
+      "usage": "〜だらけ",
       "meaning": "to be covered in something; slightly negative feeling",
       "level": "",
       "tags": [
@@ -4280,7 +4235,7 @@
       ]
     },
     {
-      "usage": "N＋(に囲まれている|に囲まれた＋N)",
+      "usage": "〜に（囲まれている・囲まれた）〜",
       "meaning": "to be completely enclosed by; surrounded by",
       "level": "",
       "tags": [
@@ -4303,7 +4258,7 @@
       ]
     },
     {
-      "usage": "N＋をしめる",
+      "usage": "〜をしめる",
       "meaning": "made up of; consists of; is covered by",
       "level": "",
       "tags": [
@@ -4325,7 +4280,7 @@
       ]
     },
     {
-      "usage": "(マス形|N)＋がち",
+      "usage": "〜がち",
       "meaning": "mostly; tending towards but in a negative way",
       "level": "",
       "tags": [
@@ -4348,7 +4303,7 @@
       ]
     },
     {
-      "usage": "N＋に比べて",
+      "usage": "〜に比べて",
       "meaning": "comparisons; use と instead for direct opposites",
       "level": "",
       "tags": [
@@ -4370,7 +4325,7 @@
       ]
     },
     {
-      "usage": "N＋に備えて",
+      "usage": "〜に備えて",
       "meaning": "in preparation of",
       "level": "",
       "tags": [
@@ -4388,7 +4343,7 @@
       ]
     },
     {
-      "usage": "N＋に代わって",
+      "usage": "〜に代わって",
       "meaning": "in place of; in substitute of",
       "level": "",
       "tags": [
@@ -4407,7 +4362,7 @@
       ]
     },
     {
-      "usage": "N＋のような",
+      "usage": "〜のような",
       "meaning": "this type of; is like a",
       "level": "",
       "tags": [
@@ -4430,7 +4385,7 @@
       ]
     },
     {
-      "usage": "N＋として",
+      "usage": "〜として",
       "meaning": "as a ___",
       "level": "",
       "tags": [
@@ -4448,7 +4403,7 @@
       ]
     },
     {
-      "usage": "(辞書形|ナイ形|A|N)＋に限る",
+      "usage": "〜に限る",
       "meaning": "this specific point marks something as the BEST; limited to ___",
       "level": "",
       "tags": [
@@ -4456,7 +4411,8 @@
         "conditional",
         "辞書形",
         "ナイ形",
-        "noun-modifier"
+        "noun-modifier",
+        "adjective-modifer"
       ],
       "notes": "",
       "examples": [
@@ -4473,7 +4429,7 @@
       ]
     },
     {
-      "usage": "N＋を中心に(して)",
+      "usage": "〜を中心に（して）",
       "meaning": "mainly; focused on; centered on",
       "level": "",
       "tags": [
@@ -4495,7 +4451,7 @@
       ]
     },
     {
-      "usage": "N＋をはじめ",
+      "usage": "〜をはじめ",
       "meaning": "starting with; mostly as an example rather than literally time based",
       "level": "",
       "tags": [
@@ -4519,7 +4475,7 @@
       ]
     },
     {
-      "usage": "N＋を通して",
+      "usage": "〜を通して",
       "meaning": "throughout (time); via (tool)",
       "level": "",
       "tags": [
@@ -4543,7 +4499,7 @@
       ]
     },
     {
-      "usage": "普通形＋ことから",
+      "usage": "〜ことから",
       "meaning": "because of",
       "level": "",
       "tags": [
@@ -4563,7 +4519,7 @@
       ]
     },
     {
-      "usage": "(N|普通形)＋といえば",
+      "usage": "〜といえば",
       "meaning": "speaking of; if it's ___ we're talking about",
       "level": "",
       "tags": [
@@ -4587,7 +4543,7 @@
       ]
     },
     {
-      "usage": "(辞書形|N)＋どころじゃない",
+      "usage": "〜どころじゃない",
       "meaning": "not the time for; out of the question",
       "level": "",
       "tags": [
@@ -4611,7 +4567,7 @@
       ]
     },
     {
-      "usage": "タ形＋ところ",
+      "usage": "〜ところ",
       "meaning": "once discovered",
       "level": "",
       "tags": [
@@ -4630,7 +4586,7 @@
       ]
     },
     {
-      "usage": "(辞書形|ナイ形|イAーい|Nという)＋ことになった",
+      "usage": "〜ことになった",
       "meaning": "something decided by someone else, or everyone (not just you)",
       "level": "",
       "tags": [
@@ -4639,10 +4595,10 @@
         "nominalization",
         "辞書形",
         "ナイ形",
-        "イ形容詞",
+        "i-adjective-modifier",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun needs という, イA needs to remove the い",
       "examples": [
         {
           "japanese": "みんなで相談して、バーベキューは７００円という位ことになった",
@@ -4657,7 +4613,7 @@
       ]
     },
     {
-      "usage": "普通形＋限り",
+      "usage": "〜限り",
       "meaning": "as long as, always the same; limited to this exactly",
       "level": "",
       "tags": [
@@ -4696,16 +4652,17 @@
       ]
     },
     {
-      "usage": "(普通形|N or A ＋である)＋にしては",
+      "usage": "〜にしては",
       "meaning": "considering this; for something thats this; opposite of expectation; more specific than の割りに",
       "level": "",
       "tags": [
         "description",
         "conjunctive",
         "普通形",
-        "noun-modifier"
+        "noun-modifier",
+        "adjective-modifer"
       ],
-      "notes": "",
+      "notes": "A needs である",
       "examples": [
         {
           "japanese": "このアパートは便利なところにあるにしては、値段が安い",
@@ -4720,7 +4677,7 @@
       ]
     },
     {
-      "usage": "数量詞１＋につき＋数量詞２",
+      "usage": "数量詞 につき 数量詞",
       "meaning": "every",
       "level": "",
       "tags": [
@@ -4736,13 +4693,14 @@
       ]
     },
     {
-      "usage": "(普通形|A)＋(ものだ|もんだ)",
+      "usage": "〜（ものだ・もんだ）",
       "meaning": "it's a ___ thing; obvious summary",
       "level": "",
       "tags": [
         "description",
         "comparative",
-        "普通形"
+        "普通形",
+        "adjective-modifier"
       ],
       "notes": "",
       "examples": [
@@ -4759,7 +4717,7 @@
       ]
     },
     {
-      "usage": "(マス形|ナイ形|イA|N＋であり)＋ながらも",
+      "usage": "〜ながらも",
       "meaning": "even while",
       "level": "",
       "tags": [
@@ -4767,10 +4725,10 @@
         "conjunctive",
         "マス形",
         "ナイ形",
-        "イ形容詞",
+        "i-adjective-modifier",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun needs である",
       "examples": [
         {
           "japanese": "試験の前の日、勉強しなきゃと思いながらも、テレビを見ちゃった",
@@ -4785,7 +4743,7 @@
       ]
     },
     {
-      "usage": "辞書形＋につけ",
+      "usage": "〜につけ",
       "meaning": "every time; related to feelings only; NOT actions",
       "level": "",
       "tags": [
@@ -4803,7 +4761,7 @@
       ]
     },
     {
-      "usage": "(N|N＋に|N＋で)＋さえ",
+      "usage": "〜（に・で）さえ",
       "meaning": "even ___ (a limit not hit)",
       "level": "",
       "tags": [
@@ -4826,7 +4784,7 @@
       ]
     },
     {
-      "usage": "N＋に反して",
+      "usage": "〜に反して",
       "meaning": "contrary to; opposite to; opposite of 通り",
       "level": "",
       "tags": [
@@ -4844,7 +4802,7 @@
       ]
     },
     {
-      "usage": "(辞書形|ている形|ナイ形)＋うちに",
+      "usage": "〜うちに",
       "meaning": "while/during something remaining unchanged",
       "level": "",
       "tags": [
@@ -4852,6 +4810,7 @@
         "change",
         "conjunctive",
         "辞書形",
+        "テ形いる",
         "ナイ形"
       ],
       "notes": "",
@@ -4864,7 +4823,7 @@
       ]
     },
     {
-      "usage": "N＋からして",
+      "usage": "〜からして",
       "meaning": "objective opinion based on; judging from",
       "level": "",
       "tags": [
@@ -4888,7 +4847,7 @@
       ]
     },
     {
-      "usage": "＋のことなんですが",
+      "usage": "〜のことなんですが",
       "meaning": "polite introduction to a topic",
       "level": "",
       "tags": [
@@ -4930,17 +4889,16 @@
       ]
     },
     {
-      "usage": "(普通形|N＋な)＋(ものですから|ものだから|もので)",
+      "usage": "〜（ものですから・ものだから・もので）",
       "meaning": "explain or give excuses for a certain action",
       "level": "",
       "tags": [
-        "fixed-expression",
         "conjunctive",
         "description",
         "普通形",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun needs the な",
       "examples": [
         {
           "japanese": "手帳に書かなかったもので、ゴミの曜日がよく分からなかったんです",
@@ -4955,7 +4913,7 @@
       ]
     },
     {
-      "usage": "N＋(の代わりに|に代わって)",
+      "usage": "〜（の代わりに・に代わって）",
       "meaning": "in place of; in substitute of",
       "level": "",
       "tags": [
@@ -4978,7 +4936,7 @@
       ]
     },
     {
-      "usage": "普通形＋おかげで",
+      "usage": "〜おかげで",
       "meaning": "thanks to, in a positive way",
       "level": "",
       "tags": [
@@ -5001,7 +4959,7 @@
       ]
     },
     {
-      "usage": "普通形＋くせに",
+      "usage": "〜くせに",
       "meaning": "even though; despite",
       "level": "",
       "tags": [
@@ -5019,7 +4977,7 @@
       ]
     },
     {
-      "usage": "普通形＋せいで",
+      "usage": "〜せいで",
       "meaning": "thanks to, in a blaming way",
       "level": "",
       "tags": [
@@ -5042,7 +5000,7 @@
       ]
     },
     {
-      "usage": "普通形＋にきまっている",
+      "usage": "〜にきまっている",
       "meaning": "surely bound to; certainly",
       "level": "",
       "tags": [
@@ -5065,7 +5023,7 @@
       ]
     },
     {
-      "usage": "使役形: 「あ」せる",
+      "usage": "「あ」せる",
       "meaning": "causative verb from; make, let, cause",
       "level": "",
       "tags": [
@@ -5082,7 +5040,7 @@
       ]
     },
     {
-      "usage": "辞書形＋ことはない",
+      "usage": "〜ことはない",
       "meaning": "there's no need to",
       "level": "",
       "tags": [
@@ -5105,7 +5063,7 @@
       ]
     },
     {
-      "usage": "N＋のことになると",
+      "usage": "〜のことになると",
       "meaning": "if it becomes this topic of conversation",
       "level": "",
       "tags": [
@@ -5123,7 +5081,7 @@
       ]
     },
     {
-      "usage": "N＋(にしたら|にすれば|にしてみたら)",
+      "usage": "〜（にしたら・にすれば・にしてみたら）",
       "meaning": "from the point of view of",
       "level": "",
       "tags": [
@@ -5142,7 +5100,7 @@
       ]
     },
     {
-      "usage": "(辞書形|N＋の)＋たびに",
+      "usage": "〜たびに",
       "meaning": "every time",
       "level": "",
       "tags": [
@@ -5150,7 +5108,7 @@
         "辞書形",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun needs to の",
       "examples": [
         {
           "japanese": "１２月になるたびに、家族を思い出します",
@@ -5160,14 +5118,14 @@
       ]
     },
     {
-      "usage": "(ば|なら|たら)。。。たのに",
+      "usage": "（ば・なら・たら）〜たのに",
       "meaning": "if it was ___ then ___, but",
       "level": "",
       "tags": [
         "conditional",
         "negation"
       ],
-      "notes": "...",
+      "notes": "",
       "examples": [
         {
           "japanese": "時間があったら、テストが全部できたのに、時間が足りなくて、できなかった",
@@ -5177,11 +5135,10 @@
       ]
     },
     {
-      "usage": "マス形＋がたい",
+      "usage": "〜がたい",
       "meaning": "difficult or hard to do; not related to personal abilities",
       "level": "",
       "tags": [
-        "stem-combo",
         "negation",
         "マス形"
       ],
@@ -5200,7 +5157,7 @@
       ]
     },
     {
-      "usage": "普通形＋ように",
+      "usage": "〜ように",
       "meaning": "exactly like; note that 同じ is a special conjugation",
       "level": "",
       "tags": [
@@ -5228,7 +5185,7 @@
       ]
     },
     {
-      "usage": "(辞書形|N)＋とともに",
+      "usage": "〜とともに",
       "meaning": "together at same time (not caused by one though)",
       "level": "",
       "tags": [
@@ -5251,7 +5208,7 @@
       ]
     },
     {
-      "usage": "N＋をもとに",
+      "usage": "〜をもとに",
       "meaning": "based on",
       "level": "",
       "tags": [
@@ -5275,7 +5232,7 @@
       ]
     },
     {
-      "usage": "普通形＋(でしょう|だろう)",
+      "usage": "〜（でしょう・だろう）",
       "meaning": "isn't it?",
       "level": "",
       "tags": [
@@ -5294,7 +5251,7 @@
       ]
     },
     {
-      "usage": "文＋っけ",
+      "usage": "〜っけ",
       "meaning": "what was it",
       "level": "",
       "tags": [
@@ -5303,7 +5260,7 @@
         "certainty",
         "questions"
       ],
-      "notes": "...; wondering to yourself but outloud",
+      "notes": "wondering to yourself but outloud",
       "examples": [
         {
           "japanese": "休みって、いつまでだったっけ？",
@@ -5318,7 +5275,7 @@
       ]
     },
     {
-      "usage": "普通形＋(と言うわけだ|わけだ)",
+      "usage": "〜（と言うわけだ・わけだ）",
       "meaning": "that's why; that's why it's said; that's why it's called",
       "level": "",
       "tags": [
@@ -5342,7 +5299,7 @@
       ]
     },
     {
-      "usage": "マス形＋っこない",
+      "usage": "〜っこない",
       "meaning": "an action is impossible, no way it will happen",
       "level": "",
       "tags": [
@@ -5366,8 +5323,8 @@
       ]
     },
     {
-      "usage": "普通形＋(もん|だもん)",
-      "meaning": "because of",
+      "usage": "〜（もん・だもん）",
+      "meaning": "because of; it's a ___ thing; giving a reason",
       "level": "",
       "tags": [
         "description",
@@ -5375,7 +5332,7 @@
         "childish",
         "普通形"
       ],
-      "notes": "...; it's a ___ thing; giving a reason",
+      "notes": "",
       "examples": [
         {
           "japanese": "どうして買わないの？だから、高すぎるんだもん！",
@@ -5385,7 +5342,7 @@
       ]
     },
     {
-      "usage": "普通形＋(ほど|ぐらい|くらい)",
+      "usage": "〜（ほど・ぐらい・くらい）",
       "meaning": "something done to the extent that ___ happens",
       "level": "",
       "tags": [
@@ -5408,7 +5365,7 @@
       ]
     },
     {
-      "usage": "辞書形＋ところだった",
+      "usage": "〜ところだった",
       "meaning": "almost; on the verge of; about to",
       "level": "",
       "tags": [
@@ -5427,7 +5384,7 @@
       ]
     },
     {
-      "usage": "テ形＋たまらない",
+      "usage": "〜たまらない",
       "meaning": "can't help but to ___",
       "level": "",
       "tags": [
@@ -5449,7 +5406,7 @@
       ]
     },
     {
-      "usage": "普通形＋(わけではない|と言うわけではない)",
+      "usage": "〜（わけではない・と言うわけではない）",
       "meaning": "that's NOT the reason; that's NOT why",
       "level": "",
       "tags": [
@@ -5468,7 +5425,7 @@
       ]
     },
     {
-      "usage": "普通形＋(くらい|ぐらい)",
+      "usage": "〜（くらい・ぐらい）",
       "meaning": "small thing; about ___ much; close to",
       "level": "",
       "tags": [
@@ -5486,7 +5443,7 @@
       ]
     },
     {
-      "usage": "N＋といったら",
+      "usage": "〜といったら",
       "meaning": "can not express how; don't confuse with other いったら forms",
       "level": "",
       "tags": [
@@ -5509,7 +5466,7 @@
       ]
     },
     {
-      "usage": "とても＋ナイ形",
+      "usage": "とても〜",
       "meaning": "not at all; cannot possibly",
       "level": "",
       "tags": [
@@ -5532,7 +5489,7 @@
       ]
     },
     {
-      "usage": "N＋(はもちろん|はもとより)",
+      "usage": "〜（はもちろん・はもとより）",
       "meaning": "of course this",
       "level": "",
       "tags": [
@@ -5556,12 +5513,13 @@
       ]
     },
     {
-      "usage": "使役形＋いただきます",
+      "usage": "〜いただきます",
       "meaning": "polite way to express your pleasure of doing something",
       "level": "",
       "tags": [
         "polite",
-        "sentence-final"
+        "sentence-final",
+        "使役形"
       ],
       "notes": "",
       "examples": [
@@ -5573,7 +5531,7 @@
       ]
     },
     {
-      "usage": "(ご＋N|お＋マス形)＋いたします",
+      "usage": "（ご〜・お〜）いたします",
       "meaning": "polite speech for your own actions",
       "level": "",
       "tags": [
@@ -5598,14 +5556,16 @@
       ]
     },
     {
-      "usage": "(タ形|ている形|A|N)＋つもりだ",
+      "usage": "〜つもりだ",
       "meaning": "think something but it turned out differently",
       "level": "",
       "tags": [
         "change",
         "contrast",
         "タ形",
-        "noun-modifier"
+        "noun-modifier",
+        "テ形いる",
+        "adjective-modifier"
       ],
       "notes": "",
       "examples": [
@@ -5617,7 +5577,7 @@
       ]
     },
     {
-      "usage": "(N＋の|A＋な|普通形)＋ように思う",
+      "usage": "〜ように思う",
       "meaning": "politely point out you thought something but aren't sure",
       "level": "",
       "tags": [
@@ -5625,9 +5585,10 @@
         "contrast",
         "fixed-expression",
         "普通形",
-        "noun-modifier"
+        "noun-modifier",
+        "na-adjective-modifer"
       ],
-      "notes": "",
+      "notes": "nouns need the の, noun adjective needs the な",
       "examples": [
         {
           "japanese": "東口の前に無くしたように思うんですが、はっきりと覚えていないんです",
@@ -5637,13 +5598,12 @@
       ]
     },
     {
-      "usage": "テ形＋おります",
+      "usage": "〜おります",
       "meaning": "this is just basic self polite speech for ています",
       "level": "",
       "tags": [
         "humble-honorific",
         "polite",
-        "basic-verb-forms",
         "テ形"
       ],
       "notes": "",
@@ -5656,7 +5616,7 @@
       ]
     },
     {
-      "usage": "マス形＋かねます",
+      "usage": "〜かねます",
       "meaning": "personal opinion that you cannot do something",
       "level": "",
       "tags": [
@@ -5675,12 +5635,13 @@
       ]
     },
     {
-      "usage": "(タ形|いA|A＋な)＋ことに",
+      "usage": "〜ことに",
       "meaning": "extremely or especially; think とても",
       "level": "",
       "tags": [
         "limitation",
-        "タ形"
+        "タ形",
+        "adjective-modifier"
       ],
       "notes": "",
       "examples": [
@@ -5692,7 +5653,7 @@
       ]
     },
     {
-      "usage": "普通形＋だけあって",
+      "usage": "〜だけあって",
       "meaning": "as one would expect; it's natural that",
       "level": "",
       "tags": [
@@ -5710,7 +5671,7 @@
       ]
     },
     {
-      "usage": "(辞書形|タ形|N＋の)＋ついでに",
+      "usage": "〜ついでに",
       "meaning": "while you're at it",
       "level": "",
       "tags": [
@@ -5720,7 +5681,7 @@
         "タ形",
         "noun-modifier"
       ],
-      "notes": "...",
+      "notes": "nouns need the の",
       "examples": [
         {
           "japanese": "コンビニへ行くついでに、この手紙をポストに入れてきてくれない",
@@ -5736,7 +5697,8 @@
       "tags": [
         "description",
         "explanation",
-        "quotation"
+        "quotation",
+        "fixed-expression"
       ],
       "notes": "",
       "examples": [
@@ -5753,7 +5715,7 @@
       ]
     },
     {
-      "usage": "N＋に対して",
+      "usage": "〜に対して",
       "meaning": "towards; compared to; whereas",
       "level": "",
       "tags": [
@@ -5775,7 +5737,7 @@
       ]
     },
     {
-      "usage": "普通形＋(ものの|とは言うものの)",
+      "usage": "〜（ものの・とは言うものの）",
       "meaning": "although; even though",
       "level": "",
       "tags": [
@@ -5793,7 +5755,7 @@
       ]
     },
     {
-      "usage": "普通形＋と言っても",
+      "usage": "〜と言っても",
       "meaning": "even though (it is said)",
       "level": "",
       "tags": [
@@ -5812,7 +5774,7 @@
       ]
     },
     {
-      "usage": "N＋とは＋普通形＋(ことだ|と言うことだ)",
+      "usage": "〜とは〜（ことだ・と言うことだ）",
       "meaning": "defining something",
       "level": "",
       "tags": [
@@ -5832,7 +5794,7 @@
       ]
     },
     {
-      "usage": "普通形＋(にしても|にしろ|にせよ)",
+      "usage": "〜（にしても・にしろ・にせよ）",
       "meaning": "even if it's ___; even though it's ___; some opposite thing",
       "level": "",
       "tags": [
@@ -5850,7 +5812,7 @@
       ]
     },
     {
-      "usage": "マス形＋つつある",
+      "usage": "〜つつある",
       "meaning": "in the process of; while; -ing",
       "level": "",
       "tags": [
@@ -5874,7 +5836,7 @@
       ]
     },
     {
-      "usage": "(タ形|N＋の)＋結果",
+      "usage": "〜結果",
       "meaning": "as a result of",
       "level": "",
       "tags": [
@@ -5882,7 +5844,7 @@
         "タ形",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "nouns need the の",
       "examples": [
         {
           "japanese": "川の水が減った結果、魚がいなくなってしまった",
@@ -5892,7 +5854,7 @@
       ]
     },
     {
-      "usage": "マス形＋づらい",
+      "usage": "〜づらい",
       "meaning": "difficult to do something",
       "level": "",
       "tags": [
@@ -5910,7 +5872,7 @@
       ]
     },
     {
-      "usage": "普通形＋んだから",
+      "usage": "〜んだから",
       "meaning": "giving a reason for something you feel someone should already know; of course it's ___",
       "level": "",
       "tags": [
@@ -5929,7 +5891,7 @@
       ]
     },
     {
-      "usage": "N＋(からすると|からすれば|から見ると|から見れば)",
+      "usage": "〜（からすると・からすれば・から見ると・から見れば）",
       "meaning": "from the point of view of; analytic/observational",
       "level": "",
       "tags": [
@@ -5949,7 +5911,7 @@
       ]
     },
     {
-      "usage": "普通形＋と言うより",
+      "usage": "〜と言うより",
       "meaning": "rather than saying ___, ___",
       "level": "",
       "tags": [
@@ -5987,7 +5949,7 @@
       ]
     },
     {
-      "usage": "普通形＋(にしても|にしろ|にせよ)＋普通形＋(にしても|にしろ|にせよ)",
+      "usage": "〜（にしても・にしろ・にせよ）〜（にしても・にしろ・にせよ）",
       "meaning": "whether it's ___ or ___; regardless if its ___ or ___",
       "level": "",
       "tags": [
@@ -6005,7 +5967,7 @@
       ]
     },
     {
-      "usage": "辞書形＋(ばかりだ|一方だ)",
+      "usage": "〜（ばかりだ・一方だ）",
       "meaning": "only keeps on ___ ing; keeps ___ ing",
       "level": "",
       "tags": [
@@ -6029,7 +5991,7 @@
       ]
     },
     {
-      "usage": "(マス形|N)＋気味",
+      "usage": "〜気味",
       "meaning": "a little bit; 少し",
       "level": "",
       "tags": [
@@ -6054,7 +6016,7 @@
       ]
     },
     {
-      "usage": "普通形＋からと言って",
+      "usage": "〜からと言って",
       "meaning": "just because",
       "level": "",
       "tags": [
@@ -6077,7 +6039,7 @@
       ]
     },
     {
-      "usage": "N＋に応じて",
+      "usage": "〜に応じて",
       "meaning": "based on; judging from (when both things are changing)",
       "level": "",
       "tags": [
@@ -6096,14 +6058,15 @@
       ]
     },
     {
-      "usage": "(マス形＋さえ＋すれば)・(N＋さえ＋条件形)・(Aく・Aで・Nで＋さえ＋あれば)",
+      "usage": "(V さえすれば)・(N さえ条件形)・(A さえあれば)",
       "meaning": "if only ___; as long as ___; さえ is a limiter",
       "level": "",
       "tags": [
         "limitation",
         "conditional",
         "マス形",
-        "noun-modifier"
+        "noun-modifier",
+        "adjective-modifier"
       ],
       "notes": "",
       "examples": [
@@ -6150,7 +6113,7 @@
       ]
     },
     {
-      "usage": "N＋(に対して|に対する)",
+      "usage": "〜（に対して・に対する）",
       "meaning": "in regards to, towardss",
       "level": "",
       "tags": [
@@ -6167,15 +6130,14 @@
       ]
     },
     {
-      "usage": "(辞書形|イA|ナA)＋やら",
+      "usage": "〜やら",
       "meaning": "things like; whether ___ or ___",
       "level": "",
       "tags": [
         "enumeration",
         "similiarity",
         "辞書形",
-        "イ形容詞",
-        "ナ形容詞"
+        "adjective-modifier"
       ],
       "notes": "",
       "examples": [
@@ -6192,14 +6154,14 @@
       ]
     },
     {
-      "usage": "N＋(なんて|なんか|など)",
+      "usage": "〜（なんて・なんか・など）",
       "meaning": "such as, things like this, etc",
       "level": "",
       "tags": [
         "enumeration",
         "noun-modifier"
       ],
-      "notes": ".",
+      "notes": "",
       "examples": [
         {
           "japanese": "スキーなんて難しい、ちょっと練習すれば、すぐできるようになるよ",
@@ -6209,7 +6171,7 @@
       ]
     },
     {
-      "usage": "１助数詞＋として。。。ない",
+      "usage": "１助数詞〜として〜ない",
       "meaning": "not a single one",
       "level": "",
       "tags": [
@@ -6226,7 +6188,7 @@
       ]
     },
     {
-      "usage": "普通形＋と言うものだ",
+      "usage": "〜と言うものだ",
       "meaning": "impression that; criticism/conclusion, this sort of thing",
       "level": "",
       "tags": [
@@ -6245,7 +6207,7 @@
       ]
     },
     {
-      "usage": "普通形＋とは限らない",
+      "usage": "〜とは限らない",
       "meaning": "no guarantee that; not limited to",
       "level": "",
       "tags": [
@@ -6263,7 +6225,7 @@
       ]
     },
     {
-      "usage": "N＋とともに",
+      "usage": "〜とともに",
       "meaning": "together with; at the same time",
       "level": "",
       "tags": [
@@ -6281,7 +6243,7 @@
       ]
     },
     {
-      "usage": "辞書形＋しかない",
+      "usage": "〜しかない",
       "meaning": "no choice but; only",
       "level": "",
       "tags": [
@@ -6299,7 +6261,7 @@
       ]
     },
     {
-      "usage": "ナイ形＋ではいられない",
+      "usage": "〜ではいられない",
       "meaning": "can't help but to ___; cannot resist",
       "level": "",
       "tags": [
@@ -6324,7 +6286,7 @@
       ]
     },
     {
-      "usage": "普通形(ナAな|ナAである|Nである)＋一方(で)",
+      "usage": "〜一方（で）",
       "meaning": "meanwhile; on the other hand",
       "level": "",
       "tags": [
@@ -6334,9 +6296,9 @@
         "普通形",
         "ナ形容詞",
         "noun-modifier",
-        "noun-copula"
+        "na-adjective-modifier"
       ],
-      "notes": "",
+      "notes": "noun needs である, adjective can use な or である",
       "examples": [
         {
           "japanese": "東京の気候は、夏は蒸し暑い一方で、冬は乾燥する",
@@ -6346,7 +6308,7 @@
       ]
     },
     {
-      "usage": "「あ」＋(せられる|される)",
+      "usage": "「あ」せられる・「あ」される",
       "meaning": "to be caused by; に is the causer",
       "level": "",
       "tags": [
@@ -6363,7 +6325,7 @@
       ]
     },
     {
-      "usage": "普通形(ナAである|Nである)＋のみならず",
+      "usage": "〜のみならず",
       "meaning": "not only; but also",
       "level": "",
       "tags": [
@@ -6371,11 +6333,10 @@
         "enumeration",
         "comparative",
         "普通形",
-        "ナ形容詞",
         "noun-modifier",
-        "noun-copula"
+        "na-adjective-modifier"
       ],
-      "notes": "",
+      "notes": "noun and adjective need である",
       "examples": [
         {
           "japanese": "環境問題は、この国のみならず、世界中の問題だ",
@@ -6390,7 +6351,7 @@
       ]
     },
     {
-      "usage": "普通形(ナAである|Nである)＋と同時に",
+      "usage": "〜と同時に",
       "meaning": "at the same time",
       "level": "",
       "tags": [
@@ -6398,11 +6359,10 @@
         "concurrent",
         "limitation",
         "普通形",
-        "ナ形容詞",
-        "noun-modifier",
-        "noun-copula"
+        "na-adjective-modifier",
+        "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun and adjective need である",
       "examples": [
         {
           "japanese": "先生はチャイムと同時に、教室に入ってきた",
@@ -6412,7 +6372,7 @@
       ]
     },
     {
-      "usage": "N＋によって",
+      "usage": "〜によって",
       "meaning": "way; means of using something; via",
       "level": "",
       "tags": [
@@ -6434,17 +6394,16 @@
       ]
     },
     {
-      "usage": "普通形(ナAな|ナAである|Nな|Nである)＋だけに",
+      "usage": "〜だけに",
       "meaning": "as expected, strong reason because (not resulting from quality or nature)",
       "level": "",
       "tags": [
         "certainty",
         "普通形",
-        "ナ形容詞",
         "noun-modifier",
-        "noun-copula"
+        "na-adjective-modifier"
       ],
-      "notes": "",
+      "notes": "noun and adjective can use な or である",
       "examples": [
         {
           "japanese": "一年間毎日頑張って勉強しただけに、合格できて本当に嬉しいです",
@@ -6459,7 +6418,7 @@
       ]
     },
     {
-      "usage": "普通形＋としても",
+      "usage": "〜としても",
       "meaning": "even if; assuming",
       "level": "",
       "tags": [
@@ -6482,7 +6441,7 @@
       ]
     },
     {
-      "usage": "(辞書形|N)＋に先立って",
+      "usage": "〜に先立って",
       "meaning": "prior to",
       "level": "",
       "tags": [
@@ -6521,18 +6480,17 @@
       ]
     },
     {
-      "usage": "普通形(ナAな|ナAである|Nである)＋ばかりでなく。。。も",
+      "usage": "〜ばかりでなく〜も",
       "meaning": "not only; but also (more formal)",
       "level": "",
       "tags": [
         "formal",
         "enumeration",
         "普通形",
-        "ナ形容詞",
-        "noun-modifier",
-        "noun-copula"
+        "na-adjective-modifier",
+        "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun and adjective can use な or である",
       "examples": [
         {
           "japanese": "彼女は歌手であるばかりでなく、有名な漫画家でもある",
@@ -6542,7 +6500,7 @@
       ]
     },
     {
-      "usage": "タ形＋かというと",
+      "usage": "〜かというと",
       "meaning": "just when I thought that",
       "level": "",
       "tags": [
@@ -6551,7 +6509,7 @@
         "contrast",
         "タ形"
       ],
-      "notes": "...",
+      "notes": "",
       "examples": [
         {
           "japanese": "やっと一つ仕事が終わったと思ったら、すぐ次の仕事を頼まれた",
@@ -6561,17 +6519,16 @@
       ]
     },
     {
-      "usage": "(テ形|イAくて|ナAで)＋ならない",
+      "usage": "〜ならない",
       "meaning": "extremely; can't help but",
       "level": "",
       "tags": [
         "must",
         "advanced-usage",
         "テ形",
-        "イ形容詞",
-        "ナ形容詞"
+        "adjective-modifier"
       ],
-      "notes": "",
+      "notes": "must conjugate the adjective",
       "examples": [
         {
           "japanese": "彼は明日の面接試験でうまく話せるかどうか、不安でならない",
@@ -6586,17 +6543,17 @@
       ]
     },
     {
-      "usage": "普通形(ナAな|Nな)＋ことは。。。が",
-      "meaning": "its true that ___, but",
+      "usage": "〜ことは〜が",
+      "meaning": "its true that ___, but (uses same word in both spots)",
       "level": "",
       "tags": [
         "contrast",
         "description",
         "普通形",
-        "ナ形容詞",
+        "na-adjective-modifier",
         "noun-modifier"
       ],
-      "notes": "... (use same word in both spots)",
+      "notes": "adjective and noun need the な",
       "examples": [
         {
           "japanese": "インターネットは便利なことは便利だが、子供が使うには問題もある",
@@ -6611,7 +6568,7 @@
       ]
     },
     {
-      "usage": "N＋によっては",
+      "usage": "〜によっては",
       "meaning": "depending on ___, ___ also exists",
       "level": "",
       "tags": [
@@ -6634,7 +6591,7 @@
       ]
     },
     {
-      "usage": "普通形(ナAである|Nである)＋からには",
+      "usage": "〜からには",
       "meaning": "as long as, since",
       "level": "",
       "tags": [
@@ -6642,11 +6599,10 @@
         "concurrent",
         "limitation",
         "普通形",
-        "ナ形容詞",
-        "noun-modifier",
-        "noun-copula"
+        "na-adjective-modifier",
+        "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun and adjective need である",
       "examples": [
         {
           "japanese": "学校の代表として、スピーチコンテストに出場するからには、１位になりたい。",
@@ -6661,18 +6617,17 @@
       ]
     },
     {
-      "usage": "普通形(ナAである・な|Nである・な)＋どころか",
+      "usage": "〜どころか",
       "meaning": "let alone, far from",
       "level": "",
       "tags": [
         "negation",
         "contrast",
         "普通形",
-        "ナ形容詞",
-        "noun-modifier",
-        "noun-copula"
+        "na-adjective-modifier",
+        "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun and adjective can use な or である",
       "examples": [
         {
           "japanese": "天気予報では晴れると言っていたのに、晴れるどころか大雨だ。",
@@ -6687,7 +6642,7 @@
       ]
     },
     {
-      "usage": "マス形＋える｜えない",
+      "usage": "〜（える・えない）",
       "meaning": "can, can't (not based on personal abilities)",
       "level": "",
       "tags": [
@@ -6709,7 +6664,7 @@
       ]
     },
     {
-      "usage": "N＋限らず",
+      "usage": "〜限らず",
       "meaning": "not only, but also; not limited to",
       "level": "",
       "tags": [
@@ -6732,14 +6687,13 @@
       ]
     },
     {
-      "usage": "イA｜ナA＋げ",
+      "usage": "〜げ",
       "meaning": "seemingly, appears (emotions and feelings)",
       "level": "",
       "tags": [
         "appearance",
         "emotional",
-        "イ形容詞",
-        "ナ形容詞"
+        "adjective-modifier"
       ],
       "notes": "",
       "examples": [
@@ -6756,7 +6710,7 @@
       ]
     },
     {
-      "usage": "タ形＋とたんに",
+      "usage": "〜とたんに",
       "meaning": "the instant/moment that one thing happened",
       "level": "",
       "tags": [
@@ -6779,17 +6733,17 @@
       ]
     },
     {
-      "usage": "なんて＋普通形（ナAな｜Nな）＋んだろう",
+      "usage": "なんて〜んだろう",
       "meaning": "definitely, extremely",
       "level": "",
       "tags": [
         "certainty",
         "advanced-usage",
         "普通形",
-        "ナ形容詞",
+        "na-adjective-modifier",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "adjective and noun need the な",
       "examples": [
         {
           "japanese": "東京はなんて人が多いんだろう。",
@@ -6804,7 +6758,7 @@
       ]
     },
     {
-      "usage": "テ形｜N＋以来",
+      "usage": "〜以来",
       "meaning": "ever since",
       "level": "",
       "tags": [
@@ -6829,7 +6783,7 @@
       ]
     },
     {
-      "usage": "N＋といった",
+      "usage": "〜といった",
       "meaning": "such as",
       "level": "",
       "tags": [
@@ -6852,7 +6806,7 @@
       ]
     },
     {
-      "usage": "N＋を通して・を通じで",
+      "usage": "〜（を通して・を通じで）",
       "meaning": "through, via, using",
       "level": "",
       "tags": [
@@ -6875,7 +6829,7 @@
       ]
     },
     {
-      "usage": "N＋関して",
+      "usage": "〜関して",
       "meaning": "concerning, related to",
       "level": "",
       "tags": [
@@ -6898,18 +6852,17 @@
       ]
     },
     {
-      "usage": "普通形（ナAな・である｜Nである）＋ばかりに",
+      "usage": "〜ばかりに",
       "meaning": "simply because, just because (not normal/bad result)",
       "level": "",
       "tags": [
         "description",
         "limitation",
         "普通形",
-        "ナ形容詞",
-        "noun-modifier",
-        "noun-copula"
+        "na-adjective-modifier",
+        "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun needs である, adjective can use な or である",
       "examples": [
         {
           "japanese": "この子は最近オスマートフォンがほしいばかりに、母親の財布からお金を盗んだ。",
@@ -6924,7 +6877,7 @@
       ]
     },
     {
-      "usage": "辞書形｜タ形＋か＋ナイ形＋かのうちに",
+      "usage": "〜か〜かのうちに",
       "meaning": "as soon as, just as, right when this thing happened",
       "level": "",
       "tags": [
@@ -6935,7 +6888,7 @@
         "タ形",
         "ナイ形"
       ],
-      "notes": "",
+      "notes": "ナイ形 goes last",
       "examples": [
         {
           "japanese": "バスが止まるが止まらないかのうちに席を立つ人が多い。",
@@ -6950,7 +6903,7 @@
       ]
     },
     {
-      "usage": "辞書形｜ナイ形＋ことだ",
+      "usage": "〜ことだ",
       "meaning": "should, ought, giving advice",
       "level": "",
       "tags": [
@@ -6974,17 +6927,16 @@
       ]
     },
     {
-      "usage": "テ形|イAくて｜ナAで＋しかたがない｜しょうがない",
+      "usage": "〜（しかたがない・しょうがない）",
       "meaning": "really, extremely, can't help but",
       "level": "",
       "tags": [
         "advanced-usage",
         "must",
         "テ形",
-        "イ形容詞",
-        "ナ形容詞"
+        "adjective-modifier"
       ],
-      "notes": "",
+      "notes": "adjectives must be conjugated",
       "examples": [
         {
           "japanese": "日本へ来て、初めて一人暮らしをしているので、寂しくてしかたがない。",
@@ -6999,18 +6951,17 @@
       ]
     },
     {
-      "usage": "普通形（ナAな・である｜Nである）＋ばかりに",
+      "usage": "〜ばかりに",
       "meaning": "instead of, substitute, the opposite also, this too",
       "level": "",
       "tags": [
         "contrast",
         "enumeration",
         "普通形",
-        "ナ形容詞",
-        "noun-modifier",
-        "noun-copula"
+        "na-adjective-modifier",
+        "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun needs である, adjective can use な or である",
       "examples": [
         {
           "japanese": "佐藤さんに日本語を教えてもらう代わりに、私は佐藤さんに英語を教えてあげる。",
@@ -7025,7 +6976,7 @@
       ]
     },
     {
-      "usage": "普通形＋（としたら｜とすれば｜とすると）",
+      "usage": "〜（としたら・とすれば・とすると）",
       "meaning": "if it were the case that",
       "level": "",
       "tags": [
@@ -7044,7 +6995,7 @@
       ]
     },
     {
-      "usage": "マス形＋かねない",
+      "usage": "〜かねない",
       "meaning": "might be; could be",
       "level": "",
       "tags": [
@@ -7067,7 +7018,7 @@
       ]
     },
     {
-      "usage": "テ形＋からでないと｜からでなければ",
+      "usage": "〜（からでないと・からでなければ）",
       "meaning": "not unless, not until",
       "level": "",
       "tags": [
@@ -7091,7 +7042,7 @@
       ]
     },
     {
-      "usage": "辞書形｜ナイ形＋わけにはいかない",
+      "usage": "〜わけにはいかない",
       "meaning": "wan't to but cant for some reason",
       "level": "",
       "tags": [
@@ -7111,7 +7062,7 @@
       ]
     },
     {
-      "usage": "タ形＋物だ",
+      "usage": "〜物だ",
       "meaning": "used to",
       "level": "",
       "tags": [
@@ -7134,7 +7085,7 @@
       ]
     },
     {
-      "usage": "N＋にかけては",
+      "usage": "〜にかけては",
       "meaning": "when it comes to ___, ___　(focus on ability and higher than others)",
       "level": "",
       "tags": [
@@ -7153,7 +7104,7 @@
       ]
     },
     {
-      "usage": "N＋はともかく（として）",
+      "usage": "〜はともかく（として）",
       "meaning": "setting aside, apart from",
       "level": "",
       "tags": [
@@ -7172,19 +7123,17 @@
       ]
     },
     {
-      "usage": "ナイ形｜イAく｜ナAで｜Nで＋ないことはない",
+      "usage": "〜ないことはない",
       "meaning": "it's not that",
       "level": "",
       "tags": [
         "negation",
         "contrast",
         "description",
-        "ナイ形",
-        "イ形容詞",
-        "ナ形容詞",
+        "adjective-modifier",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "must conjugate the adjective and noun with く and で",
       "examples": [
         {
           "japanese": "新宿からなら歩けないことはないけど、大変だよ。",
@@ -7199,13 +7148,14 @@
       ]
     },
     {
-      "usage": "N＋も＋条件形＋N＋も",
+      "usage": "「N」も〜「N」も",
       "meaning": "___ and ___",
       "level": "",
       "tags": [
         "concurrent",
         "enumeration",
-        "noun-modifier"
+        "noun-modifier",
+        "条件形"
       ],
       "notes": "",
       "examples": [
@@ -7222,7 +7172,7 @@
       ]
     },
     {
-      "usage": "N＋にわたって｜にわたる｜にわたるN",
+      "usage": "〜（にわたって・にわたる・にわたる「N」）",
       "meaning": "across, throughout",
       "level": "",
       "tags": [
@@ -7245,7 +7195,7 @@
       ]
     },
     {
-      "usage": "マス形＋きる｜きれる｜きれない",
+      "usage": "〜（きる・きれる・きれない）",
       "meaning": "completely, totally, utterly",
       "level": "",
       "tags": [
@@ -7268,18 +7218,17 @@
       ]
     },
     {
-      "usage": "普通形（ナAである｜Nである）＋にもかかわらず",
+      "usage": "〜にもかかわらず",
       "meaning": "despite, without being affected by",
       "level": "",
       "tags": [
         "contrast",
         "methodology",
         "普通形",
-        "ナ形容詞",
-        "noun-modifier",
-        "noun-copula"
+        "na-adjective-modifier",
+        "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun and adjective need である",
       "examples": [
         {
           "japanese": "今日は結婚する日であるにもかかわらず、田中さんはあまり嬉しそうに見えない。",
@@ -7294,7 +7243,7 @@
       ]
     },
     {
-      "usage": "N＋からいうと｜からいって｜からいえば",
+      "usage": "〜（からいうと・からいって・からいえば）",
       "meaning": "speaking in terms of",
       "level": "",
       "tags": [
@@ -7323,7 +7272,7 @@
       ]
     },
     {
-      "usage": "普通形（ナAだ｜Nだ）＋となると｜となれば｜となったら",
+      "usage": "〜（となると・となれば・となったら）",
       "meaning": "when it becomes",
       "level": "",
       "tags": [
@@ -7331,10 +7280,10 @@
         "causal",
         "conditional",
         "普通形",
-        "ナ形容詞",
+        "na-adjective-modifier",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun and adjective need the だ",
       "examples": [
         {
           "japanese": "今買い物をすると８％の税金がかかる。これが１０％に上がるとなれば、国民の生活はさらに大変になるだろう。",
@@ -7349,7 +7298,7 @@
       ]
     },
     {
-      "usage": "N＋次第だ",
+      "usage": "〜次第だ",
       "meaning": "because, this situation, these circumstances",
       "level": "",
       "tags": [
@@ -7373,7 +7322,7 @@
       ]
     },
     {
-      "usage": "マス形＋ぬく",
+      "usage": "〜ぬく",
       "meaning": "completely; to the bitter end",
       "level": "",
       "tags": [
@@ -7396,7 +7345,7 @@
       ]
     },
     {
-      "usage": "マス形＋つつ",
+      "usage": "〜つつ",
       "meaning": "while ___",
       "level": "",
       "tags": [
@@ -7419,7 +7368,7 @@
       ]
     },
     {
-      "usage": "N（っ）きりだ",
+      "usage": "〜（っ）きりだ",
       "meaning": "only; just",
       "level": "",
       "tags": [
@@ -7441,7 +7390,7 @@
       ]
     },
     {
-      "usage": "テ形＋初めて",
+      "usage": "〜初めて",
       "meaning": "first time; preceeding; this first",
       "level": "",
       "tags": [
@@ -7464,7 +7413,7 @@
       ]
     },
     {
-      "usage": "普通形（ナである｜Nである）＋にすぎない",
+      "usage": "〜にすぎない",
       "meaning": "only; just; no more than",
       "level": "",
       "tags": [
@@ -7472,9 +7421,9 @@
         "negation",
         "普通形",
         "noun-modifier",
-        "noun-copula"
+        "na-adjective-modifier"
       ],
-      "notes": "",
+      "notes": "noun and adjective need である",
       "examples": [
         {
           "japanese": "漢字を習ったと言っても、１００字ぐらい覚えたにすぎない。",
@@ -7489,7 +7438,7 @@
       ]
     },
     {
-      "usage": "辞書形｜N＋にあたって",
+      "usage": "〜にあたって",
       "meaning": "when doing this",
       "level": "",
       "tags": [
@@ -7514,7 +7463,7 @@
       ]
     },
     {
-      "usage": "N+を問わず",
+      "usage": "〜を問わず",
       "meaning": "whether or not",
       "level": "",
       "tags": [
@@ -7538,7 +7487,7 @@
       ]
     },
     {
-      "usage": "辞書形｜Nの＋上で",
+      "usage": "〜上で",
       "meaning": "when; upon (not after); in that exact moment",
       "level": "",
       "tags": [
@@ -7548,7 +7497,7 @@
         "辞書形",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun needs the の",
       "examples": [
         {
           "japanese": "仕事を進める上で、みんなの協力が必要だ。",
@@ -7563,7 +7512,7 @@
       ]
     },
     {
-      "usage": "辞書形（ナAな・ナAである｜Nである）＋反面",
+      "usage": "〜反面",
       "meaning": "while; on the other hand (can't be too opinionated?)",
       "level": "",
       "tags": [
@@ -7571,11 +7520,10 @@
         "affirmation",
         "negation",
         "辞書形",
-        "ナ形容詞",
-        "noun-modifier",
-        "noun-copula"
+        "na-adjective-modifier",
+        "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun needs である, adjective can use な or である",
       "examples": [
         {
           "japanese": "就職活動は準備が大変である反面、自分自身を知るチャンスでもある。",
@@ -7590,8 +7538,8 @@
       ]
     },
     {
-      "usage": "普通形（ナAだ｜Nだ）＋というか",
-      "meaning": "is more of a",
+      "usage": "〜というか",
+      "meaning": "is more of a; or perhaps I should say; rather than",
       "level": "",
       "tags": [
         "subjective",
@@ -7599,10 +7547,10 @@
         "quotation",
         "contrast",
         "普通形",
-        "ナ形容詞",
+        "na-adjective-modifer",
         "noun-modifier"
       ],
-      "notes": "...; or perhaps I should say; rather than",
+      "notes": "noun and adjective need the だ",
       "examples": [
         {
           "japanese": "元気というか、うるさいよ。",
@@ -7612,7 +7560,7 @@
       ]
     },
     {
-      "usage": "普通形＋（ナAである｜Nである）＋以上は｜上は；辞書形・タ形＋上は",
+      "usage": "〜（以上は・上は）",
       "meaning": "since; now that; because",
       "level": "",
       "tags": [
@@ -7622,11 +7570,10 @@
         "普通形",
         "辞書形",
         "タ形",
-        "ナ形容詞",
-        "noun-modifier",
-        "noun-copula"
+        "na-adjective-modifier",
+        "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun and adjective need である",
       "examples": [
         {
           "japanese": "試合に出場する以上、絶対勝ってみせる。",
@@ -7641,7 +7588,7 @@
       ]
     },
     {
-      "usage": "辞書形・Nの＋限り",
+      "usage": "〜限り",
       "meaning": "as long as; while; to the limit possible",
       "level": "",
       "tags": [
@@ -7651,7 +7598,7 @@
         "辞書形",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "nouns need the の",
       "examples": [
         {
           "japanese": "難民たちは持てる限りの荷物を持って、逃げてきた。",
@@ -7666,7 +7613,7 @@
       ]
     },
     {
-      "usage": "テ形＋いただけないでしょうか",
+      "usage": "〜いただけないでしょうか",
       "meaning": "could I please get some",
       "level": "",
       "tags": [
@@ -7690,17 +7637,17 @@
       ]
     },
     {
-      "usage": "普通形（ナAな｜Nの）＋ところを",
-      "meaning": "while I'm interrupting",
+      "usage": "〜ところを",
+      "meaning": "while I'm interrupting; I'm sorry but",
       "level": "",
       "tags": [
         "conditional",
         "polite",
         "普通形",
-        "ナ形容詞",
+        "na-adjective-modifer",
         "noun-modifier"
       ],
-      "notes": "... I'm sorry but",
+      "notes": "nouns need the の, noun adjective needs the な",
       "examples": [
         {
           "japanese": "もしもし、先生、お休みのところ、お電話してすみません。実は。。。",
@@ -7710,7 +7657,7 @@
       ]
     },
     {
-      "usage": "テ形＋いただけないかと思って",
+      "usage": "〜いただけないかと思って",
       "meaning": "was wondering if you could help",
       "level": "",
       "tags": [
@@ -7733,7 +7680,7 @@
       ]
     },
     {
-      "usage": "マス形＋つつも",
+      "usage": "〜つつも",
       "meaning": "despite ___ing; even while ___",
       "level": "",
       "tags": [
@@ -7757,7 +7704,7 @@
       ]
     },
     {
-      "usage": "マス形＋っぱなし",
+      "usage": "〜っぱなし",
       "meaning": "leaving something as; casually negative statement",
       "level": "",
       "tags": [
@@ -7781,7 +7728,7 @@
       ]
     },
     {
-      "usage": "辞書形＋ことなく",
+      "usage": "〜ことなく",
       "meaning": "without ___ ing",
       "level": "",
       "tags": [
@@ -7804,16 +7751,16 @@
       ]
     },
     {
-      "usage": "普通形（ナAな・である｜Nの・である）＋上に",
+      "usage": "〜上に",
       "meaning": "in addition to; as well as",
       "level": "",
       "tags": [
         "enumeration",
         "普通形",
-        "ナ形容詞",
+        "na-adjective-modifier",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun needs である or の, adjective can use な or である",
       "examples": [
         {
           "japanese": "この会社は給料が高い上に、休みも多い。",
@@ -7828,7 +7775,7 @@
       ]
     },
     {
-      "usage": "N＋向きだ・に・のN",
+      "usage": "〜向き（だ・に・の）",
       "meaning": "suitable for; meant for",
       "level": "",
       "tags": [
@@ -7851,13 +7798,14 @@
       ]
     },
     {
-      "usage": "意向形＋にも＋ナイ形",
+      "usage": "〜にも〜",
       "meaning": "cannot even if you try",
       "level": "",
       "tags": [
         "likelihood",
         "negation",
-        "ナイ形"
+        "ナイ形",
+        "意向形"
       ],
       "notes": "",
       "examples": [
@@ -7874,7 +7822,7 @@
       ]
     },
     {
-      "usage": "辞書形・N＋したがって",
+      "usage": "〜したがって",
       "meaning": "as this happens; following this; sometimes written in kanji",
       "level": "",
       "tags": [
@@ -7899,7 +7847,7 @@
       ]
     },
     {
-      "usage": "N＋に他ならない",
+      "usage": "〜に他ならない",
       "meaning": "nothing but, only this option",
       "level": "",
       "tags": [
@@ -7921,7 +7869,7 @@
       ]
     },
     {
-      "usage": "タ形・Nの＋挙げ句",
+      "usage": "〜挙げ句",
       "meaning": "read as あげく; after (in a troublesome/negative way)",
       "level": "",
       "tags": [
@@ -7931,7 +7879,7 @@
         "タ形",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "nouns need the の",
       "examples": [
         {
           "japanese": "５時間も話し合いを続けたあげく、何も決まらなかった。",
@@ -7946,7 +7894,7 @@
       ]
     },
     {
-      "usage": "マス形＋ようがない",
+      "usage": "〜ようがない",
       "meaning": "want to but can't; impossible",
       "level": "",
       "tags": [
@@ -7970,7 +7918,7 @@
       ]
     },
     {
-      "usage": "普通形（ナAな・である｜Nの・である）＋わけがない",
+      "usage": "〜わけがない",
       "meaning": "impossible; no way that",
       "level": "",
       "tags": [
@@ -7978,10 +7926,10 @@
         "negation",
         "advanced-usage",
         "普通形",
-        "ナ形容詞",
+        "na-adjective-modifier",
         "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun needs である or の, adjective can use な or である",
       "examples": [
         {
           "japanese": "２月に桜が咲くわけがないよ。梅の花じゃない。",
@@ -7996,18 +7944,17 @@
       ]
     },
     {
-      "usage": "普通形＋（ナAな・である｜Nである）＋ことだろう・ことか",
+      "usage": "〜（ことだろう・ことか）",
       "meaning": "god knows; how extremely this feeling/thought",
       "level": "",
       "tags": [
         "advanced-usage",
         "sentence-final",
         "普通形",
-        "ナ形容詞",
-        "noun-modifier",
-        "noun-copula"
+        "na-adjective-modifier",
+        "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun needs である, adjective can use な or である",
       "examples": [
         {
           "japanese": "もう２年も家族に合っていない。家族は私のことをどんなに心配していることか。",
@@ -8022,7 +7969,7 @@
       ]
     },
     {
-      "usage": "普通形（ナAである｜Nである）＋に違いない",
+      "usage": "〜に違いない",
       "meaning": "theres no doubt; I'm sure that; there's no mistaking",
       "level": "",
       "tags": [
@@ -8030,11 +7977,10 @@
         "advanced-usage",
         "certainty",
         "普通形",
-        "ナ形容詞",
-        "noun-modifier",
-        "noun-copula"
+        "na-adjective-modifier",
+        "noun-modifier"
       ],
-      "notes": "",
+      "notes": "noun and adjective need である",
       "examples": [
         {
           "japanese": "アンナさんは日本生きて１０年になるとのことだから、ペラペラであるに違いない。",
