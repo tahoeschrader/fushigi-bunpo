@@ -161,4 +161,4 @@ class GrammarPointEnhancer:
 # Usage example
 if __name__ == "__main__":
     enhancer = GrammarPointEnhancer()
-    enhancer.enhance_grammar_points('converted_data.json', 'enhanced_data.json')
+    enhancer.enhance_grammar_points('test_data.json', 'test_enhanced_data.json')

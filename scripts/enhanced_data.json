@@ -10201,6 +10201,254 @@
         "common_mistakes": "Don't express doubt or probability; 〜に違いない affirms undeniable certainty.",
         "register": "More common in written contexts or formal speech; can sound overly assertive in casual conversation."
       }
+    },
+    {
+      "usage": "〜べきだ・べきではない・べき「N」",
+      "meaning": "should; shouldn't",
+      "level": "",
+      "tags": [
+        "辞書形"
+      ],
+      "notes": "note that する must be すべき",
+      "examples": [
+        {
+          "japanese": "電車やバスの中では、お年寄りに席を譲るべきだ。",
+          "romaji": "Densha ya basu no naka de wa, otoshiyori ni seki o yuzuru beki da.",
+          "english": "One should give up their seat to the elderly on trains and buses."
+        },
+        {
+          "japanese": "初めて会った女性に年齢を聞くべきではない。",
+          "romaji": "Hajimete atta josei ni nenrei o kiku beki dewa nai.",
+          "english": "You should not ask a woman her age when you meet her for the first time."
+        }
+      ],
+      "enhanced_notes": {
+        "nuance": "Expresses a strong suggestion or opinion, potentially seen as bossy or know-it-all.",
+        "usage_tips": "Use after dictionary form of verbs, but for nouns and な-adjectives, use「だ」as in「だべきだ」.",
+        "common_mistakes": "Don’t use べき after the て-form or the ます-form; use the dictionary form instead.",
+        "register": "Frequent in written language or formal speech; implies speaker's authority."
+      }
+    },
+    {
+      "usage": "〜ほど。。。「N」ではない",
+      "meaning": "not as much as this; this is the most",
+      "level": "",
+      "tags": [
+        "辞書形",
+        "noun"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "トーストほど美味しいものはないと思う。",
+          "romaji": "Tōsuto hodo oishii mono wa nai to omou.",
+          "english": "I think there's nothing as delicious as toast."
+        },
+        {
+          "japanese": "アイスホッケーほど面白いsポーツはないと思う。",
+          "romaji": "Aisuhokkē hodo omoshiroi supōtsu wa nai to omou.",
+          "english": "I think there's no sport as interesting as ice hockey."
+        }
+      ],
+      "enhanced_notes": {
+        "nuance": "Expresses extremity, sometimes with a hint of surprise or exasperation when used in negative statements.",
+        "usage_tips": "Suitable for making comparisons or describing something of the highest degree; often used with negative sentences.",
+        "common_mistakes": "Mistakenly using it without a negative expression; Don't use with positive sentences.",
+        "register": "Neutral; common in both formal and informal language."
+      }
+    },
+    {
+      "usage": "〜とはいえば・〜というと",
+      "meaning": "speaking of; if it were the case",
+      "level": "",
+      "tags": [
+        "普通形",
+        "na-adjective",
+        "noun"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "そうなんだ。あ、テストといえば、JLPTの申し込み、いつまでだったっけ？",
+          "romaji": "Sō nanda. A, tesuto to ieba, JLPT no mōshikomi, itsu made dattake?",
+          "english": "Is that so? Oh, speaking of tests, until when was the deadline for the JLPT application?"
+        },
+        {
+          "japanese": "うん。あ、ラーメンといえば、ハンさんがラーメン屋でバイト始めたって。",
+          "romaji": "Un. A, raamen to ieba, Han-san ga raamen-ya de baito hajimeta tte.",
+          "english": "Yeah. Speaking of ramen, I heard Han started working part-time at a ramen shop."
+        }
+      ],
+      "enhanced_notes": {
+        "nuance": "Used to introduce a topic or comment on something, often highlighting unexpected associations or reactions.",
+        "usage_tips": "Follows na-adjectives and nouns in their plain form, often introduced as a way to 'mention' the subject; not used in questions.",
+        "common_mistakes": "Don't confuse with similar expressions (-といえば、-といった、-という), each has different contexts and uses.",
+        "register": "Generally neutral in formality, common in casual to semi-formal conversational Japanese."
+      }
+    },
+    {
+      "usage": "〜きり・〜っきり",
+      "meaning": "ever since... only this",
+      "level": "",
+      "tags": [
+        "タ形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "この本は子どものころ読んだきり、その後一度も読んでいません。",
+          "romaji": "Kono hon wa kodomo no koro yonda kiri, sono go ichido mo yonde imasen.",
+          "english": "I haven't read this book since I first read it as a child."
+        },
+        {
+          "japanese": "彼に最後に会ったのは、卒業式の時です。それきり、一度も会いません。",
+          "romaji": "Kare ni saigo ni atta no wa, sotsugyoushiki no toki desu. Sorekiri, ichido mo aimasen.",
+          "english": "The last time I saw him was at the graduation ceremony. I haven't seen him even once since then."
+        }
+      ],
+      "enhanced_notes": {
+        "nuance": "〜きり・〜っきり signifies a singular action or event since a point in time and nothing after, often carries a negative implication.",
+        "usage_tips": "Use with a sequence of actions in a sentence, where the last expected step did not occur.",
+        "common_mistakes": "Common to mistake as a constant state or continuation, but it's about an action that has not reoccurred since a certain event.",
+        "register": "Typically used in informal and colloquial speech, less observed in formal or business settings."
+      }
+    },
+    {
+      "usage": "〜最中に",
+      "meaning": "in the middle of",
+      "level": "",
+      "tags": [
+        "テ形いる",
+        "noun-の"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "今勉強している最中だから、ちょっと待って。",
+          "romaji": "Ima benkyou shite iru saichuu dakara, chotto matte.",
+          "english": "I'm in the middle of studying right now, so could you wait a bit?"
+        },
+        {
+          "japanese": "駅へ行く最中に、コンビニに寄った。",
+          "romaji": "Eki e iku saichuu ni, konbini ni yotta.",
+          "english": "On the way to the station, I stopped by the convenience store."
+        }
+      ],
+      "enhanced_notes": {
+        "nuance": "Used to highlight an action or event in progress, not always mid-point but rather deep within.",
+        "usage_tips": "Pair it with verb in て-form or use it after a noun with の, but not with instantaneous events.",
+        "common_mistakes": "Don't use it for scheduled future actions, or with verbs not expressing a progressive action.",
+        "register": "Neutral, inadequate for highly formal contexts or casual, intimate speech."
+      }
+    },
+    {
+      "usage": "〜より他ない・〜より他しかたがない",
+      "meaning": "have no choice but to; must",
+      "level": "",
+      "tags": [
+        "辞書形"
+      ],
+      "notes": "the より is optional",
+      "examples": [
+        {
+          "japanese": "誰も代わりにやってくれる人がいないので、自分でやる他ない。",
+          "romaji": "Daremo kawari ni yatte kureru hito ga inai node, jibun de yaru hoka nai.",
+          "english": "Since there's no one who can do it in my stead, I have no choice but to do it myself."
+        },
+        {
+          "japanese": "ミスをしたのは私なのだから、謝るより他しかたがないだろう。",
+          "romaji": "Misuwoshita no wa watashi na no dakara, ayamaru yori hoka shikata ga nai darou.",
+          "english": "Since I was the one who made the mistake, I have no other choice but to apologize."
+        }
+      ],
+      "enhanced_notes": {
+        "nuance": "Expresses a compelling need or lack of alternatives, often used in a sense of urgency or desperation.",
+        "usage_tips": "Use it after the dictionary form of verbs, usually focusing on unwanted or last resort actions.",
+        "common_mistakes": "Mistakenly used in positive or neutral situations, it's intended for unwanted necessity.",
+        "register": "Formal yet emotionally intense, suitable for serious conversations, sometimes found in written language."
+      }
+    },
+    {
+      "usage": "〜かけだ・〜かけの「N」・〜かける",
+      "meaning": "half done thing; half finished",
+      "level": "",
+      "tags": [
+        "マス形"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "この作文は書きかけですから、全部書いて明日提出します。",
+          "romaji": "Kono sakubun wa kakikake desu kara, zenbu kaite ashita teishutsu shimasu.",
+          "english": "This essay is only half-finished, so I will complete it and submit it tomorrow."
+        },
+        {
+          "japanese": "風邪が治りかけていたのに、無理をしたので、またひどくなってしまった。",
+          "romaji": "Kaze ga naori kakete ita noni, muri o shita node, mata hidoku natte shimatta.",
+          "english": "I was on the verge of recovering from a cold, but because I overexerted myself, it got worse again."
+        }
+      ],
+      "enhanced_notes": {
+        "nuance": "Conveys that an action or process is in progress but not yet complete; can express frustration or urgency.",
+        "usage_tips": "Use it with action verbs to express a state of incompleteness; note that this cannot be used with stative verbs.",
+        "common_mistakes": "Don't confuse this with the similar sounding 〜かけ (bill, charge); the difference lies in the type of verbs they can be paired with.",
+        "register": "Neutral; can be used in both formal and informal situations."
+      }
+    },
+    {
+      "usage": "〜に伴って・〜に伴い・〜に伴う「N」",
+      "meaning": "accompanying; along with",
+      "level": "",
+      "tags": [
+        "辞書形",
+        "noun"
+      ],
+      "notes": "",
+      "examples": [
+        {
+          "japanese": "円安に伴い、外国からの旅行者が増えている。",
+          "romaji": "Enyasu ni tomonai, gaikoku kara no ryokousha ga fuete iru.",
+          "english": "With the weakening of the yen, the number of travelers from foreign countries is increasing."
+        },
+        {
+          "japanese": "自転車が増加するに伴って、交通渋滞がひどくなった。",
+          "romaji": "Jitensha ga zōka suru ni tomonatte, kōtsū jūtai ga hidoku natta.",
+          "english": "As the number of bicycles increased, the traffic congestion worsened."
+        }
+      ],
+      "enhanced_notes": {
+        "nuance": "Expresses a happening indirectly, simultaneously, or as a result of another event; neutral tone.",
+        "usage_tips": "Often used with changes in society or environment; use with dictionary form verbs or nouns.",
+        "common_mistakes": "Don't confuse with 'とともに'; 'に伴う' doesn't imply doing things together like 'とともに' does.",
+        "register": "Mainly used in formal or written contexts such as news, reports, official documents."
+      }
+    },
+    {
+      "usage": "〜ざるを得ない",
+      "meaning": "don't want to, but have to",
+      "level": "",
+      "tags": [
+        "ナイ形"
+      ],
+      "notes": "する must become せざる",
+      "examples": [
+        {
+          "japanese": "髪を伸ばしてみたいが、校則があるので髪を切らざるを得ない。",
+          "romaji": "Kami o nobashite mitai ga, kousoku ga aru node kami o kirazaru o enai.",
+          "english": "I want to grow my hair out, but because of school rules, I have no choice but to cut it."
+        },
+        {
+          "japanese": "歴史的な建物なのでできれば保存したい。だが、古くなって危険なので、潰さざるを得ない。",
+          "romaji": "Rekishiteki na tatemono nanode dekireba hozon shitai. Daga, furuku natte kiken nanode, tsubusazaru wo enai.",
+          "english": "Ideally, I'd like to preserve it since it is a historical building. However, it is old and dangerous, so it must be demolished."
+        }
+      ],
+      "enhanced_notes": {
+        "nuance": "Emphasizes reluctance and the inevitability of an undesired action.",
+        "usage_tips": "Always conjugate the verb preceding 〜ざるを得ない into its negative form.",
+        "common_mistakes": "Common mistakes include using casual negative forms incorrectly or singular subjects when plural is required.",
+        "register": "Generally formal and used more often in written rather than spoken Japanese."
+      }
     }
   ]
 }
