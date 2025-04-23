@@ -1,0 +1,56 @@
+services:
+
+  db:
+    image: postgres:17
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: password
+    healthcheck:
+      test: [CMD, pg_isready, -U, postgres, -d, postgres, -q]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 5s
+    volumes:
+        - pg_data:/var/lib/postgresql/data
+        - ./sql:/docker-entrypoint-initdb.d
+
+  # Build and run tests on database structure and health
+  # test:
+  #   image: PUT_PYTHON_HERE
+  #   working_dir: /app
+  #   volumes:
+  #     - .:/app
+  #   command: PYTEST_COMMAND_HERE
+
+  # Build the database and fill with grammar points from JSON
+  generate:
+    image: PUT_PYTHON_HERE
+    working_dir: /app
+    volumes:
+      - .:/app
+    depends_on:
+      db:
+        condition: service_healthy
+      test:
+        condition: service_completed_successfully
+    environment:
+      DATABASE_URL: FIGURE_THIS_OUT
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: password
+    command: PYTHON_COMMAND_HERE
+ 
+  # Browser service to view postgres database
+  adminer:
+    image: adminer
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - 8080:8080
+
+volumes:
+  pg_data:

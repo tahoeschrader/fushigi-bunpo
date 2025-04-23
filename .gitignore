@@ -1,7 +1,8 @@
 # build and temporary dev stuff
 *.venv/
 *target/
-
+*postgres_data/
+*.sqlx/
 
 # dotenv environment variable files
 .env

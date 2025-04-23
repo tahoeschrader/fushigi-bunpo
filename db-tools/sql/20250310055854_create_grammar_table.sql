@@ -1,4 +1,3 @@
--- Add migration script here
 CREATE TABLE grammar (
     id SERIAL PRIMARY KEY,
     usage TEXT NOT NULL,
