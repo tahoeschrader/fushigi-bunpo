@@ -2,11 +2,10 @@
 
 ## Notes
 
-Migrating the journal entries postgresql database and backend API, written in Go.
+FastAPI based API for storing and querying user submitted Japanese journal entries. 
 
-## Database Schema
+Current logic is user based, with an eye towards future social networking aspects such as
 
-Created via ChartDB:
-
-<img src="./database/fushigi-database.png">
-
+- reading other users journals
+- commenting
+- creating a friend, group, or subscribed user network

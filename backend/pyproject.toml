@@ -1,15 +1,15 @@
 [project]
-name = "fushigi-db-tools"
+name = "fushigi-backend"
 version = "0.1.0"
-description = "Generate and populate default PostgreSQL database for Fushigi from AI-enhanced JSON grammar list."
+description = "API for storing and querying user submitted Japanese journal entries and grammar tags for the Fushigi Kaiwa app."
 authors = [
   {name="Tahoe Schrader", email="tahoeschrader@gmail.com"}
 ]
 dependencies = [
-  "openai",          # enhance json file with extra ai sourced nuance
-  "python-dotenv",   # load env files
   "psycopg2-binary", # connect to postgres
-  "tqdm"             # loading screen
+  "tqdm",            # loading screen
+  "fastapi",         # create endpoints for database
+  "sqlmodel"         # define data model with ORM tool built for FastAPI
 ]
 
 [project.optional-dependencies]
