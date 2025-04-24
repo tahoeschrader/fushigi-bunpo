@@ -5,19 +5,40 @@ description = "Generate and populate default PostgreSQL database for Fushigi fro
 authors = [
   {name="Tahoe Schrader", email="tahoeschrader@gmail.com"}
 ]
+requires-python = ">=3.12"
 dependencies = [
-  "openai",          # enhance json file with extra ai sourced nuance
-  "python-dotenv",   # load env files
-  "psycopg2-binary", # connect to postgres
-  "tqdm"             # loading screen
+  "openai",        # enhance json file with extra ai sourced nuance
+  "python-dotenv", # load env files
+  "psycopg",       # connect to postgres
+  "tqdm",          # loading screen (could be cool in future?)
+  "pydantic",      # validate json
 ]
 
 [project.optional-dependencies]
-test = [
-    "pydantic",      # validate json
-    "pytest",        # tests
-    "pytest-cov"     # ensure all code covered by tests
+dev = [
+  "pytest",      # tests
+  "pytest-cov",  # ensure all code covered by tests
+  "mypy",        # enforce static typing in ci/cd
+  "pyright",     # enforce static typing in editor
+  "black"        # auto format code
 ]
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.12"
+typeCheckingMode = "strict"
+reportMissingImports = true
+reportUnusedImport = true
+
+[tool.black]
+line-length = 88
+target-version = ['py312']
+
+[tool.mypy]
+files = "."
+ignore_missing_imports = true
+strict = true
 
 [build-system]
 requires = ["setuptools"]

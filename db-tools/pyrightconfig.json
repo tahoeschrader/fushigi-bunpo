@@ -1,8 +1,18 @@
 {
   "venvPath": ".",
   "venv": ".venv",
-  "pythonVersion": "3.11",
+  "pythonVersion": "3.12.9",
   "include": [
     "."
-  ]
+  ],
+  "exclude": [
+    "**/__pycache__",
+    "**/.venv",
+    "**/venv",
+    "build",
+    "dist"
+  ],
+  "typeCheckingMode": "strict",
+  "reportMissingImports": true,
+  "reportUnusedImport": true
 }
