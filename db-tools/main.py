@@ -14,12 +14,14 @@ from data.load import load_defaults
 # TODO: integration that checks if test database is active, and cofirms a single grammar instance
 # TODO: if test database is not active, skip integration tests and show that in the test report
 
+
 async def main():
     pool = await connect_to_db("postgres://tester:testpassword@localhost/fushigidb")
-    grammar_data = load_defaults() 
+    grammar_data = load_defaults()
     await generate_db(pool, grammar_data)
 
     print("Finished loading default grammar rules into Fushigi db!")
+
 
 if __name__ == "__main__":
     asyncio.run(main())

@@ -3,6 +3,7 @@ from psycopg import AsyncConnection
 from typing import List
 from data.models import Grammar
 
+
 async def generate_db(conn: AsyncConnection, grammar_data: List[Grammar]) -> None:
     async with conn.cursor() as cur:
         for g in grammar_data:
@@ -17,8 +18,10 @@ async def generate_db(conn: AsyncConnection, grammar_data: List[Grammar]) -> Non
                     g.level,
                     g.tags,
                     g.notes,
-                    Json([e.model_dump() for e in g.examples]), # like json dumps for jsonb type in db
-                    Json(g.enhanced_notes.model_dump()),        # same
-                )
+                    Json(
+                        [e.model_dump() for e in g.examples]
+                    ),  # like json dumps for jsonb type in db
+                    Json(g.enhanced_notes.model_dump()),  # same
+                ),
             )
         await conn.commit()
