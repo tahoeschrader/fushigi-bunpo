@@ -19,16 +19,14 @@ services:
 
   # Build and run tests on database structure and health
   test:
-    image: python:3.11-slim
-    working_dir: /app
+    image: fushigi-db-tools:latest
     volumes:
       - .:/app
     command: pytest
 
   # Build the database and fill with grammar points from JSON
   generate:
-    image: python:3.11-slim
-    working_dir: /app
+    image: fushigi-db-tools:latest
     volumes:
       - .:/app
     depends_on:
@@ -36,11 +34,6 @@ services:
         condition: service_healthy
       test:
         condition: service_completed_successfully
-    environment:
-      DATABASE_URL: postgres://postgres:password@db/postgres
-      DATABASE_USER: postgres
-      DATABASE_PASSWORD: password
-    command: PYTHON_COMMAND_HERE
  
   # Browser service to view postgres database
   adminer:

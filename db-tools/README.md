@@ -22,4 +22,10 @@ uv pip install -r pyproject.toml
 uv pip freeze > requirements.txt
 ```
 
-This makes sure the dev dependencies are not included. 
+This makes sure the dev dependencies are not included.
+
+When the image has been changed at all
+
+```shell
+docker build -t fushigi-db-tools:latest .
+```
