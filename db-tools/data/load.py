@@ -1,5 +1,5 @@
 import json
-from models import GrammarWrapper, Grammar
+from .models import GrammarWrapper, Grammar
 from typing import List
 
 

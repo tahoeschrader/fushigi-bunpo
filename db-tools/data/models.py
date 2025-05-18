@@ -12,7 +12,7 @@ class EnhancedNote(BaseModel):
     nuance: str
     usage_tips: str
     common_mistakes: str
-    register: str
+    situation: str
 
 
 class Grammar(BaseModel):

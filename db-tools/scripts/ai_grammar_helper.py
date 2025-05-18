@@ -1,5 +1,4 @@
 import json
-import re
 import os
 from openai import OpenAI
 from dotenv import load_dotenv
@@ -17,7 +16,7 @@ model = os.getenv("OPENAI_MODEL")
 
 class GrammarPointEnhancer:
 
-    def romanize(self, japanese_text):
+    def romanize(self, japanese_text: str):
         """
         Convert Japanese text to romanized text using OpenAI's GPT model
         """
@@ -44,7 +43,7 @@ class GrammarPointEnhancer:
             print(f"Error generating translation: {e}")
             return f"Translation unavailable for: {japanese_text}"
 
-    def generate_enhanced_notes(self, usage, meaning, tags):
+    def generate_enhanced_notes(self, usage: str, meaning: str, tags: str):
         """
         Generate comprehensive notes using OpenAI's GPT model
         """
@@ -67,7 +66,7 @@ class GrammarPointEnhancer:
                 "nuance": "",
                 "usage_tips": "",
                 "common_mistakes": "",
-                "register": ""
+                "situation": ""
             }}
             """
 
@@ -92,7 +91,7 @@ class GrammarPointEnhancer:
                 "register": "",
             }
 
-    def generate_translation(self, japanese_text):
+    def generate_translation(self, japanese_text: str):
         """
         Generate a high-quality translation using OpenAI's GPT model
         """
@@ -132,7 +131,7 @@ class GrammarPointEnhancer:
                 "romaji": "Unable to generate romanization.",
             }
 
-    def enhance_grammar_points(self, input_file, output_file):
+    def enhance_grammar_points(self, input_file: str, output_file: str):
         """
         Enhance the entire grammar points dataset
         """

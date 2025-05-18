@@ -18,16 +18,16 @@ services:
         - ./sql:/docker-entrypoint-initdb.d
 
   # Build and run tests on database structure and health
-  # test:
-  #   image: PUT_PYTHON_HERE
-  #   working_dir: /app
-  #   volumes:
-  #     - .:/app
-  #   command: PYTEST_COMMAND_HERE
+  test:
+    image: python:3.11-slim
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: pytest
 
   # Build the database and fill with grammar points from JSON
   generate:
-    image: PUT_PYTHON_HERE
+    image: python:3.11-slim
     working_dir: /app
     volumes:
       - .:/app
@@ -37,7 +37,7 @@ services:
       test:
         condition: service_completed_successfully
     environment:
-      DATABASE_URL: FIGURE_THIS_OUT
+      DATABASE_URL: postgres://postgres:password@db/postgres
       DATABASE_USER: postgres
       DATABASE_PASSWORD: password
     command: PYTHON_COMMAND_HERE

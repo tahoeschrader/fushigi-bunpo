@@ -3,6 +3,7 @@
 *target/
 *postgres_data/
 *.sqlx/
+*__pycache__/
 
 # dotenv environment variable files
 .env

@@ -23,6 +23,10 @@ dev = [
   "black"        # auto format code
 ]
 
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
 [tool.pyright]
 venvPath = "."
 venv = ".venv"
