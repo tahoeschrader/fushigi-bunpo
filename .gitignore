@@ -4,6 +4,8 @@
 *postgres_data/
 *.sqlx/
 *__pycache__/
+*egg-info*
+*build/
 
 # dotenv environment variable files
 .env

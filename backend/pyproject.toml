@@ -5,19 +5,43 @@ description = "API for storing and querying user submitted Japanese journal entr
 authors = [
   {name="Tahoe Schrader", email="tahoeschrader@gmail.com"}
 ]
+requires-python = ">=3.12"
 dependencies = [
-  "psycopg2-binary", # connect to postgres
-  "tqdm",            # loading screen
-  "fastapi",         # create endpoints for database
-  "sqlmodel"         # define data model with ORM tool built for FastAPI
+  "fastapi",    # create endpoints for database # define data model with ORM tool built for FastAPI
+  "sqlalchemy", # ORM for sql
+  "psycopg",    # connect to postgres
+  "pydantic",   # define data model
 ]
 
 [project.optional-dependencies]
-test = [
-    "pydantic",      # validate json
-    "pytest",        # tests
-    "pytest-cov"     # ensure all code covered by tests
+dev = [
+  "pytest",     # tests
+  "pytest-cov", # ensure all code covered by tests
+  "mypy",       # enforce static typing in ci/cd
+  "pyright",    # enforce static typing in editor
+  "black"       # auto format code
 ]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.12"
+typeCheckingMode = "strict"
+reportMissingImports = true
+reportUnusedImport = true
+
+[tool.black]
+line-length = 88
+target-version = ['py312']
+
+[tool.mypy]
+files = "."
+ignore_missing_imports = true
+strict = true
 
 [build-system]
 requires = ["setuptools"]

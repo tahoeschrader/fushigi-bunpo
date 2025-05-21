@@ -10,7 +10,7 @@ dependencies = [
   "openai",        # enhance json file with extra ai sourced nuance
   "python-dotenv", # load env files
   "psycopg",       # connect to postgres
-  "pydantic",      # validate json
+  "pydantic",      # define data model
 ]
 
 [project.optional-dependencies]
@@ -42,6 +42,9 @@ target-version = ['py312']
 files = "."
 ignore_missing_imports = true
 strict = true
+
+[tool.setuptools]
+packages = ["db", "data"]
 
 [build-system]
 requires = ["setuptools"]

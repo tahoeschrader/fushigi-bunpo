@@ -15,26 +15,53 @@ services:
       timeout: 5s
     volumes:
         - pg_data:/var/lib/postgresql/data
-        - ./sql:/docker-entrypoint-initdb.d
+        - ./db-tools/sql:/docker-entrypoint-initdb.d
 
-  # Build and run tests on database structure and health
-  test:
+  fushigi-db-tools:
+    build:
+      context: ./db-tools
+      dockerfile: Dockerfile
+    image: fushigi-db-tools:latest
+    
+  test-db-tools:
     image: fushigi-db-tools:latest
     volumes:
-      - .:/app
+      - ./db-tools:/app
     command: pytest
 
-  # Build the database and fill with grammar points from JSON
-  generate:
+  generate-default-db:
     image: fushigi-db-tools:latest
     volumes:
-      - .:/app
+      - ./db-tools:/app
+    restart: "no"
     depends_on:
       db:
         condition: service_healthy
-      test:
+      test-db-tools:
         condition: service_completed_successfully
  
+  fushigi-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: fushigi-backend:latest
+    
+  test-backend:
+    image: fushigi-backend:latest
+    volumes:
+      - ./backend:/app
+    command: pytest
+    
+  run-backend:
+    image: fushigi-backend:latest
+    volumes:
+      - ./backend:/app
+    depends_on:
+      db:
+        condition: service_healthy
+      test-backend:
+        condition: service_completed_successfully
+        
   # Browser service to view postgres database
   adminer:
     image: adminer
