@@ -1,22 +1,33 @@
 import json
 import os
-from openai import OpenAI
+from openai import OpenAI 
 from dotenv import load_dotenv
+from typing import Any, Dict, List
 
-# Note: In a real implementation, you'd use a proper API key management system
-load_dotenv(".env.key")
-
-client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY"),
-    organization=os.getenv("OPENAI_ORG_KEY"),
-    project=os.getenv("OPENAI_PRJ_KEY"),
-)
-model = os.getenv("OPENAI_MODEL")
+def get_required_env(key: str) -> str:
+    """
+    Get a required environment variable or raise a clear error.
+    """
+    value = os.getenv(key)
+    if value is None or value.strip() == "":
+        raise EnvironmentError(f"Missing required environment variable: {key}")
+    return value
 
 
 class GrammarPointEnhancer:
-
-    def romanize(self, japanese_text: str):
+    
+    def __init__(self):
+        """
+        Initialize keys and models to query OpenAI with. Requires user to create a person .env.key secret file.  
+        """
+        self.client = OpenAI(
+            api_key=get_required_env("OPENAI_API_KEY"),
+            organization=get_required_env("OPENAI_ORG_KEY"),
+            project=get_required_env("OPENAI_PRJ_KEY"),
+        )
+        self.model: str = get_required_env("OPENAI_MODEL")
+        
+    def romanize(self, japanese_text: str) -> str:
         """
         Convert Japanese text to romanized text using OpenAI's GPT model
         """
@@ -27,8 +38,8 @@ class GrammarPointEnhancer:
             
             Don't add any extra information other than the hepburn romanization!
             """
-            response = client.chat.completions.create(
-                model=model,
+            response = self.client.chat.completions.create(
+                model=self.model,
                 messages=[
                     {
                         "role": "system",
@@ -37,13 +48,16 @@ class GrammarPointEnhancer:
                     {"role": "user", "content": prompt},
                 ],
             )
-
-            return response.choices[0].message.content.strip()
+            content = response.choices[0].message.content
+            if content is None:
+                print(f"Error generating translation: {japanese_text}")
+                return f"Translation unavailable for: {japanese_text}"
+            return content.strip()
         except Exception as e:
-            print(f"Error generating translation: {e}")
+            print(f"Error generating translation: {e} for {japanese_text}")
             return f"Translation unavailable for: {japanese_text}"
 
-    def generate_enhanced_notes(self, usage: str, meaning: str, tags: str):
+    def generate_enhanced_notes(self, usage: str, meaning: str, tags: List[str]) -> Dict[str, Any]:
         """
         Generate comprehensive notes using OpenAI's GPT model
         """
@@ -70,8 +84,8 @@ class GrammarPointEnhancer:
             }}
             """
 
-            response = client.chat.completions.create(
-                model=model,
+            response = self.client.chat.completions.create(
+                model=self.model,
                 messages=[
                     {
                         "role": "system",
@@ -81,7 +95,16 @@ class GrammarPointEnhancer:
                 ],
             )
 
-            return json.loads(response.choices[0].message.content)
+            content = response.choices[0].message.content
+            if content is None:
+                print(f"Error generating notes for {usage}")
+                return {
+                    "nuance": "Unable to generate detailed notes",
+                    "usage_tips": "",
+                    "common_mistakes": "",
+                    "register": "",
+                }
+            return json.loads(content)
         except Exception as e:
             print(f"Error generating notes: {e} for {usage}")
             return {
@@ -91,7 +114,7 @@ class GrammarPointEnhancer:
                 "register": "",
             }
 
-    def generate_translation(self, japanese_text: str):
+    def generate_translation(self, japanese_text: str) -> Dict[str, Any]:
         """
         Generate a high-quality translation using OpenAI's GPT model
         """
@@ -112,8 +135,8 @@ class GrammarPointEnhancer:
             }}
             """
 
-            response = client.chat.completions.create(
-                model=model,
+            response = self.client.chat.completions.create(
+                model=self.model,
                 messages=[
                     {
                         "role": "system",
@@ -122,8 +145,15 @@ class GrammarPointEnhancer:
                     {"role": "user", "content": prompt},
                 ],
             )
+            content = response.choices[0].message.content
+            if content is None:
+                print(f"Error generating translations for {japanese_text}")
+                return {
+                    "english": "Unable to generate translation.",
+                    "romaji": "Unable to generate romanization.",
+                }
+            return json.loads(content)
 
-            return json.loads(response.choices[0].message.content)
         except Exception as e:
             print(f"Error generating translations: {e} for {japanese_text}")
             return {
@@ -131,7 +161,7 @@ class GrammarPointEnhancer:
                 "romaji": "Unable to generate romanization.",
             }
 
-    def enhance_grammar_points(self, input_file: str, output_file: str):
+    def enhance_grammar_points(self, input_file: str, output_file: str) -> None:
         """
         Enhance the entire grammar points dataset
         """
@@ -140,7 +170,7 @@ class GrammarPointEnhancer:
             data = json.load(f)
 
         # Process each grammar point
-        enhanced_grammar = []
+        enhanced_grammar: list[dict[str, Any]] = []
         for grammar_point in data["grammar"]:
 
             # Generate enhanced notes
@@ -150,7 +180,7 @@ class GrammarPointEnhancer:
             grammar_point["enhanced_notes"] = enhanced_notes
 
             # Enhance examples
-            enhanced_examples = []
+            enhanced_examples: list[dict[str, Any]] = []
 
             for example in grammar_point.get("examples", []):
                 enhanced_example = example.copy()
@@ -176,5 +206,12 @@ class GrammarPointEnhancer:
 
 # Usage example
 if __name__ == "__main__":
+    """
+    This script is currently a bit manual. Move a filled ``../data/grammar_template.json` to this
+    folder and call it `indata.json`. It will generate an `outdata.json` that can be copy-pasted
+    into the official `../data/grammar.json` grammar source.
+    """
+
+    load_dotenv(".env.key")
     enhancer = GrammarPointEnhancer()
-    enhancer.enhance_grammar_points("test_data.json", "test_enhanced_data.json")
+    enhancer.enhance_grammar_points("indata.json", "outdata.json")
