@@ -10,7 +10,6 @@ dependencies = [
   "openai",        # enhance json file with extra ai sourced nuance
   "python-dotenv", # load env files
   "psycopg",       # connect to postgres
-  "tqdm",          # loading screen (could be cool in future?)
   "pydantic",      # validate json
 ]
 
