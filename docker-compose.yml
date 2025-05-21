@@ -16,21 +16,19 @@ services:
     volumes:
         - pg_data:/var/lib/postgresql/data
         - ./db-tools/sql:/docker-entrypoint-initdb.d
-
-  fushigi-db-tools:
+  
+  test-db-tools:
     build:
       context: ./db-tools
       dockerfile: Dockerfile
-    image: fushigi-db-tools:latest
-    
-  test-db-tools:
-    image: fushigi-db-tools:latest
     volumes:
       - ./db-tools:/app
     command: pytest
 
   generate-default-db:
-    image: fushigi-db-tools:latest
+    build:
+      context: ./db-tools
+      dockerfile: Dockerfile
     volumes:
       - ./db-tools:/app
     restart: "no"
@@ -39,28 +37,26 @@ services:
         condition: service_healthy
       test-db-tools:
         condition: service_completed_successfully
- 
-  fushigi-backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    image: fushigi-backend:latest
+   
+  #test-backend:
+  #  build:
+  #    context: ./backend
+  #    dockerfile: Dockerfile
+  #  volumes:
+  #    - ./backend:/app
+  #  command: pytest
     
-  test-backend:
-    image: fushigi-backend:latest
-    volumes:
-      - ./backend:/app
-    command: pytest
-    
-  run-backend:
-    image: fushigi-backend:latest
-    volumes:
-      - ./backend:/app
-    depends_on:
-      db:
-        condition: service_healthy
-      test-backend:
-        condition: service_completed_successfully
+  #run-backend:
+  #  build:
+  #    context: ./backend
+  #    dockerfile: Dockerfile
+  #  volumes:
+  #    - ./backend:/app
+  #  depends_on:
+  #    db:
+  #      condition: service_healthy
+  #    test-backend:
+  #      condition: service_completed_successfully
         
   # Browser service to view postgres database
   adminer:

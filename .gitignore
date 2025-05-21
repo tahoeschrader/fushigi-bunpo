@@ -1,19 +1,14 @@
 # build and temporary dev stuff
-*.venv/
-*target/
-*postgres_data/
+.venv/
+target/
+postgres_data/
 *.sqlx/
-*__pycache__/
-*egg-info*
-*build/
+__pycache__/
+*.egg-info/
+build/
 
 # dotenv environment variable files
-.env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
-.env.key
+.env*
 
 # finder (MacOS) folder config -- argh!
 .DS_Store
