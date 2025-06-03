@@ -39,25 +39,18 @@ Monorepo for backend, database build tools, frontend, and tui.
 
 ## Development
 
-Install `uv` to manage python virtual environments. Then, source and lock dependencies via:
+Install `uv` to manage python virtual environments:
 
-```shell
-cd this/project/sub/repo
+```shell 
+cd this/repo
 uv venv
 source .venv/bin/activate
 uv sync
 ```
 
-When new dependencies are added to the project:
-
-```shell
-uv pip install ".[dev]"
-uv lock
-```
-
-Build, test, and run:
-
-```shell
-uv pip freeze > requirements.txt # (optional: needed for Docker)
+```shell Build, test, and run
+cd this/repo
 docker compose up --build
 ```
+
+Whenever new dependencies are added, remember to `uv lock` from the root to update the lockfile. 

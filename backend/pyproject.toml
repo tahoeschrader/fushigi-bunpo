@@ -7,13 +7,14 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
-  "fastapi",    # create endpoints for database # define data model with ORM tool built for FastAPI
-  "sqlalchemy", # ORM for sql
-  "psycopg",    # connect to postgres
-  "pydantic",   # define data model
+  "fastapi",         # create endpoints for database # define data model with ORM tool built for FastAPI
+  "sqlalchemy",      # ORM for sql
+  "psycopg",         # connect to postgres
+  "pydantic",        # working with data model
+  "fushigi-db-tools" # shared library for data model
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
   "pytest",     # tests
   "pytest-cov", # ensure all code covered by tests

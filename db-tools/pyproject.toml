@@ -13,7 +13,7 @@ dependencies = [
   "pydantic",      # define data model
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
   "pytest",      # tests
   "pytest-cov",  # ensure all code covered by tests

@@ -1,0 +1,5 @@
+[tool.uv.sources]
+fushigi-db-tools = {workspace = true }
+
+[tool.uv.workspace]
+members = ["db-tools", "backend"]
