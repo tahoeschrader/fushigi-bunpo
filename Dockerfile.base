@@ -7,15 +7,13 @@ RUN apt-get update && apt-get install -y \
   build-essential \
   libpq-dev \
   && rm -rf /var/lib/apt/lists/*
-RUN pip install --upgrade pip setuptools wheel
+RUN pip install --upgrade pip setuptools wheel uv
 
 # Copy what I need to install
-COPY pyproject.toml .
-RUN pip install ".[dev]"
+COPY pyproject.toml uv.lock ./
+COPY backend/ ./backend/
+COPY db-tools/ ./db-tools/
+RUN uv sync --dev
 
-# Copy the rest (ignore what's in .dockerignore)
-COPY . .
-
+# Set global environment variables (potentially what this in env files maybe?)
 ENV DATABASE_URL=postgres://postgres:password@db/postgres
-
-CMD ["python", "-m", "main"]

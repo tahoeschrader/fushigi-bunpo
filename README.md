@@ -6,10 +6,7 @@ Monorepo for backend, database build tools, frontend, and tui.
 
 ## Current Tasks
 
-- [x] Flesh out grammar points using OpenAI tools
-- [x] Bootstrap project with placeholder docker-compose
-- [x] Define database model (bare minimum)
-- [x] Generate empty database from scratch
+- [ ] Edit grammar points to be more helpful (actually spoken often vs mostly written etc.)
 - [ ] Implement backend API
 - [ ] Convert swift code to sveltekit (or decide not to?)
 - [ ] Implement a sveltekit frontend that works as PWA (or swift?)
@@ -39,13 +36,15 @@ Monorepo for backend, database build tools, frontend, and tui.
 
 ## Development
 
-Install `uv` to manage python virtual environments:
+Install `uv` to manage python virtual environments and requirements. Docker is also using the `uv` platform.
 
-```shell 
+This simplifies the dev process to the following:
+
+```shell Set up local dev environment
 cd this/repo
 uv venv
 source .venv/bin/activate
-uv sync
+uv sync --dev
 ```
 
 ```shell Build, test, and run
@@ -53,4 +52,10 @@ cd this/repo
 docker compose up --build
 ```
 
-Whenever new dependencies are added, remember to `uv lock` from the root to update the lockfile. 
+```shell Locally test and run
+cd sub/repo/project
+uv run pytest
+uv run python -m main
+```
+
+Whenever new dependencies are added to subfolder `pyproject.toml`, remember to `uv lock` from the root to update the lockfile. 

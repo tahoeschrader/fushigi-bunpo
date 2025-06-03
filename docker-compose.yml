@@ -19,18 +19,21 @@ services:
   
   test-db-tools:
     build:
-      context: ./db-tools
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: Dockerfile.base
     volumes:
-      - ./db-tools:/app
-    command: pytest
+      - ./db-tools:/app/db-tools
+    working_dir: /app/db-tools
+    command: uv run pytest
 
   generate-default-db:
     build:
-      context: ./db-tools
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: Dockerfile.base
     volumes:
-      - ./db-tools:/app
+      - ./db-tools:/app/db-tools
+    working_dir: /app/db-tools
+    command: uv run python -m main
     restart: "no"
     depends_on:
       db:
@@ -40,18 +43,21 @@ services:
    
   #test-backend:
   #  build:
-  #    context: ./backend
-  #    dockerfile: Dockerfile
+  #    context: .
+  #    dockerfile: Dockerfile.base
   #  volumes:
-  #    - ./backend:/app
-  #  command: pytest
+  #    - ./backend:/app/backend
+  #  working_dir: /app/backend
+  #  command: uv run pytest
     
   #run-backend:
   #  build:
-  #    context: ./backend
-  #    dockerfile: Dockerfile
+  #    context: .
+  #    dockerfile: Dockerfile.base
   #  volumes:
-  #    - ./backend:/app
+  #    - ./backend:/app/backend
+  #  working_dir: /app/backend
+  #  command: uv run python -m main
   #  depends_on:
   #    db:
   #      condition: service_healthy
