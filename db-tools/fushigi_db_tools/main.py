@@ -12,6 +12,7 @@ from .data.load import load_defaults
 # TODO: integration that checks if test database is active, and confirms a single grammar instance
 # TODO: if test database is not active, skip integration tests and show that in the test report
 
+
 async def main():
     DATABASE_URL = os.environ["DATABASE_URL"]
     pool = await connect_to_db(DATABASE_URL)

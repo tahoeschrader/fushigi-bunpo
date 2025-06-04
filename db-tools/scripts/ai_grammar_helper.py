@@ -1,8 +1,9 @@
 import json
 import os
-from openai import OpenAI 
+from openai import OpenAI
 from dotenv import load_dotenv
 from typing import Any, Dict, List
+
 
 def get_required_env(key: str) -> str:
     """
@@ -15,10 +16,10 @@ def get_required_env(key: str) -> str:
 
 
 class GrammarPointEnhancer:
-    
+
     def __init__(self):
         """
-        Initialize keys and models to query OpenAI with. Requires user to create a person .env.key secret file.  
+        Initialize keys and models to query OpenAI with. Requires user to create a person .env.key secret file.
         """
         self.client = OpenAI(
             api_key=get_required_env("OPENAI_API_KEY"),
@@ -26,7 +27,7 @@ class GrammarPointEnhancer:
             project=get_required_env("OPENAI_PRJ_KEY"),
         )
         self.model: str = get_required_env("OPENAI_MODEL")
-        
+
     def romanize(self, japanese_text: str) -> str:
         """
         Convert Japanese text to romanized text using OpenAI's GPT model
@@ -57,7 +58,9 @@ class GrammarPointEnhancer:
             print(f"Error generating translation: {e} for {japanese_text}")
             return f"Translation unavailable for: {japanese_text}"
 
-    def generate_enhanced_notes(self, usage: str, meaning: str, tags: List[str]) -> Dict[str, Any]:
+    def generate_enhanced_notes(
+        self, usage: str, meaning: str, tags: List[str]
+    ) -> Dict[str, Any]:
         """
         Generate comprehensive notes using OpenAI's GPT model
         """
