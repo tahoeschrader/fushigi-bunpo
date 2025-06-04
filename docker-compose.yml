@@ -33,7 +33,7 @@ services:
     volumes:
       - ./db-tools:/app/db-tools
     working_dir: /app/db-tools
-    command: uv run python -m main
+    command: uv run python -m fushigi_db_tools.main
     restart: "no"
     depends_on:
       db:

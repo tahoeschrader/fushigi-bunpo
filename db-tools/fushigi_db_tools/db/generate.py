@@ -1,7 +1,7 @@
 from psycopg.types.json import Json
 from psycopg import AsyncConnection
 from typing import List
-from data.models import Grammar
+from ..data.models import Grammar
 
 
 async def generate_db(conn: AsyncConnection, grammar_data: List[Grammar]) -> None:

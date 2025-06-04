@@ -7,7 +7,8 @@ RUN apt-get update && apt-get install -y \
   build-essential \
   libpq-dev \
   && rm -rf /var/lib/apt/lists/*
-RUN pip install --upgrade pip setuptools wheel uv
+RUN pip install --upgrade pip \
+ && pip install --no-cache-dir uv hatchling
 
 # Copy what I need to install
 COPY pyproject.toml uv.lock ./

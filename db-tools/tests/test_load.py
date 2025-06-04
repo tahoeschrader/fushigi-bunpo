@@ -2,8 +2,8 @@ import json
 import pytest
 from pathlib import Path
 from unittest.mock import mock_open, patch
-from data.load import load_defaults
-from data.models import Grammar
+from fushigi_db_tools.data.load import load_defaults
+from fushigi_db_tools.data.models import Grammar
 
 def test_load_defaults_reads_real_file(tmp_path: Path):
     # Setup

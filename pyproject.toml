@@ -2,4 +2,38 @@
 fushigi-db-tools = {workspace = true }
 
 [tool.uv.workspace]
-members = ["db-tools", "backend"]
+members = ["backend", "db-tools"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+known_first_party = ["fushigi_db_tools", "fushigi_backend"]
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.12"
+typeCheckingMode = "strict"
+reportMissingImports = true
+reportUnusedImport = true
+include = ["backend", "db-tools"]
+
+[tool.black]
+line-length = 88
+target-version = ['py312']
+
+[tool.mypy]
+files = ["backend", "db-tools"]
+ignore_missing_imports = true
+strict = true
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203", "W503"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+#testpaths = ["tests"] -- determined automatically from folder its run in
+
+[tool.hatch.build]
+include = ["fushigi_db_tools/**", "fushigi_backend/**"]

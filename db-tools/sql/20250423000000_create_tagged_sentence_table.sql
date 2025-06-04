@@ -5,5 +5,5 @@ CREATE TABLE tagged_sentence (
     
     -- constraints
     CONSTRAINT fk_grammar_tagged_sentence FOREIGN KEY (grammar_id) REFERENCES grammar(id),
-    CONSTRAINT fk_sentenced_tagged_sentence FOREGIN KEY (sentence_id) REFERENCES sentence(id)
+    CONSTRAINT fk_sentenced_tagged_sentence FOREIGN KEY (sentence_id) REFERENCES sentence(id)
 )

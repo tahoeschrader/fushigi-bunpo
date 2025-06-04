@@ -1,3 +1,7 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "fushigi-db-tools"
 version = "0.1.0"
@@ -19,33 +23,8 @@ dev = [
   "pytest-cov",  # ensure all code covered by tests
   "mypy",        # enforce static typing in ci/cd
   "pyright",     # enforce static typing in editor
-  "black"        # auto format code
+  "black",       # auto format code
+  "flake8",      # enforce formatting in editor
+  "isort"        # clean up imports automatically
 ]
 
-[tool.pytest.ini_options]
-pythonpath = ["."]
-testpaths = ["tests"]
-
-[tool.pyright]
-venvPath = "."
-venv = ".venv"
-pythonVersion = "3.12"
-typeCheckingMode = "strict"
-reportMissingImports = true
-reportUnusedImport = true
-
-[tool.black]
-line-length = 88
-target-version = ['py312']
-
-[tool.mypy]
-files = "."
-ignore_missing_imports = true
-strict = true
-
-[tool.setuptools]
-packages = ["db", "data"]
-
-[build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"

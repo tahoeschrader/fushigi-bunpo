@@ -1,8 +1,8 @@
 import asyncio
 import os
-from db.connect import connect_to_db
-from db.generate import generate_db
-from data.load import load_defaults
+from .db.connect import connect_to_db
+from .db.generate import generate_db
+from .data.load import load_defaults
 
 # Tests
 # TODO: add proper comments and doc generation to ci/cd
