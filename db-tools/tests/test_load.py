@@ -1,12 +1,14 @@
 import json
-import pytest
 from pathlib import Path
 from unittest.mock import mock_open, patch
+
+import pytest
+
 from fushigi_db_tools.data.load import load_defaults
 from fushigi_db_tools.data.models import Grammar
 
 
-def test_load_defaults_reads_real_file(tmp_path: Path):
+def test_load_defaults_reads_real_file(tmp_path: Path) -> None:
     # Setup
     dummy_data = {
         "grammar": [
@@ -29,10 +31,10 @@ def test_load_defaults_reads_real_file(tmp_path: Path):
                     },
                 ],
                 "enhanced_notes": {
-                    "nuance": "Denotes respect, often to express modesty about one’s own actions or to speak humbly about someone else's actions.",
-                    "usage_tips": "Use いらっしゃいます when referring to someone of a higher status or in situations requiring politeness.",
-                    "common_mistakes": "Frequently confused with います (for animate objects) and あります (for inanimate objects); not interchangeable.",
-                    "situation": "Used in formal settings and business contexts; inappropriate for casual conversation.",
+                    "nuance": "Denotes respect, often to express modesty about one’s own actions or to speak humbly about someone else's actions.",  # noqa: E501
+                    "usage_tips": "Use いらっしゃいます when referring to someone of a higher status or in situations requiring politeness.",  # noqa: E501
+                    "common_mistakes": "Frequently confused with います (for animate objects) and あります (for inanimate objects); not interchangeable.",  # noqa: E501
+                    "situation": "Used in formal settings and business contexts; inappropriate for casual conversation.",  # noqa: E501
                 },
             }
         ]
@@ -50,7 +52,7 @@ def test_load_defaults_reads_real_file(tmp_path: Path):
     assert result[0].usage == "いらっしゃいます"
 
 
-def test_load_defaults_parses_mocked_data_correctly():
+def test_load_defaults_parses_mocked_data_correctly() -> None:
     # Setup
     dummy_data = {
         "grammar": [
@@ -73,10 +75,10 @@ def test_load_defaults_parses_mocked_data_correctly():
                     },
                 ],
                 "enhanced_notes": {
-                    "nuance": "Denotes respect, often to express modesty about one’s own actions or to speak humbly about someone else's actions.",
-                    "usage_tips": "Use いらっしゃいます when referring to someone of a higher status or in situations requiring politeness.",
-                    "common_mistakes": "Frequently confused with います (for animate objects) and あります (for inanimate objects); not interchangeable.",
-                    "situation": "Used in formal settings and business contexts; inappropriate for casual conversation.",
+                    "nuance": "Denotes respect, often to express modesty about one’s own actions or to speak humbly about someone else's actions.",  # noqa: E501
+                    "usage_tips": "Use いらっしゃいます when referring to someone of a higher status or in situations requiring politeness.",  # noqa: E501
+                    "common_mistakes": "Frequently confused with います (for animate objects) and あります (for inanimate objects); not interchangeable.",  # noqa: E501
+                    "situation": "Used in formal settings and business contexts; inappropriate for casual conversation.",  # noqa: E501
                 },
             }
         ]
@@ -94,12 +96,12 @@ def test_load_defaults_parses_mocked_data_correctly():
     assert result[0].usage == "いらっしゃいます"
 
 
-def test_load_defaults_missing_file_raises():
+def test_load_defaults_missing_file_raises() -> None:
     with pytest.raises(FileNotFoundError):
         load_defaults("nonexistent_file.json")
 
 
-def test_load_defaults_invalid_json_raises(tmp_path: Path):
+def test_load_defaults_invalid_json_raises(tmp_path: Path) -> None:
     test_file = tmp_path / "bad.json"
     test_file.write_text("{ this is not valid JSON }", encoding="utf-8")
 

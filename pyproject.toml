@@ -18,12 +18,7 @@ reportMissingImports = true
 reportUnusedImport = true
 extraPaths = ["./db-tools", "./backend"]
 include = ["backend", "db-tools"]
-exclude = [
-  "**/__pycache__",
-  "**/.venv",
-  "**/build",
-  "**/dist"
-]
+exclude = ["**/__pycache__", ".venv", "build", "dist"]
 
 [tool.black]
 line-length = 88
@@ -33,10 +28,12 @@ target-version = ['py312']
 files = ["backend", "db-tools"]
 ignore_missing_imports = true
 strict = true
+exclude = '(^\.venv|^build|^dist|__pycache__)'
 
-[tool.flake8]
-max-line-length = 88
-extend-ignore = ["E203", "W503"]
+#[tool.flake8]
+#max-line-length = 88
+#extend-ignore = ["E203", "W503"]
+#exclude = ["__pycache__", ".venv", "build", "dist"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

@@ -1,8 +1,9 @@
 import json
 import os
-from openai import OpenAI
+from typing import Any, List
+
 from dotenv import load_dotenv
-from typing import Any, Dict, List
+from openai import OpenAI
 
 
 def get_required_env(key: str) -> str:
@@ -17,9 +18,10 @@ def get_required_env(key: str) -> str:
 
 class GrammarPointEnhancer:
 
-    def __init__(self):
+    def __init__(self) -> None:
         """
-        Initialize keys and models to query OpenAI with. Requires user to create a person .env.key secret file.
+        Initialize keys and models to query OpenAI with.
+        Requires user to create a person .env.key secret file.
         """
         self.client = OpenAI(
             api_key=get_required_env("OPENAI_API_KEY"),
@@ -33,10 +35,11 @@ class GrammarPointEnhancer:
         Convert Japanese text to romanized text using OpenAI's GPT model
         """
         try:
-            prompt = f"""I need the hepburn romanization for the following example sentence in Japanese.
+            prompt = f"""I need the hepburn romanization for the following
+            example sentence in Japanese.
 
             Sentence: {japanese_text}
-            
+
             Don't add any extra information other than the hepburn romanization!
             """
             response = self.client.chat.completions.create(
@@ -44,7 +47,7 @@ class GrammarPointEnhancer:
                 messages=[
                     {
                         "role": "system",
-                        "content": "You are a professional translator specializing in Japanese to English translation.",
+                        "content": "You are a professional translator specializing in Japanese to English translation.",  # noqa: E501
                     },
                     {"role": "user", "content": prompt},
                 ],
@@ -58,21 +61,20 @@ class GrammarPointEnhancer:
             print(f"Error generating translation: {e} for {japanese_text}")
             return f"Translation unavailable for: {japanese_text}"
 
-    def generate_enhanced_notes(
-        self, usage: str, meaning: str, tags: List[str]
-    ) -> Dict[str, Any]:
+    def generate_enhanced_notes(self, usage: str, meaning: str, tags: List[str]) -> Any:
         """
-        Generate comprehensive notes using OpenAI's GPT model
+        Generate comprehensive notes using OpenAI's GPT model.
         """
         try:
-            prompt = f"""I need concise notes for a Japanese grammar point. 
+            prompt = f"""I need concise notes for a Japanese grammar point.
             Provide insights covering:
             - Precise nuance and emotional context
             - Usage tips
             - Common mistakes learners make
             - Appropriate social register
 
-            Do NOT be verbose. Keep these short and concise, no more than 1 sentence. Two sentences MAX.
+            Do NOT be verbose.
+            Keep these short, concise, and no more than 1-2 sentences max.
 
             Grammar Point: {usage}
             Meaning: {meaning}
@@ -92,7 +94,7 @@ class GrammarPointEnhancer:
                 messages=[
                     {
                         "role": "system",
-                        "content": "You are an expert in Japanese linguistics and language pedagogy.",
+                        "content": "You are an expert in Japanese linguistics and language pedagogy.",  # noqa: E501
                     },
                     {"role": "user", "content": prompt},
                 ],
@@ -117,20 +119,21 @@ class GrammarPointEnhancer:
                 "register": "",
             }
 
-    def generate_translation(self, japanese_text: str) -> Dict[str, Any]:
+    def generate_translation(self, japanese_text: str) -> Any:
         """
         Generate a high-quality translation using OpenAI's GPT model
         """
         try:
-            prompt = f"""Provide a professional, contextually accurate English translation of the following Japanese text. 
-            Focus on capturing the precise meaning and nuance:
+            prompt = f"""Provide a professional, contextually accurate English
+            translation of the following Japanese text, focusing on capturing
+            the precise meaning and nuance:
 
             Japanese: {japanese_text}
 
             Provide:
-            1. A direct, natural translation. Only include the translation. No extra notes.
-            2. The hepburn romanization of the sentence. Only include the romanization. No extra notes.
-            
+            1. A direct, natural translation only. No extra notes.
+            2. The hepburn romanization of the sentence only. No extra notes.
+
             Format your response as a JSON object with these keys:
             {{
                 "english": "",
@@ -143,7 +146,7 @@ class GrammarPointEnhancer:
                 messages=[
                     {
                         "role": "system",
-                        "content": "You are a professional translator specializing in Japanese to English translation.",
+                        "content": "You are a professional translator specializing in Japanese to English translation.",  # noqa: E501
                     },
                     {"role": "user", "content": prompt},
                 ],
@@ -210,9 +213,10 @@ class GrammarPointEnhancer:
 # Usage example
 if __name__ == "__main__":
     """
-    This script is currently a bit manual. Move a filled ``../data/grammar_template.json` to this
-    folder and call it `indata.json`. It will generate an `outdata.json` that can be copy-pasted
-    into the official `../data/grammar.json` grammar source.
+    This script is currently a bit manual. Moves a filled
+    `../data/grammar_template.json` to this folder and calls it `indata.json`.
+    It will generate an `outdata.json` that can be copy-pasted into the official
+    `../data/grammar.json` grammar source.
     """
 
     load_dotenv(".env.key")

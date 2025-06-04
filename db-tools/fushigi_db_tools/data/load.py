@@ -1,7 +1,8 @@
 import json
-from .models import GrammarWrapper, Grammar
-from typing import List, Union
 from pathlib import Path
+from typing import List, Union
+
+from .models import Grammar, GrammarWrapper
 
 
 def load_defaults(path: Union[Path, str, None] = None) -> List[Grammar]:

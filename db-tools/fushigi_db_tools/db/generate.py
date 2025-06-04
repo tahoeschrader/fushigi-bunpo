@@ -1,6 +1,8 @@
-from psycopg.types.json import Json
-from psycopg import AsyncConnection
 from typing import List
+
+from psycopg import AsyncConnection
+from psycopg.types.json import Json
+
 from ..data.models import Grammar
 
 
@@ -9,8 +11,10 @@ async def generate_db(conn: AsyncConnection, grammar_data: List[Grammar]) -> Non
         for g in grammar_data:
             await cur.execute(
                 """
-                INSERT INTO grammar (usage, meaning, level, tags, notes, examples, enhanced_notes)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                INSERT INTO grammar
+                    (usage, meaning, level, tags, notes, examples, enhanced_notes)
+                VALUES
+                    (%s, %s, %s, %s, %s, %s, %s)
                 """,
                 (
                     g.usage,
