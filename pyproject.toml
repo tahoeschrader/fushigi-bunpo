@@ -16,7 +16,14 @@ pythonVersion = "3.12"
 typeCheckingMode = "strict"
 reportMissingImports = true
 reportUnusedImport = true
+extraPaths = ["./db-tools", "./backend"]
 include = ["backend", "db-tools"]
+exclude = [
+  "**/__pycache__",
+  "**/.venv",
+  "**/build",
+  "**/dist"
+]
 
 [tool.black]
 line-length = 88

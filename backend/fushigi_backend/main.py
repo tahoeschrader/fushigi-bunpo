@@ -1,6 +1,5 @@
 import os
 from fastapi import FastAPI, Depends, HTTPException
-from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
 from typing import List
