@@ -28,3 +28,39 @@ class Grammar(BaseModel):
 
 class GrammarWrapper(BaseModel):
     grammar: List[Grammar]
+
+
+# for creating
+class TaggedGrammarCreate(BaseModel):
+    grammar_id: int
+
+
+class SentenceCreate(BaseModel):
+    content: str
+    tagged_grammar: List[TaggedGrammarCreate]
+
+
+class JournalEntryCreate(BaseModel):
+    title: str
+    content: str
+    sentences: List[SentenceCreate]
+
+
+# for reading back
+class TaggedGrammar(BaseModel):
+    grammar_id: int
+
+
+class Sentence(BaseModel):
+    id: int
+    content: str
+    tagged_grammar: List[TaggedGrammar]
+
+
+class JournalEntryInDB(BaseModel):
+    id: int
+    user_id: int
+    title: str
+    content: str
+    created_at: str  # or datetime if you prefer
+    sentences: List[Sentence]

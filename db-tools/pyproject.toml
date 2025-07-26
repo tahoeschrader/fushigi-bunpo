@@ -21,8 +21,6 @@ dependencies = [
 dev = [
   "pytest",      # tests
   "pytest-cov",  # ensure all code covered by tests
-  "mypy",        # enforce static typing in ci/cd
-  "pyright",     # enforce static typing in editor
   "black",       # auto format code
   "flake8",      # enforce formatting in editor
   "isort"        # clean up imports automatically

@@ -12,8 +12,8 @@ authors = [
 requires-python = ">=3.12"
 dependencies = [
   "fastapi",         # create endpoints for database # define data model with ORM tool built for FastAPI
-  "sqlalchemy",      # ORM for sql
   "psycopg",         # connect to postgres
+  "psycopg_pool",    # some extra pool stuff
   "pydantic",        # working with data model
   "fushigi-db-tools" # shared library for data model
 ]
@@ -22,8 +22,6 @@ dependencies = [
 dev = [
   "pytest",      # tests
   "pytest-cov",  # ensure all code covered by tests
-  "mypy",        # enforce static typing in ci/cd
-  "pyright",     # enforce static typing in editor
   "black",       # auto format code
   "flake8",      # enforce formatting in editor
   "isort"        # clean up imports automatically
