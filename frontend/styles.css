@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  height: 100vh;
+}
+
+#sidebar {
+  width: 200px;
+  background: #222;
+  color: white;
+  padding: 1em;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+#sidebar button {
+  background: none;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: left;
+  font-size: 1em;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+#sidebar button:hover,
+#sidebar button.active {
+  background: #444;
+}
+
+#main {
+  flex-grow: 1;
+  padding: 1em;
+  overflow-y: auto;
+}
+
+ul {
+  padding-left: 1em;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+label,
+input,
+textarea {
+  display: block;
+  margin: 0.5em 0;
+  width: 100%;
+}
+
+textarea {
+  height: 100px;
+}
+
+button.submit-btn {
+  width: auto;
+  padding: 0.5em 1em;
+}
+
+.error {
+  color: red;
+}

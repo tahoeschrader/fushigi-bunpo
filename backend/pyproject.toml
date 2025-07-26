@@ -15,7 +15,8 @@ dependencies = [
   "psycopg",         # connect to postgres
   "psycopg_pool",    # some extra pool stuff
   "pydantic",        # working with data model
-  "fushigi-db-tools" # shared library for data model
+  "fushigi-db-tools",# shared library for data model
+  "uvicorn"          # temporary for testing
 ]
 
 [dependency-groups]

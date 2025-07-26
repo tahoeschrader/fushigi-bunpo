@@ -14,7 +14,9 @@ RUN pip install --upgrade pip \
 COPY pyproject.toml uv.lock ./
 COPY backend/ ./backend/
 COPY db-tools/ ./db-tools/
+COPY frontend/ ./frontend/
 RUN uv sync --dev
 
 # Set global environment variables (potentially what this in env files maybe?)
 ENV DATABASE_URL=postgres://postgres:password@db/postgres
+ENV FRONTEND_PATH=/app/frontend
