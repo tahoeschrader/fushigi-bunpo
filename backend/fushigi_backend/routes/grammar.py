@@ -1,16 +1,11 @@
 from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, Query
-from fastapi.responses import RedirectResponse
 from psycopg import AsyncConnection
 
 from fushigi_db_tools.data.models import Grammar
 from fushigi_db_tools.db.connect import get_connection
 
-router = APIRouter(prefix="/grammar", tags=["grammar"])
-
-@router.get("/", include_in_schema=False)
-async def redirect_grammar():
-    return RedirectResponse(url="/grammar")
+router = APIRouter(prefix="/api/grammar", tags=["grammar"])
 
 @router.get("/{id}", response_model=Grammar)
 async def get_grammar(

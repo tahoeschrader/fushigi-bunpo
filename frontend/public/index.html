@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Fushigi Bunpo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="h-screen bg-gray-50 text-gray-800">
+
+  <div class="flex h-full" x-data="{ current: 'home' }">
+    <!-- Sidebar/nav -->
+    <div id="nav"></div>
+
+    <!-- Main content -->
+    <main class="flex-1 p-6">
+      <h1 class="text-3xl font-bold">Welcome to Fushigi Bunpo</h1>
+      <p class="mt-4">Choose a section from the sidebar.</p>
+    </main>
+
+  </div>
+
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.store('app', {
+        current: 'home',
+      });
+    });
+    fetch('partials/nav.html')
+      .then(res => res.text())
+      .then(html => {
+        const navEl = document.getElementById('nav');
+        navEl.innerHTML = html;
+        Alpine.initTree(navEl);
+      });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ current: 'grammar' }" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Grammar Points</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="assets/js/grammar.js"></script>
+</head>
+
+<body class="h-screen bg-gray-50 text-gray-800">
+
+  <div class="flex h-full" x-data="{ current: 'grammar' }">
+    <!-- Sidebar/nav -->
+    <div id="nav"></div>
+
+    <!-- Main content -->
+    <main class="flex-1 overflow-auto p-6" x-data="grammarApp()" x-init="init()">
+      <h1 class="text-2xl font-bold mb-4">Grammar List</h1>
+
+      <template x-if="loading">
+        <p>Loading grammar points...</p>
+      </template>
+
+      <template x-if="error">
+        <p class="text-red-600" x-text="error"></p>
+      </template>
+
+      <template x-if="grammarPoints.length > 0">
+        <table class="min-w-full bg-white border rounded shadow">
+          <thead>
+            <tr class="bg-gray-200 text-left">
+              <th class="p-2 border">Level</th>
+              <th class="p-2 border">Meaning</th>
+              <th class="p-2 border">Usage</th>
+              <th class="p-2 border">Tags</th>
+            </tr>
+          </thead>
+          <tbody>
+            <template x-for="point in grammarPoints" :key="point.id">
+              <tr class="border-b hover:bg-gray-100">
+                <td class="p-2 border" x-text="point.level"></td>
+                <td class="p-2 border" x-text="point.meaning"></td>
+                <td class="p-2 border" x-text="point.usage"></td>
+                <td class="p-2 border">
+                  <template x-for="tag in point.tags" :key="tag">
+                    <span class="inline-block bg-blue-200 text-blue-800 text-xs px-2 py-0.5 rounded mr-1"
+                      x-text="tag"></span>
+                  </template>
+                </td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </template>
+
+      <template x-if="!loading && grammarPoints.length === 0 && !error">
+        <p>No grammar points found.</p>
+      </template>
+    </main>
+
+  </div>
+
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.store('app', {
+        current: 'grammar',
+      });
+    });
+    fetch('partials/nav.html')
+      .then(res => res.text())
+      .then(html => {
+        const navEl = document.getElementById('nav');
+        navEl.innerHTML = html;
+        Alpine.initTree(navEl);
+      });
+  </script>
+
+</body>
+
+</html>

@@ -10,10 +10,9 @@ from fushigi_db_tools.data.models import (
 )
 from fushigi_db_tools.db.connect import get_connection
 
-router = APIRouter(prefix="/journal", tags=["journal"])
+router = APIRouter(prefix="/api/journal", tags=["journal"])
 
-
-@router.post("/", response_model=int)
+@router.post("", response_model=int)
 async def create_journal_entry_api(
     entry: JournalEntryCreate,
     conn: AsyncConnection = Depends(get_connection),
@@ -32,7 +31,7 @@ async def get_journal_entry_api(
     return entry
 
 
-@router.get("/", response_model=List[JournalEntryInDB])
+@router.get("", response_model=List[JournalEntryInDB])
 async def list_journal_entries_api(
     limit: int = Query(20, ge=1, le=100),
     offset: int = Query(0, ge=0),
