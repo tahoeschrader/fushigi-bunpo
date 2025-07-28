@@ -1,8 +1,8 @@
 from typing import List
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
-
+# for backend, db creation
 class Example(BaseModel):
     japanese: str
     romaji: str
@@ -30,7 +30,12 @@ class GrammarWrapper(BaseModel):
     grammar: List[Grammar]
 
 
-# for creating
+# for frontend
+class GrammarInDB(Grammar):
+    id: int
+    model_config = ConfigDict(from_attributes=True)
+
+
 class TaggedGrammarCreate(BaseModel):
     grammar_id: int
 
@@ -44,9 +49,8 @@ class JournalEntryCreate(BaseModel):
     title: str
     content: str
     sentences: List[SentenceCreate]
+    private: bool
 
-
-# for reading back
 class TaggedGrammar(BaseModel):
     grammar_id: int
 
@@ -64,3 +68,5 @@ class JournalEntryInDB(BaseModel):
     content: str
     created_at: str  # or datetime if you prefer
     sentences: List[Sentence]
+    private: bool
+    

@@ -1,8 +1,11 @@
 document.addEventListener('alpine:init', () => {
   Alpine.data('grammarApp', () => ({
-    entries: [],
+    grammarPoints: [],
     loading: true,
     error: '',
+    currentPage: 1,
+    perPage: 10, 
+    selected: null,
 
     async init() {
       try {
@@ -14,6 +17,15 @@ document.addEventListener('alpine:init', () => {
       } finally {
         this.loading = false;
       }
+    },
+
+    get totalPages() {
+      return Math.ceil(this.grammarPoints.length / this.perPage);
+    },
+
+    paginatedPoints() {
+      const start = (this.currentPage - 1) * this.perPage;
+      return this.grammarPoints.slice(start, start + this.perPage);
     }
   }));
 });

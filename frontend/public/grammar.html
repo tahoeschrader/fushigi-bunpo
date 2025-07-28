@@ -29,31 +29,55 @@
       </template>
 
       <template x-if="grammarPoints.length > 0">
-        <table class="min-w-full bg-white border rounded shadow">
-          <thead>
-            <tr class="bg-gray-200 text-left">
-              <th class="p-2 border">Level</th>
-              <th class="p-2 border">Meaning</th>
-              <th class="p-2 border">Usage</th>
-              <th class="p-2 border">Tags</th>
-            </tr>
-          </thead>
-          <tbody>
-            <template x-for="point in grammarPoints" :key="point.id">
-              <tr class="border-b hover:bg-gray-100">
-                <td class="p-2 border" x-text="point.level"></td>
-                <td class="p-2 border" x-text="point.meaning"></td>
-                <td class="p-2 border" x-text="point.usage"></td>
-                <td class="p-2 border">
-                  <template x-for="tag in point.tags" :key="tag">
-                    <span class="inline-block bg-blue-200 text-blue-800 text-xs px-2 py-0.5 rounded mr-1"
-                      x-text="tag"></span>
-                  </template>
-                </td>
+        <div>
+          <!-- Search bar -->
+          <div class="mb-4">
+            <input type="text" placeholder="Search not implemented" class="p-2 border rounded w-full" />
+          </div>
+
+          <!-- Pagination buttons -->
+          <div class="mt-4 flex justify-between items-center">
+            <button class="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300" :disabled="currentPage === 1"
+              @click="currentPage--">
+              Prev
+            </button>
+
+            <span class="text-sm">Page <span x-text="currentPage"></span> of <span x-text="totalPages"></span></span>
+
+            <button class="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300" :disabled="currentPage === totalPages"
+              @click="currentPage++">
+              Next
+            </button>
+          </div>
+
+          <!-- Grammar table -->
+          <table class="mt-2 min-w-full bg-white border rounded shadow">
+            <thead>
+              <tr class="bg-gray-200 text-left">
+                <th class="p-2 border">場合</th>
+                <th class="p-2 border">使い方</th>
+                <th class="p-2 border">意味</th>
+                <th class="p-2 border">Tags</th>
               </tr>
-            </template>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <template x-for="point in paginatedPoints()" :key="point.id">
+                <tr class="border-b hover:bg-gray-100 active:bg-gray-100 focus:bg-gray-100 cursor-pointer"
+                  @click="selected = point">
+                  <td class="p-2 border" x-text="point.level"></td>
+                  <td class="p-2 border" x-text="point.usage"></td>
+                  <td class="p-2 border" x-text="point.meaning"></td>
+                  <td class="p-2 border">
+                    <template x-for="tag in point.tags" :key="tag">
+                      <span class="inline-block bg-blue-200 text-blue-800 text-xs px-2 py-0.5 rounded mr-1"
+                        x-text="tag"></span>
+                    </template>
+                  </td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
       </template>
 
       <template x-if="!loading && grammarPoints.length === 0 && !error">
