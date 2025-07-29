@@ -6,7 +6,7 @@ document.addEventListener('alpine:init', () => {
 
     async init() {
       try {
-        const res = await fetch('/api/journal?limit=20');
+        const res = await fetch('/api/journal');
         if (!res.ok) throw new Error('Failed to fetch journal entries');
         this.entries = await res.json();
       } catch (e) {

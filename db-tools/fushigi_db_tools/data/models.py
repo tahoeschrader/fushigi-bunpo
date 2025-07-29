@@ -1,6 +1,8 @@
+from datetime import datetime
 from typing import List
 
 from pydantic import BaseModel, ConfigDict
+
 
 # for backend, db creation
 class Example(BaseModel):
@@ -30,43 +32,19 @@ class GrammarWrapper(BaseModel):
     grammar: List[Grammar]
 
 
-# for frontend
 class GrammarInDB(Grammar):
     id: int
     model_config = ConfigDict(from_attributes=True)
 
 
-class TaggedGrammarCreate(BaseModel):
-    grammar_id: int
-
-
-class SentenceCreate(BaseModel):
-    content: str
-    tagged_grammar: List[TaggedGrammarCreate]
-
-
-class JournalEntryCreate(BaseModel):
+class JournalEntry(BaseModel):
     title: str
     content: str
-    sentences: List[SentenceCreate]
     private: bool
 
-class TaggedGrammar(BaseModel):
-    grammar_id: int
 
-
-class Sentence(BaseModel):
+class JournalEntryInDB(JournalEntry):
     id: int
-    content: str
-    tagged_grammar: List[TaggedGrammar]
-
-
-class JournalEntryInDB(BaseModel):
-    id: int
+    created_at: datetime
     user_id: int
-    title: str
-    content: str
-    created_at: str  # or datetime if you prefer
-    sentences: List[Sentence]
-    private: bool
-    
+    model_config = ConfigDict(from_attributes=True)

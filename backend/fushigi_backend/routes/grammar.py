@@ -1,38 +1,36 @@
-from typing import List, Optional
-from fastapi import APIRouter, Depends, HTTPException, Query
+from typing import List
+
+from fastapi import APIRouter, Depends, HTTPException, status
 from psycopg import AsyncConnection
+from psycopg.errors import DatabaseError
+from psycopg.rows import dict_row
 
 from fushigi_db_tools.data.models import GrammarInDB
 from fushigi_db_tools.db.connect import get_connection
 
 router = APIRouter(prefix="/api/grammar", tags=["grammar"])
 
+
 @router.get("", response_model=List[GrammarInDB])
 async def list_grammar(
     conn: AsyncConnection = Depends(get_connection),
 ) -> List[GrammarInDB]:
-    params = []
+    params = {}
 
     query = f"""
         SELECT id, usage, meaning, level, tags, notes, examples, enhanced_notes
         FROM grammar
         ORDER BY id
-    """
+    """  # noqa: F541
 
-    async with conn.cursor() as cur:
-        await cur.execute(query, params)
-        rows = await cur.fetchall()
+    try:
+        async with conn.cursor(row_factory=dict_row) as cur:
+            await cur.execute(query, params)
+            rows = await cur.fetchall()
+    except DatabaseError as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Database error: {e}",
+        )
 
-        return [
-            GrammarInDB.model_validate({
-                "id": row["id"],
-                "usage": row["usage"],
-                "meaning": row["meaning"],
-                "level": row["level"],
-                "tags": row["tags"],
-                "notes": row["notes"],
-                "examples": row["examples"],
-                "enhanced_notes": row["enhanced_notes"],
-            })
-            for row in rows
-        ]
+    return [GrammarInDB.model_validate(row) for row in rows]

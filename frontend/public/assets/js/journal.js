@@ -3,6 +3,7 @@ document.addEventListener('alpine:init', () => {
     title: '',
     content: '',
     result: '',
+    private: false,
 
     async submitJournal() {
       if (!this.title.trim() || !this.content.trim()) {
@@ -11,13 +12,18 @@ document.addEventListener('alpine:init', () => {
       }
 
       try {
+        console.log("Submitting journal", {
+          title: this.title,
+          content: this.content,
+          private: this.private,
+        });
         const res = await fetch('/api/journal', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             title: this.title,
             content: this.content,
-            sentences: []
+            private: this.private
           }),
         });
 
@@ -26,6 +32,7 @@ document.addEventListener('alpine:init', () => {
         this.result = `Journal saved (ID: ${id})`;
         this.title = '';
         this.content = '';
+        this.private = false;
       } catch (e) {
         this.result = `Error: ${e.message}`;
       }

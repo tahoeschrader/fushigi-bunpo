@@ -41,15 +41,6 @@ services:
       test-db-tools:
         condition: service_completed_successfully
    
-  #test-backend:
-  #  build:
-  #    context: .
-  #    dockerfile: Dockerfile.base
-  #  volumes:
-  #    - ./backend:/app/backend
-  #  working_dir: /app/backend
-  #  command: uv run pytest
-    
   backend:
     build:
       context: .
@@ -63,8 +54,6 @@ services:
     depends_on:
       db:
         condition: service_healthy
-      #test-backend:
-      #  condition: service_completed_successfully
 
   frontend:
     build:

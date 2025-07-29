@@ -32,8 +32,14 @@
         <ul class="space-y-2">
           <template x-for="entry in entries" :key="entry.id">
             <li class="p-4 border rounded hover:bg-gray-100">
-              <h2 class="font-semibold text-lg" x-text="entry.title"></h2>
+              <h2 class="font-semibold text-lg">
+                <template x-if="entry.private">
+                  <span title="Private" class="mr-1">🔒</span>
+                </template>
+                <span x-text="entry.title"></span>
+              </h2>
               <p class="text-sm text-gray-600" x-text="new Date(entry.created_at).toLocaleDateString()"></p>
+              <p class="text-sm text-gray-600" x-text="new Date(entry.created_at).toLocaleTimeString()"></p>
             </li>
           </template>
         </ul>

@@ -3,8 +3,8 @@ CREATE TABLE journal_entry (
     user_id INT NOT NULL,
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    private BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    private BOOLEAN NOT NULL,
 
     -- constraints
     CONSTRAINT fk_user_journal FOREIGN KEY (user_id) REFERENCES users(id)

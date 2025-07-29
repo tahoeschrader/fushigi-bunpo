@@ -11,12 +11,12 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
-  "fastapi",         # create endpoints for database # define data model with ORM tool built for FastAPI
-  "psycopg",         # connect to postgres
-  "psycopg_pool",    # some extra pool stuff
-  "pydantic",        # working with data model
-  "fushigi-db-tools",# shared library for data model
-  "uvicorn"          # temporary for testing
+  "fastapi",          # create endpoints for database # define data model with ORM tool built for FastAPI
+  "psycopg",          # connect to postgres
+  "psycopg_pool",     # some extra pool stuff
+  "pydantic",         # working with data model
+  "fushigi-db-tools", # shared library for data model
+  "uvicorn"           # server
 ]
 
 [dependency-groups]
