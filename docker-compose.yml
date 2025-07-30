@@ -55,16 +55,17 @@ services:
       db:
         condition: service_healthy
 
-  frontend:
+  app:
     build:
-      context: ./frontend
+      context: ./app
       dockerfile: Dockerfile
     depends_on:
       - backend
     ports:
-      - 3000:80
+      - 5173:5173
+    command: bun --bun run dev --host 0.0.0.0
     volumes:
-      - ./frontend/public:/usr/share/nginx/html:ro
+      - ./app:/app
 
   adminer:
     image: adminer
