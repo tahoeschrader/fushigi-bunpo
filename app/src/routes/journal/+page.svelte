@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  //import { Button } from "$lib/components/ui/button/index.js";
 
   let title = '';
   let content = '';
@@ -53,6 +54,7 @@
   <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
     Save
   </button>
+
 </form>
 
 {#if result}

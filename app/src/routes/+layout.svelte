@@ -17,7 +17,7 @@
   ];
 </script>
 
-<div class="flex h-screen">
+<div class="min-h-screen flex">
   <!-- Sidebar -->
   <div>
     <!-- Mobile top bar -->
@@ -31,7 +31,7 @@
 
     <!-- Mobile menu -->
     {#if $mobileMenuOpen}
-      <nav class="md:hidden h-screen bg-gray-800 text-white flex flex-col p-4 space-y-2">
+      <nav class="md:hidden h-screen bg-gray-900 text-white flex flex-col p-4 space-y-2">
         {#each links as link}
           <a
             href={link.href}
