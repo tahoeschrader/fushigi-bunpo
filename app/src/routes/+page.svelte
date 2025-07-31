@@ -4,4 +4,4 @@
  import { Button } from "$lib/components/ui/button/index.js";
 </script>
  
-<Button>Click me please dude!!!!</Button>
+<Button>Test</Button>
