@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  //import { Button } from "$lib/components/ui/button/index.js";
+  import { Button } from "$lib/components/ui/button/index.js";
 
   let title = '';
   let content = '';
@@ -51,9 +51,9 @@
     <label for="private">Private</label>
   </div>
 
-  <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+  <Button type="submit">
     Save
-  </button>
+  </Button>
 
 </form>
 
