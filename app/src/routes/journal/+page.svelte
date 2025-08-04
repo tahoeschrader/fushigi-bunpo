@@ -23,7 +23,8 @@
 
       if (!res.ok) throw new Error('Failed to save journal entry');
       const id = await res.json();
-      result = `Journal saved (ID: ${id})`;
+      console.log(id.id);
+      result = `Journal saved (ID: ${id.id})`;
 
       // Reset form
       title = '';

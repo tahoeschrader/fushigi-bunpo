@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from psycopg import AsyncConnection
 from psycopg.errors import DatabaseError
 from psycopg.rows import dict_row
+from pydantic import BaseModel
 
 from fushigi_db_tools.data.models import (
     JournalEntry,
@@ -11,10 +12,13 @@ from fushigi_db_tools.data.models import (
 )
 from fushigi_db_tools.db.connect import get_connection
 
+
 router = APIRouter(prefix="/api/journal", tags=["journal"])
 
+class ResponseID(BaseModel):
+    id: int
 
-@router.post("", response_model=int)
+@router.post("", response_model=ResponseID)
 async def create_journal_entry(
     entry: JournalEntry,
     conn: AsyncConnection = Depends(get_connection),
@@ -45,7 +49,7 @@ async def create_journal_entry(
                 )
             entry_id = row["id"]
 
-    return entry_id
+    return ResponseID(id=entry_id)
 
 
 @router.get("", response_model=List[JournalEntryInDB])

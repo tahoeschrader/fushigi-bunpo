@@ -13,14 +13,33 @@ enum Page: String, Identifiable, CaseIterable {
     case grammar = "Grammar"
     case history = "History"
     case journal = "Journal"
-
+    case training = "Training"
+    
     var id: String { rawValue }
+    
     var icon: String {
         switch self {
-            case .home: return "house"
-            case .grammar: return "book"
-            case .history: return "fossil.shell"
-            case .journal: return "pencil"
+        case .home: return "house"
+        case .grammar: return "book"
+        case .history: return "fossil.shell"
+        case .journal: return "pencil"
+        case .training: return "gamecontroller.fill"
+        }
+    }
+    
+    @ViewBuilder
+    var view: some View {
+        switch self {
+        case .home:
+            HomeView()
+        case .grammar:
+            GrammarView()
+        case .history:
+            HistoryView()
+        case .journal:
+            JournalView()
+        case .training:
+            GameView()
         }
     }
 }
@@ -29,30 +48,37 @@ struct ContentView: View {
     @State private var selectedPage: Page? = .home
 
     var body: some View {
+#if os(macOS)
         NavigationSplitView {
             List(Page.allCases, selection: $selectedPage) { page in
                 NavigationLink(value: page) {
                     Label(page.rawValue, systemImage: page.icon)
                 }
             }
-#if os(macOS)
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-#endif
             .navigationTitle("Fushigi")
-        } detail: {
-            switch selectedPage {
-            case .home:
-                HomeView()
-            case .grammar:
-                GrammarView()
-            case .history:
-                HistoryView()
-            case .journal:
-                JournalView()
-            case .none:
-                Text("Select a page")
+        }
+        detail: {
+            if let selectedPage {
+                selectedPage.view
+            } else {
+                Text("Select a page. Put a logo here. Idk")
+                    .font(.largeTitle)
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+#else
+        TabView(selection: $selectedPage) {
+            ForEach(Page.allCases) { page in
+                page.view
+                    .tabItem {
+                        Label(page.rawValue, systemImage: page.icon)
+                    }
+                    .tag(page)
+            }
+        }
+#endif
     }
 }
 

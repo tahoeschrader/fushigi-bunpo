@@ -48,3 +48,8 @@ class JournalEntryInDB(JournalEntry):
     created_at: datetime
     user_id: int
     model_config = ConfigDict(from_attributes=True)
+
+class SRSReview(BaseModel):
+    user_id: int
+    grammar_id: int
+    quality: int  # 0-5 quality rating; 5 = perfect

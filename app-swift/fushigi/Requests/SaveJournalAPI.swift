@@ -23,7 +23,7 @@ func submitJournalEntry(
         )
     }
 
-    let journalEntry = JournalEntry(title: trimmedTitle, content: trimmedContent, isPrivate: isPrivate)
+    let journalEntry = JournalEntry(title: trimmedTitle, content: trimmedContent, private: isPrivate)
     
     guard let url = URL(string: "http://192.168.11.5:8000/api/journal") else {
         return .failure(URLError(.badURL))
@@ -36,16 +36,15 @@ func submitJournalEntry(
         request.httpBody = try JSONEncoder().encode(journalEntry)
         
         let (data, _) = try await URLSession.shared.data(for: request)
-        
-        if let id = try? JSONDecoder().decode(Int.self, from: data) {
-            return .success("Journal saved (ID: \(id))")
-        }
+        let id = try JSONDecoder().decode(ResponseID.self, from: data)
+        return .success("Journal saved (ID: \(id.id))")
+    } catch let jsonError as DecodingError {
         return .failure(
             NSError(domain: "", code: 0,
-                    userInfo: [NSLocalizedDescriptionKey: "Unknown error, journal not saved."])
+                    userInfo: [NSLocalizedDescriptionKey: "\(jsonError)"])
         )
-        
     } catch {
         return .failure(error)
     }
+
 }

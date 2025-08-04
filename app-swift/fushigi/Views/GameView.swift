@@ -1,15 +1,15 @@
 //
-//  HomeView.swift
+//  GameView.swift
 //  fushigi
 //
-//  Created by Tahoe Schrader on 2025/08/01.
+//  Created by Tahoe Schrader on 2025/08/04.
 //
 
 import SwiftUI
 
-struct HomeView: View {
+struct GameView: View {
     var body: some View {
-        Text("What would be cool to put here? Some sort of data view? Remove and just make the grammar page be default? Some buttons leading to some study games?")
+        Text("Put some fun games here")
             .frame(maxWidth: .infinity, minHeight: 100, alignment: .center)
             .background(
                 Rectangle()
@@ -22,5 +22,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    GameView()
 }

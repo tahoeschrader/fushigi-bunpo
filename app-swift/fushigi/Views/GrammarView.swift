@@ -22,7 +22,7 @@ struct GrammarView: View {
     #endif
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             // Search bar
             HStack {
                 Image(systemName: "magnifyingglass")
@@ -39,7 +39,8 @@ struct GrammarView: View {
                 }
             }
             .padding()
-
+            .background()
+            
             // Table (macOS, iPad landscape, etc.)
             if !isCompact {
                 Table(paginatedPoints) {
@@ -59,30 +60,9 @@ struct GrammarView: View {
                             .fixedSize(horizontal: false, vertical: true)
                     }
                 }
-                .padding(.horizontal)
-                
-                HStack {
-                    Button("Previous") {
-                        if currentPage > 0 {
-                            currentPage -= 1
-                        }
-                    }
-                    .disabled(currentPage == 0)
-
-                    Text("Page \(currentPage + 1) of \(maxPage)")
-
-                    Button("Next") {
-                        if currentPage < maxPage - 1 {
-                            currentPage += 1
-                        }
-                    }
-                    .disabled(currentPage >= maxPage - 1)
-                }
-                .padding(.bottom)
-                .padding(.top, 5)
             } else {
                 // List (iPhone, compact size)
-                List(filteredPoints) { point in
+                List(paginatedPoints) { point in
                     VStack(alignment: .leading, spacing: 4) {
                         VStack(alignment: .leading, spacing: 4){
                             Text(point.usage)
@@ -106,6 +86,16 @@ struct GrammarView: View {
                     .padding(.vertical, 2)
                 }
             }
+            // Page controls
+            PaginationControls(
+                currentPage: currentPage,
+                maxPage: maxPage,
+                onPrevious: { if currentPage > 0 { currentPage -= 1 } },
+                onNext: { if currentPage < maxPage - 1 { currentPage += 1 } }
+            )
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal)
+            .background()
         }
         .task {
             let result = await fetchGrammarPoints()
