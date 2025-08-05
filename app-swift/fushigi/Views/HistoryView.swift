@@ -37,6 +37,7 @@ struct HistoryView: View {
             }
             .padding()
             .background()
+            
             List {
                 ForEach(paginatedEntries) { entry in
                     VStack(alignment: .leading, spacing: 4) {
