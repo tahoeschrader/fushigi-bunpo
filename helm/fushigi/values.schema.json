@@ -1,0 +1,45 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+	"allOf": [
+		{
+			"$ref": "https://raw.githubusercontent.com/bjw-s-labs/helm-charts/common-4.2.0/charts/library/common/values.schema.json"
+		},
+		{
+			"properties": {
+				"hostname": {
+					"type": "string",
+					"description": "Hostname the frontend application is served at",
+					"default": "fushigi.local",
+					"pattern": "^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\\.([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?))*$",
+					"examples": ["app.example.com", "staging.fushigi.io"]
+				},
+				"secret": {
+					"type": "string",
+					"description": "Name of the secret to mount in the backend and postgres dependency (if enabled)",
+					"default": "fushigi",
+					"pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$",
+					"minLength": 1,
+					"maxLength": 253
+				},
+				"access": {
+					"type": "string",
+					"enum": ["ingress", "route"],
+					"description": "How the frontend application is accessed at the hostname",
+					"default": "ingress"
+				},
+				"postgresql": {
+					"type": "object",
+					"description": "PostgreSQL dependency configuration",
+					"properties": {
+						"enabled": {
+							"type": "boolean",
+							"description": "Enable PostgreSQL dependency",
+							"default": true
+						}
+					}
+				}
+			}
+		}
+	]
+}

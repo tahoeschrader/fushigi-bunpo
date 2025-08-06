@@ -1,0 +1,45 @@
+{{- define "custom.helm.url" -}}
+https://harbor.trdos.me/helm
+{{- end -}}
+
+{{ template "chart.header" . }}
+
+{{ template "chart.versionBadge" . }}{{ template "chart.typeBadge" . }}{{ template "chart.appVersionBadge" . }}
+
+{{ template "chart.description" . }}
+
+{{ template "chart.sourcesSection" . }}
+
+## Requirements
+
+{{ template "chart.kubeVersionLine" . }}
+
+## Dependencies
+
+{{ template "chart.requirementsTable" . }}
+
+## Installing the Chart
+
+### Helm repository
+
+```bash
+# Add the repository
+helm repo add trdos {{template "custom.helm.url"}}
+
+# Install the chart
+helm install trdos fushigi -f values.yaml
+```
+
+### OCI
+
+```bash
+# Install the chart
+helm install oci://harbor.trdos.me/helm/fushigi -f values.yaml
+```
+
+## Configuration
+
+This chart uses the same 'common' library behind [app-template](https://bjw-s-labs.github.io/helm-charts/docs/app-template).
+Look at the top of [values.yaml](./values.yaml) for basic configuration, but consult the upstream documentation for a more complete feature set.
+
+{{ template "helm-docs.versionFooter" . }}

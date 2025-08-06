@@ -1,0 +1,63 @@
+---
+hostname: fushigi.local
+secret: fushigi
+access: ingress  # or "route"
+
+postresql:
+  enabled: true
+  auth:
+    existingSecret: '{{ .Values.secret }}'
+    username: fushigi
+    database: fushigi
+
+# FIXME convert images to production
+# FIXME publish containers to registry
+# FIXME specify path to secret files
+controllers:
+  backend:
+    containers:
+      backend:
+        image:
+          repository: oci://harbor.trdos.me/docker/fushigi-backend
+          tag: 0.0.1@...
+        command: [uv, run, uvicorn, fushigi_backend.main:app]
+        args: [--host, 0.0.0.0, --reload]
+  frontend:
+    containers:
+      frontend:
+        image:
+          repository: oci://harbor.trdos.me/docker/fushigi-frontend
+          tag: 0.0.1@...
+        command: [bun, run, dev]
+        args: [--host, 0.0.0.0]
+
+service:
+  backend:
+    ports:
+      http:
+        port: 8000
+  frontend:
+    ports:
+      http:
+        port: 5173
+
+persistence:
+  secrets:
+    type: secret
+    name: '{{ .Values.secret }}'
+    advancedMounts:
+      backend:
+        backend:
+          - readOnly: true
+
+ingress:
+  frontend:
+    enabled: '{{ eq .Values.access "ingress" }}'
+    hosts:
+      - host: '{{ .Values.hostname }}'
+
+route:
+  frontend:
+    enabled: '{{ eq .Values.access "route" }}'
+    hostnames:
+      - '{{ .Values.hostname }}'

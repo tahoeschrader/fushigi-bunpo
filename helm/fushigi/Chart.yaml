@@ -1,0 +1,20 @@
+---
+apiVersion: v2
+name: fushigi
+description: Fushigi with app-template
+version: 0.0.1
+appVersion: 0.0.1
+kubeVersion: ">=1.28.0-0"
+maintainers:
+  - name: tristan
+    email: tristan@bunkbed.tech
+dependencies:
+  - name: common
+    repository: https://bjw-s-labs.github.io/helm-charts
+    version: 4.2.0
+  - name: postgresql
+    version: 16.7.21
+    repository: oci://registry-1.docker.io/bitnamicharts
+    condition: postgresql.enabled
+sources:
+  - https://github.com/tahoeschrader/fushigi-bunpo
