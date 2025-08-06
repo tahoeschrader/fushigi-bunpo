@@ -12,3 +12,13 @@ build/
 
 # finder (MacOS) folder config -- argh!
 .DS_Store
+
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
