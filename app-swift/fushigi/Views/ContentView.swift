@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 enum Page: String, Identifiable, CaseIterable {
-    case home = "Home"
+    case home = "Test page"
     case grammar = "Grammar"
     case history = "History"
     case journal = "Journal"
@@ -48,7 +48,7 @@ struct ContentView: View {
     @State private var selectedPage: Page? = .home
 
     var body: some View {
-#if os(macOS)
+        #if os(macOS)
         NavigationSplitView {
             List(Page.allCases, selection: $selectedPage) { page in
                 NavigationLink(value: page) {
@@ -68,7 +68,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
-#else
+        #else
         TabView(selection: $selectedPage) {
             ForEach(Page.allCases) { page in
                 page.view
@@ -78,7 +78,7 @@ struct ContentView: View {
                     .tag(page)
             }
         }
-#endif
+        #endif
     }
 }
 
