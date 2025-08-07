@@ -46,39 +46,44 @@ enum Page: String, Identifiable, CaseIterable {
 
 struct ContentView: View {
     @State private var selectedPage: Page? = .home
-
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    var isCompact: Bool {
+        horizontalSizeClass == .compact
+    }
+    
     var body: some View {
-        #if os(macOS)
-        NavigationSplitView {
-            List(Page.allCases, selection: $selectedPage) { page in
-                NavigationLink(value: page) {
-                    Label(page.rawValue, systemImage: page.icon)
+        if isCompact{
+            TabView(selection: $selectedPage) {
+                ForEach(Page.allCases) { page in
+                    page.view
+                        .tabItem {
+                            Label(page.rawValue, systemImage: page.icon)
+                        }
+                        .tag(page)
                 }
             }
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-            .navigationTitle("Fushigi")
         }
-        detail: {
-            if let selectedPage {
-                selectedPage.view
-            } else {
-                Text("Select a page. Put a logo here. Idk")
-                    .font(.largeTitle)
-                    .foregroundStyle(.secondary)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-            }
-        }
-        #else
-        TabView(selection: $selectedPage) {
-            ForEach(Page.allCases) { page in
-                page.view
-                    .tabItem {
+        else {
+            NavigationSplitView {
+                List(Page.allCases, selection: $selectedPage) { page in
+                    NavigationLink(value: page) {
                         Label(page.rawValue, systemImage: page.icon)
                     }
-                    .tag(page)
+                }
+                .navigationSplitViewColumnWidth(min: 180, ideal: 200)
+                .navigationTitle("Fushigi")
+            }
+            detail: {
+                if let selectedPage {
+                    selectedPage.view
+                } else {
+                    Text("Select a page. Put a logo here. Idk")
+                        .font(.largeTitle)
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
             }
         }
-        #endif
     }
 }
 
