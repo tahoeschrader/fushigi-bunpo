@@ -11,10 +11,8 @@ struct HistoryView: View {
     @State private var searchText = ""
     @State private var journalEntries: [JournalEntryInDB] = []
     @State private var errorMessage: String?
-    @State private var currentPage = 0
     @State private var expanded: Set<Int> = []
 
-    private let pageSize = 10
 
     var body: some View {
         VStack(spacing: 0) {
@@ -31,71 +29,69 @@ struct HistoryView: View {
                     TextField("Type to search...", text: $searchText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .onChange(of: searchText) {
-                            currentPage = 0
+                            // nothing right now
                         }
                 }
             }
             .padding()
             .background()
             
-            List {
-                ForEach(paginatedEntries) { entry in
-                    VStack(alignment: .leading, spacing: 4) {
-                        Button {
-                            toggleExpanded(for: entry.id)
-                        } label: {
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(entry.title)
-                                        .font(.headline)
-                                    Text(entry.created_at.formatted())
-                                        .font(.caption)
-                                        .foregroundColor(.gray)
-                                }
-                                Spacer()
-                                Image(systemName: expanded.contains(entry.id) ? "chevron.down" : "chevron.right")
-                            }
-                        }
-                        .buttonStyle(PlainButtonStyle())
-
-                        if expanded.contains(entry.id) {
-                            VStack(alignment: .leading, spacing: 8) {
-                                Text(entry.content)
-                                    .font(.body)
-                                    .padding(.top, 4)
-
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text("Grammar Points:")
-                                        .font(.subheadline)
-                                        .foregroundColor(.blue)
-                                    Text("• (placeholder) ～てしまう")
-                                    Text("• (placeholder) ～わけではない")
-                                }
-
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text("AI Feedback:")
-                                        .font(.subheadline)
-                                        .foregroundColor(.secondary)
-                                    Text("(placeholder) Try to avoid passive constructions.")
+            Divider()
+            if filteredEntries.isEmpty {
+                ContentUnavailableView.search
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background()
+            } else {
+                List {
+                    ForEach(filteredEntries) { entry in
+                        VStack(alignment: .leading, spacing: 4) {
+                            Button {
+                                toggleExpanded(for: entry.id)
+                            } label: {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(entry.title)
+                                            .font(.headline)
+                                        Text(entry.created_at.formatted())
+                                            .font(.caption)
+                                            .foregroundColor(.gray)
+                                    }
+                                    Spacer()
+                                    Image(systemName: expanded.contains(entry.id) ? "chevron.down" : "chevron.right")
                                 }
                             }
-                            .padding(.leading)
-                            .padding(.top, 4)
+                            .buttonStyle(PlainButtonStyle())
+                            
+                            if expanded.contains(entry.id) {
+                                VStack(alignment: .leading, spacing: 8) {
+                                    Text(entry.content)
+                                        .font(.body)
+                                        .padding(.top, 4)
+                                    
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text("Grammar Points:")
+                                            .font(.subheadline)
+                                            .foregroundColor(.blue)
+                                        Text("• (placeholder) ～てしまう")
+                                        Text("• (placeholder) ～わけではない")
+                                    }
+                                    
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text("AI Feedback:")
+                                            .font(.subheadline)
+                                            .foregroundColor(.secondary)
+                                        Text("(placeholder) Try to avoid passive constructions.")
+                                    }
+                                }
+                                .padding(.leading)
+                                .padding(.top, 4)
+                            }
                         }
+                        .padding(.vertical, 4)
                     }
-                    .padding(.vertical, 4)
+                    .onDelete(perform: deleteEntry)
                 }
-                .onDelete(perform: deleteEntry)
             }
-            PaginationControls(
-                currentPage: currentPage,
-                maxPage: maxPage,
-                onPrevious: { if currentPage > 0 { currentPage -= 1 } },
-                onNext: { if currentPage < maxPage - 1 { currentPage += 1 } }
-            )
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal)
-            .background()
         }
         .task {
             let result = await fetchJournalEntries()
@@ -119,7 +115,7 @@ struct HistoryView: View {
 
     private func deleteEntry(at offsets: IndexSet) {
         for index in offsets {
-            let deletedEntry = paginatedEntries[index]
+            let deletedEntry = filteredEntries[index]
             print("Pretending to delete: \(deletedEntry.title)")
             if let realIndex = journalEntries.firstIndex(where: { $0.id == deletedEntry.id }) {
                 journalEntries.remove(at: realIndex)
@@ -136,18 +132,6 @@ struct HistoryView: View {
                 $0.content.localizedCaseInsensitiveContains(searchText)
             }
         }
-    }
-
-    var maxPage: Int {
-        let count = filteredEntries.count
-        return (count + pageSize - 1) / pageSize
-    }
-
-    var paginatedEntries: [JournalEntryInDB] {
-        let start = currentPage * pageSize
-        let end = min(start + pageSize, filteredEntries.count)
-        guard start < end else { return [] }
-        return Array(filteredEntries[start..<end])
     }
 
 }
