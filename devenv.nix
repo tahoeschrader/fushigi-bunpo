@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ... }:
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   config = lib.mkMerge [
     {
       # Defaults
@@ -44,7 +48,7 @@
         statix.enable = true;
         statix.raw.args = [
           "--config"
-          ((pkgs.formats.toml { }).generate "statix.toml" {
+          ((pkgs.formats.toml {}).generate "statix.toml" {
             disabled = [
               "unquoted_uri"
               "repeated_keys"
@@ -59,6 +63,21 @@
         enable = true;
         uv.enable = true;
         uv.sync.enable = true;
+      };
+      services.adminer.enable = true;
+      # TODO populate database with db-tools
+      services.postgres.enable = true;
+      services.postgres.initialDatabases = lib.toList {
+        name = "postgres";
+        user = "postgres";
+        pass = "postgres";
+      };
+      processes.adminer.process-compose.depends_on.postgres.condition = "process_healthy";
+      processes.backend.exec = "uv run uvicorn fushigi_backend.main:app --reload";
+      processes.backend.process-compose = {
+        environment = ["DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres"];
+        depends_on.postgres.condition = "process_healthy";
+        working_dir = "./backend";
       };
       git-hooks.hooks = {
         flake8.enable = true;
@@ -77,6 +96,8 @@
     {
       # SvelteKit frontend
       git-hooks.hooks.biome.enable = true;
+      processes.frontend.exec = "bun run dev --open";
+      processes.frontend.process-compose.working_dir = "./app";
       languages = {
         typescript.enable = true;
         javascript = {
