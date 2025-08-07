@@ -13,13 +13,11 @@ struct GrammarView: View {
     @State private var errorMessage: String?
     @State private var currentPage = 0
     private let pageSize = 10
-    
-    #if os(iOS)
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-    private var isCompact: Bool { horizontalSizeClass == .compact }
-    #else
-    private let isCompact = false
-    #endif
+    @State private var selectedGrammarID: GrammarPoint.ID?
+    var selectedGrammarPoint: GrammarPoint? {
+        grammarPoints.first(where: { $0.id == selectedGrammarID })
+    }
+    @State private var showingInspector: Bool = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -33,69 +31,59 @@ struct GrammarView: View {
                 } else {
                     TextField("Type to search...", text: $searchText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .onChange(of: searchText){
-                            currentPage = 0
+                        .onChange(of: searchText) {
+                            // nothing right now
                         }
+                }
+                Button("Deselect"){
+                    selectedGrammarID = nil
                 }
             }
             .padding()
             .background()
             
-            // Table (macOS, iPad landscape, etc.)
-            if !isCompact {
-                Table(paginatedPoints) {
-                    TableColumn("場合", value: \.level)
-                    TableColumn("使い方") { point in
-                        VStack(alignment: .leading) {
-                            Text(point.usage)
-                            Text(point.meaning)
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                        .lineLimit(nil)
-                    }
-                    TableColumn("タッグ") { point in
-                        coloredTagsText(tags: point.tags)
-                            .lineLimit(nil)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                }
+            Divider()
+            
+            if filteredPoints.isEmpty {
+                ContentUnavailableView.search
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background()
             } else {
-                // List (iPhone, compact size)
-                List(paginatedPoints) { point in
-                    VStack(alignment: .leading, spacing: 4) {
-                        VStack(alignment: .leading, spacing: 4){
-                            Text(point.usage)
-                                .font(.body)
-                            Text(point.meaning)
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
+#if os(macOS)
+                TableView(
+                    grammarPoints: filteredPoints,
+                    selectedGrammarID: $selectedGrammarID,
+                    showingInspector: $showingInspector
+                )
+                .toolbar {
+                    ToolbarItem {
+                        Button {
+                            showingInspector.toggle()
+                        } label: {
+                            Label("More Info", systemImage: "sidebar.trailing")
                         }
-                            .padding(6)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .background(Color.gray.opacity(0.2))
-                            .cornerRadius(6)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 6)
-                                    .stroke(Color.primary.opacity(0.4), lineWidth: 1)
-                            )
-                        coloredTagsText(tags: point.tags)
-                            .font(.caption)
-
                     }
-                    .padding(.vertical, 2)
                 }
+                .inspector(isPresented: $showingInspector) {
+                    if let thisGrammarPoint = selectedGrammarPoint {
+                        InspectorView(grammarPoint: thisGrammarPoint, isPresented: $showingInspector)
+                    } else {
+                        LegendView()
+                    }
+                }
+#else
+                TableView(
+                    grammarPoints: filteredPoints,
+                    selectedGrammarID: $selectedGrammarID,
+                    showingInspector: $showingInspector
+                )
+                .inspector(isPresented: $showingInspector) {
+                    if let thisGrammarPoint = selectedGrammarPoint {
+                        InspectorView(grammarPoint: thisGrammarPoint, isPresented: $showingInspector)
+                    }
+                }
+#endif
             }
-            // Page controls
-            PaginationControls(
-                currentPage: currentPage,
-                maxPage: maxPage,
-                onPrevious: { if currentPage > 0 { currentPage -= 1 } },
-                onNext: { if currentPage < maxPage - 1 { currentPage += 1 } }
-            )
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal)
-            .background()
         }
         .task {
             let result = await fetchGrammarPoints()
@@ -121,17 +109,123 @@ struct GrammarView: View {
             }
         }
     }
-    
-    var maxPage: Int {
-        let count = filteredPoints.count
-        return (count + pageSize - 1) / pageSize // ceil division
-    }
+}
 
-    var paginatedPoints: [GrammarPoint] {
-        let start = currentPage * pageSize
-        let end = min(start + pageSize, filteredPoints.count)
-        guard start < end else { return [] }
-        return Array(filteredPoints[start..<end])
+struct TableView: View {
+    let grammarPoints: [GrammarPoint]
+    @Binding var selectedGrammarID: GrammarPoint.ID?
+    @Binding var showingInspector: Bool
+    
+    var body: some View {
+        Table(grammarPoints, selection: $selectedGrammarID) {
+#if os(iOS)
+            TableColumn("場合"){ point in
+                VStack(alignment: .leading, spacing: 4) {
+                    VStack(alignment: .leading, spacing: 4){
+                        Text(point.usage)
+                            .font(.body)
+                        Text(point.meaning)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                        .padding(6)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color.gray.opacity(0.2))
+                        .cornerRadius(6)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 6)
+                                .stroke(Color.primary.opacity(0.4), lineWidth: 1)
+                        )
+                    coloredTagsText(tags: point.tags)
+                        .font(.caption)
+
+                }
+                .padding(.vertical, 2)
+            }
+#else
+#endif
+            TableColumn("場合") { point in
+                Text(point.level)
+            }
+            TableColumn("使い方") { point in
+                VStack(alignment: .leading) {
+                    Text(point.usage)
+                    Text(point.meaning)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                .lineLimit(nil)
+            }
+            TableColumn("タッグ") { point in
+                coloredTagsText(tags: point.tags)
+                    .lineLimit(nil)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .onChange(of: selectedGrammarID) { _, newSelection in
+            showingInspector = newSelection != nil
+        }
+    }
+}
+
+struct InspectorView: View {
+    let grammarPoint: GrammarPoint
+    @Binding var isPresented: Bool
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+#if os(iOS)
+            HStack {
+                Spacer()
+                Button("Done") {
+                    isPresented = false
+                }
+            }
+            .padding(.horizontal)
+#endif
+
+            VStack(alignment: .leading) {
+                Text("Usage: \(grammarPoint.usage)")
+                Text("Meaning: \(grammarPoint.meaning)")
+                Divider()
+                coloredTagsText(tags: grammarPoint.tags)
+            }
+            .padding()
+            Spacer()
+        }
+        .padding()
+#if os(iOS)
+        .presentationDetents([.fraction(0.5), .large])
+        .transition(.move(edge: .bottom))
+#endif
+    }
+}
+
+struct LegendView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Label("Legend", systemImage: "sidebar.trailing")
+                .labelStyle(.titleOnly)
+                .font(.title2)
+                .bold()
+
+            Text("Select a person in the table to see detailed info here.")
+                .font(.body)
+
+            Divider()
+
+            VStack(alignment: .leading, spacing: 8) {
+                Label("Name", systemImage: "person")
+                Label("Age", systemImage: "calendar")
+                Label("Email", systemImage: "envelope")
+                Label("Status", systemImage: "circle.fill")
+            }
+            .font(.subheadline)
+            .foregroundStyle(.secondary)
+
+            Spacer()
+        }
+        .padding()
     }
 }
 
