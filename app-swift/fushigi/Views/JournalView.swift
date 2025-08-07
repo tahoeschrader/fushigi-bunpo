@@ -16,7 +16,6 @@ struct JournalView: View {
     @State private var isGrammarExpanded: Bool = false
     @State private var isTaggingExpanded: Bool = false
 
-
     var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .leading, spacing: 20) {

@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct GrammarView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    var isCompact: Bool {
+        horizontalSizeClass == .compact
+    }
+    
     @State private var searchText: String = ""
     @State private var grammarPoints: [GrammarPoint] = []
     @State private var errorMessage: String?
@@ -49,40 +54,50 @@ struct GrammarView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background()
             } else {
-#if os(macOS)
-                TableView(
-                    grammarPoints: filteredPoints,
-                    selectedGrammarID: $selectedGrammarID,
-                    showingInspector: $showingInspector
-                )
-                .toolbar {
-                    ToolbarItem {
-                        Button {
-                            showingInspector.toggle()
-                        } label: {
-                            Label("More Info", systemImage: "sidebar.trailing")
+                if isCompact {
+                    TableView(
+                        grammarPoints: filteredPoints,
+                        selectedGrammarID: $selectedGrammarID,
+                        showingInspector: $showingInspector,
+                        isCompact: isCompact
+                    )
+                    .inspector(isPresented: $showingInspector) {
+                        if let thisGrammarPoint = selectedGrammarPoint {
+                            InspectorView(
+                                grammarPoint: thisGrammarPoint,
+                                isPresented: $showingInspector,
+                                isCompact: isCompact
+                            )
+                        }
+                    }
+                } else {
+                    TableView(
+                        grammarPoints: filteredPoints,
+                        selectedGrammarID: $selectedGrammarID,
+                        showingInspector: $showingInspector,
+                        isCompact: isCompact
+                    )
+                    .toolbar {
+                        ToolbarItem {
+                            Button {
+                                showingInspector.toggle()
+                            } label: {
+                                Label("More Info", systemImage: "sidebar.trailing")
+                            }
+                        }
+                    }
+                    .inspector(isPresented: $showingInspector) {
+                        if let thisGrammarPoint = selectedGrammarPoint {
+                            InspectorView(
+                                grammarPoint: thisGrammarPoint,
+                                isPresented: $showingInspector,
+                                isCompact: isCompact
+                            )
+                        } else {
+                            LegendView()
                         }
                     }
                 }
-                .inspector(isPresented: $showingInspector) {
-                    if let thisGrammarPoint = selectedGrammarPoint {
-                        InspectorView(grammarPoint: thisGrammarPoint, isPresented: $showingInspector)
-                    } else {
-                        LegendView()
-                    }
-                }
-#else
-                TableView(
-                    grammarPoints: filteredPoints,
-                    selectedGrammarID: $selectedGrammarID,
-                    showingInspector: $showingInspector
-                )
-                .inspector(isPresented: $showingInspector) {
-                    if let thisGrammarPoint = selectedGrammarPoint {
-                        InspectorView(grammarPoint: thisGrammarPoint, isPresented: $showingInspector)
-                    }
-                }
-#endif
             }
         }
         .task {
@@ -115,51 +130,53 @@ struct TableView: View {
     let grammarPoints: [GrammarPoint]
     @Binding var selectedGrammarID: GrammarPoint.ID?
     @Binding var showingInspector: Bool
+    let isCompact: Bool
     
     var body: some View {
         Table(grammarPoints, selection: $selectedGrammarID) {
-#if os(iOS)
-            TableColumn("場合"){ point in
-                VStack(alignment: .leading, spacing: 4) {
-                    VStack(alignment: .leading, spacing: 4){
-                        Text(point.usage)
-                            .font(.body)
-                        Text(point.meaning)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                    }
-                        .padding(6)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(6)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(Color.primary.opacity(0.4), lineWidth: 1)
-                        )
-                    coloredTagsText(tags: point.tags)
-                        .font(.caption)
+            if isCompact {
+                TableColumn("場合"){ point in
+                    VStack(alignment: .leading, spacing: 4) {
+                        VStack(alignment: .leading, spacing: 4){
+                            Text(point.usage)
+                                .font(.body)
+                            Text(point.meaning)
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                        }
+                            .padding(6)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background(Color.gray.opacity(0.2))
+                            .cornerRadius(6)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 6)
+                                    .stroke(Color.primary.opacity(0.4), lineWidth: 1)
+                            )
+                        coloredTagsText(tags: point.tags)
+                            .font(.caption)
 
+                    }
+                    .padding(.vertical, 2)
                 }
-                .padding(.vertical, 2)
             }
-#else
-#endif
-            TableColumn("場合") { point in
-                Text(point.level)
-            }
-            TableColumn("使い方") { point in
-                VStack(alignment: .leading) {
-                    Text(point.usage)
-                    Text(point.meaning)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+            else {
+                TableColumn("場合") { point in
+                    Text(point.level)
                 }
-                .lineLimit(nil)
-            }
-            TableColumn("タッグ") { point in
-                coloredTagsText(tags: point.tags)
+                TableColumn("使い方") { point in
+                    VStack(alignment: .leading) {
+                        Text(point.usage)
+                        Text(point.meaning)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
                     .lineLimit(nil)
-                    .fixedSize(horizontal: false, vertical: true)
+                }
+                TableColumn("タッグ") { point in
+                    coloredTagsText(tags: point.tags)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
             }
         }
         .onChange(of: selectedGrammarID) { _, newSelection in
@@ -171,18 +188,19 @@ struct TableView: View {
 struct InspectorView: View {
     let grammarPoint: GrammarPoint
     @Binding var isPresented: Bool
+    let isCompact: Bool
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-#if os(iOS)
-            HStack {
-                Spacer()
-                Button("Done") {
-                    isPresented = false
+            if isCompact {
+                HStack {
+                    Spacer()
+                    Button("Done") {
+                        isPresented = false
+                    }
                 }
+                .padding(.horizontal)
             }
-            .padding(.horizontal)
-#endif
 
             VStack(alignment: .leading) {
                 Text("Usage: \(grammarPoint.usage)")
@@ -191,13 +209,12 @@ struct InspectorView: View {
                 coloredTagsText(tags: grammarPoint.tags)
             }
             .padding()
+            
             Spacer()
         }
         .padding()
-#if os(iOS)
         .presentationDetents([.fraction(0.5), .large])
         .transition(.move(edge: .bottom))
-#endif
     }
 }
 
