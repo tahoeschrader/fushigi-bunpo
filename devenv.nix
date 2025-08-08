@@ -77,7 +77,7 @@
         pass = "postgres";
       };
       processes.adminer.process-compose.depends_on.postgres.condition = "process_healthy";
-      processes.backend.exec = "uv run uvicorn fushigi_backend.main:app --reload";
+      processes.backend.exec = "uv run uvicorn fushigi_backend.main:app --reload --host 0.0.0.0";
       processes.backend.process-compose = {
         environment = ["DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres"];
         depends_on.postgres.condition = "process_healthy";
@@ -100,7 +100,19 @@
     {
       # SvelteKit frontend
       git-hooks.hooks.biome.enable = true;
-      processes.frontend.exec = "bun run dev --open";
+      processes.frontend.exec = let
+        # Localhost won't work when testing on another device
+        getIpCmd = pkg: "${pkg}/bin/ip route get 1 | ${pkgs.gnused}/bin/sed 's/^.*src \\([^ ]*\\).*$/\\1/;q'";
+        pkg =
+          if pkgs.stdenv.isLinux
+          then pkgs.iproute2
+          else if pkgs.stdenv.isDarwin
+          then pkgs.iproute2mac
+          else throw "${pkgs.stdenv.system} not supported";
+      in ''
+        export VITE_API_BASE="http://$(${getIpCmd pkg}):8000"
+        bun run dev --open
+      '';
       processes.frontend.process-compose.working_dir = "./app";
       languages = {
         typescript.enable = true;
