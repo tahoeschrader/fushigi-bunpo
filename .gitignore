@@ -9,6 +9,7 @@ build/
 
 # dotenv environment variable files
 .env*
+!.envrc
 
 # finder (MacOS) folder config -- argh!
 .DS_Store

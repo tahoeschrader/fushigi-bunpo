@@ -64,6 +64,10 @@
         uv.enable = true;
         uv.sync.enable = true;
       };
+      packages = with pkgs; [
+        # why do i have to put in this clooge if uv installs it...
+        python3Packages.psycopg
+      ];
       services.adminer.enable = true;
       # TODO populate database with db-tools
       services.postgres.enable = true;
@@ -112,10 +116,8 @@
       # TUI
       languages.rust.enable = true;
       git-hooks.hooks = {
-        flake8.enable = true;
-        mypy.enable = true;
-        ruff.enable = true;
-        taplo.enable = true;
+        clippy.enable = true;
+        rustfmt.enable = true;
       };
     }
     {
