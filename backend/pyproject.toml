@@ -6,9 +6,7 @@ build-backend = "hatchling.build"
 name = "fushigi-backend"
 version = "0.1.0"
 description = "API for storing and querying user submitted Japanese journal entries and grammar tags for the Fushigi Kaiwa app."
-authors = [
-  {name="Tahoe Schrader", email="tahoeschrader@gmail.com"}
-]
+authors = [{ name = "Tahoe Schrader", email = "tahoeschrader@gmail.com" }]
 requires-python = ">=3.12"
 dependencies = [
   "fastapi",          # create endpoints for database # define data model with ORM tool built for FastAPI
@@ -16,15 +14,15 @@ dependencies = [
   "psycopg_pool",     # some extra pool stuff
   "pydantic",         # working with data model
   "fushigi-db-tools", # shared library for data model
-  "uvicorn"           # server
+  "uvicorn",          # server
 ]
 
+# TODO: add in ruff/taplo instead of black/flake8/isort
 [dependency-groups]
 dev = [
-  "pytest",      # tests
-  "pytest-cov",  # ensure all code covered by tests
-  "black",       # auto format code
-  "flake8",      # enforce formatting in editor
-  "isort"        # clean up imports automatically
+  "pytest",     # tests
+  "pytest-cov", # ensure all code covered by tests
+  "black",      # auto format code TODO: remove
+  "flake8",     # enforce formatting in editor TODO: remove
+  "isort",      # clean up imports automatically TODO: remove
 ]
-

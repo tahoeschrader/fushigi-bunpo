@@ -1,9 +1,10 @@
 [tool.uv.sources]
-fushigi-db-tools = {workspace = true }
+fushigi-db-tools = { workspace = true }
 
 [tool.uv.workspace]
 members = ["backend", "db-tools"]
 
+# TODO: configure ruff/taplo and remove isort/black
 [tool.isort]
 profile = "black"
 line_length = 88
