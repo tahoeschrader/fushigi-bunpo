@@ -12,7 +12,7 @@ struct GrammarView: View {
     var isCompact: Bool {
         horizontalSizeClass == .compact
     }
-    
+
     @State private var searchText: String = ""
     @State private var grammarPoints: [GrammarPoint] = []
     @State private var errorMessage: String?
@@ -22,6 +22,7 @@ struct GrammarView: View {
     var selectedGrammarPoint: GrammarPoint? {
         grammarPoints.first(where: { $0.id == selectedGrammarID })
     }
+
     @State private var showingInspector: Bool = false
 
     var body: some View {
@@ -40,15 +41,58 @@ struct GrammarView: View {
                             // nothing right now
                         }
                 }
-                Button("Deselect"){
-                    selectedGrammarID = nil
-                }
+                Menu(content: {
+                    Section {
+                        Button(action: {
+                            selectedGrammarID = nil
+                        }) {
+                            Label("Deselect", systemImage: "square.slash")
+                        }.disabled(selectedGrammarID == nil)
+
+                        Button(action: {
+                            showingInspector.toggle()
+                        }) {
+                            Label("Show Info", systemImage: "info")
+                        }
+                    }
+
+                    Divider()
+
+                    Section {
+                        Button(role: .destructive, action: {
+                            // Code
+                        }) {
+                            Label("Delete", systemImage: "trash")
+                        }
+                        .disabled(true)
+
+                        Button(action: {
+                            // Code
+                        }) {
+                            Label("Edit", systemImage: "pencil")
+                        }
+                        .disabled(true)
+                    }
+
+                    Divider()
+
+                    Button(action: {
+                        // Code
+                    }) {
+                        Label("Add", systemImage: "plus.app")
+                    }
+                    .disabled(true)
+                }, label: {
+                    Text("Options")
+                })
+                .menuStyle(.automatic)
+                .fixedSize()
             }
             .padding()
             .background()
-            
+
             Divider()
-            
+
             if filteredPoints.isEmpty {
                 ContentUnavailableView.search
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -68,6 +112,9 @@ struct GrammarView: View {
                                 isPresented: $showingInspector,
                                 isCompact: isCompact
                             )
+                        } else {
+                            LegendView(isCompact: isCompact, isPresented: $showingInspector)
+                                .presentationDetents([.fraction(0.5), .large])
                         }
                     }
                 } else {
@@ -94,7 +141,7 @@ struct GrammarView: View {
                                 isCompact: isCompact
                             )
                         } else {
-                            LegendView()
+                            LegendView(isCompact: isCompact, isPresented: $showingInspector)
                         }
                     }
                 }
@@ -103,10 +150,10 @@ struct GrammarView: View {
         .task {
             let result = await fetchGrammarPoints()
             switch result {
-            case .success(let points):
+            case let .success(points):
                 grammarPoints = points
                 errorMessage = nil
-            case .failure(let error):
+            case let .failure(error):
                 errorMessage = error.localizedDescription
             }
         }
@@ -118,131 +165,11 @@ struct GrammarView: View {
         } else {
             return grammarPoints.filter {
                 $0.usage.localizedCaseInsensitiveContains(searchText) ||
-                $0.meaning.localizedCaseInsensitiveContains(searchText) ||
-                $0.level.localizedCaseInsensitiveContains(searchText) ||
-                $0.tags.contains { $0.localizedCaseInsensitiveContains(searchText) }
+                    $0.meaning.localizedCaseInsensitiveContains(searchText) ||
+                    $0.level.localizedCaseInsensitiveContains(searchText) ||
+                    $0.tags.contains { $0.localizedCaseInsensitiveContains(searchText) }
             }
         }
-    }
-}
-
-struct TableView: View {
-    let grammarPoints: [GrammarPoint]
-    @Binding var selectedGrammarID: GrammarPoint.ID?
-    @Binding var showingInspector: Bool
-    let isCompact: Bool
-    
-    var body: some View {
-        Table(grammarPoints, selection: $selectedGrammarID) {
-            if isCompact {
-                TableColumn("場合"){ point in
-                    VStack(alignment: .leading, spacing: 4) {
-                        VStack(alignment: .leading, spacing: 4){
-                            Text(point.usage)
-                                .font(.body)
-                            Text(point.meaning)
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                        }
-                            .padding(6)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .background(Color.gray.opacity(0.2))
-                            .cornerRadius(6)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 6)
-                                    .stroke(Color.primary.opacity(0.4), lineWidth: 1)
-                            )
-                        coloredTagsText(tags: point.tags)
-                            .font(.caption)
-
-                    }
-                    .padding(.vertical, 2)
-                }
-            }
-            else {
-                TableColumn("場合") { point in
-                    Text(point.level)
-                }
-                TableColumn("使い方") { point in
-                    VStack(alignment: .leading) {
-                        Text(point.usage)
-                        Text(point.meaning)
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
-                    .lineLimit(nil)
-                }
-                TableColumn("タッグ") { point in
-                    coloredTagsText(tags: point.tags)
-                        .lineLimit(nil)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-            }
-        }
-        .onChange(of: selectedGrammarID) { _, newSelection in
-            showingInspector = newSelection != nil
-        }
-    }
-}
-
-struct InspectorView: View {
-    let grammarPoint: GrammarPoint
-    @Binding var isPresented: Bool
-    let isCompact: Bool
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            if isCompact {
-                HStack {
-                    Spacer()
-                    Button("Done") {
-                        isPresented = false
-                    }
-                }
-                .padding(.horizontal)
-            }
-
-            VStack(alignment: .leading) {
-                Text("Usage: \(grammarPoint.usage)")
-                Text("Meaning: \(grammarPoint.meaning)")
-                Divider()
-                coloredTagsText(tags: grammarPoint.tags)
-            }
-            .padding()
-            
-            Spacer()
-        }
-        .padding()
-        .presentationDetents([.fraction(0.5), .large])
-        .transition(.move(edge: .bottom))
-    }
-}
-
-struct LegendView: View {
-    var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Label("Legend", systemImage: "sidebar.trailing")
-                .labelStyle(.titleOnly)
-                .font(.title2)
-                .bold()
-
-            Text("Select a person in the table to see detailed info here.")
-                .font(.body)
-
-            Divider()
-
-            VStack(alignment: .leading, spacing: 8) {
-                Label("Name", systemImage: "person")
-                Label("Age", systemImage: "calendar")
-                Label("Email", systemImage: "envelope")
-                Label("Status", systemImage: "circle.fill")
-            }
-            .font(.subheadline)
-            .foregroundStyle(.secondary)
-
-            Spacer()
-        }
-        .padding()
     }
 }
 
