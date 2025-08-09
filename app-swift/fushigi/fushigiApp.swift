@@ -5,8 +5,8 @@
 //  Created by Tahoe Schrader on 2025/08/01.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 @main
 struct fushigiApp: App {
@@ -29,4 +29,8 @@ struct fushigiApp: App {
         }
         .modelContainer(sharedModelContainer)
     }
+}
+
+#Preview {
+    ContentView()
 }
