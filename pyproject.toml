@@ -4,6 +4,9 @@ fushigi-db-tools = { workspace = true }
 [tool.uv.workspace]
 members = ["backend", "db-tools"]
 
+[tool.mypy]
+mypy_path = ["backend", "db-tools"]
+
 # TODO: configure ruff/taplo and remove isort/black
 [tool.isort]
 profile = "black"
