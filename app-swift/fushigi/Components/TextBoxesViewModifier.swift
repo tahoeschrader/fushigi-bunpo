@@ -8,24 +8,20 @@
 import SwiftUI
 
 struct FocusBorder: ViewModifier {
-    @Binding var isFocused: Bool
-    
+    var isFocused: FocusState<Bool>.Binding // @Binding var isFocused: Bool
+
     func body(content: Content) -> some View {
         content
             .padding(8)
             .background(
                 RoundedRectangle(cornerRadius: 8)
-                    .fill(isFocused ? Color.accentColor.opacity(0.1) : Color.clear)
-            )
-            .background(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(isFocused ? Color.accentColor.opacity(0.5) : Color.gray.opacity(0.5), lineWidth: 2)
+                    .stroke(isFocused.wrappedValue ? Color.accentColor.opacity(0.5) : Color.gray.opacity(0.5), lineWidth: 3) // isFocused ?
             )
     }
 }
 
 extension View {
-    func focusBorder(_ isFocused: Binding<Bool>) -> some View {
-        self.modifier(FocusBorder(isFocused: isFocused))
+    func focusBorder(_ isFocused: FocusState<Bool>.Binding) -> some View { // Binding<Bool>
+        modifier(FocusBorder(isFocused: isFocused))
     }
 }

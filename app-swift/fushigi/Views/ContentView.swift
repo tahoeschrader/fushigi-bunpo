@@ -5,8 +5,8 @@
 //  Created by Tahoe Schrader on 2025/08/01.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 enum Page: String, Identifiable, CaseIterable {
     case home = "Test page"
@@ -14,9 +14,9 @@ enum Page: String, Identifiable, CaseIterable {
     case history = "History"
     case journal = "Journal"
     case training = "Training"
-    
+
     var id: String { rawValue }
-    
+
     var icon: String {
         switch self {
         case .home: return "house"
@@ -26,7 +26,7 @@ enum Page: String, Identifiable, CaseIterable {
         case .training: return "gamecontroller.fill"
         }
     }
-    
+
     @ViewBuilder
     var view: some View {
         switch self {
@@ -50,9 +50,9 @@ struct ContentView: View {
     var isCompact: Bool {
         horizontalSizeClass == .compact
     }
-    
+
     var body: some View {
-        if isCompact{
+        if isCompact {
             TabView(selection: $selectedPage) {
                 ForEach(Page.allCases) { page in
                     page.view
@@ -62,8 +62,7 @@ struct ContentView: View {
                         .tag(page)
                 }
             }
-        }
-        else {
+        } else {
             NavigationSplitView {
                 List(Page.allCases, selection: $selectedPage) { page in
                     NavigationLink(value: page) {

@@ -21,8 +21,6 @@ struct JournalView: View {
     @State private var isSaving = false
 
     // Grammar UI state
-    @State private var isGrammarExpanded = false
-    @State private var isTaggingExpanded = false
     @State private var grammarPoints: [GrammarPoint] = []
     @State private var errorMessage: String?
     @State private var selectedGrammarID: GrammarPoint.ID?
@@ -33,7 +31,6 @@ struct JournalView: View {
     @State private var showingInspector = false
     @FocusState private var isTitleFocused: Bool
     @FocusState private var isContentFocused: Bool
-    @State private var isTitleFocusedBorder = false
 
     // Settings state
     @State private var selectedLevel: Level = .all
@@ -76,23 +73,17 @@ struct JournalView: View {
                     Text("Title")
                         .font(.headline)
                     TextField("Enter title", text: $title)
-                        .focusBorder($isTitleFocusedBorder)
+                        .focusBorder($isTitleFocused)
                         .focused($isTitleFocused)
-                        .onSubmit{
+                        .onSubmit {
                             isContentFocused = true
-                        }
-                        .onChange(of: isTitleFocused) {
-                            isTitleFocusedBorder = isTitleFocused
                         }
                     Text("Content")
                         .font(.headline)
                     TextEditor(text: $content)
                         .font(.custom("HelveticaNeue", size: 18))
                         .frame(height: 150)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(isContentFocused ? Color.blue.opacity(0.5) : Color.gray.opacity(0.5))
-                        )
+                        .focusBorder($isContentFocused)
                         .focused($isContentFocused)
                     Toggle("Private", isOn: $isPrivate)
                     HStack {
