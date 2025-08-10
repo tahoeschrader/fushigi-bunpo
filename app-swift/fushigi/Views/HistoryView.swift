@@ -91,6 +91,7 @@ struct HistoryView: View {
                     }
                     .onDelete(perform: deleteEntry)
                 }
+                .scrollDismissesKeyboard(.interactively)
             }
         }
         .task {

@@ -24,6 +24,7 @@ struct GrammarView: View {
     }
 
     @State private var showingInspector: Bool = false
+    @FocusState private var isSearchFocused: Bool
 
     var body: some View {
         VStack(spacing: 0) {
@@ -36,10 +37,15 @@ struct GrammarView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 } else {
                     TextField("Type to search...", text: $searchText)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .textFieldStyle(.roundedBorder)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(isSearchFocused ? Color.accentColor.opacity(0.5) : Color.gray.opacity(0.5))
+                        )
                         .onChange(of: searchText) {
                             // nothing right now
                         }
+                        .focused($isSearchFocused)
                 }
                 Menu(content: {
                     Section {

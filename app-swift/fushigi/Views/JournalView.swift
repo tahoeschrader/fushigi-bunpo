@@ -31,6 +31,9 @@ struct JournalView: View {
     }
 
     @State private var showingInspector = false
+    @FocusState private var isTitleFocused: Bool
+    @FocusState private var isContentFocused: Bool
+    @State private var isTitleFocusedBorder = false
 
     // Settings state
     @State private var selectedLevel: Level = .all
@@ -73,7 +76,14 @@ struct JournalView: View {
                     Text("Title")
                         .font(.headline)
                     TextField("Enter title", text: $title)
-                        .textFieldStyle(.roundedBorder)
+                        .focusBorder($isTitleFocusedBorder)
+                        .focused($isTitleFocused)
+                        .onSubmit{
+                            isContentFocused = true
+                        }
+                        .onChange(of: isTitleFocused) {
+                            isTitleFocusedBorder = isTitleFocused
+                        }
                     Text("Content")
                         .font(.headline)
                     TextEditor(text: $content)
@@ -81,8 +91,9 @@ struct JournalView: View {
                         .frame(height: 150)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.gray.opacity(0.5))
+                                .stroke(isContentFocused ? Color.blue.opacity(0.5) : Color.gray.opacity(0.5))
                         )
+                        .focused($isContentFocused)
                     Toggle("Private", isOn: $isPrivate)
                     HStack {
                         Button {
@@ -129,6 +140,7 @@ struct JournalView: View {
                 }
             )
         }
+        .scrollDismissesKeyboard(.interactively)
     }
 
     private func submitJournal() async {

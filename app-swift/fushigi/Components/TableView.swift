@@ -61,5 +61,6 @@ struct TableView: View {
         .onChange(of: selectedGrammarID) { _, newSelection in
             showingInspector = newSelection != nil
         }
+        .scrollDismissesKeyboard(.interactively)
     }
 }
