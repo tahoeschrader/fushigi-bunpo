@@ -9,8 +9,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   && rm -rf /var/lib/apt/lists/*
 
 # Upgrade pip and install packages without cache
-RUN pip install --upgrade pip \
- && pip install --no-cache-dir uv hatchling
+RUN pip install --no-cache-dir --upgrade pip==23.1.2 \
+ && pip install --no-cache-dir uv==0.8.8 hatchling==1.27.0
 
 # Copy what I need to install
 COPY pyproject.toml uv.lock ./
