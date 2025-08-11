@@ -1,9 +1,9 @@
 import {
+	createTable,
 	type RowData,
 	type TableOptions,
 	type TableOptionsResolved,
 	type TableState,
-	createTable,
 } from "@tanstack/table-core";
 
 /**
@@ -32,7 +32,9 @@ import {
  * </table>
  * ```
  */
-export function createSvelteTable<TData extends RowData>(options: TableOptions<TData>) {
+export function createSvelteTable<TData extends RowData>(
+	options: TableOptions<TData>,
+) {
 	const resolvedOptions: TableOptionsResolved<TData> = mergeObjects(
 		{
 			state: {},
@@ -40,12 +42,12 @@ export function createSvelteTable<TData extends RowData>(options: TableOptions<T
 			renderFallbackValue: null,
 			mergeOptions: (
 				defaultOptions: TableOptions<TData>,
-				options: Partial<TableOptions<TData>>
+				options: Partial<TableOptions<TData>>,
 			) => {
 				return mergeObjects(defaultOptions, options);
 			},
 		},
-		options
+		options,
 	);
 
 	const table = createTable(resolvedOptions);
@@ -56,7 +58,7 @@ export function createSvelteTable<TData extends RowData>(options: TableOptions<T
 			return mergeObjects(prev, options, {
 				state: mergeObjects(state, options.state || {}),
 
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				// biome-ignore lint/suspicious/noExplicitAny: because that's just the way it is
 				onStateChange: (updater: any) => {
 					if (updater instanceof Function) state = updater(state);
 					else state = mergeObjects(state, updater);
@@ -77,7 +79,10 @@ export function createSvelteTable<TData extends RowData>(options: TableOptions<T
 }
 
 type MaybeThunk<T extends object> = T | (() => T | null | undefined);
-type Intersection<T extends readonly unknown[]> = (T extends [infer H, ...infer R]
+type Intersection<T extends readonly unknown[]> = (T extends [
+	infer H,
+	...infer R,
+]
 	? H & Intersection<R>
 	: unknown) & {};
 
@@ -87,7 +92,7 @@ type Intersection<T extends readonly unknown[]> = (T extends [infer H, ...infer 
  *
  * Proxy-based to avoid known WebKit recursion issue.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// biome-ignore lint/suspicious/noExplicitAny: because that's just the way it is
 export function mergeObjects<Sources extends readonly MaybeThunk<any>[]>(
 	...sources: Sources
 ): Intersection<{ [K in keyof Sources]: Sources[K] }> {
@@ -132,7 +137,7 @@ export function mergeObjects<Sources extends readonly MaybeThunk<any>[]>(
 			return {
 				configurable: true,
 				enumerable: true,
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				// biome-ignore lint/suspicious/noExplicitAny: because that's just the way it is
 				value: (src as any)[key],
 				writable: true,
 			};

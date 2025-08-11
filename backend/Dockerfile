@@ -13,7 +13,6 @@ RUN pip install --upgrade pip \
 # Copy what I need to install
 COPY pyproject.toml uv.lock ./
 COPY backend/ ./backend/
-COPY db-tools/ ./db-tools/
 RUN uv sync --dev
 
 # Set global environment variables (potentially what this in env files maybe?)

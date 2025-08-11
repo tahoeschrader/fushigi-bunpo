@@ -13,7 +13,7 @@
 		{ url: "/journal", title: 'Journal Entry', icon: NotebookPenIcon }
 	];
 </script>
- 
+
 <Sidebar.Root>
   <Sidebar.Content>
     <Sidebar.Group>

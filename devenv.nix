@@ -17,11 +17,16 @@
           entry = "${pkgs.gitleaks}/bin/gitleaks protect --redact";
         };
         lychee.enable = true;
+        lychee.settings.configPath = builtins.toString ((pkgs.formats.toml {}).generate "lychee.toml" {
+          exclude = ["localhost" "file://" "https://shadcn-svelte.com/registry" "http://192.168.11.5:8000"];
+        });
         markdownlint.enable = true;
         markdownlint.settings.configuration.MD013.line_length = -1;
         mdsh.enable = true;
         tagref.enable = true;
         typos.enable = true;
+        typos.excludes = [".*grammar.json"];
+        typos.settings.ignored-words = ["ratatui"];
 
         # pre-commit builtins
         check-added-large-files.enable = true;
@@ -64,12 +69,13 @@
       # Backend
       languages.python = {
         enable = true;
+        directory = "./backend";
         uv.enable = true;
         uv.sync.enable = true;
       };
-      packages = with pkgs; [
-        python3Packages.psycopg
-      ];
+      # packages = with pkgs; [
+      #   python3Packages.psycopg
+      # ];
       services.adminer.enable = true;
       services.postgres.enable = true;
       services.postgres.initialDatabases = lib.toList {
@@ -84,16 +90,18 @@
         depends_on.postgres.condition = "process_healthy";
         working_dir = "./backend";
       };
+      git-hooks.excludes = [".*srs.py"]; # TODO: fix after fixing the slop
       git-hooks.hooks = {
-        flake8.enable = true;
-        mypy.enable = true;
+        mypy = {
+          enable = true;
+          entry = "uv run mypy"; # Must override the command to run inside uv's venv
+        };
         ruff.enable = true;
         taplo.enable = true;
 
         check-builtin-literals.enable = true;
         check-docstring-first.enable = true;
         check-python.enable = true;
-        name-tests-test.enable = true;
         python-debug-statements.enable = true;
       };
     }
@@ -140,28 +148,30 @@
     }
     # This does not work. Swiftlint and Swiftformat require an install of xcode and will not find the non nix version.
     # Installing xcode with nix is not a solution. It is unfree and 5+ GB.
-    (lib.mkIf pkgs.stdenv.isDarwin {
-      # SwiftUI app
-      languages.swift.enable = true;
-      # packages = with pkgs; [
-      #   darwin.apple_sdk.frameworks.SourceKit
-      # ];
-      git-hooks.hooks = {
-        swiftlint = {
-          enable = true;
-          name = "SwiftLint";
-          description = "Enforcing Swift style and conventions";
-          files = "\\.swift$";
-          entry = "${pkgs.swiftlint}/bin/swiftlint";
-        };
-        swiftformat = {
-          enable = true;
-          name = "SwiftFormat";
-          description = "Formatting Swift code with conventional style";
-          files = "\\.swift$";
-          entry = "${pkgs.swiftformat}/bin/swiftformat";
-        };
-      };
-    })
+    # (lib.mkIf pkgs.stdenv.isDarwin {
+    #   # SwiftUI app
+    #   languages.swift.enable = true;
+    #   packages = with pkgs; [
+    #     swiftformat
+    #     swiftlint
+    #     darwin.apple_sdk.frameworks.SourceKit
+    #   ];
+    #   git-hooks.hooks = {
+    #     swiftlint = {
+    #       enable = true;
+    #       name = "SwiftLint";
+    #       description = "Enforcing Swift style and conventions";
+    #       files = "\\.swift$";
+    #       entry = "${pkgs.swiftlint}/bin/swiftlint";
+    #     };
+    #     swiftformat = {
+    #       enable = true;
+    #       name = "SwiftFormat";
+    #       description = "Formatting Swift code with conventional style";
+    #       files = "\\.swift$";
+    #       entry = "${pkgs.swiftformat}/bin/swiftformat";
+    #     };
+    #   };
+    # })
   ];
 }

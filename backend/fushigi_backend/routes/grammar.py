@@ -5,8 +5,8 @@ from psycopg import AsyncConnection
 from psycopg.errors import DatabaseError
 from psycopg.rows import dict_row
 
-from fushigi_db_tools.data.models import GrammarInDB
-from fushigi_db_tools.db.connect import get_connection
+from ..data.models import GrammarInDB
+from ..db.connect import get_connection
 
 router = APIRouter(prefix="/api/grammar", tags=["grammar"])
 
@@ -17,7 +17,7 @@ async def list_grammar(
     limit: Optional[bool] = False
 ) -> List[GrammarInDB]:
 
-    params = {}
+    params: dict = {}
     if limit:
         query = f"""
                 SELECT id, usage, meaning, level, tags, notes, examples, enhanced_notes

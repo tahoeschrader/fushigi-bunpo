@@ -2,7 +2,7 @@
 
 Assistant for aiding conversational fluency for Japanese language.
 
-Monorepo for backend, database build tools, frontend, and tui. 
+Monorepo for backend, database build tools, frontend, and tui.
 
 ## Development
 
@@ -34,4 +34,4 @@ cd app
 bun run dev --open
 ```
 
-Whenever new dependencies are added to subfolder `pyproject.toml`, remember to `uv lock` from the root to update the lockfile. 
+Whenever new dependencies are added to subfolder `pyproject.toml`, remember to `uv lock` from the root to update the lockfile.

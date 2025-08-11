@@ -23,5 +23,5 @@ async def connect_to_db() -> AsyncConnection:
 async def get_connection() -> AsyncGenerator[AsyncConnection, None]:
     pool = get_pool()
     async with pool.connection() as conn:
-        conn.row_factory = dict_row
+        conn.row_factory = dict_row  # type: ignore[assignment]
         yield conn

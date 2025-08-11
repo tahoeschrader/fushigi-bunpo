@@ -1,3 +1,4 @@
+---
 services:
 
   db:
@@ -14,41 +15,50 @@ services:
       start_period: 30s
       timeout: 5s
     volumes:
-        - pg_data:/var/lib/postgresql/data
-        - ./db-tools/sql:/docker-entrypoint-initdb.d
-  
+      - pg_data:/var/lib/postgresql/data
+      - ./backend/sql:/docker-entrypoint-initdb.d
+
   test-db-tools:
     build:
       context: .
-      dockerfile: Dockerfile.base
+      dockerfile: backend/Dockerfile
     volumes:
-      - ./db-tools:/app/db-tools
-    working_dir: /app/db-tools
+      - ./backend:/app/backend
+    working_dir: /app/backend
     command: uv run pytest
 
   generate-default-db:
     build:
       context: .
-      dockerfile: Dockerfile.base
+      dockerfile: backend/Dockerfile
     volumes:
-      - ./db-tools:/app/db-tools
-    working_dir: /app/db-tools
-    command: uv run python -m fushigi_db_tools.main
+      - ./backend:/app/backend
+    working_dir: /app/backend
+    command: uv run python -m fushigi_backend.tools_main
     restart: "no"
     depends_on:
       db:
         condition: service_healthy
       test-db-tools:
         condition: service_completed_successfully
-   
+
   backend:
     build:
       context: .
-      dockerfile: Dockerfile.base
+      dockerfile: backend/Dockerfile
     volumes:
       - ./backend:/app/backend
+    command:
+      - uv
+      - run
+      - uvicorn
+      - fushigi_backend.main:app
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8000"
+      - --reload
     working_dir: /app/backend
-    command: uv run uvicorn fushigi_backend.main:app --host 0.0.0.0 --port 8000 --reload
     ports:
       - 8000:8000
     depends_on:
@@ -63,9 +73,9 @@ services:
       - backend
     ports:
       - 5173:5173
-    command: bun --bun run dev --host 0.0.0.0
     volumes:
-      - ./app:/app
+      - ./app:/app:cached
+      - /app/node_modules
 
   adminer:
     image: adminer

@@ -4,8 +4,8 @@ from unittest.mock import mock_open, patch
 
 import pytest
 
-from fushigi_db_tools.data.load import load_defaults
-from fushigi_db_tools.data.models import Grammar
+from fushigi_backend.data.load import load_defaults
+from fushigi_backend.data.models import Grammar
 
 
 def test_load_defaults_reads_real_file(tmp_path: Path) -> None:

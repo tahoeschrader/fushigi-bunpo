@@ -21,7 +21,7 @@ export class RenderComponentConfig<TComponent extends Component> {
 	props: ComponentProps<TComponent> | Record<string, never>;
 	constructor(
 		component: TComponent,
-		props: ComponentProps<TComponent> | Record<string, never> = {}
+		props: ComponentProps<TComponent> | Record<string, never> = {},
 	) {
 		this.component = component;
 		this.props = props;
@@ -75,7 +75,7 @@ export class RenderSnippetConfig<TProps> {
  * @see {@link https://tanstack.com/table/latest/docs/guide/column-defs}
  */
 export function renderComponent<
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	// biome-ignore lint/suspicious/noExplicitAny: because that's just the way it is
 	T extends Component<any>,
 	Props extends ComponentProps<T>,
 >(component: T, props: Props = {} as Props) {
@@ -106,6 +106,9 @@ export function renderComponent<
  * ```
  * @see {@link https://tanstack.com/table/latest/docs/guide/column-defs}
  */
-export function renderSnippet<TProps>(snippet: Snippet<[TProps]>, params: TProps = {} as TProps) {
+export function renderSnippet<TProps>(
+	snippet: Snippet<[TProps]>,
+	params: TProps = {} as TProps,
+) {
 	return new RenderSnippetConfig(snippet, params);
 }

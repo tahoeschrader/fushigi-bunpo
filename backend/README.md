@@ -1,6 +1,6 @@
 # backend
 
-FastAPI based API for storing and querying user submitted Japanese journal entries. 
+FastAPI based API for storing and querying user submitted Japanese journal entries.
 
 Current logic is user based, with an eye towards future social networking aspects such as:
 
