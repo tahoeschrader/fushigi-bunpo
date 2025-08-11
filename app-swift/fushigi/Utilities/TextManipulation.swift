@@ -1,5 +1,5 @@
 //
-//  Utils.swift
+//  TextManipulation.swift
 //  fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/01.

@@ -141,30 +141,36 @@
     }
     (lib.mkIf pkgs.stdenv.isDarwin {
       # SwiftUI app
-      # NOTE: You must have Xcode installed locally.
+      # NOTE: You must have Xcode installed locally. Using languages.swift.enable breaks the toolchain.
       # This configuration assumes it's at /Applications/Xcode.app.
       # Required for SwiftLint/SwiftFormat to access sourcekitdInProc.framework.
-      languages.swift.enable = true;
+      env = {
+        # Unset or override to real Xcode path
+        DEVELOPER_DIR = "/Applications/Xcode.app/Contents/Developer";
+
+        # Also override PATH to prioritize system tools over nix SDK
+        # PATH = lib.makeBinPath [ "/usr/bin" "/usr/local/bin" ] + ":" + (builtins.getEnv "PATH");
+      };
+
+      # languages.swift.enable = true;
+      packages = with pkgs; [
+        swiftlint
+        swiftformat
+      ];
       git-hooks.hooks = {
         swiftlint = {
           enable = true;
           name = "SwiftLint";
           description = "Enforcing Swift style and conventions";
           files = "\\.swift$";
-          entry = ''
-            export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
-            ${pkgs.swiftlint}/bin/swiftlint
-          '';
+          entry = "${pkgs.swiftlint}/bin/swiftlint";
         };
         swiftformat = {
           enable = true;
           name = "SwiftFormat";
           description = "Formatting Swift code with conventional style";
           files = "\\.swift$";
-          entry = ''
-            export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
-            ${pkgs.swiftformat}/bin/swiftformat
-          '';
+          entry = "${pkgs.swiftformat}/bin/swiftformat";
         };
       };
     })

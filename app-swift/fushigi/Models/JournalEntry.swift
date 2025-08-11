@@ -24,6 +24,6 @@ struct JournalEntryInDB: Identifiable, Decodable {
     let user_id: Int
     let content: String
     let `private`: Bool
-    //let grammarPoints: [String]
-    //let aiFeedback: String
+    // let grammarPoints: [String]
+    // let aiFeedback: String
 }

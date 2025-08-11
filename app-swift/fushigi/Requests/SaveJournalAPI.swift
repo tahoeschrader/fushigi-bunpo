@@ -15,7 +15,7 @@ func submitJournalEntry(
 ) async -> Result<String, Error> {
     let trimmedTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
     let trimmedContent = content.trimmingCharacters(in: .whitespacesAndNewlines)
-    
+
     guard !trimmedTitle.isEmpty, !trimmedContent.isEmpty else {
         return .failure(
             NSError(domain: "", code: 0,
@@ -24,7 +24,7 @@ func submitJournalEntry(
     }
 
     let journalEntry = JournalEntry(title: trimmedTitle, content: trimmedContent, private: isPrivate)
-    
+
     guard let url = URL(string: "http://192.168.11.5:8000/api/journal") else {
         return .failure(URLError(.badURL))
     }
@@ -34,7 +34,7 @@ func submitJournalEntry(
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try JSONEncoder().encode(journalEntry)
-        
+
         let (data, _) = try await URLSession.shared.data(for: request)
         let id = try JSONDecoder().decode(ResponseID.self, from: data)
         return .success("Journal saved (ID: \(id.id))")
@@ -46,5 +46,4 @@ func submitJournalEntry(
     } catch {
         return .failure(error)
     }
-
 }
