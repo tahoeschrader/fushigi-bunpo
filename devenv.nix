@@ -141,6 +141,9 @@
     }
     (lib.mkIf pkgs.stdenv.isDarwin {
       # SwiftUI app
+      # NOTE: You must have Xcode installed locally.
+      # This configuration assumes it's at /Applications/Xcode.app.
+      # Required for SwiftLint/SwiftFormat to access sourcekitdInProc.framework.
       languages.swift.enable = true;
       git-hooks.hooks = {
         swiftlint = {
@@ -148,14 +151,20 @@
           name = "SwiftLint";
           description = "Enforcing Swift style and conventions";
           files = "\\.swift$";
-          entry = "${pkgs.swiftlint}/bin/swiftlint";
+          entry = ''
+            export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
+            ${pkgs.swiftlint}/bin/swiftlint
+          '';
         };
         swiftformat = {
           enable = true;
           name = "SwiftFormat";
           description = "Formatting Swift code with conventional style";
           files = "\\.swift$";
-          entry = "${pkgs.swiftformat}/bin/swiftformat";
+          entry = ''
+            export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
+            ${pkgs.swiftformat}/bin/swiftformat
+          '';
         };
       };
     })
