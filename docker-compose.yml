@@ -65,16 +65,16 @@ services:
       db:
         condition: service_healthy
 
-  app:
+  frontend:
     build:
-      context: ./app
+      context: ./frontend
       dockerfile: Dockerfile
     depends_on:
       - backend
     ports:
       - 5173:5173
     volumes:
-      - ./app:/app:cached
+      - ./frontend:/app:cached
       - /app/node_modules
 
   adminer:
