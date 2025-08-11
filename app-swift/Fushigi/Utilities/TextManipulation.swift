@@ -15,9 +15,11 @@ func coloredTagsText(tags: [String]) -> Text {
             .font(.caption)
             .foregroundColor(index.isMultiple(of: 2) ? .primary : .secondary)
 
+        // swiftlint:disable:next shorthand_operator
         combinedText = combinedText + coloredText
 
         if index < tags.count - 1 {
+            // swiftlint:disable:next shorthand_operator
             combinedText = combinedText + Text("   ").font(.caption).foregroundColor(.primary)
         }
     }

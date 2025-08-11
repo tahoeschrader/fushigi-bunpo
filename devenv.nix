@@ -63,9 +63,6 @@
       };
     }
     {
-      # This does not currently work. db-tools and backend are separate projects with a shared 3rd pyrpoject.toml
-      # that links them. Devenv is not able to properly find where the packages that uv is installing are located.
-      # It is not a solution to duplicated every single package defined in each pyproject.toml in the packages = with pkgs section.
       # Backend
       languages.python = {
         enable = true;
@@ -73,9 +70,6 @@
         uv.enable = true;
         uv.sync.enable = true;
       };
-      # packages = with pkgs; [
-      #   python3Packages.psycopg
-      # ];
       services.adminer.enable = true;
       services.postgres.enable = true;
       services.postgres.initialDatabases = lib.toList {
@@ -90,11 +84,11 @@
         depends_on.postgres.condition = "process_healthy";
         working_dir = "./backend";
       };
-      git-hooks.excludes = [".*srs.py"]; # TODO: fix after fixing the slop
+      git-hooks.excludes = [".*srs.py"];
       git-hooks.hooks = {
         mypy = {
           enable = true;
-          entry = "uv run mypy"; # Must override the command to run inside uv's venv
+          entry = "uv run mypy";
         };
         ruff.enable = true;
         taplo.enable = true;
@@ -118,14 +112,14 @@
           else throw "${pkgs.stdenv.system} not supported";
       in ''
         export VITE_API_BASE="http://$(${getIpCmd pkg}):8000"
-        bun run dev --open
+        bun --bun run dev --open
       '';
-      processes.frontend.process-compose.working_dir = "./app";
+      processes.frontend.process-compose.working_dir = "./frontend";
       languages = {
         typescript.enable = true;
         javascript = {
           enable = true;
-          directory = "./app";
+          directory = "./frontend";
           bun.enable = true;
           bun.install.enable = true;
         };
@@ -146,32 +140,37 @@
         yamllint.enable = true;
       };
     }
-    # This does not work. Swiftlint and Swiftformat require an install of xcode and will not find the non nix version.
-    # Installing xcode with nix is not a solution. It is unfree and 5+ GB.
-    # (lib.mkIf pkgs.stdenv.isDarwin {
-    #   # SwiftUI app
-    #   languages.swift.enable = true;
-    #   packages = with pkgs; [
-    #     swiftformat
-    #     swiftlint
-    #     darwin.apple_sdk.frameworks.SourceKit
-    #   ];
-    #   git-hooks.hooks = {
-    #     swiftlint = {
-    #       enable = true;
-    #       name = "SwiftLint";
-    #       description = "Enforcing Swift style and conventions";
-    #       files = "\\.swift$";
-    #       entry = "${pkgs.swiftlint}/bin/swiftlint";
-    #     };
-    #     swiftformat = {
-    #       enable = true;
-    #       name = "SwiftFormat";
-    #       description = "Formatting Swift code with conventional style";
-    #       files = "\\.swift$";
-    #       entry = "${pkgs.swiftformat}/bin/swiftformat";
-    #     };
-    #   };
-    # })
+    (lib.mkIf pkgs.stdenv.isDarwin {
+      # SwiftUI app
+      languages.swift.enable = true;
+      packages = with pkgs; [
+        swiftformat
+        swiftlint
+      ];
+      git-hooks.hooks = {
+        swiftlint = {
+          enable = true;
+          name = "SwiftLint";
+          description = "Enforcing Swift style and conventions";
+          files = "\\.swift$";
+          entry = "${pkgs.swiftlint}/bin/swiftlint";
+        };
+        swiftformat = {
+          enable = true;
+          name = "SwiftFormat";
+          description = "Formatting Swift code with conventional style";
+          files = "\\.swift$";
+          entry = "${pkgs.swiftformat}/bin/swiftformat";
+        };
+      };
+      # Assume all Apple developers have XCode installed.
+      # DEVELOPER_DIR env var must be set globally on macOS to run swiftlint
+      # env = {
+      #   DEVELOPER_DIR = lib.mkForce "/Applications/Xcode.app/Contents/Developer";
+      # };
+      enterShell = ''
+        export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
+      '';
+    })
   ];
 }

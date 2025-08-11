@@ -19,11 +19,11 @@ enum Page: String, Identifiable, CaseIterable {
 
     var icon: String {
         switch self {
-        case .home: return "house"
-        case .grammar: return "book"
-        case .history: return "fossil.shell"
-        case .journal: return "pencil"
-        case .training: return "gamecontroller.fill"
+        case .home: "house"
+        case .grammar: "book"
+        case .history: "fossil.shell"
+        case .journal: "pencil"
+        case .training: "gamecontroller.fill"
         }
     }
 

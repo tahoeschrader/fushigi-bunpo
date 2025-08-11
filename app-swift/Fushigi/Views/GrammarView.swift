@@ -41,14 +41,14 @@ struct GrammarView: View {
                         grammarPoints: filteredPoints,
                         selectedGrammarID: $selectedGrammarID,
                         showingInspector: $showingInspector,
-                        isCompact: isCompact
+                        isCompact: isCompact,
                     )
                     .inspector(isPresented: $showingInspector) {
                         if let thisGrammarPoint = selectedGrammarPoint {
                             InspectorView(
                                 grammarPoint: thisGrammarPoint,
                                 isPresented: $showingInspector,
-                                isCompact: isCompact
+                                isCompact: isCompact,
                             )
                         } else {
                             LegendView(isCompact: isCompact, isPresented: $showingInspector)
@@ -64,13 +64,19 @@ struct GrammarView: View {
                         Button("Deselect", action: { selectedGrammarID = nil })
                             .disabled(selectedGrammarID == nil)
                         Divider()
-                        Button("Delete", role: .destructive, action: { /* TODO: */ })
-                            .disabled(true)
-                        Button("Edit", action: { /* TODO: */ })
-                            .disabled(true)
+                        Button("Delete", role: .destructive, action: {
+                            // Add delete api
+                        })
+                        .disabled(true)
+                        Button("Edit", action: {
+                            // Add edit api
+                        })
+                        .disabled(true)
                         Divider()
-                        Button("Add", action: { /* TODO: */ })
-                            .disabled(true)
+                        Button("Add", action: {
+                            // Add add api
+                        })
+                        .disabled(true)
                     }
                 }
                 ToolbarItem {
@@ -96,9 +102,9 @@ struct GrammarView: View {
 
     var filteredPoints: [GrammarPoint] {
         if searchText.isEmpty {
-            return grammarPoints
+            grammarPoints
         } else {
-            return grammarPoints.filter {
+            grammarPoints.filter {
                 $0.usage.localizedCaseInsensitiveContains(searchText) ||
                     $0.meaning.localizedCaseInsensitiveContains(searchText) ||
                     $0.level.localizedCaseInsensitiveContains(searchText) ||

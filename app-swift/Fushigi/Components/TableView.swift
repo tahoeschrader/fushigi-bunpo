@@ -31,7 +31,7 @@ struct TableView: View {
                         .cornerRadius(6)
                         .overlay(
                             RoundedRectangle(cornerRadius: 6)
-                                .stroke(Color.primary.opacity(0.4), lineWidth: 1)
+                                .stroke(Color.primary.opacity(0.4), lineWidth: 1),
                         )
                         coloredTagsText(tags: point.tags)
                             .font(.caption)

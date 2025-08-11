@@ -54,7 +54,7 @@ struct JournalView: View {
                         grammarPoints: grammarPoints,
                         selectedGrammarID: $selectedGrammarID,
                         showingInspector: $showingInspector,
-                        isCompact: isCompact
+                        isCompact: isCompact,
                     ).frame(minHeight: 250)
                 }
                 .task {
@@ -114,7 +114,9 @@ struct JournalView: View {
                 ContentUnavailableView {
                     Label("Sentence Tagging", systemImage: "lightbulb")
                 } description: {
-                    Text("Put some kind of tool here that will help you tag sentences with the grammar point listed above that you used. Check boxes? Color coding?")
+                    Text(
+                        "Need component that will link sentences to targeted grammar list.",
+                    )
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
@@ -128,7 +130,7 @@ struct JournalView: View {
                 selectedSource: $selectedSource,
                 onRefresh: {
                     // TBD: refresh action
-                }
+                },
             )
         }
         .scrollDismissesKeyboard(.interactively)

@@ -11,15 +11,18 @@ import Foundation
 func submitJournalEntry(
     title: String,
     content: String,
-    isPrivate: Bool
+    isPrivate: Bool,
 ) async -> Result<String, Error> {
     let trimmedTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
     let trimmedContent = content.trimmingCharacters(in: .whitespacesAndNewlines)
 
     guard !trimmedTitle.isEmpty, !trimmedContent.isEmpty else {
         return .failure(
-            NSError(domain: "", code: 0,
-                    userInfo: [NSLocalizedDescriptionKey: "Please fill out all fields."])
+            NSError(
+                domain: "",
+                code: 0,
+                userInfo: [NSLocalizedDescriptionKey: "Please fill out all fields."],
+            ),
         )
     }
 
@@ -40,8 +43,11 @@ func submitJournalEntry(
         return .success("Journal saved (ID: \(id.id))")
     } catch let jsonError as DecodingError {
         return .failure(
-            NSError(domain: "", code: 0,
-                    userInfo: [NSLocalizedDescriptionKey: "\(jsonError)"])
+            NSError(
+                domain: "",
+                code: 0,
+                userInfo: [NSLocalizedDescriptionKey: "\(jsonError)"],
+            ),
         )
     } catch {
         return .failure(error)

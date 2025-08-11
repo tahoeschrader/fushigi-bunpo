@@ -15,7 +15,10 @@ struct FocusBorder: ViewModifier {
             .padding(8)
             .background(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(isFocused.wrappedValue ? Color.accentColor.opacity(0.5) : Color.gray.opacity(0.5), lineWidth: 3) // isFocused ?
+                    .stroke(
+                        isFocused.wrappedValue ? Color.accentColor.opacity(0.5) : Color.gray.opacity(0.5),
+                        lineWidth: 3,
+                    ), // isFocused ?
             )
     }
 }

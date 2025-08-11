@@ -20,10 +20,19 @@ struct ResponseID: Decodable {
 struct JournalEntryInDB: Identifiable, Decodable {
     let id: Int
     let title: String
-    let created_at: Date
-    let user_id: Int
+    let createdAt: Date
+    let userId: Int
     let content: String
     let `private`: Bool
     // let grammarPoints: [String]
     // let aiFeedback: String
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case createdAt = "created_at"
+        case userId = "user_id"
+        case content
+        case `private`
+    }
 }

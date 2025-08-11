@@ -1,13 +1,14 @@
 //
-//  fushigiUITestsLaunchTests.swift
-//  fushigiUITests
+//  FushigiUITestsLaunchTests.swift
+//  FushigiUITests
 //
 //  Created by Tahoe Schrader on 2025/08/01.
 //
 
 import XCTest
 
-final class fushigiUITestsLaunchTests: XCTestCase {
+final class FushigiUITestsLaunchTests: XCTestCase {
+    // swiftlint:disable:next static_over_final_class
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }

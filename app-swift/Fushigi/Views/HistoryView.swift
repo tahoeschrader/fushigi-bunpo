@@ -37,12 +37,13 @@ struct HistoryView: View {
                                         VStack(alignment: .leading) {
                                             Text(entry.title)
                                                 .font(.headline)
-                                            Text(entry.created_at.formatted())
+                                            Text(entry.createdAt.formatted())
                                                 .font(.caption)
                                                 .foregroundColor(.gray)
                                         }
                                         Spacer()
-                                        Image(systemName: expanded.contains(entry.id) ? "chevron.down" : "chevron.right")
+                                        Image(systemName: expanded.contains(entry.id) ?
+                                            "chevron.down" : "chevron.right")
                                     }
                                 }
                                 .buttonStyle(PlainButtonStyle())
@@ -113,9 +114,9 @@ struct HistoryView: View {
 
     var filteredEntries: [JournalEntryInDB] {
         if searchText.isEmpty {
-            return journalEntries
+            journalEntries
         } else {
-            return journalEntries.filter {
+            journalEntries.filter {
                 $0.title.localizedCaseInsensitiveContains(searchText) ||
                     $0.content.localizedCaseInsensitiveContains(searchText)
             }

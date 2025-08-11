@@ -1,6 +1,6 @@
 //
-//  fushigiApp.swift
-//  fushigi
+//  FushigiApp.swift
+//  Fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/01.
 //
@@ -9,7 +9,7 @@ import SwiftData
 import SwiftUI
 
 @main
-struct fushigiApp: App {
+struct FushigiApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,

@@ -1,13 +1,13 @@
 //
-//  fushigiTests.swift
-//  fushigiTests
+//  FushigiTests.swift
+//  FushigiTests
 //
 //  Created by Tahoe Schrader on 2025/08/01.
 //
 
 import Testing
 
-struct fushigiTests {
+struct FushigiTests {
     @Test func example() async throws {
         // Write your test here and use APIs like `#expect(...)` to check expected conditions.
     }

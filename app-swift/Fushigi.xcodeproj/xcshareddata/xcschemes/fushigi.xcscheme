@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F23724C32E3C9E7B001DF544"
-               BuildableName = "fushigi.app"
-               BlueprintName = "fushigi"
-               ReferencedContainer = "container:fushigi.xcodeproj">
+               BuildableName = "Fushigi.app"
+               BlueprintName = "Fushigi"
+               ReferencedContainer = "container:Fushigi.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,9 +36,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F23724D42E3C9E7C001DF544"
-               BuildableName = "fushigiTests.xctest"
-               BlueprintName = "fushigiTests"
-               ReferencedContainer = "container:fushigi.xcodeproj">
+               BuildableName = "FushigiTests.xctest"
+               BlueprintName = "FushigiTests"
+               ReferencedContainer = "container:Fushigi.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F23724DE2E3C9E7C001DF544"
-               BuildableName = "fushigiUITests.xctest"
-               BlueprintName = "fushigiUITests"
-               ReferencedContainer = "container:fushigi.xcodeproj">
+               BuildableName = "FushigiUITests.xctest"
+               BlueprintName = "FushigiUITests"
+               ReferencedContainer = "container:Fushigi.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -69,9 +69,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F23724C32E3C9E7B001DF544"
-            BuildableName = "fushigi.app"
-            BlueprintName = "fushigi"
-            ReferencedContainer = "container:fushigi.xcodeproj">
+            BuildableName = "Fushigi.app"
+            BlueprintName = "Fushigi"
+            ReferencedContainer = "container:Fushigi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -86,9 +86,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F23724C32E3C9E7B001DF544"
-            BuildableName = "fushigi.app"
-            BlueprintName = "fushigi"
-            ReferencedContainer = "container:fushigi.xcodeproj">
+            BuildableName = "Fushigi.app"
+            BlueprintName = "Fushigi"
+            ReferencedContainer = "container:Fushigi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

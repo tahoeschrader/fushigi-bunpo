@@ -19,7 +19,7 @@ extension JSONDecoder {
             guard let date = formatter.date(from: dateStr) else {
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Invalid date string: \(dateStr)"
+                    debugDescription: "Invalid date string: \(dateStr)",
                 )
             }
             return date
