@@ -58,6 +58,9 @@
       };
     }
     {
+      # This does not currently work. db-tools and backend are separate projects with a shared 3rd pyrpoject.toml
+      # that links them. Devenv is not able to properly find where the packages that uv is installing are located.
+      # It is not a solution to duplicated every single package defined in each pyproject.toml in the packages = with pkgs section.
       # Backend
       languages.python = {
         enable = true;
@@ -65,11 +68,9 @@
         uv.sync.enable = true;
       };
       packages = with pkgs; [
-        # why do i have to put in this clooge if uv installs it...
         python3Packages.psycopg
       ];
       services.adminer.enable = true;
-      # TODO populate database with db-tools
       services.postgres.enable = true;
       services.postgres.initialDatabases = lib.toList {
         name = "postgres";
@@ -89,7 +90,6 @@
         ruff.enable = true;
         taplo.enable = true;
 
-        # pre-commit builtin hooks
         check-builtin-literals.enable = true;
         check-docstring-first.enable = true;
         check-python.enable = true;
@@ -101,7 +101,6 @@
       # SvelteKit frontend
       git-hooks.hooks.biome.enable = true;
       processes.frontend.exec = let
-        # Localhost won't work when testing on another device
         getIpCmd = pkg: "${pkg}/bin/ip route get 1 | ${pkgs.gnused}/bin/sed 's/^.*src \\([^ ]*\\).*$/\\1/;q'";
         pkg =
           if pkgs.stdenv.isLinux
@@ -139,24 +138,14 @@
         yamllint.enable = true;
       };
     }
+    # This does not work. Swiftlint and Swiftformat require an install of xcode and will not find the non nix version.
+    # Installing xcode with nix is not a solution. It is unfree and 5+ GB.
     (lib.mkIf pkgs.stdenv.isDarwin {
       # SwiftUI app
-      # NOTE: You must have Xcode installed locally. Using languages.swift.enable breaks the toolchain.
-      # This configuration assumes it's at /Applications/Xcode.app.
-      # Required for SwiftLint/SwiftFormat to access sourcekitdInProc.framework.
-      env = {
-        # Unset or override to real Xcode path
-        DEVELOPER_DIR = "/Applications/Xcode.app/Contents/Developer";
-
-        # Also override PATH to prioritize system tools over nix SDK
-        # PATH = lib.makeBinPath [ "/usr/bin" "/usr/local/bin" ] + ":" + (builtins.getEnv "PATH");
-      };
-
-      # languages.swift.enable = true;
-      packages = with pkgs; [
-        swiftlint
-        swiftformat
-      ];
+      languages.swift.enable = true;
+      # packages = with pkgs; [
+      #   darwin.apple_sdk.frameworks.SourceKit
+      # ];
       git-hooks.hooks = {
         swiftlint = {
           enable = true;
