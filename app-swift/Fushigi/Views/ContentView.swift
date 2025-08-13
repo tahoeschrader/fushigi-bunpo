@@ -9,7 +9,6 @@ import SwiftData
 import SwiftUI
 
 enum Page: String, Identifiable, CaseIterable {
-    case home = "Test page"
     case grammar = "Grammar"
     case history = "History"
     case journal = "Journal"
@@ -19,7 +18,6 @@ enum Page: String, Identifiable, CaseIterable {
 
     var icon: String {
         switch self {
-        case .home: "house"
         case .grammar: "book"
         case .history: "fossil.shell"
         case .journal: "pencil"
@@ -30,8 +28,6 @@ enum Page: String, Identifiable, CaseIterable {
     @ViewBuilder
     var view: some View {
         switch self {
-        case .home:
-            HomeView()
         case .grammar:
             GrammarView()
         case .history:
@@ -45,7 +41,7 @@ enum Page: String, Identifiable, CaseIterable {
 }
 
 struct ContentView: View {
-    @State private var selectedPage: Page? = .home
+    @State private var selectedPage: Page? = .journal
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     var isCompact: Bool {
         horizontalSizeClass == .compact

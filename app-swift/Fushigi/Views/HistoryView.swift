@@ -18,7 +18,7 @@ struct HistoryView: View {
             VStack(spacing: 0) {
                 if errorMessage != nil {
                     ContentUnavailableView {
-                        Label("Error", systemImage: "error")
+                        Label("Error", systemImage: "exclamationmark.warninglight.fill")
                     } description: {
                         Text(errorMessage!)
                     }

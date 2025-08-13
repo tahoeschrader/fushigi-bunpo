@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GrammarPoint: Identifiable, Decodable {
+struct GrammarPoint: Identifiable, Decodable, Hashable {
     let id: Int
     let level: String
     let usage: String
