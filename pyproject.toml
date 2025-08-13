@@ -2,26 +2,15 @@
 fushigi-db-tools = { workspace = true }
 
 [tool.uv.workspace]
-members = ["backend", "db-tools"]
+members = ["backend"]
 
-# TODO: configure ruff/taplo and remove isort/black
-[tool.isort]
-profile = "black"
-line_length = 88
-known_first_party = ["fushigi_db_tools", "fushigi_backend"]
-
-[tool.black]
-line-length = 88
-target-version = ['py312']
-
-#[tool.flake8]
-#max-line-length = 88
-#extend-ignore = ["E203", "W503"]
-#exclude = ["__pycache__", ".venv", "build", "dist"]
+# TODO: taplo
+[tool.ruff]
+line-length = 120
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
 #testpaths = ["tests"] -- determined automatically from folder its run in
 
 [tool.hatch.build]
-include = ["fushigi_db_tools/**", "fushigi_backend/**"]
+include = ["fushigi_backend/**"]

@@ -6,11 +6,11 @@ from psycopg.errors import DatabaseError
 from psycopg.rows import dict_row
 from pydantic import BaseModel
 
-from fushigi_db_tools.data.models import (
+from ..data.models import (
     JournalEntry,
     JournalEntryInDB,
 )
-from fushigi_db_tools.db.connect import get_connection
+from ..db.connect import get_connection
 
 
 router = APIRouter(prefix="/api/journal", tags=["journal"])

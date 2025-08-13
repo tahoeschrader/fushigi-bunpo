@@ -17,11 +17,16 @@
           entry = "${pkgs.gitleaks}/bin/gitleaks protect --redact";
         };
         lychee.enable = true;
+        lychee.settings.configPath = builtins.toString ((pkgs.formats.toml {}).generate "lychee.toml" {
+          exclude = ["localhost" "file://" "https://shadcn-svelte.com/registry" "http://192.168.11.5:8000"];
+        });
         markdownlint.enable = true;
         markdownlint.settings.configuration.MD013.line_length = -1;
         mdsh.enable = true;
         tagref.enable = true;
         typos.enable = true;
+        typos.excludes = [".*grammar.json"];
+        typos.settings.ignored-words = ["ratatui"];
 
         # pre-commit builtins
         check-added-large-files.enable = true;
@@ -61,15 +66,11 @@
       # Backend
       languages.python = {
         enable = true;
+        directory = "./backend";
         uv.enable = true;
         uv.sync.enable = true;
       };
-      packages = with pkgs; [
-        # why do i have to put in this clooge if uv installs it...
-        python3Packages.psycopg
-      ];
       services.adminer.enable = true;
-      # TODO populate database with db-tools
       services.postgres.enable = true;
       services.postgres.initialDatabases = lib.toList {
         name = "postgres";
@@ -83,17 +84,18 @@
         depends_on.postgres.condition = "process_healthy";
         working_dir = "./backend";
       };
+      git-hooks.excludes = [".*srs.py"];
       git-hooks.hooks = {
-        flake8.enable = true;
-        mypy.enable = true;
+        mypy = {
+          enable = true;
+          entry = "uv run mypy";
+        };
         ruff.enable = true;
         taplo.enable = true;
 
-        # pre-commit builtin hooks
         check-builtin-literals.enable = true;
         check-docstring-first.enable = true;
         check-python.enable = true;
-        name-tests-test.enable = true;
         python-debug-statements.enable = true;
       };
     }
@@ -101,7 +103,6 @@
       # SvelteKit frontend
       git-hooks.hooks.biome.enable = true;
       processes.frontend.exec = let
-        # Localhost won't work when testing on another device
         getIpCmd = pkg: "${pkg}/bin/ip route get 1 | ${pkgs.gnused}/bin/sed 's/^.*src \\([^ ]*\\).*$/\\1/;q'";
         pkg =
           if pkgs.stdenv.isLinux
@@ -111,14 +112,14 @@
           else throw "${pkgs.stdenv.system} not supported";
       in ''
         export VITE_API_BASE="http://$(${getIpCmd pkg}):8000"
-        bun run dev --open
+        bun --bun run dev --open
       '';
-      processes.frontend.process-compose.working_dir = "./app";
+      processes.frontend.process-compose.working_dir = "./frontend";
       languages = {
         typescript.enable = true;
         javascript = {
           enable = true;
-          directory = "./app";
+          directory = "./frontend";
           bun.enable = true;
           bun.install.enable = true;
         };
@@ -142,6 +143,10 @@
     (lib.mkIf pkgs.stdenv.isDarwin {
       # SwiftUI app
       languages.swift.enable = true;
+      packages = with pkgs; [
+        swiftformat
+        swiftlint
+      ];
       git-hooks.hooks = {
         swiftlint = {
           enable = true;
@@ -158,6 +163,14 @@
           entry = "${pkgs.swiftformat}/bin/swiftformat";
         };
       };
+      # Assume all Apple developers have XCode installed.
+      # DEVELOPER_DIR env var must be set globally on macOS to run swiftlint
+      # env = {
+      #   DEVELOPER_DIR = lib.mkForce "/Applications/Xcode.app/Contents/Developer";
+      # };
+      enterShell = ''
+        export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
+      '';
     })
   ];
 }
