@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct JournalView: View {
+struct JournalEntryView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     var isCompact: Bool {
         horizontalSizeClass == .compact
@@ -162,5 +162,5 @@ struct JournalView: View {
 }
 
 #Preview {
-    JournalView()
+    JournalEntryView()
 }

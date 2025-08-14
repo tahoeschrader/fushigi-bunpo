@@ -33,7 +33,7 @@ enum Page: String, Identifiable, CaseIterable {
         case .history:
             HistoryView()
         case .journal:
-            JournalView()
+            JournalEntryView()
         case .training:
             GameView()
         }

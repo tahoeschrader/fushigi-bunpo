@@ -33,3 +33,26 @@ uv sync --dev
 ```
 
 For devenv users, the location is included in `.envrc` and auto-sourced for you.
+
+## Data Model
+
+```text
+  ┌───────────────┐
+  │  Remote DB    │  ← PostgreSQL (canonical source of truth)
+  └───────┬───────┘
+          │ fetch / push
+          ▼
+  ┌───────────────┐
+  │ Local DB      │  ← SwiftData / ModelContainer (persistent on device)
+  └───────┬───────┘
+          │ read / write
+          ▼
+  ┌───────────────┐
+  │ Store         │  ← ObservableObject / GrammarStore (session cache)
+  └───────┬───────┘
+          │ bind / observe
+          ▼
+  ┌───────────────┐
+  │ Views         │  ← SwiftUI UI, reads/writes via the store
+  └───────────────┘
+```

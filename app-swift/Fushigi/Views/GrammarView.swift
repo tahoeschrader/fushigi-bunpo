@@ -48,11 +48,13 @@ struct GrammarView: View {
                             InspectorView(
                                 grammarPoint: thisGrammarPoint,
                                 isPresented: $showingInspector,
+                                selectedGrammarID: $selectedGrammarID,
                                 isCompact: isCompact,
                             )
                         } else {
-                            LegendView(isCompact: isCompact, isPresented: $showingInspector)
-                                .presentationDetents([.fraction(0.5), .large])
+                            LegendView(
+                                isCompact: isCompact,
+                                isPresented: $showingInspector)
                         }
                     }
                 }
@@ -61,9 +63,6 @@ struct GrammarView: View {
             .toolbar {
                 ToolbarItem {
                     Menu("Options") {
-                        Button("Deselect", action: { selectedGrammarID = nil })
-                            .disabled(selectedGrammarID == nil)
-                        Divider()
                         Button("Delete", role: .destructive, action: {
                             // Add delete api
                         })

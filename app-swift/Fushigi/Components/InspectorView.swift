@@ -10,6 +10,7 @@ import SwiftUI
 struct InspectorView: View {
     let grammarPoint: GrammarPoint
     @Binding var isPresented: Bool
+    @Binding var selectedGrammarID: GrammarPoint.ID?
     let isCompact: Bool
 
     var body: some View {
@@ -19,6 +20,7 @@ struct InspectorView: View {
                     Spacer()
                     Button("Done") {
                         isPresented = false
+                        selectedGrammarID = nil
                     }
                 }
                 .padding(.horizontal)
