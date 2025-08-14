@@ -10,8 +10,13 @@ import SwiftUI
 
 @main
 struct FushigiApp: App {
+    // MARK: - Shared Container
+
+    /// The shared SwiftData container used by the app.
+    /// Uses a persistent store (not in-memory) so data persists across launches.
     var sharedModelContainer: ModelContainer = {
-        let schema = Schema([])
+        let schema = Schema([GrammarPointModel.self])
+        // For a real app, we don't want the data store to only live in memory
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
         do {
@@ -21,14 +26,41 @@ struct FushigiApp: App {
         }
     }()
 
+    // MARK: - Stores
+
+    /// The main GrammarStore used throughout the app.
+    /// Initialized with the shared SwiftData container's main context.
+    @StateObject private var grammarStore: GrammarStore
+
+    // TODO: Add Journal, Tags, Settings, Etc.
+
+    // MARK: - Initialize Data Storage
+
+    init() {
+        let context = sharedModelContainer.mainContext
+        _grammarStore = StateObject(wrappedValue: GrammarStore(modelContext: context))
+    }
+
+    // MARK: - App Body
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(grammarStore)
+                .task {
+                    // Load local SwiftData objects
+                    await grammarStore.loadLocal()
+                    // Then sync with remote PostgreSQL
+                    await grammarStore.syncWithRemote()
+                }
         }
         .modelContainer(sharedModelContainer)
     }
 }
 
+// MARK: - Preview
+
 #Preview {
     ContentView()
+        .withPreviewGrammarStore()
 }

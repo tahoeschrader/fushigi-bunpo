@@ -31,3 +31,11 @@ struct LegendView: View {
         .padding()
     }
 }
+
+#Preview {
+    @Previewable @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    var isCompact: Bool {
+        horizontalSizeClass == .compact
+    }
+    LegendView(isCompact: isCompact, isPresented: .constant(true))
+}

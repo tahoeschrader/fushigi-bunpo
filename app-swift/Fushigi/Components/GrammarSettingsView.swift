@@ -95,3 +95,18 @@ struct GrammarSettingsView: View {
         }
     }
 }
+
+#Preview {
+    @Previewable @State var selectedLevel: Level = .all
+    @Previewable @State var selectedContext: Context = .all
+    @Previewable @State var selectedFunMode: FunMode = .none
+    @Previewable @State var selectedSource: SourceMode = .random
+
+    GrammarSettingsView(
+        selectedLevel: $selectedLevel,
+        selectedContext: $selectedContext,
+        selectedFunMode: $selectedFunMode,
+        selectedSource: $selectedSource,
+        onRefresh: {},
+    )
+}

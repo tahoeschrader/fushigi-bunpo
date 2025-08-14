@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct TableView: View {
-    let grammarPoints: [GrammarPoint]
-    @Binding var selectedGrammarID: GrammarPoint.ID?
+    var grammarPoints: [GrammarPointModel]
+    @Binding var selectedGrammarID: Int?
     @Binding var showingInspector: Bool
     let isCompact: Bool
+    var onRefresh: () async -> Void
 
     var body: some View {
         Table(grammarPoints, selection: $selectedGrammarID) {
@@ -62,5 +63,23 @@ struct TableView: View {
             showingInspector = newSelection != nil
         }
         .scrollDismissesKeyboard(.interactively)
+        .refreshable {
+            await onRefresh()
+        }
+    }
+}
+
+#Preview {
+    @Previewable @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    var isCompact: Bool { horizontalSizeClass == .compact }
+
+    PreviewHelper.withGrammarStore { store in
+        TableView(
+            grammarPoints: store.getAllGrammarPoints(),
+            selectedGrammarID: .constant(nil),
+            showingInspector: .constant(true),
+            isCompact: isCompact,
+            onRefresh: {},
+        )
     }
 }

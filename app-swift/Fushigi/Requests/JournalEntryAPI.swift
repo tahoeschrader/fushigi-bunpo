@@ -1,5 +1,5 @@
 //
-//  ListJournalAPI.swift
+//  JournalEntryAPI.swift
 //  fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/04.

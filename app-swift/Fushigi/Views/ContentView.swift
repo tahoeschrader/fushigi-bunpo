@@ -84,4 +84,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .withPreviewGrammarStore()
 }

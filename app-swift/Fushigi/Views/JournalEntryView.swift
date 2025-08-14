@@ -1,5 +1,5 @@
 //
-//  JournalView.swift
+//  JournalEntryView.swift
 //  fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/01.
@@ -50,74 +50,80 @@ struct JournalEntryView: View {
                     }
                 }
                 Divider()
-                ScrollView(.vertical) {
-                    VStack(alignment: .leading, spacing: 20) {
-                        VStack(spacing: 5) {
-                            Divider()
-                            ForEach(grammarPoints) { grammarPoint in
-                                NavigationLink {
-                                    Text("Detail for \(grammarPoint.usage)")
-                                } label: {
-                                    Label(grammarPoint.usage, systemImage: "moonphase.new.moon")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .foregroundColor(.primary)
-                                }
-                                .buttonStyle(.borderless)
-                                Divider()
+                VStack(alignment: .leading, spacing: 20) {
+                    VStack(spacing: 5) {
+                        Divider()
+                        ForEach(grammarPoints) { grammarPoint in
+                            NavigationLink {
+                                Text("Detail for \(grammarPoint.usage)")
+                            } label: {
+                                Label(grammarPoint.usage, systemImage: "moonphase.new.moon")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .foregroundColor(.primary)
                             }
+                            .buttonStyle(.borderless)
+                            Divider()
                         }
-                        .task {
-                            await loadGrammarPoints()
-                        }
-                        VStack(alignment: .leading) {
-                            Text("Title")
-                                .font(.headline)
-                            TextField("Enter title", text: $title)
-                                .focusBorder($isTitleFocused)
-                                .focused($isTitleFocused)
-                                .onSubmit {
-                                    isContentFocused = true
+                    }
+                    .task {
+                        await loadGrammarPoints()
+                    }
+                    VStack(alignment: .leading) {
+                        Text("Title")
+                            .font(.headline)
+                        TextField("Enter title", text: $title)
+                            .padding(8)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(isTitleFocused ? Color.accentColor : Color.primary, lineWidth: 1),
+                            )
+                            .focused($isTitleFocused)
+                            .onSubmit {
+                                isContentFocused = true
+                                isTitleFocused = false
+                            }
+                        Text("Content")
+                            .font(.headline)
+                        TextEditor(text: $content)
+                            .font(.custom("HelveticaNeue", size: 18))
+                            .padding(8)
+                            .frame(minHeight: 150, maxHeight: .infinity)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(isContentFocused ? Color.accentColor : Color.primary, lineWidth: 1),
+                            )
+                            .focused($isContentFocused)
+                        Toggle("Private", isOn: $isPrivate)
+                        HStack {
+                            Button {
+                                Task {
+                                    await submitJournal()
                                 }
-                            Text("Content")
-                                .font(.headline)
-                            TextEditor(text: $content)
-                                .font(.custom("HelveticaNeue", size: 18))
-                                .frame(height: 150)
-                                .focusBorder($isContentFocused)
-                                .focused($isContentFocused)
-                            Toggle("Private", isOn: $isPrivate)
-                            HStack {
-                                Button {
-                                    Task {
-                                        await submitJournal()
-                                    }
-                                } label: {
-                                    if isSaving {
-                                        ProgressView()
-                                    } else {
-                                        Text("Save").bold()
-                                    }
+                            } label: {
+                                if isSaving {
+                                    ProgressView()
+                                } else {
+                                    Text("Save").bold()
                                 }
-                                .disabled(isSaving)
-                                .buttonStyle(.borderedProminent)
-                                NavigationLink {
-                                    TaggerView(journalText: content)
-                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                        .padding()
-                                } label: {
-                                    Text("Tag").bold()
-                                }
-                                if let msg = resultMessage {
-                                    Text(msg)
-                                        .foregroundColor(msg.starts(with: "Error") ? .red : .green)
-                                        .padding(.top, 10)
-                                }
+                            }
+                            .disabled(isSaving)
+                            .buttonStyle(.borderedProminent)
+                            NavigationLink {
+                                TaggerView(journalText: content)
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                    .padding()
+                            } label: {
+                                Text("Tag").bold()
+                            }
+                            if let msg = resultMessage {
+                                Text(msg)
+                                    .foregroundColor(msg.starts(with: "Error") ? .red : .green)
+                                    .padding(.top, 10)
                             }
                         }
                     }
-                    .padding()
                 }
-                .scrollDismissesKeyboard(.interactively)
+                .padding()
             }
             .padding(.horizontal)
             .padding(.top)

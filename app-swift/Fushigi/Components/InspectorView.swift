@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct InspectorView: View {
-    let grammarPoint: GrammarPoint
+    let grammarPoint: GrammarPointModel
     @Binding var isPresented: Bool
-    @Binding var selectedGrammarID: GrammarPoint.ID?
+    @Binding var selectedGrammarID: Int?
     let isCompact: Bool
 
     var body: some View {
@@ -37,5 +37,20 @@ struct InspectorView: View {
             Spacer()
         }
         .padding()
+    }
+}
+
+#Preview {
+    @Previewable @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    var isCompact: Bool {
+        horizontalSizeClass == .compact
+    }
+    PreviewHelper.withGrammarStore { store in
+        InspectorView(
+            grammarPoint: store.grammarItems.last!,
+            isPresented: .constant(true),
+            selectedGrammarID: .constant(store.grammarItems.first!.id),
+            isCompact: isCompact,
+        )
     }
 }

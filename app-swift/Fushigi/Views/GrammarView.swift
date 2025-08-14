@@ -8,20 +8,28 @@
 import SwiftUI
 
 struct GrammarView: View {
+    // UIUX Parameters
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @State private var showingInspector: Bool = false
+    @State private var searchText: String = ""
+    @State private var selectedGrammarID: Int?
     var isCompact: Bool {
         horizontalSizeClass == .compact
     }
 
-    @State private var searchText: String = ""
-    @State private var grammarPoints: [GrammarPoint] = []
-    @State private var errorMessage: String?
-    @State private var selectedGrammarID: GrammarPoint.ID?
-    var selectedGrammarPoint: GrammarPoint? {
-        grammarPoints.first(where: { $0.id == selectedGrammarID })
+    // Data
+    @EnvironmentObject var grammarStore: GrammarStore
+    var grammarPoints: [GrammarPointModel] {
+        grammarStore.filterGrammarPoints(containing: searchText)
     }
 
-    @State private var showingInspector: Bool = false
+    var selectedGrammarPoint: GrammarPointModel? {
+        grammarStore.getGrammarPoint(id: selectedGrammarID)
+    }
+
+    var errorMessage: String? {
+        grammarStore.syncError?.localizedDescription
+    }
 
     var body: some View {
         NavigationStack {
@@ -32,16 +40,19 @@ struct GrammarView: View {
                     } description: {
                         Text(errorMessage!)
                     }
-                } else if filteredPoints.isEmpty {
+                } else if grammarPoints.isEmpty {
                     ContentUnavailableView.search
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background()
                 } else {
                     TableView(
-                        grammarPoints: filteredPoints,
+                        grammarPoints: grammarPoints,
                         selectedGrammarID: $selectedGrammarID,
                         showingInspector: $showingInspector,
                         isCompact: isCompact,
+                        onRefresh: {
+                            await grammarStore.refresh()
+                        },
                     )
                     .inspector(isPresented: $showingInspector) {
                         if let thisGrammarPoint = selectedGrammarPoint {
@@ -54,7 +65,8 @@ struct GrammarView: View {
                         } else {
                             LegendView(
                                 isCompact: isCompact,
-                                isPresented: $showingInspector)
+                                isPresented: $showingInspector,
+                            )
                         }
                     }
                 }
@@ -86,33 +98,11 @@ struct GrammarView: View {
                     }
                 }
             }
-            .task {
-                let result = await fetchGrammarPoints()
-                switch result {
-                case let .success(points):
-                    grammarPoints = points
-                    errorMessage = nil
-                case let .failure(error):
-                    errorMessage = error.localizedDescription
-                }
-            }
-        }
-    }
-
-    var filteredPoints: [GrammarPoint] {
-        if searchText.isEmpty {
-            grammarPoints
-        } else {
-            grammarPoints.filter {
-                $0.usage.localizedCaseInsensitiveContains(searchText) ||
-                    $0.meaning.localizedCaseInsensitiveContains(searchText) ||
-                    $0.level.localizedCaseInsensitiveContains(searchText) ||
-                    $0.tags.contains { $0.localizedCaseInsensitiveContains(searchText) }
-            }
         }
     }
 }
 
 #Preview {
     GrammarView()
+        .withPreviewGrammarStore()
 }
