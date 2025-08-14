@@ -70,18 +70,28 @@
         uv.enable = true;
         uv.sync.enable = true;
       };
-      services.adminer.enable = true;
-      services.postgres.enable = true;
-      services.postgres.initialDatabases = lib.toList {
-        name = "postgres";
-        user = "postgres";
-        pass = "postgres";
+      services.postgres = {
+        enable = true;
+        listen_addresses = "localhost";
+        initialDatabases = lib.toList {
+          name = "postgres";
+          user = "postgres";
+          pass = "postgres";
+          schema = ./backend/sql;
+        };
       };
+      services.adminer.enable = true;
       processes.adminer.process-compose.depends_on.postgres.condition = "process_healthy";
+      processes.generate-default-db.exec = "uv run python -m fushigi_backend.tools_main";
+      processes.generate-default-db.process-compose = {
+        environment = ["DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres"];
+        depends_on.postgres.condition = "process_healthy";
+        working_dir = "./backend";
+      };
       processes.backend.exec = "uv run uvicorn fushigi_backend.main:app --reload --host 0.0.0.0";
       processes.backend.process-compose = {
         environment = ["DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres"];
-        depends_on.postgres.condition = "process_healthy";
+        depends_on.generate-default-db.condition = "process_completed_successfully";
         working_dir = "./backend";
       };
       git-hooks.excludes = [".*srs.py"];
