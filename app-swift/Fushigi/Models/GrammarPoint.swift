@@ -12,7 +12,7 @@ import SwiftData
 
 struct GrammarPoint: Identifiable, Decodable, Hashable, Sendable {
     let id: Int
-    let level: String
+    let context: String
     let usage: String
     let meaning: String
     let tags: [String]
@@ -23,14 +23,14 @@ struct GrammarPoint: Identifiable, Decodable, Hashable, Sendable {
 @Model
 final class GrammarPointModel {
     @Attribute(.unique) var id: Int
-    var level: String
+    var context: String
     var usage: String
     var meaning: String
     var tags: [String]
 
-    init(id: Int, level: String, usage: String, meaning: String, tags: [String] = []) {
+    init(id: Int, context: String, usage: String, meaning: String, tags: [String] = []) {
         self.id = id
-        self.level = level
+        self.context = context
         self.usage = usage
         self.meaning = meaning
         self.tags = tags

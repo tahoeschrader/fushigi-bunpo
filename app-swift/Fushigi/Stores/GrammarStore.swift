@@ -44,7 +44,7 @@ class GrammarStore: ObservableObject {
             filtered = filtered.filter {
                 $0.usage.localizedCaseInsensitiveContains(searchText) ||
                     $0.meaning.localizedCaseInsensitiveContains(searchText) ||
-                    $0.level.localizedCaseInsensitiveContains(searchText) ||
+                    $0.context.localizedCaseInsensitiveContains(searchText) ||
                     $0.tags.contains { $0.localizedCaseInsensitiveContains(searchText) }
             }
         }
@@ -90,7 +90,7 @@ class GrammarStore: ObservableObject {
             // Check if exists locally by checking postgres id and swift id
             if let existing = grammarItems.first(where: { $0.id == remote.id }) {
                 // Update existing
-                existing.level = remote.level
+                existing.context = remote.context
                 existing.usage = remote.usage
                 existing.meaning = remote.meaning
                 existing.tags = remote.tags
@@ -98,7 +98,7 @@ class GrammarStore: ObservableObject {
                 // Create new
                 let newItem = GrammarPointModel(
                     id: remote.id,
-                    level: remote.level,
+                    context: remote.context,
                     usage: remote.usage,
                     meaning: remote.meaning,
                     tags: remote.tags,

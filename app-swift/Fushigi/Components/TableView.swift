@@ -41,7 +41,7 @@ struct TableView: View {
                 }
             } else {
                 TableColumn("場合") { point in
-                    Text(point.level)
+                    Text(point.context)
                 }
                 TableColumn("使い方") { point in
                     VStack(alignment: .leading) {
