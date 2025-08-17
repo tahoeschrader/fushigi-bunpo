@@ -12,7 +12,7 @@ export const actions: Actions = {
 		}
 
 		try {
-			const res = await fetch("/api/journal", {
+			const res = await fetch(`${import.meta.env.VITE_API_BASE}/api/journal`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ title, content, private: isPrivate }),

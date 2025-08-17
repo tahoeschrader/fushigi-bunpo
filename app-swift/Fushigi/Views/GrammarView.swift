@@ -12,7 +12,7 @@ struct GrammarView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @State private var showingInspector: Bool = false
     @State private var searchText: String = ""
-    @State private var selectedGrammarID: Int?
+    @State private var selectedGrammarID: UUID?
     var isCompact: Bool {
         horizontalSizeClass == .compact
     }

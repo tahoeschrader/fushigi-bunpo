@@ -1,8 +1,5 @@
 <script lang="ts">
-  export let data: {
-    entries: Array<{ id: string; title: string; created_at: string; private: boolean }>;
-    error?: string;
-  };
+  let { data } = $props();
 </script>
 
 <main class="flex-1 overflow-auto p-6">

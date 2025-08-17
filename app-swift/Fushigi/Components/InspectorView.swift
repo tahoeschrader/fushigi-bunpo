@@ -10,7 +10,7 @@ import SwiftUI
 struct InspectorView: View {
     let grammarPoint: GrammarPointModel
     @Binding var isPresented: Bool
-    @Binding var selectedGrammarID: Int?
+    @Binding var selectedGrammarID: UUID?
     let isCompact: Bool
 
     var body: some View {

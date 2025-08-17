@@ -1,5 +1,5 @@
 CREATE TABLE grammar (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     language_id INT NOT NULL REFERENCES languages(id),
     usage TEXT NOT NULL,
     meaning TEXT NOT NULL,
@@ -8,7 +8,8 @@ CREATE TABLE grammar (
     notes TEXT,
     nuance TEXT,
     examples JSONB NOT NULL,
-    created_by INT NULL REFERENCES users(id), -- NULL for official points
+    created_by UUID NULL REFERENCES users(id), -- NULL for official points
     created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    last_update TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+    last_updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMPTZ
 );

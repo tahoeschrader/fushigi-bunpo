@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TableView: View {
     var grammarPoints: [GrammarPointModel]
-    @Binding var selectedGrammarID: Int?
+    @Binding var selectedGrammarID: UUID?
     @Binding var showingInspector: Bool
     let isCompact: Bool
     var onRefresh: () async -> Void

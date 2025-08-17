@@ -11,7 +11,7 @@ import SwiftData
 // MARK: - Remote Postgres model
 
 struct GrammarPoint: Identifiable, Decodable, Hashable, Sendable {
-    let id: Int
+    let id: UUID
     let context: String
     let usage: String
     let meaning: String
@@ -22,13 +22,13 @@ struct GrammarPoint: Identifiable, Decodable, Hashable, Sendable {
 
 @Model
 final class GrammarPointModel {
-    @Attribute(.unique) var id: Int
+    @Attribute(.unique) var id: UUID
     var context: String
     var usage: String
     var meaning: String
     var tags: [String]
 
-    init(id: Int, context: String, usage: String, meaning: String, tags: [String] = []) {
+    init(id: UUID, context: String, usage: String, meaning: String, tags: [String] = []) {
         self.id = id
         self.context = context
         self.usage = usage

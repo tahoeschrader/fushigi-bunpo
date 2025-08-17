@@ -24,12 +24,30 @@ enum PreviewHelper {
             // Populate with fake data
             if store.grammarItems.isEmpty {
                 store.grammarItems = [
-                    GrammarPointModel(id: 1, context: "casual", usage: "Hello", meaning: "こんにちは", tags: ["greeting"]),
-                    GrammarPointModel(id: 2, context: "casual", usage: "Goodbye", meaning: "さようなら", tags: ["farewell"]),
-                    GrammarPointModel(id: 3, context: "casual", usage: "I", meaning: "私は", tags: ["context"]),
-                    GrammarPointModel(id: 4, context: "casual", usage: "Cool", meaning: "かっこいい", tags: ["adjective"]),
                     GrammarPointModel(
-                        id: 5,
+                        id: UUID(),
+                        context: "casual",
+                        usage: "Hello",
+                        meaning: "こんにちは",
+                        tags: ["greeting"],
+                    ),
+                    GrammarPointModel(
+                        id: UUID(),
+                        context: "casual",
+                        usage: "Goodbye",
+                        meaning: "さようなら",
+                        tags: ["farewell"],
+                    ),
+                    GrammarPointModel(id: UUID(), context: "casual", usage: "I", meaning: "私は", tags: ["context"]),
+                    GrammarPointModel(
+                        id: UUID(),
+                        context: "casual",
+                        usage: "Cool",
+                        meaning: "かっこいい",
+                        tags: ["adjective"],
+                    ),
+                    GrammarPointModel(
+                        id: UUID(),
                         context: "casual",
                         usage: "is/am",
                         meaning: "desu",

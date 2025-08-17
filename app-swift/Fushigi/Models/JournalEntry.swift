@@ -14,14 +14,14 @@ struct JournalEntry: Codable {
 }
 
 struct ResponseID: Decodable {
-    let id: Int
+    let id: UUID
 }
 
 struct JournalEntryInDB: Identifiable, Decodable {
-    let id: Int
+    let id: UUID
     let title: String
     let createdAt: Date
-    let userId: Int
+    let userId: UUID
     let content: String
     let `private`: Bool
     // let grammarPoints: [String]

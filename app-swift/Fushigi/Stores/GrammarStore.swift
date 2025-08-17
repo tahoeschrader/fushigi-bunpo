@@ -32,7 +32,7 @@ class GrammarStore: ObservableObject {
     }
 
     /// Get specific grammar point by ID
-    func getGrammarPoint(id: Int?) -> GrammarPointModel? {
+    func getGrammarPoint(id: UUID?) -> GrammarPointModel? {
         getAllGrammarPoints().first { $0.id == id }
     }
 

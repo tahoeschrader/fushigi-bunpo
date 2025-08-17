@@ -11,7 +11,7 @@ struct HistoryView: View {
     @State private var searchText = ""
     @State private var journalEntries: [JournalEntryInDB] = []
     @State private var errorMessage: String?
-    @State private var expanded: Set<Int> = []
+    @State private var expanded: Set<UUID> = []
 
     var body: some View {
         NavigationStack {
@@ -94,7 +94,7 @@ struct HistoryView: View {
         }
     }
 
-    private func toggleExpanded(for id: Int) {
+    private func toggleExpanded(for id: UUID) {
         if expanded.contains(id) {
             expanded.remove(id)
         } else {
