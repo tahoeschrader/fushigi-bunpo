@@ -15,16 +15,6 @@ struct FushigiApp: App {
     /// The shared SwiftData container used by the app.
     /// Uses a persistent store (not in-memory) so data persists across launches.
     var sharedModelContainer: ModelContainer = {
-        // Delete the store when testing since store is in flux
-        #if DEBUG
-            if let appSupportURL = FileManager.default
-                .urls(for: .applicationSupportDirectory, in: .userDomainMask)
-                .first
-            {
-                let storeURL = appSupportURL.appendingPathComponent("default.store")
-                try? FileManager.default.removeItem(at: storeURL)
-            }
-        #endif
         let schema = Schema([GrammarPointModel.self])
         // For a real app, we don't want the data store to only live in memory
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
@@ -47,6 +37,10 @@ struct FushigiApp: App {
     // MARK: - Initialize Data Storage
 
     init() {
+        #if DEBUG
+            wipeCoreData()
+        #endif
+
         let context = sharedModelContainer.mainContext
         _grammarStore = StateObject(wrappedValue: GrammarStore(modelContext: context))
     }
@@ -65,6 +59,16 @@ struct FushigiApp: App {
                 }
         }
         .modelContainer(sharedModelContainer)
+    }
+}
+
+func wipeCoreData() {
+    let fileManager = FileManager.default
+    let urls = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+
+    for url in urls {
+        let dir = url.appendingPathComponent("default.store")
+        try? fileManager.removeItem(at: dir)
     }
 }
 

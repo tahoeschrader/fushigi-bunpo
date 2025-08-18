@@ -32,6 +32,7 @@ struct GrammarView: View {
     }
 
     var body: some View {
+        // TODO: Make this more modular like JournalEntryView
         NavigationStack {
             VStack(spacing: 0) {
                 if errorMessage != nil {

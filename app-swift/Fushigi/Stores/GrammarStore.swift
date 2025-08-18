@@ -12,9 +12,14 @@ import SwiftData
 class GrammarStore: ObservableObject {
     // in memory cache items for quick access by UI without needed to refetch
     @Published var grammarItems: [GrammarPointModel] = []
+    @Published private(set) var randomGrammarItems: [GrammarPointModel] = []
+    @Published private(set) var algorithmicGrammarItems: [GrammarPointModel] = []
     @Published var isSyncing = false
     @Published var lastSyncDate: Date?
     @Published var syncError: Error?
+
+    private var lastRandomUpdate: Date?
+    private var lastAlgorithmicUpdate: Date?
 
     // modelContext: SwiftData database session or “scratchpad”
     // inserts only live in memory until saved
@@ -24,9 +29,9 @@ class GrammarStore: ObservableObject {
         self.modelContext = modelContext
     }
 
-    // MARK: - Public API
+    // MARK: - All Grammar
 
-    /// Get all grammar points (replaces direct fetchGrammarPoints calls)
+    /// Get all grammar points
     func getAllGrammarPoints() -> [GrammarPointModel] {
         grammarItems
     }
@@ -50,6 +55,28 @@ class GrammarStore: ObservableObject {
         }
 
         return filtered
+    }
+
+    // MARK: - Daily Grammar
+
+    /// Get all random grammar points for the day
+    func getRandomGrammarPoints() -> [GrammarPointModel] {
+        randomGrammarItems
+    }
+
+    /// Get specific random grammar point by ID
+    func getRandomGrammarPoint(id: UUID?) -> GrammarPointModel? {
+        getRandomGrammarPoints().first { $0.id == id }
+    }
+
+    /// Get all SRS grammar points for the day
+    func getAlgorithmicGrammarPoints() -> [GrammarPointModel] {
+        algorithmicGrammarItems
+    }
+
+    /// Get specific SRS grammar point by ID
+    func getAlgorithmicGrammarPoint(id: UUID?) -> GrammarPointModel? {
+        getAlgorithmicGrammarPoints().first { $0.id == id }
     }
 
     // MARK: - Internal sync logic
@@ -78,7 +105,6 @@ class GrammarStore: ObservableObject {
         case let .success(remotePoints):
             await processRemotePoints(remotePoints)
             lastSyncDate = Date()
-
         case let .failure(error):
             print("Failed to fetch remote grammar points:", error)
             syncError = error
@@ -112,6 +138,7 @@ class GrammarStore: ObservableObject {
         do {
             try modelContext.save()
             print("Synced \(remotePoints.count) grammar points")
+            syncError = nil
         } catch {
             print("Failed to save context:", error)
             syncError = error
@@ -123,7 +150,63 @@ class GrammarStore: ObservableObject {
         #if DEBUG
             print("Preview mode: refresh skipped")
         #else
+            // first check if there are new grammar points, then update subsets
             await syncWithRemote()
+            updateRandomGrammarPoints()
+            await updateAlgorithmicGrammarPoints()
+        #endif
+    }
+
+    /// Calculate new subset of 5 random grammar points w/ ability to force by user -- TODO: add filtering
+    func updateRandomGrammarPoints(force: Bool = false) {
+        let today = Calendar.current.startOfDay(for: Date())
+        if force || lastRandomUpdate != today {
+            randomGrammarItems = Array(grammarItems.shuffled().prefix(5))
+            lastRandomUpdate = today
+        }
+    }
+
+    /// Calculate new subset of 5 SRS grammar points w/ ability to force by user
+    func updateAlgorithmicGrammarPoints(force: Bool = false) async {
+        let today = Calendar.current.startOfDay(for: Date())
+        if force || lastAlgorithmicUpdate != today {
+            // Proceed only if not already syncing, guarantee rest of code is safe
+            guard !isSyncing else { return }
+
+            isSyncing = true
+            syncError = nil
+
+            // End function by resetting sync flag, even after error
+            defer { isSyncing = false }
+
+            let result = await fetchGrammarPointsRandom()
+            switch result {
+            case let .success(points):
+                let idSubset = Set(points.map(\.id))
+                algorithmicGrammarItems = grammarItems.filter { idSubset.contains($0.id) }
+                lastAlgorithmicUpdate = today
+                print("Loaded \(algorithmicGrammarItems.count) items from database")
+            case let .failure(error):
+                print("Failed to fetch SRS points:", error)
+                syncError = error
+            }
+        }
+    }
+}
+
+// MARK: - Preview Helpers
+
+/// Only for previews/testing
+extension GrammarStore {
+    func setRandomGrammarPointsForPreview(_ items: [GrammarPointModel]) {
+        #if DEBUG
+            randomGrammarItems = items
+        #endif
+    }
+
+    func setAlgorithmicGrammarPointsForPreview(_ items: [GrammarPointModel]) {
+        #if DEBUG
+            algorithmicGrammarItems = items
         #endif
     }
 }

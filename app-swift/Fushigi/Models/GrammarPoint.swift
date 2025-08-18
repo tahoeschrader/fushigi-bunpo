@@ -16,6 +16,14 @@ struct GrammarPoint: Identifiable, Decodable, Hashable, Sendable {
     let usage: String
     let meaning: String
     let tags: [String]
+
+    init(from model: GrammarPointModel) {
+        id = model.id
+        context = model.context
+        usage = model.usage
+        meaning = model.meaning
+        tags = model.tags
+    }
 }
 
 // MARK: - Local/iCloud model

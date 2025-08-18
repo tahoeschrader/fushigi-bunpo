@@ -23,7 +23,7 @@ enum PreviewHelper {
 
             // Populate with fake data
             if store.grammarItems.isEmpty {
-                store.grammarItems = [
+                let fakeItems = [
                     GrammarPointModel(
                         id: UUID(),
                         context: "casual",
@@ -54,6 +54,9 @@ enum PreviewHelper {
                         tags: ["sentence-ender"],
                     ),
                 ]
+                store.grammarItems = fakeItems
+                store.setRandomGrammarPointsForPreview(Array(fakeItems.shuffled().prefix(5)))
+                store.setAlgorithmicGrammarPointsForPreview(Array(fakeItems.shuffled().prefix(5)))
             }
 
             return AnyView(

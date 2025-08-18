@@ -9,18 +9,18 @@ import SwiftData
 import SwiftUI
 
 enum Page: String, Identifiable, CaseIterable {
-    case grammar = "Grammar"
-    case history = "History"
     case journal = "Journal"
+    case history = "History"
+    case grammar = "Reference"
     case training = "Training"
 
     var id: String { rawValue }
 
     var icon: String {
         switch self {
-        case .grammar: "book"
-        case .history: "fossil.shell"
         case .journal: "pencil"
+        case .history: "fossil.shell"
+        case .grammar: "book"
         case .training: "gamecontroller.fill"
         }
     }
@@ -28,12 +28,12 @@ enum Page: String, Identifiable, CaseIterable {
     @ViewBuilder
     var view: some View {
         switch self {
-        case .grammar:
-            GrammarView()
-        case .history:
-            HistoryView()
         case .journal:
             JournalEntryView()
+        case .history:
+            HistoryView()
+        case .grammar:
+            GrammarView()
         case .training:
             GameView()
         }
@@ -72,7 +72,7 @@ struct ContentView: View {
                 if let selectedPage {
                     selectedPage.view
                 } else {
-                    Text("Select a page. Put a logo here. Idk")
+                    Text("Error... not sure how this happened.")
                         .font(.largeTitle)
                         .foregroundStyle(.secondary)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
