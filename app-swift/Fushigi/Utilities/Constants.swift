@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-private enum UIConstants {
+enum UIConstants {
     static let contentMinHeight: CGFloat = 150
     static let defaultSpacing: CGFloat = 20
     static let sectionSpacing: CGFloat = 16

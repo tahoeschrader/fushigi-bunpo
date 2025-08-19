@@ -12,7 +12,6 @@ enum Page: String, Identifiable, CaseIterable {
     case practice = "Practice"
     case history = "History"
     case grammar = "Reference"
-    case training = "Training"
 
     var id: String { rawValue }
 
@@ -21,7 +20,6 @@ enum Page: String, Identifiable, CaseIterable {
         case .practice: "pencil"
         case .history: "fossil.shell"
         case .grammar: "book"
-        case .training: "gamecontroller.fill"
         }
     }
 
@@ -34,8 +32,6 @@ enum Page: String, Identifiable, CaseIterable {
             HistoryView()
         case .grammar:
             GrammarView()
-        case .training:
-            GameView()
         }
     }
 }

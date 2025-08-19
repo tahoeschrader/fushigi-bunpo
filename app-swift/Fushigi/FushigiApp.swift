@@ -12,11 +12,16 @@ import SwiftUI
 struct FushigiApp: App {
     // MARK: - Shared Container
 
-    /// The shared SwiftData container used by the app.
-    /// Uses a persistent store (not in-memory) so data persists across launches.
+    /// The shared SwiftData container which uses a persistent store (not in-memory) so data persists across launches
     var sharedModelContainer: ModelContainer = {
-        let schema = Schema([GrammarPointModel.self])
-        // For a real app, we don't want the data store to only live in memory
+        let schema = Schema([
+            GrammarPointModel.self,
+            // JournalModel.self,
+            // TagModel.self,
+            // SettingsModel.self
+        ])
+
+        // For a real app, the data store should not only live in memory
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
         do {
@@ -28,21 +33,29 @@ struct FushigiApp: App {
 
     // MARK: - Stores
 
-    /// The main GrammarStore used throughout the app.
-    /// Initialized with the shared SwiftData container's main context.
+    /// Grammar store of all user grammars, daily random, and daily SRS
     @StateObject private var grammarStore: GrammarStore
 
-    // TODO: Add Journal, Tags, Settings, Etc.
+    /// Journal store of all user journal entries
+    // @StateObject private var journalStore: JournalStore
 
-    // MARK: - Initialize Data Storage
+    /// Tag store of all user created tags linking journal entry sentencies to grammar points
+    // @StateObject private var tagStore: TagStore
 
+    /// Settings store of all user settings
+    // @StateObject private var settingsStore: SettingsStore
+
+    /// Boilerplate to initialize multi platform app data stored on device
     init() {
         #if DEBUG
-            wipeCoreData()
+            wipeSwiftData(container: sharedModelContainer)
         #endif
 
         let context = sharedModelContainer.mainContext
         _grammarStore = StateObject(wrappedValue: GrammarStore(modelContext: context))
+        // _journalStore = StateObject(wrappedValue: JournalStore(modelContext: context))
+        // _tagStore = StateObject(wrappedValue: TagStore(modelContext: context))
+        // _settingsStore = StateObject(wrappedValue: SettingsStore(modelContext: context))
     }
 
     // MARK: - App Body
@@ -51,24 +64,41 @@ struct FushigiApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(grammarStore)
+                // .environmentObject(journalStore)
+                // .environmentObject(tagStore)
+                // .environmentObject(settingsStore)
                 .task {
-                    // Load local SwiftData objects
-                    await grammarStore.loadLocal()
-                    // Then sync with remote PostgreSQL
-                    await grammarStore.syncWithRemote()
+                    await grammarStore.loadLocal() // SwiftData objects
+                    await grammarStore.syncWithRemote() // PostgreSQL
                 }
         }
         .modelContainer(sharedModelContainer)
     }
 }
 
-func wipeCoreData() {
-    let fileManager = FileManager.default
-    let urls = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+// MARK: - Debug Data Wipe
 
-    for url in urls {
-        let dir = url.appendingPathComponent("default.store")
-        try? fileManager.removeItem(at: dir)
+/// Wipe all data from persistent storage at startup for Preview/Debug mode.
+///
+/// This is necessary when running the app to prevent corruption of the actual database. We don't
+/// want the database filling up and persisting data when testing out the UI in the Simulator, Preview window,
+/// or on a physical device. This simply just loops through each store, deletes all data, and saves. This is better
+/// than physically deleting the SQLite database every time you want to try something new.
+@MainActor
+func wipeSwiftData(container: ModelContainer) {
+    let context = container.mainContext
+
+    do {
+        // Delete all GrammarPointModel instances
+        try context.delete(model: GrammarPointModel.self)
+        // try context.delete(model: JournalModel.self)
+        // try context.delete(model: TagModel.self)
+        // try context.delete(model: SettingsModel.self)
+
+        try context.save()
+        print("SwiftData store wiped successfully")
+    } catch {
+        print("Failed to wipe SwiftData: \(error)")
     }
 }
 
