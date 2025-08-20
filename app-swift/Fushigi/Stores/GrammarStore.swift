@@ -106,7 +106,7 @@ class GrammarStore: ObservableObject {
             await processRemotePoints(remotePoints)
             lastSyncDate = Date()
         case let .failure(error):
-            print("Failed to fetch remote grammar points:", error)
+            print("Failed to sync grammar points from PostgreSQL:", error)
             syncError = error
         }
     }
@@ -137,10 +137,10 @@ class GrammarStore: ObservableObject {
         // Save to commit to permanent SwiftData storage
         do {
             try modelContext.save()
-            print("Synced \(remotePoints.count) grammar points")
+            print("Synced \(remotePoints.count) local grammar points with PostgreSQL.")
             syncError = nil
         } catch {
-            print("Failed to save context:", error)
+            print("Failed to save to local SwiftData:", error)
             syncError = error
         }
     }
@@ -148,7 +148,7 @@ class GrammarStore: ObservableObject {
     /// Manual refresh (pull-to-refresh on scrollable views)
     func refresh() async {
         #if DEBUG
-            print("Preview mode: refresh skipped")
+            print("Preview mode: refresh skipped.")
         #else
             // first check if there are new grammar points, then update subsets
             await syncWithRemote()
@@ -160,16 +160,17 @@ class GrammarStore: ObservableObject {
     /// Calculate new subset of 5 random grammar points w/ ability to force by user -- TODO: add filtering
     func updateRandomGrammarPoints(force: Bool = false) {
         let today = Calendar.current.startOfDay(for: Date())
-        if force || lastRandomUpdate != today {
+        if force || lastRandomUpdate != today || randomGrammarItems.isEmpty {
             randomGrammarItems = Array(grammarItems.shuffled().prefix(5))
             lastRandomUpdate = today
+            print("Loaded \(randomGrammarItems.count) new random grammar items from SwiftData.")
         }
     }
 
     /// Calculate new subset of 5 SRS grammar points w/ ability to force by user
     func updateAlgorithmicGrammarPoints(force: Bool = false) async {
         let today = Calendar.current.startOfDay(for: Date())
-        if force || lastAlgorithmicUpdate != today {
+        if force || lastAlgorithmicUpdate != today || algorithmicGrammarItems.isEmpty {
             // Proceed only if not already syncing, guarantee rest of code is safe
             guard !isSyncing else { return }
 
@@ -185,10 +186,10 @@ class GrammarStore: ObservableObject {
                 let idSubset = Set(points.map(\.id))
                 algorithmicGrammarItems = grammarItems.filter { idSubset.contains($0.id) }
                 lastAlgorithmicUpdate = today
-                print("Loaded \(algorithmicGrammarItems.count) items from database")
+                print("Loaded \(algorithmicGrammarItems.count) SRS items from PostgreSQL.")
             case let .failure(error):
-                print("Failed to fetch SRS points:", error)
                 syncError = error
+                print("Failed to fetch SRS points:", error)
             }
         }
     }

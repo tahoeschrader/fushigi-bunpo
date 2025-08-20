@@ -45,11 +45,15 @@ struct PracticeContentView: View {
     /// Saving state flag
     @Binding var isSaving: Bool
 
+    /// Make it easier for users to know they can refresh the grammar points
+    let refreshTip = RefreshTip()
+
     var body: some View {
         VStack(alignment: .leading, spacing: UIConstants.defaultSpacing) {
             DailyGrammarSection(
                 selectedGrammarID: $selectedGrammarID,
                 isShowingTagger: $isShowingTagger,
+                selectedSource: $selectedSource,
             )
 
             JournalEntrySection(
@@ -61,19 +65,21 @@ struct PracticeContentView: View {
                 isSaving: $isSaving,
             )
         }
-        .padding()
         .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
+            ToolbarItem {
                 Button("Settings", systemImage: "gear") {
                     isShowingSettings.toggle()
                 }
             }
-            ToolbarItem(placement: .confirmationAction) {
-                Button("Refresh") {
+            ToolbarItem {
+                Button("Refresh", systemImage: "arrow.clockwise") {
+                    refreshTip.invalidate(reason: .actionPerformed)
                     Task {
                         await refreshGrammarPoints()
                     }
                 }
+                .buttonStyle(.plain)
+                .popoverTip(refreshTip)
             }
         }
     }
@@ -87,4 +93,12 @@ struct PracticeContentView: View {
         }
         isShowingSettings = false
     }
+}
+
+// MARK: Previews
+
+#Preview("Complete Practice View") {
+    PracticePage()
+        .withPreviewGrammarStore()
+        .withPreviewNavigation()
 }

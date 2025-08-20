@@ -45,7 +45,7 @@ struct InspectorView: View {
     var isCompact: Bool {
         horizontalSizeClass == .compact
     }
-    PreviewHelper.withGrammarStore { store in
+    PreviewHelper.withStore { store in
         InspectorView(
             grammarPoint: store.grammarItems.last!,
             isPresented: .constant(true),

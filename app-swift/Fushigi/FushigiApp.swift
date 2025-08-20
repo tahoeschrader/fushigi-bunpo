@@ -7,6 +7,7 @@
 
 import SwiftData
 import SwiftUI
+import TipKit
 
 @main
 struct FushigiApp: App {
@@ -58,6 +59,18 @@ struct FushigiApp: App {
         // _settingsStore = StateObject(wrappedValue: SettingsStore(modelContext: context))
     }
 
+    /// Boilerplate to initialize tips showing users how to use the app
+    func configureTips() async {
+        do {
+            try Tips.configure([
+                // .cloudKitContainer(.named("iCloud.com.apple.Fushigi.tips")),
+                .displayFrequency(.immediate),
+            ])
+        } catch {
+            print("Unable to configure tips: \(error)")
+        }
+    }
+
     // MARK: - App Body
 
     var body: some Scene {
@@ -68,8 +81,13 @@ struct FushigiApp: App {
                 // .environmentObject(tagStore)
                 // .environmentObject(settingsStore)
                 .task {
+                    await configureTips()
                     await grammarStore.loadLocal() // SwiftData objects
                     await grammarStore.syncWithRemote() // PostgreSQL
+
+                    // make sure the grammar point subsets are checked for updates on startup too
+                    grammarStore.updateRandomGrammarPoints()
+                    await grammarStore.updateAlgorithmicGrammarPoints()
                 }
         }
         .modelContainer(sharedModelContainer)
@@ -89,7 +107,7 @@ func wipeSwiftData(container: ModelContainer) {
     let context = container.mainContext
 
     do {
-        // Delete all GrammarPointModel instances
+        try Tips.resetDatastore()
         try context.delete(model: GrammarPointModel.self)
         // try context.delete(model: JournalModel.self)
         // try context.delete(model: TagModel.self)

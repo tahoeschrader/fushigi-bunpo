@@ -37,6 +37,9 @@ struct JournalEntrySection: View {
     /// Focus state for content field
     @FocusState private var isContentFocused: Bool
 
+    /// Focus state for content field
+    @State private var showSaveConfirmation: Bool = false
+
     var body: some View {
         VStack(alignment: .leading, spacing: UIConstants.sectionSpacing) {
             // Title input
@@ -55,6 +58,7 @@ struct JournalEntrySection: View {
                         isContentFocused = true
                         isTitleFocused = false
                     }
+                    .disabled(isSaving)
             }
 
             // Content input
@@ -69,17 +73,17 @@ struct JournalEntrySection: View {
                                     lineWidth: UIConstants.borderWidth + 2),
                     )
                     .focused($isContentFocused)
+                    .disabled(isSaving)
             }
 
             // Privacy toggle
             Toggle("Private Entry", isOn: $isPrivateEntry)
+                .disabled(isSaving)
 
             // Save section
-            HStack(alignment: .firstTextBaseline) {
+            HStack(alignment: .center) {
                 Button {
-                    Task {
-                        await saveJournalEntry()
-                    }
+                    showSaveConfirmation = true
                 } label: {
                     if isSaving {
                         ProgressView()
@@ -88,13 +92,22 @@ struct JournalEntrySection: View {
                         Text("Save").bold()
                     }
                 }
+                .confirmationDialog("Confirm Submission", isPresented: $showSaveConfirmation) {
+                    Button("Confirm") {
+                        Task {
+                            await saveJournalEntry()
+                        }
+                    }
+                } message: {
+                    Text("Are you sure you're ready to submit this entry?")
+                }
                 .disabled(isSaving)
                 .buttonStyle(.borderedProminent)
+                .dialogIcon(Image(systemName: "questionmark.circle"))
 
                 if let message = statusMessage {
                     Text(message)
                         .foregroundColor(message.hasPrefix("Error") ? .red : .green)
-                        .padding(.top, UIConstants.defaultPadding)
                 }
             }
         }
@@ -127,6 +140,7 @@ struct JournalEntrySection: View {
 
     /// Clears the form after successful submission
     private func clearForm() {
+        textSelection = nil // must clear textSelection first to be safe from index crash
         entryTitle = ""
         entryContent = ""
         isPrivateEntry = false

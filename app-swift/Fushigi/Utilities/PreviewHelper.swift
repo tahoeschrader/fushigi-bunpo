@@ -11,8 +11,68 @@ import SwiftUI
 
 // MARK: - Preview Helper
 
+enum PreviewError: LocalizedError {
+    case normal
+    case emptyData
+    case syncError
+    case loadError
+    case networkTimeout
+    case postgresConnectionError
+
+    /// User-friendly description of each preview mode for documentation
+    var description: String {
+        switch self {
+        case .normal:
+            "Standard operation with full sample data set"
+        case .emptyData:
+            "No data available, first-time user experience"
+        case .syncError:
+            "General synchronization failure with remote services"
+        case .loadError:
+            "Database corruption or loading failure scenario"
+        case .networkTimeout:
+            "Network connectivity issues preventing data access"
+        case .postgresConnectionError:
+            "PostgreSQL database connection failure scenario"
+        }
+    }
+
+    var failureReason: String? {
+        switch self {
+        case .syncError:
+            "The remote server is not responding"
+        case .loadError:
+            "Local database file appears to be damaged"
+        case .networkTimeout:
+            "Request took too long to complete"
+        case .postgresConnectionError:
+            "Unable to establish connection to PostgreSQL database"
+        case .normal:
+            "No issues"
+        case .emptyData:
+            "All data has been filtered out or there is no data to filter"
+        }
+    }
+}
+
 enum PreviewHelper {
-    @MainActor static func withGrammarStore(@ViewBuilder content: @escaping (GrammarStore) -> some View) -> some View {
+    case normal
+    case emptyData
+    case syncError
+    case loadError
+    case networkTimeout
+    case postgresConnectionError
+}
+
+extension PreviewHelper {
+    /// Basic spoofed scaffolding to mimic FushigiApp but for the purpose of Preview mode
+    ///
+    /// By add this to Previews, we can view the app in various configurations with fake data easily without needing to
+    /// mess with the actual database.
+    @MainActor
+    static func withStore(mode: PreviewHelper = .normal,
+                          @ViewBuilder content: @escaping (GrammarStore) -> some View) -> some View
+    {
         do {
             // for previews, we only want the data store to only live in memory while testing
             let container = try ModelContainer(
@@ -21,43 +81,8 @@ enum PreviewHelper {
             )
             let store = GrammarStore(modelContext: container.mainContext)
 
-            // Populate with fake data
-            if store.grammarItems.isEmpty {
-                let fakeItems = [
-                    GrammarPointModel(
-                        id: UUID(),
-                        context: "casual",
-                        usage: "Hello",
-                        meaning: "こんにちは",
-                        tags: ["greeting"],
-                    ),
-                    GrammarPointModel(
-                        id: UUID(),
-                        context: "casual",
-                        usage: "Goodbye",
-                        meaning: "さようなら",
-                        tags: ["farewell"],
-                    ),
-                    GrammarPointModel(id: UUID(), context: "casual", usage: "I", meaning: "私は", tags: ["context"]),
-                    GrammarPointModel(
-                        id: UUID(),
-                        context: "casual",
-                        usage: "Cool",
-                        meaning: "かっこいい",
-                        tags: ["adjective"],
-                    ),
-                    GrammarPointModel(
-                        id: UUID(),
-                        context: "casual",
-                        usage: "is/am",
-                        meaning: "desu",
-                        tags: ["sentence-ender"],
-                    ),
-                ]
-                store.grammarItems = fakeItems
-                store.setRandomGrammarPointsForPreview(Array(fakeItems.shuffled().prefix(5)))
-                store.setAlgorithmicGrammarPointsForPreview(Array(fakeItems.shuffled().prefix(5)))
-            }
+            // Configure store with fake data based on preview mode
+            configureStoreForPreviewMode(store: store, mode: mode)
 
             return AnyView(
                 content(store)
@@ -71,14 +96,55 @@ enum PreviewHelper {
             )
         }
     }
-}
 
-// MARK: - Convenience Extension
+    /// Define various configurations that the PreviewHelper can exist in.
+    ///
+    /// The most useful versions are normal (with data) empty, and various error modes.
+    @MainActor
+    private static func configureStoreForPreviewMode(store: GrammarStore, mode: PreviewHelper) {
+        switch mode {
+        case .normal:
+            setupNormalPreviewData(store: store)
 
-extension View {
-    func withPreviewGrammarStore() -> some View {
-        PreviewHelper.withGrammarStore { _ in
-            self
+        case .emptyData:
+            store.grammarItems = []
+
+        case .syncError:
+            setupNormalPreviewData(store: store)
+            store.syncError = PreviewError.syncError
+
+        case .loadError:
+            setupNormalPreviewData(store: store)
+            store.syncError = PreviewError.loadError
+
+        case .networkTimeout:
+            setupNormalPreviewData(store: store)
+            store.isSyncing = true
+            store.syncError = PreviewError.networkTimeout
+
+        case .postgresConnectionError:
+            setupNormalPreviewData(store: store)
+            store.syncError = PreviewError.postgresConnectionError
         }
+    }
+
+    /// Basic load of PreviewHelper with 5 fake data points.
+    ///
+    /// This is best practice to keep the real database separate while testing. Most features only require 5 grammar
+    /// points so this makes it easy
+    /// to not need to do a big load on the entire PostgreSQL database as well.
+    @MainActor
+    private static func setupNormalPreviewData(store: GrammarStore) {
+        let fakeItems = [
+            GrammarPointModel(id: UUID(), context: "casual", usage: "Hello", meaning: "こんにちは", tags: ["greeting"]),
+            GrammarPointModel(id: UUID(), context: "casual", usage: "Goodbye", meaning: "さようなら", tags: ["farewell"]),
+            GrammarPointModel(id: UUID(), context: "casual", usage: "I", meaning: "私は", tags: ["context"]),
+            GrammarPointModel(id: UUID(), context: "casual", usage: "Cool", meaning: "かっこいい", tags: ["adjective"]),
+            GrammarPointModel(id: UUID(), context: "casual", usage: "Am", meaning: "desu", tags: ["sentence-ender"]),
+        ]
+
+        store.grammarItems = fakeItems
+        store.setRandomGrammarPointsForPreview(Array(fakeItems.shuffled().prefix(5)))
+        store.setAlgorithmicGrammarPointsForPreview(Array(fakeItems.shuffled().prefix(5)))
     }
 }
