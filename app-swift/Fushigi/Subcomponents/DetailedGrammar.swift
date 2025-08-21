@@ -12,7 +12,7 @@ import SwiftUI
 /// Detailed view displaying comprehensive grammar point information
 struct DetailedGrammar: View {
     /// Grammar point to display
-    let grammarPoint: GrammarPointModel
+    let grammarPoint: GrammarPointLocal
 
     /// Controls view presentation state
     @Binding var isPresented: Bool

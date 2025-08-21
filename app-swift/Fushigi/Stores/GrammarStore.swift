@@ -14,13 +14,13 @@ import SwiftData
 @MainActor
 class GrammarStore: ObservableObject {
     /// In-memory cache of all grammar points for quick UI access
-    @Published var grammarItems: [GrammarPointModel] = []
+    @Published var grammarItems: [GrammarPointLocal] = []
 
     /// Daily subset of random grammar points for practice
-    @Published private(set) var randomGrammarItems: [GrammarPointModel] = []
+    @Published private(set) var randomGrammarItems: [GrammarPointLocal] = []
 
     /// Daily subset of SRS-selected grammar points for practice
-    @Published private(set) var algorithmicGrammarItems: [GrammarPointModel] = []
+    @Published private(set) var algorithmicGrammarItems: [GrammarPointLocal] = []
 
     /// Sync operation in progress flag
     @Published var isSyncing = false
@@ -47,17 +47,17 @@ class GrammarStore: ObservableObject {
     // MARK: - All Grammar
 
     /// Get all grammar points
-    func getAllGrammarPoints() -> [GrammarPointModel] {
+    func getAllGrammarPoints() -> [GrammarPointLocal] {
         grammarItems
     }
 
     /// Get specific grammar point by ID
-    func getGrammarPoint(id: UUID?) -> GrammarPointModel? {
+    func getGrammarPoint(id: UUID?) -> GrammarPointLocal? {
         getAllGrammarPoints().first { $0.id == id }
     }
 
     /// Filter grammar points by search text across usage, meaning, context, and tags
-    func filterGrammarPoints(containing searchText: String? = nil) -> [GrammarPointModel] {
+    func filterGrammarPoints(containing searchText: String? = nil) -> [GrammarPointLocal] {
         var filtered = getAllGrammarPoints()
 
         if let searchText, !searchText.isEmpty {
@@ -75,22 +75,22 @@ class GrammarStore: ObservableObject {
     // MARK: - Daily Grammar
 
     /// Get all random grammar points for the day
-    func getRandomGrammarPoints() -> [GrammarPointModel] {
+    func getRandomGrammarPoints() -> [GrammarPointLocal] {
         randomGrammarItems
     }
 
     /// Get specific random grammar point by ID
-    func getRandomGrammarPoint(id: UUID?) -> GrammarPointModel? {
+    func getRandomGrammarPoint(id: UUID?) -> GrammarPointLocal? {
         getRandomGrammarPoints().first { $0.id == id }
     }
 
     /// Get all SRS grammar points for the day
-    func getAlgorithmicGrammarPoints() -> [GrammarPointModel] {
+    func getAlgorithmicGrammarPoints() -> [GrammarPointLocal] {
         algorithmicGrammarItems
     }
 
     /// Get specific SRS grammar point by ID
-    func getAlgorithmicGrammarPoint(id: UUID?) -> GrammarPointModel? {
+    func getAlgorithmicGrammarPoint(id: UUID?) -> GrammarPointLocal? {
         getAlgorithmicGrammarPoints().first { $0.id == id }
     }
 
@@ -99,7 +99,7 @@ class GrammarStore: ObservableObject {
     /// Load grammar points from local SwiftData storage
     func loadLocal() async {
         do {
-            grammarItems = try modelContext.fetch(FetchDescriptor<GrammarPointModel>())
+            grammarItems = try modelContext.fetch(FetchDescriptor<GrammarPointLocal>())
             print("Loaded \(grammarItems.count) items from local storage")
         } catch {
             print("Failed to load local grammar points:", error)
@@ -129,7 +129,7 @@ class GrammarStore: ObservableObject {
     }
 
     /// Process remote grammar points and update local storage
-    private func processRemotePoints(_ remotePoints: [GrammarPoint]) async {
+    private func processRemotePoints(_ remotePoints: [GrammarPointRemote]) async {
         for remote in remotePoints {
             // Check if exists locally by checking postgres id and swift id
             if let existing = grammarItems.first(where: { $0.id == remote.id }) {
@@ -140,7 +140,7 @@ class GrammarStore: ObservableObject {
                 existing.tags = remote.tags
             } else {
                 // Create new
-                let newItem = GrammarPointModel(
+                let newItem = GrammarPointLocal(
                     id: remote.id,
                     context: remote.context,
                     usage: remote.usage,
@@ -228,14 +228,14 @@ class GrammarStore: ObservableObject {
 /// Preview and testing helpers
 extension GrammarStore {
     /// Set random grammar points for preview mode only
-    func setRandomGrammarPointsForPreview(_ items: [GrammarPointModel]) {
+    func setRandomGrammarPointsForPreview(_ items: [GrammarPointLocal]) {
         #if DEBUG
             randomGrammarItems = items
         #endif
     }
 
     /// Set algorithmic grammar points for preview mode only
-    func setAlgorithmicGrammarPointsForPreview(_ items: [GrammarPointModel]) {
+    func setAlgorithmicGrammarPointsForPreview(_ items: [GrammarPointLocal]) {
         #if DEBUG
             algorithmicGrammarItems = items
         #endif

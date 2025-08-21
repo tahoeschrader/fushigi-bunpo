@@ -9,14 +9,14 @@ import Foundation
 
 /// Fetch all grammar points from FastAPI backend
 @MainActor
-func fetchGrammarPoints() async -> Result<[GrammarPoint], Error> {
+func fetchGrammarPoints() async -> Result<[GrammarPointRemote], Error> {
     guard let url = URL(string: "http://192.168.11.5:8000/api/grammar") else {
         return .failure(URLError(.badURL))
     }
 
     do {
         let (data, _) = try await URLSession.shared.data(from: url)
-        let points = try JSONDecoder().decode([GrammarPoint].self, from: data)
+        let points = try JSONDecoder().decode([GrammarPointRemote].self, from: data)
         return .success(points)
     } catch {
         return .failure(error)
@@ -25,7 +25,7 @@ func fetchGrammarPoints() async -> Result<[GrammarPoint], Error> {
 
 /// Fetch random subset of grammar points from FastAPI backend
 @MainActor
-func fetchGrammarPointsRandom(filters _: [String] = []) async -> Result<[GrammarPoint], Error> {
+func fetchGrammarPointsRandom(filters _: [String] = []) async -> Result<[GrammarPointRemote], Error> {
     guard let url = URL(string: "http://192.168.11.5:8000/api/grammar?limit=true") else {
         return .failure(URLError(.badURL))
     }
@@ -39,7 +39,7 @@ func fetchGrammarPointsRandom(filters _: [String] = []) async -> Result<[Grammar
     do {
         // let (data, _) = try await URLSession.shared.data(for: request)
         let (data, _) = try await URLSession.shared.data(from: url)
-        let points = try JSONDecoder().decode([GrammarPoint].self, from: data)
+        let points = try JSONDecoder().decode([GrammarPointRemote].self, from: data)
         return .success(points)
     } catch {
         return .failure(error)

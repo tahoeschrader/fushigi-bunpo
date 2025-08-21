@@ -18,7 +18,7 @@ struct Tagger: View {
     @Binding var isShowingTagger: Bool
 
     /// Grammar point model containing usage patterns and meanings
-    let grammarPoint: GrammarPointModel
+    let grammarPoint: GrammarPointLocal
 
     /// User-selected text content from journal entry for association
     let selectedText: String
@@ -159,7 +159,7 @@ struct Tagger: View {
     Tagger(
         selectedGrammarID: .constant(UUID()),
         isShowingTagger: .constant(true),
-        grammarPoint: GrammarPointModel(
+        grammarPoint: GrammarPointLocal(
             id: UUID(),
             context: "N3",
             usage: "〜ながら",
@@ -176,7 +176,7 @@ struct Tagger: View {
     Tagger(
         selectedGrammarID: .constant(UUID()),
         isShowingTagger: .constant(true),
-        grammarPoint: GrammarPointModel(
+        grammarPoint: GrammarPointLocal(
             id: UUID(),
             context: "N2",
             usage: "〜というのは",

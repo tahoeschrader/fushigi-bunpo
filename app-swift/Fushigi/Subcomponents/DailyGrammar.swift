@@ -27,7 +27,7 @@ struct DailyGrammar: View {
     let arrowEdge: Edge = .bottom
 
     /// Grammar points based on current sourcing mode
-    private var grammarPoints: [GrammarPointModel] {
+    private var grammarPoints: [GrammarPointLocal] {
         if selectedSource == .random {
             grammarStore.getRandomGrammarPoints()
         } else {

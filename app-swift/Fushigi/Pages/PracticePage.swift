@@ -223,7 +223,7 @@ private struct PresentationModifier: ViewModifier {
     }
 
     /// Retrieves grammar point based on current source mode
-    private func getGrammarPoint() -> GrammarPointModel? {
+    private func getGrammarPoint() -> GrammarPointLocal? {
         guard let id = selectedGrammarID else { return nil }
 
         return selectedSource == .random

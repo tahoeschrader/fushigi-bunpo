@@ -19,7 +19,7 @@ struct FushigiApp: App {
     /// Shared SwiftData container for persistent storage
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            GrammarPointModel.self,
+            GrammarPointLocal.self,
             // JournalModel.self,
             // TagModel.self,
             // SettingsModel.self
@@ -106,7 +106,7 @@ func wipeSwiftData(container: ModelContainer) {
 
     do {
         try Tips.resetDatastore()
-        try context.delete(model: GrammarPointModel.self)
+        try context.delete(model: GrammarPointLocal.self)
         // try context.delete(model: JournalModel.self)
         // try context.delete(model: TagModel.self)
         // try context.delete(model: SettingsModel.self)

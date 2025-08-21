@@ -18,7 +18,7 @@ struct GrammarTable: View {
     @Binding var showingInspector: Bool
 
     /// Grammar points to display in table
-    let grammarPoints: [GrammarPointModel]
+    let grammarPoints: [GrammarPointLocal]
 
     /// Layout mode indicator for responsive design
     let isCompact: Bool
@@ -75,7 +75,7 @@ struct GrammarTable: View {
 /// Optimized row layout for compact table presentations on mobile devices
 struct CompactGrammarRow: View {
     /// Grammar point to display in compact format
-    let grammarPoint: GrammarPointModel
+    let grammarPoint: GrammarPointLocal
 
     // MARK: - Main View
 

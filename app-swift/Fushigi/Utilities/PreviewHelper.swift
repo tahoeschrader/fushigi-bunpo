@@ -77,7 +77,7 @@ extension PreviewHelper {
         do {
             // for previews, we only want the data store to only live in memory while testing
             let container = try ModelContainer(
-                for: Schema([GrammarPointModel.self]),
+                for: Schema([GrammarPointLocal.self]),
                 configurations: [ModelConfiguration(isStoredInMemoryOnly: true)],
             )
             let store = GrammarStore(modelContext: container.mainContext)
@@ -131,11 +131,11 @@ extension PreviewHelper {
     @MainActor
     private static func setupNormalPreviewData(store: GrammarStore) {
         let fakeItems = [
-            GrammarPointModel(id: UUID(), context: "casual", usage: "Hello", meaning: "こんにちは", tags: ["greeting"]),
-            GrammarPointModel(id: UUID(), context: "casual", usage: "Goodbye", meaning: "さようなら", tags: ["farewell"]),
-            GrammarPointModel(id: UUID(), context: "casual", usage: "I", meaning: "私は", tags: ["context"]),
-            GrammarPointModel(id: UUID(), context: "casual", usage: "Cool", meaning: "かっこいい", tags: ["adjective"]),
-            GrammarPointModel(id: UUID(), context: "casual", usage: "Am", meaning: "desu", tags: ["sentence-ender"]),
+            GrammarPointLocal(id: UUID(), context: "casual", usage: "Hello", meaning: "こんにちは", tags: ["greeting"]),
+            GrammarPointLocal(id: UUID(), context: "casual", usage: "Goodbye", meaning: "さようなら", tags: ["farewell"]),
+            GrammarPointLocal(id: UUID(), context: "casual", usage: "I", meaning: "私は", tags: ["context"]),
+            GrammarPointLocal(id: UUID(), context: "casual", usage: "Cool", meaning: "かっこいい", tags: ["adjective"]),
+            GrammarPointLocal(id: UUID(), context: "casual", usage: "Am", meaning: "desu", tags: ["sentence-ender"]),
         ]
 
         store.grammarItems = fakeItems

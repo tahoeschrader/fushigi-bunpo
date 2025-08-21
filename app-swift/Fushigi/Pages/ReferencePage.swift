@@ -35,12 +35,12 @@ struct ReferencePage: View {
     }
 
     /// Filtered grammar points based on current search criteria
-    var grammarPoints: [GrammarPointModel] {
+    var grammarPoints: [GrammarPointLocal] {
         grammarStore.filterGrammarPoints(containing: searchText)
     }
 
     /// Currently selected grammar point object for detailed display
-    var selectedGrammarPoint: GrammarPointModel? {
+    var selectedGrammarPoint: GrammarPointLocal? {
         grammarStore.getGrammarPoint(id: selectedGrammarID)
     }
 

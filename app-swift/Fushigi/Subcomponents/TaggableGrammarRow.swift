@@ -12,7 +12,7 @@ import SwiftUI
 /// Display row for grammar points with tagging functionality
 struct TaggableGrammarRow: View {
     /// Grammar point model containing usage patterns and meanings
-    let grammarPoint: GrammarPointModel
+    let grammarPoint: GrammarPointLocal
 
     /// Callback invoked when user selects this grammar point for text tagging
     let onTagSelected: () -> Void
@@ -43,7 +43,7 @@ struct TaggableGrammarRow: View {
 #Preview("Grammar Point Row") {
     VStack {
         TaggableGrammarRow(
-            grammarPoint: GrammarPointModel(
+            grammarPoint: GrammarPointLocal(
                 id: UUID(),
                 context: "Written",
                 usage: "〜ながら",
@@ -56,7 +56,7 @@ struct TaggableGrammarRow: View {
         Divider()
 
         TaggableGrammarRow(
-            grammarPoint: GrammarPointModel(
+            grammarPoint: GrammarPointLocal(
                 id: UUID(),
                 context: "Spoken",
                 usage: "〜たとえ...ても",
