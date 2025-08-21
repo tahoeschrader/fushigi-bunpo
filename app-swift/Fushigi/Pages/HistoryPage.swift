@@ -7,20 +7,31 @@
 
 import SwiftUI
 
+// MARK: - History Page
+
+/// Displays user journal entries with search and expandable detail view
 struct HistoryPage: View {
     /// Responsive layout detection for adaptive navigation structure
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
 
+    /// Journal entries fetched from database
     @State private var journalEntries: [JournalEntryInDB] = []
+
+    /// Error message to display if data fetch fails
     @State private var errorMessage: String?
+
+    /// Set of expanded journal entry IDs for detail view
     @State private var expanded: Set<UUID> = []
 
+    /// Search text binding from parent view
     @Binding var searchText: String
 
     /// Determines whether to use compact navigation patterns (tabs vs split view)
     var isCompact: Bool {
         horizontalSizeClass == .compact
     }
+
+    // MARK: - Main View
 
     var body: some View {
         ScrollView {
@@ -118,6 +129,9 @@ struct HistoryPage: View {
         }
     }
 
+    // MARK: - Helper Methods
+
+    /// Toggle expanded state for journal entry
     private func toggleExpanded(for id: UUID) {
         if expanded.contains(id) {
             expanded.remove(id)
@@ -126,6 +140,7 @@ struct HistoryPage: View {
         }
     }
 
+    /// Delete journal entries at specified offsets
     private func deleteEntry(at offsets: IndexSet) {
         for index in offsets {
             let deletedEntry = filteredEntries[index]
@@ -136,6 +151,7 @@ struct HistoryPage: View {
         }
     }
 
+    /// Filter journal entries based on search text
     var filteredEntries: [JournalEntryInDB] {
         if searchText.isEmpty {
             journalEntries
@@ -148,7 +164,14 @@ struct HistoryPage: View {
     }
 }
 
-#Preview {
+// MARK: - Previews
+
+#Preview("Normal State") {
     HistoryPage(searchText: .constant(""))
+        .withPreviewNavigation()
+}
+
+#Preview("No Search Results") {
+    HistoryPage(searchText: .constant("nonexistent"))
         .withPreviewNavigation()
 }

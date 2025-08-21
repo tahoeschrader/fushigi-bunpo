@@ -8,16 +8,9 @@
 import SwiftData
 import SwiftUI
 
-/// Main application container managing navigation structure and coordinating between primary app sections.
-///
-/// This view orchestrates the overall navigation experience, dynamically adapting between
-/// tab-based navigation (compact layouts) and split-view navigation (regular layouts) while
-/// managing shared state like search functionality. It serves as the coordination point
-/// for toolbar configuration and ensures consistent navigation patterns across platforms.
-///
-/// The view automatically handles responsive layout transitions and maintains proper
-/// navigation context for child views, enabling seamless user experiences across
-/// iPhone, iPad, and macOS deployment targets.
+// MARK: - Content View Wrapper
+
+/// Main navigation container with adaptive layout for tabs and split view
 struct ContentView: View {
     /// Responsive layout detection for adaptive navigation structure
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
@@ -26,8 +19,7 @@ struct ContentView: View {
     @State private var selectedPage: Page? = .practice
 
     /// Shared search query state for views that support content filtering
-    // Define here because can eventually make a global search
-    @State private var searchText: String = ""
+    @State private var searchText: String = "" // helps with tab bar search icon placement
 
     /// Determines whether to use compact navigation patterns (tabs vs split view)
     var isCompact: Bool {
@@ -43,16 +35,18 @@ struct ContentView: View {
 
     var body: some View {
         if isCompact {
-            NavigationAsTabs
+            navigationAsTabs
                 .tabBarMinimizeOnScrollIfAvailable()
         } else {
-            NavigationAsSplitView
+            navigationAsSplitView
         }
     }
 
+    // MARK: - Helper Methods
+
     /// Tab-based navigation optimized for compact layouts (iPhone portrait, small windows)
     @ViewBuilder
-    private var NavigationAsTabs: some View {
+    private var navigationAsTabs: some View {
         TabView(selection: $selectedPage) {
             Tab(Page.practice.id, systemImage: Page.practice.icon, value: .practice) {
                 NavigationStack {
@@ -87,7 +81,7 @@ struct ContentView: View {
 
     /// Split view navigation optimized for regular layouts (iPad, macOS, iPhone landscape)
     @ViewBuilder
-    private var NavigationAsSplitView: some View {
+    private var navigationAsSplitView: some View {
         NavigationSplitView {
             List(selection: $selectedPage) {
                 NavigationLink(value: Page.practice) {
@@ -119,11 +113,7 @@ struct ContentView: View {
         }
     }
 
-    /// Applies appropriate navigation decorations and configurations for each app section.
-    ///
-    /// This method centralizes navigation setup, ensuring consistent toolbar placement,
-    /// search functionality, and title configuration across all app sections. It handles
-    /// the platform-specific nuances of navigation hierarchy and modifier application.
+    /// Returns the appropriate view for each app section
     @ViewBuilder
     private func decoratedView(for page: Page) -> some View {
         switch page {
@@ -138,11 +128,7 @@ struct ContentView: View {
         }
     }
 
-    /// Enumeration of primary application sections with associated metadata.
-    ///
-    /// Each case represents a major functional area of the application, complete
-    /// with user-facing labels and appropriate iconography for consistent
-    /// navigation presentation across different interface paradigms.
+    /// Application sections with navigation metadata
     enum Page: String, Identifiable, CaseIterable {
         case practice = "Practice"
         case history = "History"
@@ -151,7 +137,7 @@ struct ContentView: View {
 
         var id: String { rawValue }
 
-        /// System icon name appropriate for the section's primary function
+        /// System icon name for navigation
         var icon: String {
             switch self {
             case .practice: "pencil.and.scribble"
@@ -161,6 +147,7 @@ struct ContentView: View {
             }
         }
 
+        /// Flag to hide global search bar for some NavigationLinks in MacOS/iPadOS views
         var supportsSearch: Bool {
             switch self {
             case .practice: false
@@ -172,58 +159,7 @@ struct ContentView: View {
     }
 }
 
-struct SearchPage: View {
-    @Binding var searchText: String
-    @Binding var selectedPage: ContentView.Page?
-    @EnvironmentObject var grammarStore: GrammarStore
-
-    @State private var lastActiveTab: ContentView.Page = .practice
-
-    var body: some View {
-        Group {
-            if searchText.isEmpty {
-                ContentUnavailableView {
-                    Label("Search \(lastActiveTab.rawValue)", systemImage: "magnifyingglass")
-                } description: {
-                    Text("Enter a term to search within \(lastActiveTab.rawValue.lowercased()) content.")
-                }
-            } else {
-                // Just show the actual page with search applied!
-                showPageWithSearch(for: lastActiveTab)
-            }
-        }
-        .onAppear {
-            if let current = selectedPage, current != .search {
-                lastActiveTab = current
-            }
-        }
-        .onChange(of: selectedPage) { _, newValue in
-            if let newValue, newValue != .search {
-                lastActiveTab = newValue
-            }
-        }
-    }
-
-    @ViewBuilder
-    private func showPageWithSearch(for tab: ContentView.Page) -> some View {
-        switch tab {
-        case .practice:
-            ReferencePage(searchText: $searchText)
-
-        case .history:
-            HistoryPage(searchText: $searchText)
-
-        case .reference:
-            ReferencePage(searchText: $searchText)
-
-        case .search:
-            // Fallback
-            Text("This should not happen...")
-        }
-    }
-}
-
-// MARK: Previews
+// MARK: - Previews
 
 #Preview("Normal State") {
     ContentView()

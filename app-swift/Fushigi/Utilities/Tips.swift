@@ -7,6 +7,9 @@
 
 import TipKit
 
+// MARK: - Tips
+
+/// Tip for refreshing grammar lists
 struct RefreshTip: Tip {
     var title: Text {
         Text("Refresh list")

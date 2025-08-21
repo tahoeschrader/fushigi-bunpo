@@ -1,5 +1,5 @@
 //
-//  DailyGrammarSection.swift
+//  DailyGrammar.swift
 //  Fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/19.
@@ -7,38 +7,26 @@
 
 import SwiftUI
 
-/// Daily grammar section displaying curated grammar points for focused practice sessions.
-///
-/// This view presents a configurable collection of grammar points that users can actively
-/// practice with in their journal entries. Each grammar point is displayed with its usage
-/// pattern and can be selected for tagging within journal content, creating explicit
-/// learning connections between theoretical knowledge and practical application.
-///
-/// The component supports two sourcing modes: random selection for variety and SRS-based
-/// algorithmic selection for spaced repetition learning. Grammar points are displayed
-/// with clear visual hierarchy and actionable interfaces for seamless workflow integration.
-struct DailyGrammarSection: View {
-    /// Centralized grammar data store providing access to filtered and curated grammar points
+// MARK: - Daily Grammar
+
+/// Daily grammar section displaying curated grammar points for practice sessions
+struct DailyGrammar: View {
+    /// Centralized grammar data store
     @EnvironmentObject var grammarStore: GrammarStore
 
-    /// Currently selected grammar point identifier, coordinated with parent tagging workflow
+    /// Currently selected grammar point identifier for tagging workflow
     @Binding var selectedGrammarID: UUID?
 
-    /// Controls tagging interface visibility, enabling seamless grammar-to-text linking
+    /// Controls tagging interface visibility
     @Binding var isShowingTagger: Bool
 
-    /// User-selected grammar sourcing strategy, determining point selection algorithm
+    /// User-selected grammar sourcing strategy
     @Binding var selectedSource: SourceMode
 
-    /// Optimal tip placement for current interface layout
+    /// Tip placement edge for current interface layout
     let arrowEdge: Edge = .bottom
 
-    // MARK: - Computed Properties
-
-    /// Dynamically retrieved grammar points based on current sourcing mode and user preferences.
-    ///
-    /// Returns a curated collection (typically 5 points) selected either randomly for variety
-    /// or algorithmically using spaced repetition principles for optimal learning reinforcement.
+    /// Grammar points based on current sourcing mode
     private var grammarPoints: [GrammarPointModel] {
         if selectedSource == .random {
             grammarStore.getRandomGrammarPoints()
@@ -47,10 +35,7 @@ struct DailyGrammarSection: View {
         }
     }
 
-    /// Current error state from grammar store operations, if any.
-    ///
-    /// Captures synchronization failures, network issues, or data corruption problems
-    /// that might prevent proper grammar point display or functionality.
+    /// Current error state from grammar store operations
     private var errorMessage: String? {
         grammarStore.syncError?.localizedDescription
     }
@@ -100,7 +85,8 @@ struct DailyGrammarSection: View {
                     Label("No Grammar Points", systemImage: "book.closed")
                 } description: {
                     Text(
-                        "No grammar points match your current settings. Try adjusting your filters or refreshing the content.",
+                        "No grammar points match your current settings." +
+                            "Try adjusting your filters or refreshing the content.",
                     )
                 } actions: {
                     Button("Refresh") {
@@ -138,10 +124,7 @@ struct DailyGrammarSection: View {
 
     // MARK: - Helper Methods
 
-    /// Refreshes grammar points based on current source mode settings.
-    ///
-    /// Triggers appropriate refresh mechanism (random regeneration or SRS recalculation)
-    /// while providing user feedback and handling potential errors gracefully.
+    /// Refresh grammar points based on current source mode
     private func refreshGrammarPoints() async {
         if selectedSource == .random {
             grammarStore.updateRandomGrammarPoints(force: true)
@@ -155,7 +138,7 @@ struct DailyGrammarSection: View {
 
 #Preview("Random Mode - Normal State") {
     VStack {
-        DailyGrammarSection(
+        DailyGrammar(
             selectedGrammarID: .constant(nil),
             isShowingTagger: .constant(false),
             selectedSource: .constant(SourceMode.random),
@@ -167,7 +150,7 @@ struct DailyGrammarSection: View {
 
 #Preview("SRS Mode - Normal State") {
     VStack {
-        DailyGrammarSection(
+        DailyGrammar(
             selectedGrammarID: .constant(nil),
             isShowingTagger: .constant(false),
             selectedSource: .constant(SourceMode.srs),
@@ -179,7 +162,7 @@ struct DailyGrammarSection: View {
 
 #Preview("Error State") {
     VStack {
-        DailyGrammarSection(
+        DailyGrammar(
             selectedGrammarID: .constant(nil),
             isShowingTagger: .constant(false),
             selectedSource: .constant(SourceMode.random),
@@ -191,7 +174,7 @@ struct DailyGrammarSection: View {
 
 #Preview("Empty State") {
     VStack {
-        DailyGrammarSection(
+        DailyGrammar(
             selectedGrammarID: .constant(nil),
             isShowingTagger: .constant(false),
             selectedSource: .constant(SourceMode.random),

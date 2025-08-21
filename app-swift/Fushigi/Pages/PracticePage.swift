@@ -7,15 +7,9 @@
 
 import SwiftUI
 
-/// A comprehensive view for creating and editing journal entries with targeted grammar point integration.
-///
-/// This view orchestrates the entire practice workflow, from displaying targeted grammar points
-/// to capturing journal entries and managing the tagging relationship between selected text
-/// and grammar concepts. It handles both compact (iOS) and regular (iPadOS/macOS) layouts
-/// with appropriate presentation methods (sheets vs inspectors).
-///
-/// The view maintains minimal state, delegating specific concerns to child components while
-/// coordinating the overall user experience through bindings and presentation flags.
+// MARK: - Practice Page
+
+/// View for creating journal entries with targeted grammar point integration
 struct PracticePage: View {
     /// Responsive layout helper for switching between iOS/side-split apps and iPadOS/macOS layouts
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
@@ -23,25 +17,25 @@ struct PracticePage: View {
     /// Centralized on-device storage for user's grammar points and application state
     @EnvironmentObject var grammarStore: GrammarStore
 
-    /// Controls the settings sheet that allows users to configure practice content preferences
+    /// Controls the settings sheet for practice content preferences
     @State private var showingSettings = false
 
-    /// Controls the tagging sheet for confirming grammar point and sentence relationships
+    /// Controls the tagging sheet for grammar point and sentence relationships
     @State private var showingTagger = false
 
     /// Currently selected grammar point identifier for tagging operations
     @State private var selectedGrammarID: UUID?
 
-    /// User preference for politeness level filtering (casual, polite, keigo, sonkeigo, kenjougo)
+    /// User preference for politeness level filtering
     @State private var selectedLevel: Level = .all
 
-    /// User preference for usage context filtering (written, spoken, business)
+    /// User preference for usage context filtering
     @State private var selectedContext: Context = .all
 
-    /// User preference for language variants and regional dialects (slang, Kansai)
+    /// User preference for language variants and regional dialects
     @State private var selectedFunMode: FunMode = .none
 
-    /// User preference for grammar sourcing algorithm (random selection vs SRS-based)
+    /// User preference for grammar sourcing algorithm
     @State private var selectedSource: SourceMode = .random
 
     /// User-entered title for the current journal entry
@@ -62,17 +56,14 @@ struct PracticePage: View {
     /// Loading state flag to disable UI elements during async operations
     @State private var isSaving = false
 
-    private var refreshTip = RefreshTip()
+    let refreshTip = RefreshTip()
 
     /// Determines layout strategy based on available horizontal space
     private var isCompact: Bool {
         horizontalSizeClass == .compact
     }
 
-    /// Extracts readable text from TextSelection objects, handling Apple's complex selection API
-    ///
-    /// TextSelection can represent either simple ranges or complex multi-selections,
-    /// this computed property normalizes both cases into a user-readable string.
+    /// Extracts readable text from TextSelection objects for tagging
     private var selectedText: String {
         guard let selection = textSelection, !selection.isInsertion else { return "" }
 
@@ -91,13 +82,13 @@ struct PracticePage: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: UIConstants.defaultSpacing) {
-            DailyGrammarSection(
+            DailyGrammar(
                 selectedGrammarID: $selectedGrammarID,
                 isShowingTagger: $showingTagger,
                 selectedSource: $selectedSource,
             )
 
-            JournalEntrySection(
+            JournalEntryForm(
                 entryTitle: $entryTitle,
                 entryContent: $entryContent,
                 textSelection: $textSelection,
@@ -107,54 +98,77 @@ struct PracticePage: View {
             )
         }
         .padding()
-        .modifier(PresentationModifier(
-            isShowingSettings: $showingSettings,
-            isShowingTagger: $showingTagger,
-            selectedGrammarID: selectedGrammarID,
-            selectedText: selectedText,
-            isCompact: isCompact,
-            selectedLevel: $selectedLevel,
-            selectedContext: $selectedContext,
-            selectedFunMode: $selectedFunMode,
-            selectedSource: $selectedSource,
-        ))
+        .modifier(
+            PresentationModifier(
+                isShowingSettings: $showingSettings,
+                isShowingTagger: $showingTagger,
+                selectedGrammarID: selectedGrammarID,
+                selectedText: selectedText,
+                isCompact: isCompact,
+                selectedLevel: $selectedLevel,
+                selectedContext: $selectedContext,
+                selectedFunMode: $selectedFunMode,
+                selectedSource: $selectedSource,
+            ),
+        )
         .toolbar {
             Button("Settings", systemImage: "gear") {
                 showingSettings.toggle()
             }
             .help("Configure grammar filtering and source preferences")
             Button("Refresh", systemImage: "arrow.clockwise") {
+                refreshTip.invalidate(reason: .actionPerformed)
                 Task {
-                    refreshTip.invalidate(reason: .actionPerformed)
-                    await grammarStore.refresh()
+                    await refreshGrammarPoints()
                 }
             }
             .help("Refresh source of targeted grammar")
+            .buttonStyle(.plain)
             .popoverTip(refreshTip)
         }
+    }
+
+    // MARK: - Helper Methods
+
+    /// Refreshes grammar points based on current source setting
+    private func refreshGrammarPoints() async {
+        await grammarStore.forceDailyRefresh(currentMode: selectedSource)
+        showingSettings = false
     }
 }
 
 // MARK: - Presentation Logic
 
-/// Encapsulates sheet and inspector presentation logic to maintain clean separation of concerns.
-///
-/// This modifier handles the complexity of choosing between sheets (compact layouts) and
-/// inspectors (regular layouts) while managing the data flow between the main view and
-/// the presented content.
+/// Handles sheet and inspector presentation for compact vs regular layouts
 private struct PresentationModifier: ViewModifier {
+    /// Grammar store for retrieving grammar point data
     @EnvironmentObject var grammarStore: GrammarStore
 
+    /// Controls settings sheet visibility
     @Binding var isShowingSettings: Bool
+
+    /// Controls tagger sheet visibility
     @Binding var isShowingTagger: Bool
 
+    /// Currently selected grammar point ID
     let selectedGrammarID: UUID?
+
+    /// Selected text from journal content
     let selectedText: String
+
+    /// Layout mode indicator
     let isCompact: Bool
 
+    /// User preference for politeness level filtering
     @Binding var selectedLevel: Level
+
+    /// User preference for usage context filtering
     @Binding var selectedContext: Context
+
+    /// User preference for language variants
     @Binding var selectedFunMode: FunMode
+
+    /// User preference for grammar sourcing algorithm
     @Binding var selectedSource: SourceMode
 
     func body(content: Content) -> some View {
@@ -174,10 +188,10 @@ private struct PresentationModifier: ViewModifier {
         }
     }
 
-    /// Settings configuration view with coordinated state management
+    /// Settings configuration view with state management
     @ViewBuilder
     private var settingsView: some View {
-        GrammarSettingsView(
+        GrammarSettings(
             selectedLevel: $selectedLevel,
             selectedContext: $selectedContext,
             selectedFunMode: $selectedFunMode,
@@ -185,11 +199,11 @@ private struct PresentationModifier: ViewModifier {
         )
     }
 
-    /// Grammar point tagging interface with proper error handling
+    /// Grammar point tagging interface with error handling
     @ViewBuilder
     private var taggerView: some View {
         if let grammarPoint = getGrammarPoint() {
-            TaggerView(
+            Tagger(
                 selectedGrammarID: .constant(selectedGrammarID),
                 isShowingTagger: $isShowingTagger,
                 grammarPoint: grammarPoint,
@@ -208,7 +222,7 @@ private struct PresentationModifier: ViewModifier {
         }
     }
 
-    /// Retrieves grammar point based on current source mode with proper error handling
+    /// Retrieves grammar point based on current source mode
     private func getGrammarPoint() -> GrammarPointModel? {
         guard let id = selectedGrammarID else { return nil }
 
@@ -220,19 +234,19 @@ private struct PresentationModifier: ViewModifier {
 
 // MARK: - Previews
 
-#Preview("Complete Practice View") {
+#Preview("Normal State") {
     PracticePage()
         .withPreviewGrammarStore(mode: .normal)
         .withPreviewNavigation()
 }
 
-#Preview("Practice View - Error State") {
+#Preview("Error State") {
     PracticePage()
         .withPreviewGrammarStore(mode: .syncError)
         .withPreviewNavigation()
 }
 
-#Preview("Practice View - Empty Data") {
+#Preview("Empty Data") {
     PracticePage()
         .withPreviewGrammarStore(mode: .emptyData)
         .withPreviewNavigation()

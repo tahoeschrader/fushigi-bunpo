@@ -9,11 +9,14 @@ import SwiftData
 import SwiftUI
 import TipKit
 
+// MARK: - Fushigi App
+
+/// Main app entry point for Fushigi language learning app
 @main
 struct FushigiApp: App {
     // MARK: - Shared Container
 
-    /// The shared SwiftData container which uses a persistent store (not in-memory) so data persists across launches
+    /// Shared SwiftData container for persistent storage
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             GrammarPointModel.self,
@@ -32,21 +35,21 @@ struct FushigiApp: App {
         }
     }()
 
-    // MARK: - Stores
+    // MARK: - Stores and Init
 
-    /// Grammar store of all user grammars, daily random, and daily SRS
+    /// Grammar store for user grammars, daily random, and SRS
     @StateObject private var grammarStore: GrammarStore
 
-    /// Journal store of all user journal entries
+    // Journal store of all user journal entries
     // @StateObject private var journalStore: JournalStore
 
-    /// Tag store of all user created tags linking journal entry sentencies to grammar points
+    // Tag store of all user created tags linking journal entry sentencies to grammar points
     // @StateObject private var tagStore: TagStore
 
-    /// Settings store of all user settings
+    // Settings store of all user settings
     // @StateObject private var settingsStore: SettingsStore
 
-    /// Boilerplate to initialize multi platform app data stored on device
+    /// Initialize app data stores
     init() {
         #if DEBUG
             wipeSwiftData(container: sharedModelContainer)
@@ -59,7 +62,7 @@ struct FushigiApp: App {
         // _settingsStore = StateObject(wrappedValue: SettingsStore(modelContext: context))
     }
 
-    /// Boilerplate to initialize tips showing users how to use the app
+    /// Configure TipKit for user onboarding
     func configureTips() async {
         do {
             try Tips.configure([
@@ -96,12 +99,7 @@ struct FushigiApp: App {
 
 // MARK: - Debug Data Wipe
 
-/// Wipe all data from persistent storage at startup for Preview/Debug mode.
-///
-/// This is necessary when running the app to prevent corruption of the actual database. We don't
-/// want the database filling up and persisting data when testing out the UI in the Simulator, Preview window,
-/// or on a physical device. This simply just loops through each store, deletes all data, and saves. This is better
-/// than physically deleting the SQLite database every time you want to try something new.
+/// Wipe all data from persistent storage for debug mode
 @MainActor
 func wipeSwiftData(container: ModelContainer) {
     let context = container.mainContext

@@ -1,5 +1,5 @@
 //
-//  TaggerView.swift
+//  Tagger.swift
 //  Fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/19.
@@ -7,26 +7,20 @@
 
 import SwiftUI
 
-/// Advanced interface for creating explicit links between selected text and grammar concepts.
-///
-/// This view provides users with clear confirmation of their selection choices before
-/// committing grammar-to-text relationships to the database. It displays both the
-/// selected textual content and the chosen grammar point with full context, enabling
-/// users to verify accuracy before creating learning associations.
-///
-/// The interface handles edge cases gracefully, providing clear feedback for empty
-/// selections and offering contextual actions for different scenarios.
-struct TaggerView: View {
+// MARK: - Tagger
+
+/// Interface for creating links between selected text and grammar concepts
+struct Tagger: View {
     /// Currently selected grammar point identifier for database relationship creation
     @Binding var selectedGrammarID: UUID?
 
-    /// Controls the tagging interface visibility within the parent presentation flow
+    /// Controls the tagging interface visibility
     @Binding var isShowingTagger: Bool
 
-    /// Complete grammar point model containing usage patterns, meanings, and metadata
+    /// Grammar point model containing usage patterns and meanings
     let grammarPoint: GrammarPointModel
 
-    /// User-selected text content from the journal entry for association
+    /// User-selected text content from journal entry for association
     let selectedText: String
 
     /// Tracks successful tag creation for user feedback
@@ -34,6 +28,8 @@ struct TaggerView: View {
 
     /// Temporary status message for operation feedback
     @State private var operationMessage: String?
+
+    // MARK: - Main View
 
     var body: some View {
         VStack(alignment: .leading, spacing: UIConstants.defaultSpacing) {
@@ -128,13 +124,9 @@ struct TaggerView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     }
 
-    // MARK: - Action Methods
+    // MARK: - Helper Methods
 
-    /// Creates the grammar point to text association and provides user feedback.
-    ///
-    /// This method handles the database operation for linking the selected text
-    /// with the chosen grammar point, providing appropriate user feedback and
-    /// error handling throughout the process.
+    /// Create grammar point to text association with user feedback
     private func confirmTagging() async {
         guard !selectedText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
             operationMessage = "Please select some text before creating a link."
@@ -154,17 +146,17 @@ struct TaggerView: View {
         }
     }
 
-    /// Dismisses the tagging interface and clears selection state.
+    /// Dismiss tagging interface and clear selection state
     private func dismissTagger() {
         selectedGrammarID = nil
         isShowingTagger = false
     }
 }
 
-// MARK: Previews
+// MARK: - Previews
 
 #Preview("Tagger - With Text") {
-    TaggerView(
+    Tagger(
         selectedGrammarID: .constant(UUID()),
         isShowingTagger: .constant(true),
         grammarPoint: GrammarPointModel(
@@ -181,7 +173,7 @@ struct TaggerView: View {
 }
 
 #Preview("Tagger - No Text") {
-    TaggerView(
+    Tagger(
         selectedGrammarID: .constant(UUID()),
         isShowingTagger: .constant(true),
         grammarPoint: GrammarPointModel(

@@ -8,21 +8,36 @@
 import Foundation
 import SwiftData
 
+// MARK: - Grammar Store
+
+/// Observable store managing grammar points with local SwiftData storage and remote PostgreSQL sync
 @MainActor
 class GrammarStore: ObservableObject {
-    // in memory cache items for quick access by UI without needed to refetch
+    /// In-memory cache of all grammar points for quick UI access
     @Published var grammarItems: [GrammarPointModel] = []
+
+    /// Daily subset of random grammar points for practice
     @Published private(set) var randomGrammarItems: [GrammarPointModel] = []
+
+    /// Daily subset of SRS-selected grammar points for practice
     @Published private(set) var algorithmicGrammarItems: [GrammarPointModel] = []
+
+    /// Sync operation in progress flag
     @Published var isSyncing = false
+
+    /// Last successful sync timestamp
     @Published var lastSyncDate: Date?
+
+    /// Current sync error if any
     @Published var syncError: Error?
 
+    /// Last random subset update date
     private var lastRandomUpdate: Date?
+
+    /// Last algorithmic subset update date
     private var lastAlgorithmicUpdate: Date?
 
-    // modelContext: SwiftData database session or “scratchpad”
-    // inserts only live in memory until saved
+    /// SwiftData database session for local persistence
     let modelContext: ModelContext
 
     init(modelContext: ModelContext) {
@@ -41,7 +56,7 @@ class GrammarStore: ObservableObject {
         getAllGrammarPoints().first { $0.id == id }
     }
 
-    /// Search/filter grammar points
+    /// Filter grammar points by search text across usage, meaning, context, and tags
     func filterGrammarPoints(containing searchText: String? = nil) -> [GrammarPointModel] {
         var filtered = getAllGrammarPoints()
 
@@ -81,6 +96,7 @@ class GrammarStore: ObservableObject {
 
     // MARK: - Internal sync logic
 
+    /// Load grammar points from local SwiftData storage
     func loadLocal() async {
         do {
             grammarItems = try modelContext.fetch(FetchDescriptor<GrammarPointModel>())
@@ -90,6 +106,7 @@ class GrammarStore: ObservableObject {
         }
     }
 
+    /// Sync grammar points from remote PostgreSQL database
     func syncWithRemote() async {
         // Proceed only if not already syncing, guarantee rest of code is safe
         guard !isSyncing else { return }
@@ -111,6 +128,7 @@ class GrammarStore: ObservableObject {
         }
     }
 
+    /// Process remote grammar points and update local storage
     private func processRemotePoints(_ remotePoints: [GrammarPoint]) async {
         for remote in remotePoints {
             // Check if exists locally by checking postgres id and swift id
@@ -145,7 +163,7 @@ class GrammarStore: ObservableObject {
         }
     }
 
-    /// Manual refresh (pull-to-refresh on scrollable views)
+    /// Manual refresh for pull-to-refresh functionality
     func refresh() async {
         #if DEBUG
             print("Preview mode: refresh skipped.")
@@ -157,7 +175,17 @@ class GrammarStore: ObservableObject {
         #endif
     }
 
-    /// Calculate new subset of 5 random grammar points w/ ability to force by user -- TODO: add filtering
+    /// Force refresh of daily grammar list based on current mode
+    func forceDailyRefresh(currentMode: SourceMode) async {
+        switch currentMode {
+        case .random:
+            updateRandomGrammarPoints(force: true)
+        case .srs:
+            await updateAlgorithmicGrammarPoints(force: true)
+        }
+    }
+
+    /// Update random grammar points subset with optional force refresh
     func updateRandomGrammarPoints(force: Bool = false) {
         let today = Calendar.current.startOfDay(for: Date())
         if force || lastRandomUpdate != today || randomGrammarItems.isEmpty {
@@ -167,7 +195,7 @@ class GrammarStore: ObservableObject {
         }
     }
 
-    /// Calculate new subset of 5 SRS grammar points w/ ability to force by user
+    /// Update SRS-based grammar points subset with optional force refresh
     func updateAlgorithmicGrammarPoints(force: Bool = false) async {
         let today = Calendar.current.startOfDay(for: Date())
         if force || lastAlgorithmicUpdate != today || algorithmicGrammarItems.isEmpty {
@@ -197,14 +225,16 @@ class GrammarStore: ObservableObject {
 
 // MARK: - Preview Helpers
 
-/// Only for previews/testing
+/// Preview and testing helpers
 extension GrammarStore {
+    /// Set random grammar points for preview mode only
     func setRandomGrammarPointsForPreview(_ items: [GrammarPointModel]) {
         #if DEBUG
             randomGrammarItems = items
         #endif
     }
 
+    /// Set algorithmic grammar points for preview mode only
     func setAlgorithmicGrammarPointsForPreview(_ items: [GrammarPointModel]) {
         #if DEBUG
             algorithmicGrammarItems = items

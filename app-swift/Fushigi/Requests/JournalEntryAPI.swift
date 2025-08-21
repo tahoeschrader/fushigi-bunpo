@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Fetch all journal entries from FastAPI backend
 @MainActor
 func fetchJournalEntries() async -> Result<[JournalEntryInDB], Error> {
     guard let url = URL(string: "http://192.168.11.5:8000/api/journal") else {
@@ -22,6 +23,7 @@ func fetchJournalEntries() async -> Result<[JournalEntryInDB], Error> {
     }
 }
 
+/// Submit new journal entry to FastAPI backend
 @MainActor
 func submitJournalEntry(
     title: String,

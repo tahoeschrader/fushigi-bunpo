@@ -1,5 +1,5 @@
 //
-//  GrammarSettingsView.swift
+//  GrammarSettings.swift
 //  fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/09.
@@ -7,22 +7,23 @@
 
 import SwiftUI
 
-// MARK: - Grammar Settings View
+// MARK: - Grammar Settings
 
-/// Comprehensive settings interface for configuring grammar point selection and filtering.
-///
-/// This view provides users with granular control over their practice experience,
-/// allowing customization of politeness levels, usage contexts, regional variants,
-/// and sourcing algorithms. Settings are managed internally and automatically
-/// persisted, eliminating the need for external state coordination.
-///
-/// The interface uses semantic grouping and clear labeling to help users understand
-/// how their choices affect the grammar points they'll encounter during practice.
-struct GrammarSettingsView: View {
+/// Settings interface for configuring grammar point selection and filtering
+struct GrammarSettings: View {
+    /// Politeness level filter selection
     @Binding var selectedLevel: Level
+
+    /// Usage context filter selection
     @Binding var selectedContext: Context
+
+    /// Language variant filter selection
     @Binding var selectedFunMode: FunMode
+
+    /// Grammar sourcing algorithm selection
     @Binding var selectedSource: SourceMode
+
+    // MARK: - Main View
 
     var body: some View {
         Form {
@@ -67,7 +68,9 @@ struct GrammarSettingsView: View {
         .formStyle(.grouped)
     }
 
-    /// Dynamic footer text explaining the current source mode selection
+    // MARK: - Helper Methods
+
+    /// Footer text explaining the current source mode selection
     private var sourceFooterText: String {
         switch selectedSource {
         case .random:
@@ -78,10 +81,10 @@ struct GrammarSettingsView: View {
     }
 }
 
-// MARK: Previews
+// MARK: - Previews
 
 #Preview("Settings View") {
-    GrammarSettingsView(
+    GrammarSettings(
         selectedLevel: .constant(.all),
         selectedContext: .constant(.all),
         selectedFunMode: .constant(.none),

@@ -7,16 +7,9 @@
 
 import SwiftUI
 
-/// Comprehensive grammar reference interface providing searchable access to grammar points.
-///
-/// This view presents the complete grammar database in an organized, searchable format
-/// that adapts to different screen sizes and interaction paradigms. Users can explore
-/// grammar points through filtering, search for specific patterns or meanings, and
-/// access detailed information through context-sensitive inspection interfaces.
-///
-/// The view maintains responsive design principles, automatically adjusting between
-/// compact table layouts for mobile devices and expanded multi-column displays for
-/// larger screens, while preserving full functionality across all form factors.
+// MARK: - Reference Page
+
+/// Searchable grammar reference interface with detailed grammar point inspection
 struct ReferencePage: View {
     /// Responsive layout detection for adaptive table presentation
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
@@ -27,7 +20,7 @@ struct ReferencePage: View {
     /// Currently selected grammar point for detailed examination
     @State private var selectedGrammarID: UUID?
 
-    /// Controls the settings sheet that allows users to configure practice content preferences
+    /// Controls the settings sheet for practice content preferences
     @State private var showingSettings: Bool = false
 
     /// Controls detailed grammar point inspection interface visibility
@@ -41,27 +34,17 @@ struct ReferencePage: View {
         horizontalSizeClass == .compact
     }
 
-    /// Dynamically filtered grammar points based on current search criteria.
-    ///
-    /// Applies real-time filtering to the complete grammar database, searching
-    /// across usage patterns, meanings, tags, and contextual information to
-    /// provide relevant results that match user queries.
+    /// Filtered grammar points based on current search criteria
     var grammarPoints: [GrammarPointModel] {
         grammarStore.filterGrammarPoints(containing: searchText)
     }
 
-    /// Currently selected grammar point object for detailed display.
-    ///
-    /// Retrieves the complete grammar point data associated with the current
-    /// selection, enabling detailed inspection and contextual information display.
+    /// Currently selected grammar point object for detailed display
     var selectedGrammarPoint: GrammarPointModel? {
         grammarStore.getGrammarPoint(id: selectedGrammarID)
     }
 
-    /// Current error state from data synchronization operations.
-    ///
-    /// Captures and presents user-friendly error messages for various failure
-    /// scenarios including network issues, database problems, and data corruption.
+    /// Current error state from data synchronization operations
     var errorMessage: String? {
         grammarStore.syncError?.localizedDescription
     }
@@ -106,7 +89,8 @@ struct ReferencePage: View {
                 } description: {
                     if searchText.isEmpty {
                         Text(
-                            "The grammar database appears to be empty. Try refreshing the data or check your connection.",
+                            "The grammar database appears to be empty." +
+                                "Try refreshing the data or check your connection.",
                         )
                     } else {
                         VStack(spacing: 4) {
@@ -175,7 +159,7 @@ struct ReferencePage: View {
         }
         .inspector(isPresented: $showingInspector) {
             if let selectedGrammarPoint {
-                InspectorView(
+                DetailedGrammar(
                     grammarPoint: selectedGrammarPoint,
                     isPresented: $showingInspector,
                     selectedGrammarID: $selectedGrammarID,
@@ -201,46 +185,34 @@ struct ReferencePage: View {
     }
 }
 
-// MARK: Previews
+// MARK: - Previews
 
-#Preview("Grammar View - Normal State") {
+#Preview("Normal State") {
     ReferencePage(searchText: .constant(""))
         .withPreviewGrammarStore()
         .withPreviewNavigation()
 }
 
-#Preview("Grammar View - With Search Results") {
-    ReferencePage(searchText: .constant("ながら"))
+#Preview("With Search Results") {
+    ReferencePage(searchText: .constant("Hello"))
         .withPreviewGrammarStore()
         .withPreviewNavigation()
 }
 
-#Preview("Grammar View - No Search Results") {
+#Preview("No Search Results") {
     ReferencePage(searchText: .constant("nonexistent"))
         .withPreviewGrammarStore()
         .withPreviewNavigation()
 }
 
-#Preview("Grammar View - Error State") {
+#Preview("Error State") {
     ReferencePage(searchText: .constant(""))
         .withPreviewGrammarStore(mode: .syncError)
         .withPreviewNavigation()
 }
 
-#Preview("Grammar View - Empty Database") {
+#Preview("Empty Database") {
     ReferencePage(searchText: .constant(""))
         .withPreviewGrammarStore(mode: .emptyData)
-        .withPreviewNavigation()
-}
-
-#Preview("Grammar View - Compact Layout") {
-    ReferencePage(searchText: .constant(""))
-        .withPreviewGrammarStore()
-        .withPreviewNavigation()
-}
-
-#Preview("Grammar View - Regular Layout") {
-    ReferencePage(searchText: .constant(""))
-        .withPreviewGrammarStore()
         .withPreviewNavigation()
 }

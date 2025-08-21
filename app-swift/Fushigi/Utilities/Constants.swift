@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+// MARK: - UI Constants
+
+/// Common UI spacing and sizing constants
 enum UIConstants {
     static let contentMinHeight: CGFloat = 150
     static let defaultSpacing: CGFloat = 20

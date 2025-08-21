@@ -7,16 +7,21 @@
 
 import Foundation
 
+// MARK: - Journal Models
+
+/// Journal entry for submission to backend
 struct JournalEntry: Codable {
     let title: String
     let content: String
     let `private`: Bool
 }
 
+/// Response containing new entry ID
 struct ResponseID: Decodable {
     let id: UUID
 }
 
+/// Journal entry from database with metadata
 struct JournalEntryInDB: Identifiable, Decodable {
     let id: UUID
     let title: String

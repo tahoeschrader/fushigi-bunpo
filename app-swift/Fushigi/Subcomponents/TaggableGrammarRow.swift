@@ -7,21 +7,17 @@
 
 import SwiftUI
 
-/// Individual display row for grammar points within the daily practice section.
-///
-/// Each row presents a grammar point's essential information in a scannable format,
-/// with clear visual hierarchy prioritizing the usage pattern and meaning. The
-/// interactive "Add Tag" button enables users to create explicit connections between
-/// theoretical grammar concepts and their practical application in journal entries.
-///
-/// The design intentionally maintains visual simplicity to keep cognitive focus on
-/// the grammar content rather than interface complexity, supporting effective learning.
+// MARK: - Taggable Grammar Row
+
+/// Display row for grammar points with tagging functionality
 struct TaggableGrammarRow: View {
-    /// The grammar point model containing usage patterns, meanings, and metadata
+    /// Grammar point model containing usage patterns and meanings
     let grammarPoint: GrammarPointModel
 
     /// Callback invoked when user selects this grammar point for text tagging
     let onTagSelected: () -> Void
+
+    // MARK: - Main View
 
     var body: some View {
         HStack(alignment: .top, spacing: UIConstants.defaultSpacing) {
@@ -41,6 +37,8 @@ struct TaggableGrammarRow: View {
         }
     }
 }
+
+// MARK: - Previews
 
 #Preview("Grammar Point Row") {
     VStack {

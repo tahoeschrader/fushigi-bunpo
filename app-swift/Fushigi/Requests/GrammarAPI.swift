@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Call FastAPI backend for fetching all grammar points
+/// Fetch all grammar points from FastAPI backend
 @MainActor
 func fetchGrammarPoints() async -> Result<[GrammarPoint], Error> {
     guard let url = URL(string: "http://192.168.11.5:8000/api/grammar") else {
@@ -23,8 +23,7 @@ func fetchGrammarPoints() async -> Result<[GrammarPoint], Error> {
     }
 }
 
-/// Call FastAPI backend for SRS selection -- TODO: currently not working so a basic set of 5 at random is called and
-/// need filtering
+/// Fetch random subset of grammar points from FastAPI backend
 @MainActor
 func fetchGrammarPointsRandom(filters _: [String] = []) async -> Result<[GrammarPoint], Error> {
     guard let url = URL(string: "http://192.168.11.5:8000/api/grammar?limit=true") else {

@@ -9,19 +9,24 @@ import SwiftUI
 
 // MARK: Grammar Table
 
-/// Responsive table component for displaying grammar points with platform-appropriate layouts.
-///
-/// This view automatically adapts between single-column compact layouts optimized for
-/// mobile interaction and multi-column expanded layouts that take advantage of larger
-/// screen real estate. It handles selection state, refresh operations, and provides
-/// smooth transitions between different presentation modes.
+/// Responsive table component for displaying grammar points with adaptive layouts
 struct GrammarTable: View {
+    /// Currently selected grammar point ID
     @Binding var selectedGrammarID: UUID?
+
+    /// Controls inspector visibility
     @Binding var showingInspector: Bool
 
+    /// Grammar points to display in table
     let grammarPoints: [GrammarPointModel]
+
+    /// Layout mode indicator for responsive design
     let isCompact: Bool
+
+    /// Refresh callback for pull-to-refresh functionality
     let onRefresh: () async -> Void
+
+    // MARK: - Main View
 
     var body: some View {
         Table(grammarPoints, selection: $selectedGrammarID) {
@@ -65,15 +70,14 @@ struct GrammarTable: View {
     }
 }
 
-// MARK: Compact Grammar Table
+// MARK: - Compact Grammar Row
 
-/// Optimized row layout for compact table presentations on mobile devices.
-///
-/// This component presents grammar point information in a vertically stacked
-/// format that maximizes readability on narrow screens while maintaining
-/// clear visual hierarchy and essential information accessibility.
+/// Optimized row layout for compact table presentations on mobile devices
 struct CompactGrammarRow: View {
+    /// Grammar point to display in compact format
     let grammarPoint: GrammarPointModel
+
+    // MARK: - Main View
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
@@ -117,6 +121,8 @@ struct CompactGrammarRow: View {
         .padding(.vertical, 4)
     }
 }
+
+// MARK: - Previews
 
 #Preview {
     @Previewable @Environment(\.horizontalSizeClass) var horizontalSizeClass

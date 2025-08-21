@@ -1,18 +1,16 @@
 //
-//  JournalEntrySection.swift
+//  JournalEntryForm.swift
 //  Fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/19.
 //
 
+// MARK: - Journal Entry Form
+
 import SwiftUI
 
-/// Journal entry form with title, content, and save functionality.
-///
-/// This view allows users to write journal entries with automatic focus management,
-/// privacy settings, and saves both the entry and any grammar tags to the database.
-/// Future enhancements will include AI review and social features.
-struct JournalEntrySection: View {
+/// Journal entry form with title, content, and save functionality
+struct JournalEntryForm: View {
     /// Journal entry title
     @Binding var entryTitle: String
 
@@ -37,8 +35,10 @@ struct JournalEntrySection: View {
     /// Focus state for content field
     @FocusState private var isContentFocused: Bool
 
-    /// Focus state for content field
+    /// Save confirmation dialog visibility
     @State private var showSaveConfirmation: Bool = false
+
+    // MARK: - Main View
 
     var body: some View {
         VStack(alignment: .leading, spacing: UIConstants.sectionSpacing) {
@@ -113,7 +113,9 @@ struct JournalEntrySection: View {
         }
     }
 
-    /// Saves the journal entry to the database
+    // MARK: - Helper Methods
+
+    /// Save journal entry to database
     private func saveJournalEntry() async {
         guard !isSaving else { return }
 
@@ -138,7 +140,7 @@ struct JournalEntrySection: View {
         }
     }
 
-    /// Clears the form after successful submission
+    /// Clear form after successful submission
     private func clearForm() {
         textSelection = nil // must clear textSelection first to be safe from index crash
         entryTitle = ""
@@ -147,10 +149,10 @@ struct JournalEntrySection: View {
     }
 }
 
-// MARK: Previews
+// MARK: - Previews
 
 #Preview("Entry Form Only") {
-    JournalEntrySection(
+    JournalEntryForm(
         entryTitle: .constant("Sample Title"),
         entryContent: .constant("Sample content with some text to show how the editor looks with content."),
         textSelection: .constant(nil),
@@ -162,7 +164,7 @@ struct JournalEntrySection: View {
 }
 
 #Preview("Loading State") {
-    JournalEntrySection(
+    JournalEntryForm(
         entryTitle: .constant("My Daily Practice"),
         entryContent: .constant("今日は新しい文法を勉強しました。"),
         textSelection: .constant(nil),

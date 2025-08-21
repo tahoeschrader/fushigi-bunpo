@@ -11,6 +11,7 @@ import SwiftUI
 
 // MARK: - Preview Helper
 
+/// Error states for preview configuration
 enum PreviewError: LocalizedError {
     case normal
     case emptyData
@@ -19,7 +20,7 @@ enum PreviewError: LocalizedError {
     case networkTimeout
     case postgresConnectionError
 
-    /// User-friendly description of each preview mode for documentation
+    /// User-friendly description of each preview mode
     var description: String {
         switch self {
         case .normal:
@@ -37,6 +38,7 @@ enum PreviewError: LocalizedError {
         }
     }
 
+    /// User-friendly description of each failure reason
     var failureReason: String? {
         switch self {
         case .syncError:
@@ -55,6 +57,7 @@ enum PreviewError: LocalizedError {
     }
 }
 
+/// Preview helper for configuring different app states
 enum PreviewHelper {
     case normal
     case emptyData
@@ -65,14 +68,12 @@ enum PreviewHelper {
 }
 
 extension PreviewHelper {
-    /// Basic spoofed scaffolding to mimic FushigiApp but for the purpose of Preview mode
-    ///
-    /// By add this to Previews, we can view the app in various configurations with fake data easily without needing to
-    /// mess with the actual database.
+    /// Create fake data store for Preview mode with various configurations
     @MainActor
-    static func withStore(mode: PreviewHelper = .normal,
-                          @ViewBuilder content: @escaping (GrammarStore) -> some View) -> some View
-    {
+    static func withStore(
+        mode: PreviewHelper = .normal,
+        @ViewBuilder content: @escaping (GrammarStore) -> some View,
+    ) -> some View {
         do {
             // for previews, we only want the data store to only live in memory while testing
             let container = try ModelContainer(
@@ -97,9 +98,7 @@ extension PreviewHelper {
         }
     }
 
-    /// Define various configurations that the PreviewHelper can exist in.
-    ///
-    /// The most useful versions are normal (with data) empty, and various error modes.
+    /// Configure store for different preview modes
     @MainActor
     private static func configureStoreForPreviewMode(store: GrammarStore, mode: PreviewHelper) {
         switch mode {
@@ -128,11 +127,7 @@ extension PreviewHelper {
         }
     }
 
-    /// Basic load of PreviewHelper with 5 fake data points.
-    ///
-    /// This is best practice to keep the real database separate while testing. Most features only require 5 grammar
-    /// points so this makes it easy
-    /// to not need to do a big load on the entire PostgreSQL database as well.
+    /// Load preview store with fake grammar data
     @MainActor
     private static func setupNormalPreviewData(store: GrammarStore) {
         let fakeItems = [
