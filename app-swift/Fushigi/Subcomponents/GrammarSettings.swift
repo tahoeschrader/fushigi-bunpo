@@ -18,7 +18,7 @@ struct GrammarSettings: View {
     @Binding var selectedContext: Context
 
     /// Language variant filter selection
-    @Binding var selectedFunMode: FunMode
+    @Binding var selectedLanguageVariant: LanguageVariants
 
     /// Grammar sourcing algorithm selection
     @Binding var selectedSource: SourceMode
@@ -58,8 +58,8 @@ struct GrammarSettings: View {
                     }
                 }
 
-                Picker("Language Variants", selection: $selectedFunMode) {
-                    ForEach(FunMode.allCases) { mode in
+                Picker("Language Variants", selection: $selectedLanguageVariant) {
+                    ForEach(LanguageVariants.allCases) { mode in
                         Text(mode.displayName).tag(mode)
                     }
                 }
@@ -83,12 +83,23 @@ struct GrammarSettings: View {
 
 // MARK: - Previews
 
-#Preview("Settings View") {
+#Preview("Random") {
     GrammarSettings(
         selectedLevel: .constant(.all),
         selectedContext: .constant(.all),
-        selectedFunMode: .constant(.none),
+        selectedLanguageVariant: .constant(.none),
         selectedSource: .constant(.random),
+    )
+    .withPreviewNavigation()
+    .navigationTitle("Practice Settings")
+}
+
+#Preview("SRS") {
+    GrammarSettings(
+        selectedLevel: .constant(.all),
+        selectedContext: .constant(.all),
+        selectedLanguageVariant: .constant(.none),
+        selectedSource: .constant(.srs),
     )
     .withPreviewNavigation()
     .navigationTitle("Practice Settings")

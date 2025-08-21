@@ -18,7 +18,7 @@ struct DailyGrammar: View {
     @Binding var selectedGrammarID: UUID?
 
     /// Controls tagging interface visibility
-    @Binding var isShowingTagger: Bool
+    @Binding var showTagger: Bool
 
     /// User-selected grammar sourcing strategy
     @Binding var selectedSource: SourceMode
@@ -28,11 +28,7 @@ struct DailyGrammar: View {
 
     /// Grammar points based on current sourcing mode
     private var grammarPoints: [GrammarPointLocal] {
-        if selectedSource == .random {
-            grammarStore.getRandomGrammarPoints()
-        } else {
-            grammarStore.getAlgorithmicGrammarPoints()
-        }
+        grammarStore.getGrammarPoints(for: selectedSource)
     }
 
     /// Current error state from grammar store operations
@@ -43,7 +39,7 @@ struct DailyGrammar: View {
     // MARK: - Main View
 
     var body: some View {
-        VStack(alignment: .leading, spacing: UIConstants.rowSpacing) {
+        VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
             // Section header with dynamic sourcing mode indicator
             HStack {
                 Text("Targeted Grammar")
@@ -65,38 +61,11 @@ struct DailyGrammar: View {
 
             // Error state handling with clear user guidance
             if let errorMessage {
-                ContentUnavailableView {
-                    Label("Grammar Points Unavailable", systemImage: "exclamationmark.triangle")
-                } description: {
-                    Text("Error: \(errorMessage)")
-                        .foregroundColor(.red)
-                } actions: {
-                    Button("Refresh") {
-                        Task {
-                            await refreshGrammarPoints()
-                        }
-                    }
-                    .buttonStyle(.bordered)
-                }
-                .frame(minHeight: 120)
+                errorStateView(message: "Error: \(errorMessage)")
             } else if grammarPoints.isEmpty {
-                // Empty state with actionable guidance
-                ContentUnavailableView {
-                    Label("No Grammar Points", systemImage: "book.closed")
-                } description: {
-                    Text(
-                        "No grammar points match your current settings." +
-                            "Try adjusting your filters or refreshing the content.",
-                    )
-                } actions: {
-                    Button("Refresh") {
-                        Task {
-                            await refreshGrammarPoints()
-                        }
-                    }
-                    .buttonStyle(.bordered)
-                }
-                .frame(minHeight: 120)
+                errorStateView(message:
+                    "No grammar points match your current settings." +
+                        "Try adjusting your filters or refreshing the content.")
             } else {
                 // Grammar points display with optimized layout
                 LazyVStack(spacing: 8) {
@@ -105,7 +74,7 @@ struct DailyGrammar: View {
                             grammarPoint: grammarPoint,
                             onTagSelected: {
                                 selectedGrammarID = grammarPoint.id
-                                isShowingTagger = true
+                                showTagger = true
                             },
                         )
 
@@ -132,6 +101,19 @@ struct DailyGrammar: View {
             await grammarStore.updateAlgorithmicGrammarPoints(force: true)
         }
     }
+
+    @ViewBuilder
+    private func errorStateView(message: String) -> some View {
+        ContentUnavailableView {
+            Label("Grammar Points Unavailable", systemImage: "exclamationmark.triangle")
+        } description: {
+            Text(message).foregroundColor(.red)
+        } actions: {
+            Button("Refresh") { Task { await refreshGrammarPoints() } }
+                .buttonStyle(.bordered)
+        }
+        .frame(minHeight: 120)
+    }
 }
 
 // MARK: - Previews
@@ -140,7 +122,7 @@ struct DailyGrammar: View {
     VStack {
         DailyGrammar(
             selectedGrammarID: .constant(nil),
-            isShowingTagger: .constant(false),
+            showTagger: .constant(false),
             selectedSource: .constant(SourceMode.random),
         )
         .padding()
@@ -152,7 +134,7 @@ struct DailyGrammar: View {
     VStack {
         DailyGrammar(
             selectedGrammarID: .constant(nil),
-            isShowingTagger: .constant(false),
+            showTagger: .constant(false),
             selectedSource: .constant(SourceMode.srs),
         )
         .padding()
@@ -164,7 +146,7 @@ struct DailyGrammar: View {
     VStack {
         DailyGrammar(
             selectedGrammarID: .constant(nil),
-            isShowingTagger: .constant(false),
+            showTagger: .constant(false),
             selectedSource: .constant(SourceMode.random),
         )
         .padding()
@@ -176,7 +158,7 @@ struct DailyGrammar: View {
     VStack {
         DailyGrammar(
             selectedGrammarID: .constant(nil),
-            isShowingTagger: .constant(false),
+            showTagger: .constant(false),
             selectedSource: .constant(SourceMode.random),
         )
         .padding()

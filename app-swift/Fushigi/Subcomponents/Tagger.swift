@@ -32,7 +32,7 @@ struct Tagger: View {
     // MARK: - Main View
 
     var body: some View {
-        VStack(alignment: .leading, spacing: UIConstants.defaultSpacing) {
+        VStack(alignment: .leading, spacing: UIConstants.Spacing.default) {
             // Operation status display
             if let message = operationMessage {
                 HStack {
@@ -48,7 +48,7 @@ struct Tagger: View {
             }
 
             // Grammar point information display
-            VStack(alignment: .leading, spacing: UIConstants.rowSpacing) {
+            VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
                 Label("Selected Grammar Point", systemImage: "book.fill")
                     .font(.headline)
                     .foregroundStyle(.primary)
@@ -57,12 +57,12 @@ struct Tagger: View {
                     Text(grammarPoint.usage)
                         .font(.title3)
                         .fontWeight(.medium)
-                        .padding(.leading, UIConstants.defaultPadding)
+                        .padding(.leading, UIConstants.Sizing.defaultPadding)
 
                     Text(grammarPoint.meaning)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
-                        .padding(.leading, UIConstants.defaultPadding)
+                        .padding(.leading, UIConstants.Sizing.defaultPadding)
 
                     // Grammar point metadata
                     HStack {
@@ -78,12 +78,12 @@ struct Tagger: View {
                                 .font(.caption)
                         }
                     }
-                    .padding(.leading, UIConstants.defaultPadding)
+                    .padding(.leading, UIConstants.Sizing.defaultPadding)
                 }
             }
 
             // Selected text information display
-            VStack(alignment: .leading, spacing: UIConstants.rowSpacing) {
+            VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
                 Label("Selected Text", systemImage: "text.quote")
                     .font(.headline)
                     .foregroundStyle(.primary)
@@ -91,7 +91,7 @@ struct Tagger: View {
                 Text(selectedText.isEmpty ? "No text selected" : selectedText)
                     .font(.body)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(UIConstants.defaultPadding)
+                    .padding(UIConstants.Sizing.defaultPadding)
                     .background(
                         RoundedRectangle(cornerRadius: 8)
                             .fill(selectedText.isEmpty ? .quaternary : .tertiary),
@@ -103,7 +103,7 @@ struct Tagger: View {
             }
 
             // Action buttons with clear visual hierarchy
-            HStack(spacing: UIConstants.defaultSpacing) {
+            HStack(spacing: UIConstants.Spacing.default) {
                 Button("Cancel") {
                     dismissTagger()
                 }

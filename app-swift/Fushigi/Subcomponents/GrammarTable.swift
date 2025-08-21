@@ -80,45 +80,38 @@ struct CompactGrammarRow: View {
     // MARK: - Main View
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            // Primary usage information with visual emphasis
+        VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
             VStack(alignment: .leading, spacing: 4) {
-                HStack {
-                    Text(grammarPoint.usage)
-                        .font(.body)
-                        .fontWeight(.medium)
-
-                    Spacer()
-
-                    Text(grammarPoint.context)
-                        .font(.caption2)
-                        .fontWeight(.medium)
-                        .padding(.horizontal, 4)
-                        .padding(.vertical, 1)
-                        .background(.quaternary)
-                        .clipShape(Capsule())
-                }
-
+                Text(grammarPoint.usage)
+                    .font(.body)
+                    .fontWeight(.medium)
                 Text(grammarPoint.meaning)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
-            .padding(8)
             .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(UIConstants.Sizing.defaultPadding)
             .background(.quaternary.opacity(0.5))
-            .clipShape(RoundedRectangle(cornerRadius: 6))
-            .overlay(
-                RoundedRectangle(cornerRadius: 6)
-                    .stroke(.quaternary, lineWidth: 1),
-            )
+            .clipShape(RoundedRectangle(cornerRadius: 20))
 
-            // Tag information with color coding
-            if !grammarPoint.tags.isEmpty {
-                coloredTagsText(tags: grammarPoint.tags)
-                    .font(.caption)
+            HStack {
+                if !grammarPoint.tags.isEmpty {
+                    coloredTagsText(tags: grammarPoint.tags)
+                        .font(.caption)
+                }
+
+                Spacer()
+
+                Text(grammarPoint.context)
+                    .font(.caption2)
+                    .fontWeight(.medium)
+                    .padding(.horizontal, 4)
+                    .padding(.vertical, 1)
+                    .background(.quaternary)
+                    .clipShape(Capsule())
             }
+            .padding(.horizontal, UIConstants.Sizing.defaultPadding)
         }
-        .padding(.vertical, 4)
     }
 }
 

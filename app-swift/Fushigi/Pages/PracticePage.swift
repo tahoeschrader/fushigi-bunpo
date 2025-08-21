@@ -18,10 +18,10 @@ struct PracticePage: View {
     @EnvironmentObject var grammarStore: GrammarStore
 
     /// Controls the settings sheet for practice content preferences
-    @State private var showingSettings = false
+    @State private var showSettings = false
 
     /// Controls the tagging sheet for grammar point and sentence relationships
-    @State private var showingTagger = false
+    @State private var showTagger = false
 
     /// Currently selected grammar point identifier for tagging operations
     @State private var selectedGrammarID: UUID?
@@ -33,7 +33,7 @@ struct PracticePage: View {
     @State private var selectedContext: Context = .all
 
     /// User preference for language variants and regional dialects
-    @State private var selectedFunMode: FunMode = .none
+    @State private var selectedLanguageVariant: LanguageVariants = .none
 
     /// User preference for grammar sourcing algorithm
     @State private var selectedSource: SourceMode = .random
@@ -81,10 +81,10 @@ struct PracticePage: View {
     // MARK: - Main View
 
     var body: some View {
-        VStack(alignment: .leading, spacing: UIConstants.defaultSpacing) {
+        VStack(alignment: .leading, spacing: UIConstants.Spacing.default) {
             DailyGrammar(
                 selectedGrammarID: $selectedGrammarID,
-                isShowingTagger: $showingTagger,
+                showTagger: $showTagger,
                 selectedSource: $selectedSource,
             )
 
@@ -98,22 +98,17 @@ struct PracticePage: View {
             )
         }
         .padding()
-        .modifier(
-            PresentationModifier(
-                isShowingSettings: $showingSettings,
-                isShowingTagger: $showingTagger,
-                selectedGrammarID: selectedGrammarID,
-                selectedText: selectedText,
-                isCompact: isCompact,
-                selectedLevel: $selectedLevel,
-                selectedContext: $selectedContext,
-                selectedFunMode: $selectedFunMode,
-                selectedSource: $selectedSource,
-            ),
-        )
+        .sheet(isPresented: $showSettings) {
+            if isCompact { settingsView.presentationDetents([.medium]) }
+            else { settingsView }
+        }
+        .sheet(isPresented: $showTagger) {
+            if isCompact { taggerView.presentationDetents([.fraction(0.25), .medium]) }
+            else { taggerView }
+        }
         .toolbar {
             Button("Settings", systemImage: "gear") {
-                showingSettings.toggle()
+                showSettings.toggle()
             }
             .help("Configure grammar filtering and source preferences")
             Button("Refresh", systemImage: "arrow.clockwise") {
@@ -133,59 +128,16 @@ struct PracticePage: View {
     /// Refreshes grammar points based on current source setting
     private func refreshGrammarPoints() async {
         await grammarStore.forceDailyRefresh(currentMode: selectedSource)
-        showingSettings = false
+        showSettings = false
     }
-}
 
-// MARK: - Presentation Logic
+    /// Retrieves grammar point based on current source mode
+    private func getGrammarPoint() -> GrammarPointLocal? {
+        guard let id = selectedGrammarID else { return nil }
 
-/// Handles sheet and inspector presentation for compact vs regular layouts
-private struct PresentationModifier: ViewModifier {
-    /// Grammar store for retrieving grammar point data
-    @EnvironmentObject var grammarStore: GrammarStore
-
-    /// Controls settings sheet visibility
-    @Binding var isShowingSettings: Bool
-
-    /// Controls tagger sheet visibility
-    @Binding var isShowingTagger: Bool
-
-    /// Currently selected grammar point ID
-    let selectedGrammarID: UUID?
-
-    /// Selected text from journal content
-    let selectedText: String
-
-    /// Layout mode indicator
-    let isCompact: Bool
-
-    /// User preference for politeness level filtering
-    @Binding var selectedLevel: Level
-
-    /// User preference for usage context filtering
-    @Binding var selectedContext: Context
-
-    /// User preference for language variants
-    @Binding var selectedFunMode: FunMode
-
-    /// User preference for grammar sourcing algorithm
-    @Binding var selectedSource: SourceMode
-
-    func body(content: Content) -> some View {
-        if isCompact {
-            content
-                .sheet(isPresented: $isShowingSettings) {
-                    settingsView.presentationDetents([.medium])
-                }
-                .sheet(isPresented: $isShowingTagger) {
-                    taggerView.presentationDetents([.fraction(0.25), .medium])
-                }
-
-        } else {
-            content
-                .inspector(isPresented: $isShowingSettings) { settingsView }
-                .inspector(isPresented: $isShowingTagger) { taggerView }
-        }
+        return selectedSource == .random
+            ? grammarStore.getRandomGrammarPoint(id: id)
+            : grammarStore.getAlgorithmicGrammarPoint(id: id)
     }
 
     /// Settings configuration view with state management
@@ -194,7 +146,7 @@ private struct PresentationModifier: ViewModifier {
         GrammarSettings(
             selectedLevel: $selectedLevel,
             selectedContext: $selectedContext,
-            selectedFunMode: $selectedFunMode,
+            selectedLanguageVariant: $selectedLanguageVariant,
             selectedSource: $selectedSource,
         )
     }
@@ -205,7 +157,7 @@ private struct PresentationModifier: ViewModifier {
         if let grammarPoint = getGrammarPoint() {
             Tagger(
                 selectedGrammarID: .constant(selectedGrammarID),
-                isShowingTagger: $isShowingTagger,
+                isShowingTagger: $showTagger,
                 grammarPoint: grammarPoint,
                 selectedText: selectedText,
             )
@@ -216,19 +168,10 @@ private struct PresentationModifier: ViewModifier {
                 Text("The selected grammar point could not be loaded. Please try selecting another point.")
             } actions: {
                 Button("Dismiss") {
-                    isShowingTagger = false
+                    showTagger = false
                 }
             }
         }
-    }
-
-    /// Retrieves grammar point based on current source mode
-    private func getGrammarPoint() -> GrammarPointLocal? {
-        guard let id = selectedGrammarID else { return nil }
-
-        return selectedSource == .random
-            ? grammarStore.getRandomGrammarPoint(id: id)
-            : grammarStore.getAlgorithmicGrammarPoint(id: id)
     }
 }
 

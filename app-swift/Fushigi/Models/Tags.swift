@@ -54,7 +54,7 @@ enum Context: String, CaseIterable, Identifiable {
 }
 
 /// Language variant filter options
-enum FunMode: String, CaseIterable, Identifiable {
+enum LanguageVariants: String, CaseIterable, Identifiable {
     case none = "No Extras"
     case slang = "Slang"
     case kansai = "Kansai"

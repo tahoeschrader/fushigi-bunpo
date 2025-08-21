@@ -20,7 +20,7 @@ struct TaggableGrammarRow: View {
     // MARK: - Main View
 
     var body: some View {
-        HStack(alignment: .top, spacing: UIConstants.defaultSpacing) {
+        HStack(alignment: .top, spacing: UIConstants.Spacing.default) {
             Text(grammarPoint.usage)
                 .font(.body)
                 .fontWeight(.medium)

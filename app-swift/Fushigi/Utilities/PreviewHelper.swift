@@ -11,52 +11,6 @@ import SwiftUI
 
 // MARK: - Preview Helper
 
-/// Error states for preview configuration
-enum PreviewError: LocalizedError {
-    case normal
-    case emptyData
-    case syncError
-    case loadError
-    case networkTimeout
-    case postgresConnectionError
-
-    /// User-friendly description of each preview mode
-    var description: String {
-        switch self {
-        case .normal:
-            "Standard operation with full sample data set"
-        case .emptyData:
-            "No data available, first-time user experience"
-        case .syncError:
-            "General synchronization failure with remote services"
-        case .loadError:
-            "Database corruption or loading failure scenario"
-        case .networkTimeout:
-            "Network connectivity issues preventing data access"
-        case .postgresConnectionError:
-            "PostgreSQL database connection failure scenario"
-        }
-    }
-
-    /// User-friendly description of each failure reason
-    var failureReason: String? {
-        switch self {
-        case .syncError:
-            "The remote server is not responding"
-        case .loadError:
-            "Local database file appears to be damaged"
-        case .networkTimeout:
-            "Request took too long to complete"
-        case .postgresConnectionError:
-            "Unable to establish connection to PostgreSQL database"
-        case .normal:
-            "No issues"
-        case .emptyData:
-            "All data has been filtered out or there is no data to filter"
-        }
-    }
-}
-
 /// Preview helper for configuring different app states
 enum PreviewHelper {
     case normal
@@ -65,6 +19,52 @@ enum PreviewHelper {
     case loadError
     case networkTimeout
     case postgresConnectionError
+
+    /// Error states for preview configuration
+    enum Error: LocalizedError {
+        case normal
+        case emptyData
+        case syncError
+        case loadError
+        case networkTimeout
+        case postgresConnectionError
+
+        /// User-friendly description of each preview mode
+        var description: String {
+            switch self {
+            case .normal:
+                "Standard operation with full sample data set"
+            case .emptyData:
+                "No data available, first-time user experience"
+            case .syncError:
+                "General synchronization failure with remote services"
+            case .loadError:
+                "Database corruption or loading failure scenario"
+            case .networkTimeout:
+                "Network connectivity issues preventing data access"
+            case .postgresConnectionError:
+                "PostgreSQL database connection failure scenario"
+            }
+        }
+
+        /// User-friendly description of each failure reason
+        var failureReason: String? {
+            switch self {
+            case .syncError:
+                "The remote server is not responding"
+            case .loadError:
+                "Local database file appears to be damaged"
+            case .networkTimeout:
+                "Request took too long to complete"
+            case .postgresConnectionError:
+                "Unable to establish connection to PostgreSQL database"
+            case .normal:
+                "No issues"
+            case .emptyData:
+                "All data has been filtered out or there is no data to filter"
+            }
+        }
+    }
 }
 
 extension PreviewHelper {
@@ -110,20 +110,20 @@ extension PreviewHelper {
 
         case .syncError:
             setupNormalPreviewData(store: store)
-            store.syncError = PreviewError.syncError
+            store.syncError = Error.syncError
 
         case .loadError:
             setupNormalPreviewData(store: store)
-            store.syncError = PreviewError.loadError
+            store.syncError = Error.loadError
 
         case .networkTimeout:
             setupNormalPreviewData(store: store)
             store.isSyncing = true
-            store.syncError = PreviewError.networkTimeout
+            store.syncError = Error.networkTimeout
 
         case .postgresConnectionError:
             setupNormalPreviewData(store: store)
-            store.syncError = PreviewError.postgresConnectionError
+            store.syncError = Error.postgresConnectionError
         }
     }
 

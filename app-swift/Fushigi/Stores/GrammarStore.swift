@@ -56,6 +56,16 @@ class GrammarStore: ObservableObject {
         getAllGrammarPoints().first { $0.id == id }
     }
 
+    /// Get subset of 5 grammar points depending on what UI SourceMode is selected
+    func getGrammarPoints(for: SourceMode) -> [GrammarPointLocal] {
+        switch `for` {
+        case .random:
+            getRandomGrammarPoints()
+        case .srs:
+            getAlgorithmicGrammarPoints()
+        }
+    }
+
     /// Filter grammar points by search text across usage, meaning, context, and tags
     func filterGrammarPoints(containing searchText: String? = nil) -> [GrammarPointLocal] {
         var filtered = getAllGrammarPoints()

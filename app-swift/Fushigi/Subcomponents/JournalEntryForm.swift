@@ -41,17 +41,17 @@ struct JournalEntryForm: View {
     // MARK: - Main View
 
     var body: some View {
-        VStack(alignment: .leading, spacing: UIConstants.sectionSpacing) {
+        VStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
             // Title input
-            VStack(alignment: .leading, spacing: UIConstants.rowSpacing) {
+            VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
                 Text("Title").font(.headline)
                 TextField("Enter title", text: $entryTitle)
                     .textFieldStyle(.plain)
-                    .padding(UIConstants.rowSpacing)
+                    .padding(UIConstants.Spacing.row)
                     .background(
                         Rectangle()
                             .stroke(isTitleFocused ? Color.accentColor : Color.primary,
-                                    lineWidth: UIConstants.borderWidth),
+                                    lineWidth: UIConstants.Border.width),
                     )
                     .focused($isTitleFocused)
                     .onSubmit {
@@ -62,15 +62,15 @@ struct JournalEntryForm: View {
             }
 
             // Content input
-            VStack(alignment: .leading, spacing: UIConstants.rowSpacing) {
+            VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
                 Text("Content").font(.headline)
                 TextEditor(text: $entryContent, selection: $textSelection)
-                    .font(.custom("HelveticaNeue", size: UIConstants.fontSize))
-                    .frame(minHeight: UIConstants.contentMinHeight, maxHeight: .infinity)
+                    .font(.custom("HelveticaNeue", size: UIConstants.Sizing.fontSize))
+                    .frame(minHeight: UIConstants.Sizing.contentMinHeight, maxHeight: .infinity)
                     .background(
                         Rectangle()
                             .stroke(isContentFocused ? Color.accentColor : Color.primary,
-                                    lineWidth: UIConstants.borderWidth + 2),
+                                    lineWidth: UIConstants.Border.width + 2),
                     )
                     .focused($isContentFocused)
                     .disabled(isSaving)
