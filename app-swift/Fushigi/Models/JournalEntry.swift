@@ -22,7 +22,7 @@ struct ResponseID: Decodable {
 }
 
 /// Journal entry from database with metadata
-struct JournalEntryInDB: Identifiable, Decodable {
+struct JournalEntryResponse: Identifiable, Decodable {
     let id: UUID
     let title: String
     let createdAt: Date

@@ -15,7 +15,7 @@ struct HistoryPage: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
 
     /// Journal entries fetched from database
-    @State private var journalEntries: [JournalEntryInDB] = []
+    @State private var journalEntries: [JournalEntryResponse] = []
 
     /// Error message to display if data fetch fails
     @State private var errorMessage: String?
@@ -152,7 +152,7 @@ struct HistoryPage: View {
     }
 
     /// Filter journal entries based on search text
-    var filteredEntries: [JournalEntryInDB] {
+    var filteredEntries: [JournalEntryResponse] {
         if searchText.isEmpty {
             journalEntries
         } else {

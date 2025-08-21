@@ -9,14 +9,14 @@ import Foundation
 
 /// Fetch all journal entries from FastAPI backend
 @MainActor
-func fetchJournalEntries() async -> Result<[JournalEntryInDB], Error> {
+func fetchJournalEntries() async -> Result<[JournalEntryResponse], Error> {
     guard let url = URL(string: "http://192.168.11.5:8000/api/journal") else {
         return .failure(URLError(.badURL))
     }
 
     do {
         let (data, _) = try await URLSession.shared.data(from: url)
-        let entries = try JSONDecoder.iso8601withFractionalSeconds.decode([JournalEntryInDB].self, from: data)
+        let entries = try JSONDecoder.iso8601withFractionalSeconds.decode([JournalEntryResponse].self, from: data)
         return .success(entries)
     } catch {
         return .failure(error)
