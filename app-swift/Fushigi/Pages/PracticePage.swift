@@ -81,21 +81,26 @@ struct PracticePage: View {
     // MARK: - Main View
 
     var body: some View {
-        VStack(alignment: .leading, spacing: UIConstants.Spacing.default) {
-            DailyGrammar(
-                selectedGrammarID: $selectedGrammarID,
-                showTagger: $showTagger,
-                selectedSource: $selectedSource,
-            )
+        GeometryReader { geometry in
+            ScrollView {
+                VStack(alignment: .leading, spacing: UIConstants.Spacing.default) {
+                    DailyGrammar(
+                        showTagger: $showTagger,
+                        selectedSource: $selectedSource,
+                    )
 
-            JournalEntryForm(
-                entryTitle: $entryTitle,
-                entryContent: $entryContent,
-                textSelection: $textSelection,
-                isPrivateEntry: $isPrivateEntry,
-                statusMessage: $statusMessage,
-                isSaving: $isSaving,
-            )
+                    JournalEntryForm(
+                        entryTitle: $entryTitle,
+                        entryContent: $entryContent,
+                        textSelection: $textSelection,
+                        isPrivateEntry: $isPrivateEntry,
+                        statusMessage: $statusMessage,
+                        isSaving: $isSaving,
+                    )
+                }
+                .frame(minHeight: geometry.size.height)
+            }
+            .scrollDismissesKeyboard(.interactively)
         }
         .padding()
         .sheet(isPresented: $showSettings) {
@@ -103,7 +108,7 @@ struct PracticePage: View {
             else { settingsView }
         }
         .sheet(isPresented: $showTagger) {
-            if isCompact { taggerView.presentationDetents([.fraction(0.25), .medium]) }
+            if isCompact { taggerView.presentationDetents([.medium]) }
             else { taggerView }
         }
         .toolbar {
@@ -131,15 +136,6 @@ struct PracticePage: View {
         showSettings = false
     }
 
-    /// Retrieves grammar point based on current source mode
-    private func getGrammarPoint() -> GrammarPointLocal? {
-        guard let id = selectedGrammarID else { return nil }
-
-        return selectedSource == .random
-            ? grammarStore.getRandomGrammarPoint(id: id)
-            : grammarStore.getAlgorithmicGrammarPoint(id: id)
-    }
-
     /// Settings configuration view with state management
     @ViewBuilder
     private var settingsView: some View {
@@ -151,12 +147,10 @@ struct PracticePage: View {
         )
     }
 
-    /// Grammar point tagging interface with error handling
     @ViewBuilder
     private var taggerView: some View {
-        if let grammarPoint = getGrammarPoint() {
+        if let grammarPoint = grammarStore.selectedGrammarPoint {
             Tagger(
-                selectedGrammarID: .constant(selectedGrammarID),
                 isShowingTagger: $showTagger,
                 grammarPoint: grammarPoint,
                 selectedText: selectedText,
@@ -165,7 +159,9 @@ struct PracticePage: View {
             ContentUnavailableView {
                 Label("Grammar Point Unavailable", systemImage: "exclamationmark.triangle")
             } description: {
-                Text("The selected grammar point could not be loaded. Please try selecting another point.")
+                Text(
+                    "The selected grammar point id \(selectedGrammarID?.uuidString ?? "nil") could not be loaded. Please try selecting another point.",
+                )
             } actions: {
                 Button("Dismiss") {
                     showTagger = false

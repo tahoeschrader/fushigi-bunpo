@@ -20,11 +20,8 @@ struct TaggableGrammarRow: View {
     // MARK: - Main View
 
     var body: some View {
-        HStack(alignment: .top, spacing: UIConstants.Spacing.default) {
+        HStack(alignment: .center, spacing: UIConstants.Spacing.default) {
             Text(grammarPoint.usage)
-                .font(.body)
-                .fontWeight(.medium)
-                .foregroundColor(.primary)
 
             Spacer()
 
@@ -32,7 +29,8 @@ struct TaggableGrammarRow: View {
                 onTagSelected()
             }
             .labelStyle(.iconOnly)
-            .buttonStyle(.borderless)
+            .buttonStyle(.plain)
+            .foregroundStyle(.mint)
             .help("Link this grammar point to selected text")
         }
     }

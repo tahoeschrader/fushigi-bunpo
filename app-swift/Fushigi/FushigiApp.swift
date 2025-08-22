@@ -79,6 +79,7 @@ struct FushigiApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .tint(.mint)
                 .environmentObject(grammarStore)
                 // .environmentObject(journalStore)
                 // .environmentObject(tagStore)

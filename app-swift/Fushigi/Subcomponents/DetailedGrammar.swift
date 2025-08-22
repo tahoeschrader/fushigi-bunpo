@@ -26,18 +26,7 @@ struct DetailedGrammar: View {
     // MARK: - Main View
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            if isCompact {
-                HStack {
-                    Spacer()
-                    Button("Done") {
-                        isPresented = false
-                        selectedGrammarID = nil
-                    }
-                }
-                .padding(.horizontal)
-            }
-
+        VStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
             VStack(alignment: .leading) {
                 Text("Usage: \(grammarPoint.usage)")
                 Text("Meaning: \(grammarPoint.meaning)")

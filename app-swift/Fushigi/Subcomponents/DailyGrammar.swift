@@ -14,17 +14,11 @@ struct DailyGrammar: View {
     /// Centralized grammar data store
     @EnvironmentObject var grammarStore: GrammarStore
 
-    /// Currently selected grammar point identifier for tagging workflow
-    @Binding var selectedGrammarID: UUID?
-
     /// Controls tagging interface visibility
     @Binding var showTagger: Bool
 
     /// User-selected grammar sourcing strategy
     @Binding var selectedSource: SourceMode
-
-    /// Tip placement edge for current interface layout
-    let arrowEdge: Edge = .bottom
 
     /// Grammar points based on current sourcing mode
     private var grammarPoints: [GrammarPointLocal] {
@@ -34,6 +28,11 @@ struct DailyGrammar: View {
     /// Current error state from grammar store operations
     private var errorMessage: String? {
         grammarStore.syncError?.localizedDescription
+    }
+
+    // TODO: FIgure this out
+    private var isSyncing: Bool {
+        grammarStore.isSyncing
     }
 
     // MARK: - Main View
@@ -51,44 +50,48 @@ struct DailyGrammar: View {
                 Text(selectedSource.id)
                     .font(.caption)
                     .foregroundStyle(.secondary)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 2)
+                    .padding(.horizontal, UIConstants.Padding.capsuleWidth)
+                    .padding(.vertical, UIConstants.Padding.capsuleHeight)
                     .background(.quaternary)
-                    .clipShape(Capsule())
+                    .clipShape(.capsule)
             }
 
             Divider()
 
             // Error state handling with clear user guidance
-            if let errorMessage {
+            if isSyncing {
+                ContentUnavailableView {
+                    VStack(spacing: UIConstants.Spacing.section) {
+                        ProgressView()
+                            .scaleEffect(2.5)
+                            .frame(height: UIConstants.Sizing.icons)
+                        Text("Loading")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                    }
+                } description: {
+                    Text("Fetching your grammar points...")
+                        .foregroundStyle(.secondary)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else if let errorMessage {
                 errorStateView(message: "Error: \(errorMessage)")
-            } else if grammarPoints.isEmpty {
-                errorStateView(message:
-                    "No grammar points match your current settings." +
-                        "Try adjusting your filters or refreshing the content.")
             } else {
                 // Grammar points display with optimized layout
-                LazyVStack(spacing: 8) {
+                VStack {
                     ForEach(grammarPoints, id: \.id) { grammarPoint in
                         TaggableGrammarRow(
                             grammarPoint: grammarPoint,
                             onTagSelected: {
-                                selectedGrammarID = grammarPoint.id
+                                grammarStore.selectedGrammarPoint = grammarPoint
                                 showTagger = true
                             },
                         )
-
-                        // Subtle visual separation between points
-                        if grammarPoint.id != grammarPoints.last?.id {
-                            Divider()
-                                .padding(.horizontal)
-                        }
+                        Divider()
                     }
                 }
             }
         }
-        .animation(.easeInOut(duration: 0.3), value: grammarPoints.count)
-        .animation(.easeInOut(duration: 0.3), value: errorMessage)
     }
 
     // MARK: - Helper Methods
@@ -112,7 +115,7 @@ struct DailyGrammar: View {
             Button("Refresh") { Task { await refreshGrammarPoints() } }
                 .buttonStyle(.bordered)
         }
-        .frame(minHeight: 120)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
@@ -121,7 +124,6 @@ struct DailyGrammar: View {
 #Preview("Random Mode - Normal State") {
     VStack {
         DailyGrammar(
-            selectedGrammarID: .constant(nil),
             showTagger: .constant(false),
             selectedSource: .constant(SourceMode.random),
         )
@@ -133,7 +135,6 @@ struct DailyGrammar: View {
 #Preview("SRS Mode - Normal State") {
     VStack {
         DailyGrammar(
-            selectedGrammarID: .constant(nil),
             showTagger: .constant(false),
             selectedSource: .constant(SourceMode.srs),
         )
@@ -145,7 +146,6 @@ struct DailyGrammar: View {
 #Preview("Error State") {
     VStack {
         DailyGrammar(
-            selectedGrammarID: .constant(nil),
             showTagger: .constant(false),
             selectedSource: .constant(SourceMode.random),
         )
@@ -157,7 +157,6 @@ struct DailyGrammar: View {
 #Preview("Empty State") {
     VStack {
         DailyGrammar(
-            selectedGrammarID: .constant(nil),
             showTagger: .constant(false),
             selectedSource: .constant(SourceMode.random),
         )

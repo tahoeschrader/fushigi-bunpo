@@ -31,6 +31,9 @@ class GrammarStore: ObservableObject {
     /// Current sync error if any
     @Published var syncError: Error?
 
+    /// Currently selected grammar item for quick UI
+    @Published var selectedGrammarPoint: GrammarPointLocal?
+
     /// Last random subset update date
     private var lastRandomUpdate: Date?
 
@@ -53,7 +56,8 @@ class GrammarStore: ObservableObject {
 
     /// Get specific grammar point by ID
     func getGrammarPoint(id: UUID?) -> GrammarPointLocal? {
-        getAllGrammarPoints().first { $0.id == id }
+        guard let id else { return nil } // protect id
+        return getAllGrammarPoints().first { $0.id == id }
     }
 
     /// Get subset of 5 grammar points depending on what UI SourceMode is selected

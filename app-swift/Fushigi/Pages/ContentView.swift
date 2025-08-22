@@ -47,36 +47,46 @@ struct ContentView: View {
     /// Tab-based navigation optimized for compact layouts (iPhone portrait, small windows)
     @ViewBuilder
     private var navigationAsTabs: some View {
-        TabView(selection: $selectedPage) {
-            Tab(Page.practice.id, systemImage: Page.practice.icon, value: .practice) {
-                NavigationStack {
-                    decoratedView(for: .practice)
+        // The following check is already basically guaranteed to be true but sometimes xcode complains without the if-s
+        #if os(iOS)
+            TabView(selection: $selectedPage) {
+                Tab(Page.practice.id, systemImage: Page.practice.icon, value: .practice) {
+                    NavigationStack {
+                        decoratedView(for: .practice)
+                            .navigationTitle(Page.practice.id)
+                            .navigationBarTitleDisplayMode(.inline)
+                    }
                 }
-            }
 
-            Tab(Page.history.id, systemImage: Page.history.icon, value: .history) {
-                NavigationStack {
-                    decoratedView(for: .history)
+                Tab(Page.history.id, systemImage: Page.history.icon, value: .history) {
+                    NavigationStack {
+                        decoratedView(for: .history)
+                            .navigationTitle(Page.history.id)
+                            .navigationBarTitleDisplayMode(.inline)
+                            .searchableIf(!isCompact, text: $searchText) // MacOS style search for iPadOS
+                    }
                 }
-                .searchableIf(!isCompact, text: $searchText) // MacOS style search for iPadOS
-            }
 
-            Tab(Page.reference.id, systemImage: Page.reference.icon, value: .reference) {
-                NavigationStack {
-                    decoratedView(for: .reference)
+                Tab(Page.reference.id, systemImage: Page.reference.icon, value: .reference) {
+                    NavigationStack {
+                        decoratedView(for: .reference)
+                            .navigationTitle(Page.reference.id)
+                            .navigationBarTitleDisplayMode(.inline)
+                            .searchableIf(!isCompact, text: $searchText) // MacOS style search for iPadOS
+                    }
                 }
-                .searchableIf(!isCompact, text: $searchText) // MacOS style search for iPadOS
-            }
 
-            // iOS 18+ dedicated search tab
-            Tab(value: .search, role: .search) {
-                NavigationStack {
-                    decoratedView(for: .search)
-                        .navigationTitle(Page.search.id)
-                        .searchable(text: $searchText)
+                // iOS 18+ dedicated search tab
+                Tab(value: .search, role: .search) {
+                    NavigationStack {
+                        decoratedView(for: .search)
+                            .navigationTitle(Page.search.id)
+                            .navigationBarTitleDisplayMode(.inline)
+                            .searchable(text: $searchText)
+                    }
                 }
             }
-        }
+        #endif
     }
 
     /// Split view navigation optimized for regular layouts (iPad, macOS, iPhone landscape)
@@ -94,23 +104,23 @@ struct ContentView: View {
                     Label(Page.reference.id, systemImage: Page.reference.icon)
                 }
             }
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-            .navigationTitle("Fushigi")
-            .searchableIf(selectedPage?.supportsSearch ?? false, text: $searchText)
         }
         detail: {
             if let selectedPage {
                 decoratedView(for: selectedPage)
+                // .searchableIf(selectedPage.supportsSearch, text: $searchText) // macOS top trailing left position
             } else {
                 // Fallback state for navigation edge cases
                 ContentUnavailableView {
-                    Label("Select a Section", systemImage: "sidebar.left")
+                    Label("Current tab state broken", systemImage: "error")
                 } description: {
-                    Text("Not sure why this is happening. Need to debug.")
+                    Text("Illegal tab state bug. Please report this issue.")
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+        .searchable(text: $searchText, prompt: "Search")
+        .navigationTitle(selectedPage?.id ?? "Fushigi")
     }
 
     /// Returns the appropriate view for each app section

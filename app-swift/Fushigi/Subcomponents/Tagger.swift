@@ -11,8 +11,8 @@ import SwiftUI
 
 /// Interface for creating links between selected text and grammar concepts
 struct Tagger: View {
-    /// Currently selected grammar point identifier for database relationship creation
-    @Binding var selectedGrammarID: UUID?
+    /// Centralized grammar data store
+    @EnvironmentObject var grammarStore: GrammarStore
 
     /// Controls the tagging interface visibility
     @Binding var isShowingTagger: Bool
@@ -37,14 +37,14 @@ struct Tagger: View {
             if let message = operationMessage {
                 HStack {
                     Image(systemName: isTagCreated ? "checkmark.circle.fill" : "info.circle.fill")
-                        .foregroundColor(isTagCreated ? .green : .blue)
+                        .foregroundColor(isTagCreated ? .red : .mint)
                     Text(message)
                         .font(.subheadline)
                 }
-                .padding(.horizontal)
-                .padding(.vertical, 8)
+                .padding(.horizontal, UIConstants.Padding.capsuleWidth)
+                .padding(.vertical, UIConstants.Padding.capsuleHeight)
                 .background(.quaternary)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .clipShape(.capsule)
             }
 
             // Grammar point information display
@@ -53,7 +53,7 @@ struct Tagger: View {
                     .font(.headline)
                     .foregroundStyle(.primary)
 
-                VStack(alignment: .leading, spacing: 6) {
+                VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
                     Text(grammarPoint.usage)
                         .font(.title3)
                         .fontWeight(.medium)
@@ -68,10 +68,10 @@ struct Tagger: View {
                     HStack {
                         Text(grammarPoint.context)
                             .font(.caption)
-                            .padding(.horizontal, 6)
-                            .padding(.vertical, 2)
+                            .padding(.horizontal, UIConstants.Padding.capsuleWidth)
+                            .padding(.vertical, UIConstants.Padding.capsuleHeight)
                             .background(.tertiary)
-                            .clipShape(Capsule())
+                            .clipShape(.capsule)
 
                         if !grammarPoint.tags.isEmpty {
                             coloredTagsText(tags: grammarPoint.tags)
@@ -92,13 +92,12 @@ struct Tagger: View {
                     .font(.body)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(UIConstants.Sizing.defaultPadding)
-                    .background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(selectedText.isEmpty ? .quaternary : .tertiary),
-                    )
                     .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(selectedText.isEmpty ? .clear : .accentColor, lineWidth: 4),
+                        Capsule()
+                            .stroke(
+                                selectedText.isEmpty ? .clear : .purple,
+                                lineWidth: UIConstants.Border.focusedWidth,
+                            ),
                     )
             }
 
@@ -121,7 +120,7 @@ struct Tagger: View {
             }
         }
         .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     // MARK: - Helper Methods
@@ -148,7 +147,7 @@ struct Tagger: View {
 
     /// Dismiss tagging interface and clear selection state
     private func dismissTagger() {
-        selectedGrammarID = nil
+        grammarStore.selectedGrammarPoint = nil
         isShowingTagger = false
     }
 }
@@ -157,7 +156,6 @@ struct Tagger: View {
 
 #Preview("Tagger - With Text") {
     Tagger(
-        selectedGrammarID: .constant(UUID()),
         isShowingTagger: .constant(true),
         grammarPoint: GrammarPointLocal(
             id: UUID(),
@@ -174,7 +172,6 @@ struct Tagger: View {
 
 #Preview("Tagger - No Text") {
     Tagger(
-        selectedGrammarID: .constant(UUID()),
         isShowingTagger: .constant(true),
         grammarPoint: GrammarPointLocal(
             id: UUID(),

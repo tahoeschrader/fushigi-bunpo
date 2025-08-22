@@ -34,99 +34,33 @@ struct HistoryPage: View {
     // MARK: - Main View
 
     var body: some View {
-        ScrollView {
-            if errorMessage != nil {
-                ContentUnavailableView {
-                    Label("Error", systemImage: "exclamationmark.warninglight.fill")
-                } description: {
-                    Text(errorMessage!)
+        journalEntryList
+            .task {
+                let result = await fetchJournalEntries()
+                switch result {
+                case let .success(entries):
+                    journalEntries = entries
+                    errorMessage = nil
+                case let .failure(error):
+                    errorMessage = error.localizedDescription
                 }
-            } else if filteredEntries.isEmpty {
-                ContentUnavailableView.search
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background()
-            } else {
-                LazyVStack(alignment: .leading) {
-                    ForEach(filteredEntries) { entry in
-                        VStack(alignment: .leading, spacing: 4) {
-                            Button {
-                                toggleExpanded(for: entry.id)
-                            } label: {
-                                HStack {
-                                    VStack(alignment: .leading) {
-                                        Text(entry.title)
-                                            .font(.headline)
-                                        Text(entry.createdAt.formatted())
-                                            .font(.caption)
-                                            .foregroundColor(.gray)
-                                    }
-                                    Spacer()
-                                    Image(systemName: expanded.contains(entry.id) ?
-                                        "chevron.down" : "chevron.right")
-                                }
-                            }
-                            .buttonStyle(PlainButtonStyle())
-
-                            if expanded.contains(entry.id) {
-                                VStack(alignment: .leading, spacing: 8) {
-                                    Text(entry.content)
-                                        .font(.body)
-                                        .padding(.top, 4)
-
-                                    VStack(alignment: .leading, spacing: 4) {
-                                        Text("Grammar Points:")
-                                            .font(.subheadline)
-                                            .foregroundColor(.blue)
-                                        Text("• (placeholder) ～てしまう")
-                                        Text("• (placeholder) ～わけではない")
-                                    }
-
-                                    VStack(alignment: .leading, spacing: 4) {
-                                        Text("AI Feedback:")
-                                            .font(.subheadline)
-                                            .foregroundColor(.secondary)
-                                        Text("(placeholder) Try to avoid passive constructions.")
-                                    }
-                                }
-                                .padding(.leading)
-                                .padding(.top, 4)
-                            }
-                        }
-                        .padding(.vertical, 4)
-                    }
-                    .onDelete(perform: deleteEntry)
+            }
+            .toolbar {
+                Menu("Sort", systemImage: "arrow.up.arrow.down") {
+                    Button("Newest First") { /* TODO: Implement sorting */ }
+                    Button("Oldest First") { /* TODO: Implement sorting */ }
+                    Button("By Title") { /* TODO: Implement sorting */ }
                 }
-                .padding()
-                .scrollDismissesKeyboard(.interactively)
-            }
-        }
-        .task {
-            let result = await fetchJournalEntries()
-            switch result {
-            case let .success(entries):
-                journalEntries = entries
-                errorMessage = nil
-            case let .failure(error):
-                errorMessage = error.localizedDescription
-            }
-        }
-        .navigationTitle("History")
-        .toolbar {
-            Menu("Sort", systemImage: "arrow.up.arrow.down") {
-                Button("Newest First") { /* TODO: Implement sorting */ }
-                Button("Oldest First") { /* TODO: Implement sorting */ }
-                Button("By Title") { /* TODO: Implement sorting */ }
-            }
 
-            Menu("Filter", systemImage: "line.3.horizontal.decrease.circle") {
-                Button("All Entries") { /* TODO: Implement filtering */ }
-                Button("Private Only") { /* TODO: Implement filtering */ }
-                Button("Public Only") { /* TODO: Implement filtering */ }
-                Divider()
-                Button("This Week") { /* TODO: Implement filtering */ }
-                Button("This Month") { /* TODO: Implement filtering */ }
+                Menu("Filter", systemImage: "line.3.horizontal.decrease.circle") {
+                    Button("All Entries") { /* TODO: Implement filtering */ }
+                    Button("Private Only") { /* TODO: Implement filtering */ }
+                    Button("Public Only") { /* TODO: Implement filtering */ }
+                    Divider()
+                    Button("This Week") { /* TODO: Implement filtering */ }
+                    Button("This Month") { /* TODO: Implement filtering */ }
+                }
             }
-        }
     }
 
     // MARK: - Helper Methods
@@ -162,6 +96,71 @@ struct HistoryPage: View {
             }
         }
     }
+
+    @ViewBuilder
+    private var journalEntryList: some View {
+        // TODO: Clean up the error messages to display custom views
+        if errorMessage != nil {
+            ContentUnavailableView {
+                Label("Error", systemImage: "exclamationmark.warninglight.fill")
+            } description: {
+                Text(errorMessage!)
+            }
+        } else if filteredEntries.isEmpty {
+            ContentUnavailableView.search
+        } else {
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
+                    ForEach(filteredEntries) { entry in
+                        VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
+                            Button {
+                                toggleExpanded(for: entry.id)
+                            } label: {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(entry.title)
+                                            .font(.headline)
+                                        Text(entry.createdAt.formatted())
+                                            .font(.caption)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                    Spacer()
+                                    Image(systemName: expanded.contains(entry.id) ?
+                                        "chevron.down" : "chevron.right")
+                                }
+                            }
+                            .buttonStyle(.plain)
+
+                            if expanded.contains(entry.id) {
+                                VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                                    Text(entry.content)
+
+                                    VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
+                                        Text("Grammar Points:")
+                                            .font(.subheadline)
+                                            .foregroundStyle(.mint)
+                                        Text("• (placeholder) ～てしまう")
+                                        Text("• (placeholder) ～わけではない")
+                                    }
+
+                                    VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
+                                        Text("AI Feedback:")
+                                            .font(.subheadline)
+                                            .foregroundStyle(.purple)
+                                        Text("(placeholder) Try to avoid passive constructions.")
+                                    }
+                                }
+                                .padding(.leading)
+                            }
+                        }
+                    }
+                    .onDelete(perform: deleteEntry)
+                }
+                .padding()
+            }
+            .scrollDismissesKeyboard(.interactively)
+        }
+    }
 }
 
 // MARK: - Previews
@@ -174,4 +173,10 @@ struct HistoryPage: View {
 #Preview("No Search Results") {
     HistoryPage(searchText: .constant("nonexistent"))
         .withPreviewNavigation()
+}
+
+#Preview("Load Error") {
+    HistoryPage(searchText: .constant("nonexistent"))
+        .withPreviewNavigation()
+        .withPreviewGrammarStore(mode: .loadError)
 }

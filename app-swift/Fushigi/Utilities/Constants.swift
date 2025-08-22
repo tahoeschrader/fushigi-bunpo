@@ -15,6 +15,7 @@ enum UIConstants {
         static let content: CGFloat = 20
         static let section: CGFloat = 16
         static let row: CGFloat = 8
+        static let tightRow: CGFloat = 4
         static let `default`: CGFloat = 20
     }
 
@@ -22,10 +23,16 @@ enum UIConstants {
         static let contentMinHeight: CGFloat = 150
         static let defaultPadding: CGFloat = 10
         static let fontSize: CGFloat = 18
+        static let icons: CGFloat = 60
     }
 
     enum Border {
         static let width: CGFloat = 1
         static let focusedWidth: CGFloat = 2
+    }
+
+    enum Padding {
+        static let capsuleWidth: CGFloat = 8
+        static let capsuleHeight: CGFloat = 2
     }
 }

@@ -52,14 +52,14 @@ struct ReferencePage: View {
     // MARK: - Main View
 
     var body: some View {
-        VStack(spacing: 0) {
-            // Error state with actionable recovery options
+        Group {
+            // TODO: simplify error checking with some sort of computed property
             if let errorMessage {
                 ContentUnavailableView {
                     Label("Grammar Data Unavailable", systemImage: "exclamationmark.triangle.fill")
                         .foregroundColor(.orange)
                 } description: {
-                    VStack(spacing: 8) {
+                    VStack(spacing: UIConstants.Spacing.row) {
                         Text("Unable to load grammar reference data")
                             .font(.headline)
                         Text(errorMessage)
@@ -93,7 +93,7 @@ struct ReferencePage: View {
                                 "Try refreshing the data or check your connection.",
                         )
                     } else {
-                        VStack(spacing: 4) {
+                        VStack(spacing: UIConstants.Spacing.tightRow) {
                             Text("No results for \"\(searchText)\"")
                                 .font(.headline)
                             Text("Try adjusting your search terms or browsing all grammar points")
@@ -117,7 +117,6 @@ struct ReferencePage: View {
                     .buttonStyle(.bordered)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background()
 
                 // Main grammar table with responsive layout
             } else {
@@ -132,11 +131,8 @@ struct ReferencePage: View {
                 )
             }
         }
-        .animation(.easeInOut(duration: 0.3), value: grammarPoints.count)
-        .animation(.easeInOut(duration: 0.3), value: errorMessage != nil)
-        .navigationTitle("Grammar Reference")
         .toolbar {
-            ToolbarItemGroup(placement: .primaryAction) {
+            ToolbarItemGroup {
                 Menu("Options", systemImage: "ellipsis.circle") {
                     Button("Import Grammar", systemImage: "square.and.arrow.down") {
                         // TODO: Implement grammar import functionality
@@ -165,8 +161,7 @@ struct ReferencePage: View {
                     selectedGrammarID: $selectedGrammarID,
                     isCompact: isCompact,
                 )
-                .inspectorColumnWidth(min: 250, ideal: 300, max: 400)
-                .presentationDetents([.fraction(0.25), .medium])
+                .presentationDetents([.fraction(1 / 4), .medium])
             } else {
                 // Graceful handling of selection edge cases
                 ContentUnavailableView {
@@ -178,8 +173,7 @@ struct ReferencePage: View {
                         showingInspector = false
                     }
                 }
-                .padding()
-                .presentationDetents([.fraction(0.2)])
+                .presentationDetents([.fraction(1 / 4)])
             }
         }
     }

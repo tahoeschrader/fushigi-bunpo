@@ -55,9 +55,7 @@ struct GrammarTable: View {
             }
         }
         .onChange(of: selectedGrammarID) { _, newSelection in
-            withAnimation(.easeInOut(duration: 0.2)) {
-                showingInspector = newSelection != nil
-            }
+            showingInspector = newSelection != nil
         }
         .onChange(of: showingInspector) { _, newValue in
             if !newValue {
@@ -92,7 +90,7 @@ struct CompactGrammarRow: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(UIConstants.Sizing.defaultPadding)
             .background(.quaternary.opacity(0.5))
-            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .clipShape(.capsule)
 
             HStack {
                 if !grammarPoint.tags.isEmpty {
@@ -108,7 +106,7 @@ struct CompactGrammarRow: View {
                     .padding(.horizontal, 4)
                     .padding(.vertical, 1)
                     .background(.quaternary)
-                    .clipShape(Capsule())
+                    .clipShape(.capsule)
             }
             .padding(.horizontal, UIConstants.Sizing.defaultPadding)
         }

@@ -50,8 +50,10 @@ struct JournalEntryForm: View {
                     .padding(UIConstants.Spacing.row)
                     .background(
                         Rectangle()
-                            .stroke(isTitleFocused ? Color.accentColor : Color.primary,
-                                    lineWidth: UIConstants.Border.width),
+                            .stroke(
+                                isTitleFocused ? .purple : .primary,
+                                lineWidth: UIConstants.Border.width,
+                            ),
                     )
                     .focused($isTitleFocused)
                     .onSubmit {
@@ -67,10 +69,14 @@ struct JournalEntryForm: View {
                 TextEditor(text: $entryContent, selection: $textSelection)
                     .font(.custom("HelveticaNeue", size: UIConstants.Sizing.fontSize))
                     .frame(minHeight: UIConstants.Sizing.contentMinHeight, maxHeight: .infinity)
-                    .background(
+                    .padding(UIConstants.Spacing.row)
+                    .scrollContentBackground(.hidden)
+                    .overlay(
                         Rectangle()
-                            .stroke(isContentFocused ? Color.accentColor : Color.primary,
-                                    lineWidth: UIConstants.Border.width + 2),
+                            .stroke(
+                                isContentFocused ? .purple : .primary,
+                                lineWidth: UIConstants.Border.width,
+                            ),
                     )
                     .focused($isContentFocused)
                     .disabled(isSaving)
