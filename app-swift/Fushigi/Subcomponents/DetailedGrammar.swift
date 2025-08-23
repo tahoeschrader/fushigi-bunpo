@@ -11,22 +11,33 @@ import SwiftUI
 
 /// Detailed view displaying comprehensive grammar point information
 struct DetailedGrammar: View {
-    /// Grammar point to display
-    let grammarPoint: GrammarPointLocal
-
     /// Controls view presentation state
     @Binding var isPresented: Bool
 
     /// Currently selected grammar point ID
     @Binding var selectedGrammarID: UUID?
 
-    /// Layout mode indicator for responsive design
-    let isCompact: Bool
+    /// Grammar point to display
+    let grammarPoint: GrammarPointLocal
 
     // MARK: - Main View
 
     var body: some View {
         VStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
+            HStack(spacing: UIConstants.Spacing.default) {
+                Button("Dismiss") {
+                    isPresented = false
+                    selectedGrammarID = nil
+                }
+                .buttonStyle(.bordered)
+
+                Spacer()
+
+                Button("Edit") {
+                    print("Editing grammar point. TODO: implement.")
+                }
+                .buttonStyle(.borderedProminent)
+            }
             VStack(alignment: .leading) {
                 Text("Usage: \(grammarPoint.usage)")
                 Text("Meaning: \(grammarPoint.meaning)")
@@ -44,16 +55,11 @@ struct DetailedGrammar: View {
 // MARK: - Previews
 
 #Preview {
-    @Previewable @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    var isCompact: Bool {
-        horizontalSizeClass == .compact
-    }
     PreviewHelper.withStore { store in
         DetailedGrammar(
-            grammarPoint: store.grammarItems.last!,
             isPresented: .constant(true),
             selectedGrammarID: .constant(store.grammarItems.first!.id),
-            isCompact: isCompact,
+            grammarPoint: store.grammarItems.first!,
         )
     }
 }

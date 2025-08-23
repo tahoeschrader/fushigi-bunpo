@@ -23,9 +23,6 @@ struct PracticePage: View {
     /// Controls the tagging sheet for grammar point and sentence relationships
     @State private var showTagger = false
 
-    /// Currently selected grammar point identifier for tagging operations
-    @State private var selectedGrammarID: UUID?
-
     /// User preference for politeness level filtering
     @State private var selectedLevel: Level = .all
 
@@ -56,7 +53,7 @@ struct PracticePage: View {
     /// Loading state flag to disable UI elements during async operations
     @State private var isSaving = false
 
-    let refreshTip = RefreshTip()
+    @State private var refreshTip = RefreshTip()
 
     /// Determines layout strategy based on available horizontal space
     private var isCompact: Bool {
@@ -81,34 +78,34 @@ struct PracticePage: View {
     // MARK: - Main View
 
     var body: some View {
-        GeometryReader { geometry in
-            ScrollView {
-                VStack(alignment: .leading, spacing: UIConstants.Spacing.default) {
-                    DailyGrammar(
-                        showTagger: $showTagger,
-                        selectedSource: $selectedSource,
-                    )
+        ScrollView {
+            VStack(alignment: .leading, spacing: UIConstants.Spacing.default) {
+                DailyGrammar(
+                    showTagger: $showTagger,
+                    selectedSource: $selectedSource,
+                )
 
-                    JournalEntryForm(
-                        entryTitle: $entryTitle,
-                        entryContent: $entryContent,
-                        textSelection: $textSelection,
-                        isPrivateEntry: $isPrivateEntry,
-                        statusMessage: $statusMessage,
-                        isSaving: $isSaving,
-                    )
-                }
-                .frame(minHeight: geometry.size.height)
+                JournalEntryForm(
+                    entryTitle: $entryTitle,
+                    entryContent: $entryContent,
+                    textSelection: $textSelection,
+                    isPrivateEntry: $isPrivateEntry,
+                    statusMessage: $statusMessage,
+                    isSaving: $isSaving,
+                )
+                .layoutPriority(1) // TODO: should give text editor expansion priority
             }
-            .scrollDismissesKeyboard(.interactively)
+            .padding()
         }
-        .padding()
+        .scrollDismissesKeyboard(.interactively)
         .sheet(isPresented: $showSettings) {
-            if isCompact { settingsView.presentationDetents([.medium]) }
-            else { settingsView }
+            if isCompact {
+                settingsView
+                    .presentationDetents([.medium, .large])
+            } else { settingsView }
         }
         .sheet(isPresented: $showTagger) {
-            if isCompact { taggerView.presentationDetents([.medium]) }
+            if isCompact { taggerView.presentationDetents([.medium, .large]) }
             else { taggerView }
         }
         .toolbar {
@@ -124,7 +121,8 @@ struct PracticePage: View {
             }
             .help("Refresh source of targeted grammar")
             .buttonStyle(.plain)
-            .popoverTip(refreshTip)
+            // TODO: fix tip showing up on other pages sheets
+            .popoverTip(refreshTip, arrowEdge: .top)
         }
     }
 
@@ -157,10 +155,11 @@ struct PracticePage: View {
             )
         } else {
             ContentUnavailableView {
-                Label("Grammar Point Unavailable", systemImage: "exclamationmark.triangle")
+                Label("Grammar Point Unavailable", systemImage: "xmark.circle")
             } description: {
                 Text(
-                    "The selected grammar point id \(selectedGrammarID?.uuidString ?? "nil") could not be loaded. Please try selecting another point.",
+                    "The selected grammar point id is nil." +
+                        "Please try selecting another point.",
                 )
             } actions: {
                 Button("Dismiss") {

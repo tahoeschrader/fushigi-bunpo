@@ -11,40 +11,6 @@ import SwiftUI
 
 // MARK: - Preview Helper
 
-/// Current state of database health or error mode
-enum DataState {
-    case normal
-    case emptyData
-    case syncError
-    case networkLoading
-    case postgresConnectionError
-
-    /// Error states for preview configuration
-    enum Health: LocalizedError {
-        case normal
-        case emptyData
-        case syncError
-        case networkLoading
-        case postgresConnectionError
-
-        /// User-friendly description of each preview mode
-        var description: String {
-            switch self {
-            case .normal:
-                "Standard operation with full sample data set"
-            case .emptyData:
-                "No data available, no matches against filter, first-time user experience, or bug wipe"
-            case .syncError:
-                "General synchronization failure with remote or local services"
-            case .networkLoading:
-                "Currently loading local data and fetching from PostgreSQL"
-            case .postgresConnectionError:
-                "Unable to establish connection to PostgreSQL database"
-            }
-        }
-    }
-}
-
 enum PreviewHelper {
     /// Create fake data store for Preview mode with various configurations
     @MainActor
@@ -80,23 +46,12 @@ enum PreviewHelper {
     @MainActor
     private static func configureStoreForPreviewMode(store: GrammarStore, mode: DataState) {
         switch mode {
-        case .normal:
-            setupNormalPreviewData(store: store)
-
         case .emptyData:
             store.grammarItems = []
-
-        case .syncError:
+            store.dataState = .emptyData
+        case .normal, .syncError, .networkLoading, .postgresConnectionError:
             setupNormalPreviewData(store: store)
-            store.syncError = DataState.Health.syncError
-
-        case .networkLoading:
-            setupNormalPreviewData(store: store)
-            store.isSyncing = true
-
-        case .postgresConnectionError:
-            setupNormalPreviewData(store: store)
-            store.syncError = DataState.Health.postgresConnectionError
+            store.dataState = mode
         }
     }
 

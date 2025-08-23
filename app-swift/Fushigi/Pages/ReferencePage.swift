@@ -44,82 +44,30 @@ struct ReferencePage: View {
         grammarStore.getGrammarPoint(id: selectedGrammarID)
     }
 
-    /// Current error state from data synchronization operations
-    var errorMessage: String? {
-        grammarStore.syncError?.localizedDescription
+    /// Current database state from data synchronization operations
+    var dataState: DataState {
+        grammarStore.dataState
     }
 
     // MARK: - Main View
 
     var body: some View {
         Group {
-            // TODO: simplify error checking with some sort of computed property
-            if let errorMessage {
-                ContentUnavailableView {
-                    Label("Grammar Data Unavailable", systemImage: "exclamationmark.triangle.fill")
-                        .foregroundColor(.orange)
-                } description: {
-                    VStack(spacing: UIConstants.Spacing.row) {
-                        Text("Unable to load grammar reference data")
-                            .font(.headline)
-                        Text(errorMessage)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                            .multilineTextAlignment(.center)
-                    }
-                } actions: {
-                    Button("Retry Connection", systemImage: "arrow.clockwise") {
-                        Task {
-                            await grammarStore.refresh()
-                        }
-                    }
-                    .buttonStyle(.borderedProminent)
-
-                    Button("Check Network Settings", systemImage: "wifi") {
-                        // TODO: Open network settings or provide guidance
-                    }
-                    .buttonStyle(.bordered)
+            switch dataState {
+            case .syncError, .postgresConnectionError:
+                dataState.contentUnavailableView {
+                    await grammarStore.refresh()
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-
-                // Empty search results with helpful guidance
-            } else if grammarPoints.isEmpty {
-                ContentUnavailableView {
-                    Label("No Grammar Points Found", systemImage: "magnifyingglass")
-                } description: {
-                    if searchText.isEmpty {
-                        Text(
-                            "The grammar database appears to be empty." +
-                                "Try refreshing the data or check your connection.",
-                        )
-                    } else {
-                        VStack(spacing: UIConstants.Spacing.tightRow) {
-                            Text("No results for \"\(searchText)\"")
-                                .font(.headline)
-                            Text("Try adjusting your search terms or browsing all grammar points")
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                        }
+            case .emptyData:
+                dataState.contentUnavailableView {
+                    Task {
+                        searchText = ""
+                        await grammarStore.refresh()
                     }
-                } actions: {
-                    if !searchText.isEmpty {
-                        Button("Clear Search") {
-                            searchText = ""
-                        }
-                        .buttonStyle(.borderedProminent)
-                    }
-
-                    Button("Refresh Data") {
-                        Task {
-                            await grammarStore.refresh()
-                        }
-                    }
-                    .buttonStyle(.bordered)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-
-                // Main grammar table with responsive layout
-            } else {
+            case .networkLoading:
+                dataState.contentUnavailableView {}
+            case .normal:
                 GrammarTable(
                     selectedGrammarID: $selectedGrammarID,
                     showingInspector: $showingInspector,
@@ -156,24 +104,23 @@ struct ReferencePage: View {
         .inspector(isPresented: $showingInspector) {
             if let selectedGrammarPoint {
                 DetailedGrammar(
-                    grammarPoint: selectedGrammarPoint,
                     isPresented: $showingInspector,
                     selectedGrammarID: $selectedGrammarID,
-                    isCompact: isCompact,
+                    grammarPoint: selectedGrammarPoint,
                 )
-                .presentationDetents([.fraction(1 / 4), .medium])
+                .presentationDetents([.medium, .large], selection: .constant(.medium))
             } else {
                 // Graceful handling of selection edge cases
                 ContentUnavailableView {
                     Label("Selection Cleared", systemImage: "xmark.circle")
                 } description: {
-                    Text("The grammar point selection was cleared. Choose another item to view details.")
+                    Text("Selection cleared. Choose another item to view details.")
                 } actions: {
-                    Button("Close Inspector") {
+                    Button("Dismiss") {
                         showingInspector = false
                     }
                 }
-                .presentationDetents([.fraction(1 / 4)])
+                .presentationDetents([.medium])
             }
         }
     }

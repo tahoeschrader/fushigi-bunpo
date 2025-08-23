@@ -80,11 +80,13 @@ struct JournalEntryForm: View {
                     )
                     .focused($isContentFocused)
                     .disabled(isSaving)
+                    .layoutPriority(1) // TODO: why is this not autosizing
             }
 
             // Privacy toggle
             Toggle("Private Entry", isOn: $isPrivateEntry)
                 .disabled(isSaving)
+                .frame(maxWidth: .infinity, alignment: .leading)
 
             // Save section
             HStack(alignment: .center) {

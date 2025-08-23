@@ -22,14 +22,11 @@ class GrammarStore: ObservableObject {
     /// Daily subset of SRS-selected grammar points for practice
     @Published private(set) var algorithmicGrammarItems: [GrammarPointLocal] = []
 
-    /// Sync operation in progress flag
-    @Published var isSyncing = false
+    /// Current data state encompassing sync status, errors, and loading state
+    @Published var dataState: DataState = .emptyData
 
     /// Last successful sync timestamp
     @Published var lastSyncDate: Date?
-
-    /// Current sync error if any
-    @Published var syncError: Error?
 
     /// Currently selected grammar item for quick UI
     @Published var selectedGrammarPoint: GrammarPointLocal?
@@ -83,6 +80,10 @@ class GrammarStore: ObservableObject {
             }
         }
 
+        if filtered.isEmpty {
+            dataState = .emptyData
+        }
+
         return filtered
     }
 
@@ -115,30 +116,29 @@ class GrammarStore: ObservableObject {
         do {
             grammarItems = try modelContext.fetch(FetchDescriptor<GrammarPointLocal>())
             print("Loaded \(grammarItems.count) items from local storage")
+            dataState = .normal
         } catch {
             print("Failed to load local grammar points:", error)
+            dataState = .syncError
         }
     }
 
     /// Sync grammar points from remote PostgreSQL database
     func syncWithRemote() async {
         // Proceed only if not already syncing, guarantee rest of code is safe
-        guard !isSyncing else { return }
+        guard dataState != .networkLoading else { return }
 
-        isSyncing = true
-        syncError = nil
-
-        // End function by resetting sync flag, even after error
-        defer { isSyncing = false }
+        dataState = .networkLoading
 
         let result = await fetchGrammarPoints()
         switch result {
         case let .success(remotePoints):
             await processRemotePoints(remotePoints)
             lastSyncDate = Date()
+            dataState = .normal
         case let .failure(error):
             print("Failed to sync grammar points from PostgreSQL:", error)
-            syncError = error
+            dataState = .postgresConnectionError
         }
     }
 
@@ -170,10 +170,10 @@ class GrammarStore: ObservableObject {
         do {
             try modelContext.save()
             print("Synced \(remotePoints.count) local grammar points with PostgreSQL.")
-            syncError = nil
+            dataState = .normal
         } catch {
             print("Failed to save to local SwiftData:", error)
-            syncError = error
+            dataState = .syncError
         }
     }
 
@@ -205,6 +205,7 @@ class GrammarStore: ObservableObject {
         if force || lastRandomUpdate != today || randomGrammarItems.isEmpty {
             randomGrammarItems = Array(grammarItems.shuffled().prefix(5))
             lastRandomUpdate = today
+            dataState = .normal
             print("Loaded \(randomGrammarItems.count) new random grammar items from SwiftData.")
         }
     }
@@ -214,13 +215,9 @@ class GrammarStore: ObservableObject {
         let today = Calendar.current.startOfDay(for: Date())
         if force || lastAlgorithmicUpdate != today || algorithmicGrammarItems.isEmpty {
             // Proceed only if not already syncing, guarantee rest of code is safe
-            guard !isSyncing else { return }
+            guard dataState != .networkLoading else { return }
 
-            isSyncing = true
-            syncError = nil
-
-            // End function by resetting sync flag, even after error
-            defer { isSyncing = false }
+            dataState = .networkLoading
 
             let result = await fetchGrammarPointsRandom()
             switch result {
@@ -228,9 +225,10 @@ class GrammarStore: ObservableObject {
                 let idSubset = Set(points.map(\.id))
                 algorithmicGrammarItems = grammarItems.filter { idSubset.contains($0.id) }
                 lastAlgorithmicUpdate = today
+                dataState = .normal
                 print("Loaded \(algorithmicGrammarItems.count) SRS items from PostgreSQL.")
             case let .failure(error):
-                syncError = error
+                dataState = .postgresConnectionError
                 print("Failed to fetch SRS points:", error)
             }
         }

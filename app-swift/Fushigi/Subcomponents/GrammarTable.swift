@@ -79,37 +79,29 @@ struct CompactGrammarRow: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
-            VStack(alignment: .leading, spacing: 4) {
+            HStack {
                 Text(grammarPoint.usage)
                     .font(.body)
                     .fontWeight(.medium)
-                Text(grammarPoint.meaning)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(UIConstants.Sizing.defaultPadding)
-            .background(.quaternary.opacity(0.5))
-            .clipShape(.capsule)
-
-            HStack {
-                if !grammarPoint.tags.isEmpty {
-                    coloredTagsText(tags: grammarPoint.tags)
-                        .font(.caption)
-                }
+                    .foregroundStyle(.mint)
 
                 Spacer()
 
                 Text(grammarPoint.context)
                     .font(.caption2)
                     .fontWeight(.medium)
-                    .padding(.horizontal, 4)
-                    .padding(.vertical, 1)
-                    .background(.quaternary)
-                    .clipShape(.capsule)
+                    .foregroundStyle(.purple)
             }
-            .padding(.horizontal, UIConstants.Sizing.defaultPadding)
+
+            Text(grammarPoint.meaning)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+
+            if !grammarPoint.tags.isEmpty {
+                coloredTagsText(tags: grammarPoint.tags)
+            }
         }
+        .padding(UIConstants.Sizing.defaultPadding)
     }
 }
 

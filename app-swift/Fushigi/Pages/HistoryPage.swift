@@ -11,9 +11,6 @@ import SwiftUI
 
 /// Displays user journal entries with search and expandable detail view
 struct HistoryPage: View {
-    /// Responsive layout detection for adaptive navigation structure
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
-
     /// Journal entries fetched from database
     @State private var journalEntries: [JournalEntryResponse] = []
 
@@ -25,11 +22,6 @@ struct HistoryPage: View {
 
     /// Search text binding from parent view
     @Binding var searchText: String
-
-    /// Determines whether to use compact navigation patterns (tabs vs split view)
-    var isCompact: Bool {
-        horizontalSizeClass == .compact
-    }
 
     // MARK: - Main View
 
@@ -109,54 +101,79 @@ struct HistoryPage: View {
         } else if filteredEntries.isEmpty {
             ContentUnavailableView.search
         } else {
-            ScrollView {
-                LazyVStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
-                    ForEach(filteredEntries) { entry in
-                        VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
-                            Button {
-                                toggleExpanded(for: entry.id)
-                            } label: {
-                                HStack {
-                                    VStack(alignment: .leading) {
-                                        Text(entry.title)
-                                            .font(.headline)
-                                        Text(entry.createdAt.formatted())
-                                            .font(.caption)
-                                            .foregroundStyle(.secondary)
-                                    }
-                                    Spacer()
-                                    Image(systemName: expanded.contains(entry.id) ?
-                                        "chevron.down" : "chevron.right")
+            List {
+                ForEach(filteredEntries) { entry in
+                    VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(entry.title)
+                                    .font(.headline)
+                                Text(entry.createdAt.formatted())
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Spacer()
+                            Image(systemName: expanded.contains(entry.id) ?
+                                "chevron.down" : "chevron.right")
+                                .animation(.none, value: expanded.contains(entry.id))
+                        }
+
+                        if expanded.contains(entry.id) {
+                            VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                                Text(entry.content)
+
+                                VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
+                                    Text("Grammar Points:")
+                                        .font(.subheadline)
+                                        .foregroundStyle(.mint)
+                                    Text("• (placeholder) ～てしまう")
+                                    Text("• (placeholder) ～わけではない")
+                                }
+
+                                VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
+                                    Text("AI Feedback:")
+                                        .font(.subheadline)
+                                        .foregroundStyle(.purple)
+                                    Text("(placeholder) Try to avoid passive constructions.")
                                 }
                             }
-                            .buttonStyle(.plain)
-
-                            if expanded.contains(entry.id) {
-                                VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
-                                    Text(entry.content)
-
-                                    VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
-                                        Text("Grammar Points:")
-                                            .font(.subheadline)
-                                            .foregroundStyle(.mint)
-                                        Text("• (placeholder) ～てしまう")
-                                        Text("• (placeholder) ～わけではない")
-                                    }
-
-                                    VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
-                                        Text("AI Feedback:")
-                                            .font(.subheadline)
-                                            .foregroundStyle(.purple)
-                                        Text("(placeholder) Try to avoid passive constructions.")
-                                    }
-                                }
-                                .padding(.leading)
-                            }
+                            .padding(.leading)
                         }
                     }
-                    .onDelete(perform: deleteEntry)
+                    .contentShape(.rect)
+                    .onTapGesture { // hilarious animation...
+                        withAnimation(.bouncy(duration: 0.6, extraBounce: 0.3)) {
+                            toggleExpanded(for: entry.id)
+                        }
+                    }
+                    .listRowBackground(Color.clear)
+                    .swipeActions(edge: .trailing) {
+                        Button("Edit") {
+                            print("Share entry: \(entry.title)")
+                        }
+                        .tint(.gray)
+
+                        Button("Delete", role: .destructive) {
+                            if let index = filteredEntries.firstIndex(where: { $0.id == entry.id }) {
+                                deleteEntry(at: IndexSet(integer: index))
+                            }
+                        }
+                        .tint(.red)
+                    }
+                    .swipeActions(edge: .leading) {
+                        Button("Pin") {
+                            // Pin/favorite action
+                            print("Pin entry: \(entry.title)")
+                        }
+                        .tint(.mint)
+
+                        Button("Share") {
+                            // Edit action
+                            print("Edit entry: \(entry.title)")
+                        }
+                        .tint(.purple)
+                    }
                 }
-                .padding()
             }
             .scrollDismissesKeyboard(.interactively)
         }

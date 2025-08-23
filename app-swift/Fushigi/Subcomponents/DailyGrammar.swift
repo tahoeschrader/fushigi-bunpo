@@ -25,28 +25,21 @@ struct DailyGrammar: View {
         grammarStore.getGrammarPoints(for: selectedSource)
     }
 
-    /// Current error state from grammar store operations
-    private var errorMessage: String? {
-        grammarStore.syncError?.localizedDescription
-    }
-
-    // TODO: FIgure this out
-    private var isSyncing: Bool {
-        grammarStore.isSyncing
+    /// Current database state from data synchronization operations
+    var dataState: DataState {
+        grammarStore.dataState
     }
 
     // MARK: - Main View
 
     var body: some View {
         VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
-            // Section header with dynamic sourcing mode indicator
             HStack {
                 Text("Targeted Grammar")
                     .font(.headline)
 
                 Spacer()
 
-                // Source mode indicator with subtle styling
                 Text(selectedSource.id)
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -58,26 +51,12 @@ struct DailyGrammar: View {
 
             Divider()
 
-            // Error state handling with clear user guidance
-            if isSyncing {
-                ContentUnavailableView {
-                    VStack(spacing: UIConstants.Spacing.section) {
-                        ProgressView()
-                            .scaleEffect(2.5)
-                            .frame(height: UIConstants.Sizing.icons)
-                        Text("Loading")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                    }
-                } description: {
-                    Text("Fetching your grammar points...")
-                        .foregroundStyle(.secondary)
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else if let errorMessage {
-                errorStateView(message: "Error: \(errorMessage)")
-            } else {
-                // Grammar points display with optimized layout
+            switch dataState {
+            case .syncError, .postgresConnectionError, .emptyData:
+                dataState.contentUnavailableView { await grammarStore.refresh() }
+            case .networkLoading:
+                dataState.contentUnavailableView {}
+            case .normal:
                 VStack {
                     ForEach(grammarPoints, id: \.id) { grammarPoint in
                         TaggableGrammarRow(
@@ -103,19 +82,6 @@ struct DailyGrammar: View {
         } else {
             await grammarStore.updateAlgorithmicGrammarPoints(force: true)
         }
-    }
-
-    @ViewBuilder
-    private func errorStateView(message: String) -> some View {
-        ContentUnavailableView {
-            Label("Grammar Points Unavailable", systemImage: "exclamationmark.triangle")
-        } description: {
-            Text(message).foregroundColor(.red)
-        } actions: {
-            Button("Refresh") { Task { await refreshGrammarPoints() } }
-                .buttonStyle(.bordered)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

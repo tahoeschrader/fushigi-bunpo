@@ -98,21 +98,15 @@ enum SourceMode: String, CaseIterable, Identifiable {
 // MARK: - Helper Functions
 
 /// Create colored text from array of tags
-func coloredTagsText(tags: [String]) -> Text {
-    var combinedText = Text("")
-
-    for (index, tag) in tags.enumerated() {
-        let coloredText = Text(tag)
+@ViewBuilder
+func coloredTagsText(tags: [String]) -> some View {
+    ForEach(Array(tags.enumerated()), id: \.offset) { index, tag in
+        Text(tag)
             .font(.caption)
             .foregroundColor(index.isMultiple(of: 2) ? .primary : .secondary)
-
-        // swiftlint:disable:next shorthand_operator
-        combinedText = combinedText + coloredText
-
-        if index < tags.count - 1 {
-            // swiftlint:disable:next shorthand_operator
-            combinedText = combinedText + Text("   ").font(.caption).foregroundColor(.primary)
-        }
+            .padding(.horizontal, 4)
+            .padding(.vertical, 1)
+            .background(.quaternary)
+            .clipShape(.capsule)
     }
-    return combinedText
 }

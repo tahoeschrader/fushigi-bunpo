@@ -33,18 +33,22 @@ struct Tagger: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: UIConstants.Spacing.default) {
-            // Operation status display
-            if let message = operationMessage {
-                HStack {
-                    Image(systemName: isTagCreated ? "checkmark.circle.fill" : "info.circle.fill")
-                        .foregroundColor(isTagCreated ? .red : .mint)
-                    Text(message)
-                        .font(.subheadline)
+            // Action buttons with clear visual hierarchy
+            HStack(spacing: UIConstants.Spacing.default) {
+                Button("Dismiss") {
+                    dismissTagger()
                 }
-                .padding(.horizontal, UIConstants.Padding.capsuleWidth)
-                .padding(.vertical, UIConstants.Padding.capsuleHeight)
-                .background(.quaternary)
-                .clipShape(.capsule)
+                .buttonStyle(.bordered)
+
+                Spacer()
+
+                Button("Confirm") {
+                    Task {
+                        await confirmTagging()
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(selectedText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || isTagCreated)
             }
 
             // Grammar point information display
@@ -82,6 +86,8 @@ struct Tagger: View {
                 }
             }
 
+            Spacer()
+
             // Selected text information display
             VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
                 Label("Selected Text", systemImage: "text.quote")
@@ -101,22 +107,20 @@ struct Tagger: View {
                     )
             }
 
-            // Action buttons with clear visual hierarchy
-            HStack(spacing: UIConstants.Spacing.default) {
-                Button("Cancel") {
-                    dismissTagger()
-                }
-                .buttonStyle(.bordered)
-
+            // Operation status display
+            if let message = operationMessage {
                 Spacer()
 
-                Button("Create Link") {
-                    Task {
-                        await confirmTagging()
-                    }
+                HStack {
+                    Image(systemName: isTagCreated ? "checkmark.circle.fill" : "info.circle.fill")
+                        .foregroundColor(isTagCreated ? .mint : .red)
+                    Text(message)
+                        .font(.subheadline)
                 }
-                .buttonStyle(.borderedProminent)
-                .disabled(selectedText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || isTagCreated)
+                .padding(.horizontal, UIConstants.Padding.capsuleWidth)
+                .padding(.vertical, UIConstants.Padding.capsuleHeight)
+                .background(.quaternary)
+                .clipShape(.capsule)
             }
         }
         .padding()
@@ -132,17 +136,8 @@ struct Tagger: View {
             return
         }
 
-        // TODO: Implement actual database relationship creation
-        // let success = await createGrammarTextLink(grammarPoint: grammarPoint, text: selectedText)
-
-        // Simulate successful operation for now
         isTagCreated = true
         operationMessage = "Grammar link created successfully!"
-
-        // Auto-dismiss after brief delay for user confirmation
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            dismissTagger()
-        }
     }
 
     /// Dismiss tagging interface and clear selection state
@@ -166,7 +161,6 @@ struct Tagger: View {
         ),
         selectedText: "私は音楽を聞きながら勉強しています。",
     )
-    .navigationTitle("Link Grammar")
     .withPreviewNavigation()
 }
 
@@ -182,6 +176,5 @@ struct Tagger: View {
         ),
         selectedText: "",
     )
-    .navigationTitle("Link Grammar")
     .withPreviewNavigation()
 }
