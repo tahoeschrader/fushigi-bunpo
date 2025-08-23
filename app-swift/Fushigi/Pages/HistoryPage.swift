@@ -175,8 +175,8 @@ struct HistoryPage: View {
         .withPreviewNavigation()
 }
 
-#Preview("Load Error") {
-    HistoryPage(searchText: .constant("nonexistent"))
-        .withPreviewNavigation()
-        .withPreviewGrammarStore(mode: .loadError)
-}
+// #Preview("TODO Load State") {
+//    HistoryPage(searchText: .constant(""))
+//        .withPreviewNavigation()
+//        .withPreviewGrammarStore(mode: .networkLoading)
+// }

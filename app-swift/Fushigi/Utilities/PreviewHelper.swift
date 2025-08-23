@@ -11,22 +11,20 @@ import SwiftUI
 
 // MARK: - Preview Helper
 
-/// Preview helper for configuring different app states
-enum PreviewHelper {
+/// Current state of database health or error mode
+enum DataState {
     case normal
     case emptyData
     case syncError
-    case loadError
-    case networkTimeout
+    case networkLoading
     case postgresConnectionError
 
     /// Error states for preview configuration
-    enum Error: LocalizedError {
+    enum Health: LocalizedError {
         case normal
         case emptyData
         case syncError
-        case loadError
-        case networkTimeout
+        case networkLoading
         case postgresConnectionError
 
         /// User-friendly description of each preview mode
@@ -35,43 +33,23 @@ enum PreviewHelper {
             case .normal:
                 "Standard operation with full sample data set"
             case .emptyData:
-                "No data available, first-time user experience"
+                "No data available, no matches against filter, first-time user experience, or bug wipe"
             case .syncError:
-                "General synchronization failure with remote services"
-            case .loadError:
-                "Database corruption or loading failure scenario"
-            case .networkTimeout:
-                "Network connectivity issues preventing data access"
-            case .postgresConnectionError:
-                "PostgreSQL database connection failure scenario"
-            }
-        }
-
-        /// User-friendly description of each failure reason
-        var failureReason: String? {
-            switch self {
-            case .syncError:
-                "The remote server is not responding"
-            case .loadError:
-                "Local database file appears to be damaged"
-            case .networkTimeout:
-                "Request took too long to complete"
+                "General synchronization failure with remote or local services"
+            case .networkLoading:
+                "Currently loading local data and fetching from PostgreSQL"
             case .postgresConnectionError:
                 "Unable to establish connection to PostgreSQL database"
-            case .normal:
-                "No issues"
-            case .emptyData:
-                "All data has been filtered out or there is no data to filter"
             }
         }
     }
 }
 
-extension PreviewHelper {
+enum PreviewHelper {
     /// Create fake data store for Preview mode with various configurations
     @MainActor
     static func withStore(
-        mode: PreviewHelper = .normal,
+        mode: DataState = .normal,
         @ViewBuilder content: @escaping (GrammarStore) -> some View,
     ) -> some View {
         do {
@@ -100,7 +78,7 @@ extension PreviewHelper {
 
     /// Configure store for different preview modes
     @MainActor
-    private static func configureStoreForPreviewMode(store: GrammarStore, mode: PreviewHelper) {
+    private static func configureStoreForPreviewMode(store: GrammarStore, mode: DataState) {
         switch mode {
         case .normal:
             setupNormalPreviewData(store: store)
@@ -110,20 +88,15 @@ extension PreviewHelper {
 
         case .syncError:
             setupNormalPreviewData(store: store)
-            store.syncError = Error.syncError
+            store.syncError = DataState.Health.syncError
 
-        case .loadError:
-            setupNormalPreviewData(store: store)
-            store.syncError = Error.loadError
-
-        case .networkTimeout:
+        case .networkLoading:
             setupNormalPreviewData(store: store)
             store.isSyncing = true
-            store.syncError = Error.networkTimeout
 
         case .postgresConnectionError:
             setupNormalPreviewData(store: store)
-            store.syncError = Error.postgresConnectionError
+            store.syncError = DataState.Health.postgresConnectionError
         }
     }
 

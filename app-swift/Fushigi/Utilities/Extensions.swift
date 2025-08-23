@@ -47,7 +47,7 @@ extension View {
 }
 
 extension View {
-    /// Conditionally apply searchable modifier
+    /// Conditionally apply searchable modifier for iPad since views can either be macOS-like or iPhone-like
     @ViewBuilder
     func searchableIf(_ condition: Bool, text: Binding<String>, prompt: String = "Search") -> some View {
         if condition {
@@ -60,7 +60,7 @@ extension View {
 
 extension View {
     /// Add fake datastore for Preview mode
-    func withPreviewGrammarStore(mode: PreviewHelper = .normal) -> some View {
+    func withPreviewGrammarStore(mode: DataState = .normal) -> some View {
         PreviewHelper.withStore(mode: mode) { _ in
             self
         }

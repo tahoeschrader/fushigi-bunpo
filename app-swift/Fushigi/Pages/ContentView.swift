@@ -108,7 +108,6 @@ struct ContentView: View {
         detail: {
             if let selectedPage {
                 decoratedView(for: selectedPage)
-                // .searchableIf(selectedPage.supportsSearch, text: $searchText) // macOS top trailing left position
             } else {
                 // Fallback state for navigation edge cases
                 ContentUnavailableView {
@@ -186,12 +185,12 @@ struct ContentView: View {
         .withPreviewGrammarStore(mode: .syncError)
 }
 
-#Preview("Network Timeout State") {
+#Preview("Load State") {
     ContentView()
-        .withPreviewGrammarStore(mode: .networkTimeout)
+        .withPreviewGrammarStore(mode: .networkLoading)
 }
 
-#Preview("Database Error State") {
+#Preview("PostgreSQL Connection State") {
     ContentView()
         .withPreviewGrammarStore(mode: .postgresConnectionError)
 }
