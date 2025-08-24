@@ -11,8 +11,8 @@ import SwiftUI
 
 /// Displays user journal entries with search and expandable detail view
 struct HistoryPage: View {
-    /// Journal entries fetched from database
-    @State private var journalEntries: [JournalEntryResponse] = []
+    /// Centralized journal entry repository with synchronization capabilities
+    @EnvironmentObject var journalStore: JournalStore
 
     /// Error message to display if data fetch fails
     @State private var errorMessage: String?
@@ -23,36 +23,54 @@ struct HistoryPage: View {
     /// Search text binding from parent view
     @Binding var searchText: String
 
+    /// Filtered journal entries based on current search criteria
+    var journalEntries: [JournalEntryLocal] {
+        journalStore.filterJournalEntries(containing: searchText)
+    }
+
+    /// Current database state from data synchronization operations
+    var dataState: DataState {
+        journalStore.dataState
+    }
+
     // MARK: - Main View
 
     var body: some View {
-        journalEntryList
-            .task {
-                let result = await fetchJournalEntries()
-                switch result {
-                case let .success(entries):
-                    journalEntries = entries
-                    errorMessage = nil
-                case let .failure(error):
-                    errorMessage = error.localizedDescription
+        Group {
+            switch dataState {
+            case .syncError, .postgresConnectionError:
+                dataState.contentUnavailableView {
+                    await journalStore.refresh()
                 }
+            case .emptyData:
+                dataState.contentUnavailableView {
+                    Task {
+                        searchText = ""
+                        await journalStore.refresh()
+                    }
+                }
+            case .networkLoading:
+                dataState.contentUnavailableView {}
+            case .normal:
+                journalEntryList
             }
-            .toolbar {
-                Menu("Sort", systemImage: "arrow.up.arrow.down") {
-                    Button("Newest First") { /* TODO: Implement sorting */ }
-                    Button("Oldest First") { /* TODO: Implement sorting */ }
-                    Button("By Title") { /* TODO: Implement sorting */ }
-                }
+        }
+        .toolbar {
+            Menu("Sort", systemImage: "arrow.up.arrow.down") {
+                Button("Newest First") { /* TODO: Implement sorting */ }
+                Button("Oldest First") { /* TODO: Implement sorting */ }
+                Button("By Title") { /* TODO: Implement sorting */ }
+            }
 
-                Menu("Filter", systemImage: "line.3.horizontal.decrease.circle") {
-                    Button("All Entries") { /* TODO: Implement filtering */ }
-                    Button("Private Only") { /* TODO: Implement filtering */ }
-                    Button("Public Only") { /* TODO: Implement filtering */ }
-                    Divider()
-                    Button("This Week") { /* TODO: Implement filtering */ }
-                    Button("This Month") { /* TODO: Implement filtering */ }
-                }
+            Menu("Filter", systemImage: "line.3.horizontal.decrease.circle") {
+                Button("All Entries") { /* TODO: Implement filtering */ }
+                Button("Private Only") { /* TODO: Implement filtering */ }
+                Button("Public Only") { /* TODO: Implement filtering */ }
+                Divider()
+                Button("This Week") { /* TODO: Implement filtering */ }
+                Button("This Month") { /* TODO: Implement filtering */ }
             }
+        }
     }
 
     // MARK: - Helper Methods
@@ -69,113 +87,90 @@ struct HistoryPage: View {
     /// Delete journal entries at specified offsets
     private func deleteEntry(at offsets: IndexSet) {
         for index in offsets {
-            let deletedEntry = filteredEntries[index]
-            print("Pretending to delete: \(deletedEntry.title)")
-            if let realIndex = journalEntries.firstIndex(where: { $0.id == deletedEntry.id }) {
-                journalEntries.remove(at: realIndex)
-            }
-        }
-    }
-
-    /// Filter journal entries based on search text
-    var filteredEntries: [JournalEntryResponse] {
-        if searchText.isEmpty {
-            journalEntries
-        } else {
-            journalEntries.filter {
-                $0.title.localizedCaseInsensitiveContains(searchText) ||
-                    $0.content.localizedCaseInsensitiveContains(searchText)
-            }
+            let deletedEntry = journalEntries[index]
+            print("LOG: Pretending to delete: \(deletedEntry.title)")
         }
     }
 
     @ViewBuilder
     private var journalEntryList: some View {
-        // TODO: Clean up the error messages to display custom views
-        if errorMessage != nil {
-            ContentUnavailableView {
-                Label("Error", systemImage: "exclamationmark.warninglight.fill")
-            } description: {
-                Text(errorMessage!)
-            }
-        } else if filteredEntries.isEmpty {
-            ContentUnavailableView.search
-        } else {
-            List {
-                ForEach(filteredEntries) { entry in
-                    VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(entry.title)
-                                    .font(.headline)
-                                Text(entry.createdAt.formatted())
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                            Spacer()
-                            Image(systemName: expanded.contains(entry.id) ?
-                                "chevron.down" : "chevron.right")
-                                .animation(.none, value: expanded.contains(entry.id))
+        List {
+            ForEach(journalEntries) { entry in
+                VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(entry.title)
+                                .font(.headline)
+                            Text(entry.createdAt.formatted())
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
                         }
-
-                        if expanded.contains(entry.id) {
-                            VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
-                                Text(entry.content)
-
-                                VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
-                                    Text("Grammar Points:")
-                                        .font(.subheadline)
-                                        .foregroundStyle(.mint)
-                                    Text("• (placeholder) ～てしまう")
-                                    Text("• (placeholder) ～わけではない")
-                                }
-
-                                VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
-                                    Text("AI Feedback:")
-                                        .font(.subheadline)
-                                        .foregroundStyle(.purple)
-                                    Text("(placeholder) Try to avoid passive constructions.")
-                                }
-                            }
-                            .padding(.leading)
-                        }
+                        Spacer()
+                        Image(systemName: expanded.contains(entry.id) ?
+                            "chevron.down" : "chevron.right")
+                            .animation(.none, value: expanded.contains(entry.id))
                     }
-                    .contentShape(.rect)
-                    .onTapGesture { // hilarious animation...
-                        withAnimation(.bouncy(duration: 0.6, extraBounce: 0.3)) {
-                            toggleExpanded(for: entry.id)
-                        }
-                    }
-                    .listRowBackground(Color.clear)
-                    .swipeActions(edge: .trailing) {
-                        Button("Edit") {
-                            print("Share entry: \(entry.title)")
-                        }
-                        .tint(.gray)
 
-                        Button("Delete", role: .destructive) {
-                            if let index = filteredEntries.firstIndex(where: { $0.id == entry.id }) {
-                                deleteEntry(at: IndexSet(integer: index))
+                    if expanded.contains(entry.id) {
+                        VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                            Text(entry.content)
+
+                            VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
+                                Text("Grammar Points:")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.mint)
+                                Text("• (placeholder) ～てしまう")
+                                Text("• (placeholder) ～わけではない")
+                            }
+
+                            VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
+                                Text("AI Feedback:")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.purple)
+                                Text("(placeholder) Try to avoid passive constructions.")
                             }
                         }
-                        .tint(.red)
-                    }
-                    .swipeActions(edge: .leading) {
-                        Button("Pin") {
-                            // Pin/favorite action
-                            print("Pin entry: \(entry.title)")
-                        }
-                        .tint(.mint)
-
-                        Button("Share") {
-                            // Edit action
-                            print("Edit entry: \(entry.title)")
-                        }
-                        .tint(.purple)
+                        .padding(.leading)
                     }
                 }
+                .contentShape(.rect)
+                .onTapGesture { // hilarious animation...
+                    withAnimation(.bouncy(duration: 0.6, extraBounce: 0.3)) {
+                        toggleExpanded(for: entry.id)
+                    }
+                }
+                .listRowBackground(Color.clear)
+                .swipeActions(edge: .trailing) {
+                    Button("Edit") {
+                        print("LOG: Share entry: \(entry.title)")
+                    }
+                    .tint(.gray)
+
+                    Button("Delete", role: .destructive) {
+                        if let index = journalEntries.firstIndex(where: { $0.id == entry.id }) {
+                            deleteEntry(at: IndexSet(integer: index))
+                        }
+                    }
+                    .tint(.red)
+                }
+                .swipeActions(edge: .leading) {
+                    Button("Pin") {
+                        // Pin/favorite action
+                        print("LOG: Pin entry: \(entry.title)")
+                    }
+                    .tint(.mint)
+
+                    Button("Share") {
+                        // Edit action
+                        print("LOG: Edit entry: \(entry.title)")
+                    }
+                    .tint(.purple)
+                }
             }
-            .scrollDismissesKeyboard(.interactively)
+        }
+        .scrollDismissesKeyboard(.interactively)
+        .refreshable {
+            await journalStore.refresh()
         }
     }
 }
@@ -185,15 +180,17 @@ struct HistoryPage: View {
 #Preview("Normal State") {
     HistoryPage(searchText: .constant(""))
         .withPreviewNavigation()
+        .withPreviewStores()
 }
 
 #Preview("No Search Results") {
     HistoryPage(searchText: .constant("nonexistent"))
         .withPreviewNavigation()
+        .withPreviewStores(mode: .emptyData)
 }
 
-// #Preview("TODO Load State") {
-//    HistoryPage(searchText: .constant(""))
-//        .withPreviewNavigation()
-//        .withPreviewGrammarStore(mode: .networkLoading)
-// }
+#Preview("Load State") {
+    HistoryPage(searchText: .constant(""))
+        .withPreviewNavigation()
+        .withPreviewStores(mode: .networkLoading)
+}

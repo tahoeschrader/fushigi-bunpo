@@ -16,22 +16,24 @@ enum PreviewHelper {
     @MainActor
     static func withStore(
         mode: DataState = .normal,
-        @ViewBuilder content: @escaping (GrammarStore) -> some View,
+        @ViewBuilder content: @escaping (GrammarStore, JournalStore) -> some View,
     ) -> some View {
         do {
             // for previews, we only want the data store to only live in memory while testing
             let container = try ModelContainer(
-                for: Schema([GrammarPointLocal.self]),
+                for: Schema([GrammarPointLocal.self, JournalEntryLocal.self]),
                 configurations: [ModelConfiguration(isStoredInMemoryOnly: true)],
             )
-            let store = GrammarStore(modelContext: container.mainContext)
+            let grammarStore = GrammarStore(modelContext: container.mainContext)
+            let journalStore = JournalStore(modelContext: container.mainContext)
 
             // Configure store with fake data based on preview mode
-            configureStoreForPreviewMode(store: store, mode: mode)
+            configureStoresForPreviewMode(grammarStore: grammarStore, journalStore: journalStore, mode: mode)
 
             return AnyView(
-                content(store)
-                    .environmentObject(store)
+                content(grammarStore, journalStore)
+                    .environmentObject(grammarStore)
+                    .environmentObject(journalStore)
                     .modelContainer(container),
             )
         } catch {
@@ -42,22 +44,30 @@ enum PreviewHelper {
         }
     }
 
-    /// Configure store for different preview modes
+    /// Configure grammar store for different preview modes
     @MainActor
-    private static func configureStoreForPreviewMode(store: GrammarStore, mode: DataState) {
+    private static func configureStoresForPreviewMode(
+        grammarStore: GrammarStore,
+        journalStore: JournalStore,
+        mode: DataState,
+    ) {
         switch mode {
         case .emptyData:
-            store.grammarItems = []
-            store.dataState = .emptyData
+            grammarStore.grammarItems = []
+            journalStore.journalEntries = []
+            grammarStore.dataState = .emptyData
+            journalStore.dataState = .emptyData
         case .normal, .syncError, .networkLoading, .postgresConnectionError:
-            setupNormalPreviewData(store: store)
-            store.dataState = mode
+            setupGrammar(grammarStore)
+            setupJournal(journalStore)
+            grammarStore.dataState = mode
+            journalStore.dataState = mode
         }
     }
 
     /// Load preview store with fake grammar data
     @MainActor
-    private static func setupNormalPreviewData(store: GrammarStore) {
+    private static func setupGrammar(_ store: GrammarStore) {
         let fakeItems = [
             GrammarPointLocal(id: UUID(), context: "casual", usage: "Hello", meaning: "こんにちは", tags: ["greeting"]),
             GrammarPointLocal(id: UUID(), context: "casual", usage: "Goodbye", meaning: "さようなら", tags: ["farewell"]),
@@ -69,5 +79,49 @@ enum PreviewHelper {
         store.grammarItems = fakeItems
         store.setRandomGrammarPointsForPreview(Array(fakeItems.shuffled().prefix(5)))
         store.setAlgorithmicGrammarPointsForPreview(Array(fakeItems.shuffled().prefix(5)))
+    }
+
+    /// Load preview store with fake journal data
+    @MainActor
+    private static func setupJournal(_ store: JournalStore) {
+        let fakeItems = [
+            JournalEntryLocal(
+                id: UUID(),
+                title: "Hello 1",
+                content: "Blah blah blah.",
+                private: false,
+                createdAt: Date(),
+            ),
+            JournalEntryLocal(
+                id: UUID(),
+                title: "Hello 2",
+                content: "Blah blah blah.",
+                private: false,
+                createdAt: Date(),
+            ),
+            JournalEntryLocal(
+                id: UUID(),
+                title: "Hello 3",
+                content: "Blah blah blah.",
+                private: false,
+                createdAt: Date(),
+            ),
+            JournalEntryLocal(
+                id: UUID(),
+                title: "Hello 4",
+                content: "Blah blah blah.",
+                private: false,
+                createdAt: Date(),
+            ),
+            JournalEntryLocal(
+                id: UUID(),
+                title: "Hello 5",
+                content: "Blah blah blah.",
+                private: false,
+                createdAt: Date(),
+            ),
+        ]
+
+        store.journalEntries = fakeItems
     }
 }

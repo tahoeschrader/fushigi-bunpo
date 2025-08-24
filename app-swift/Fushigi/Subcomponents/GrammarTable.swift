@@ -29,28 +29,32 @@ struct GrammarTable: View {
     // MARK: - Main View
 
     var body: some View {
-        Table(grammarPoints, selection: $selectedGrammarID) {
+        Group {
             if isCompact {
-                TableColumn("Grammar Points") { point in
-                    CompactGrammarRow(grammarPoint: point)
+                Table(grammarPoints, selection: $selectedGrammarID) {
+                    TableColumn("Grammar Points") { point in
+                        CompactGrammarRow(grammarPoint: point)
+                    }
                 }
             } else {
-                TableColumn("場合") { point in
-                    Text(point.context)
-                }
-                TableColumn("使い方") { point in
-                    VStack(alignment: .leading) {
-                        Text(point.usage)
-                        Text(point.meaning)
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                Table(grammarPoints, selection: $selectedGrammarID) {
+                    TableColumn("場合") { point in
+                        Text(point.context)
                     }
-                    .lineLimit(nil)
-                }
-                TableColumn("タッグ") { point in
-                    coloredTagsText(tags: point.tags)
+                    TableColumn("使い方") { point in
+                        VStack(alignment: .leading) {
+                            Text(point.usage)
+                            Text(point.meaning)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
                         .lineLimit(nil)
-                        .fixedSize(horizontal: false, vertical: true)
+                    }
+                    TableColumn("タッグ") { point in
+                        coloredTagsText(tags: point.tags)
+                            .lineLimit(nil)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
                 }
             }
         }
@@ -111,11 +115,11 @@ struct CompactGrammarRow: View {
     @Previewable @Environment(\.horizontalSizeClass) var horizontalSizeClass
     var isCompact: Bool { horizontalSizeClass == .compact }
 
-    PreviewHelper.withStore { store in
+    PreviewHelper.withStore { store, _ in
         GrammarTable(
             selectedGrammarID: .constant(nil),
             showingInspector: .constant(true),
-            grammarPoints: store.getAllGrammarPoints(),
+            grammarPoints: store.grammarItems,
             isCompact: isCompact,
             onRefresh: {},
         )

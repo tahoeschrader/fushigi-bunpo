@@ -95,7 +95,7 @@ struct DailyGrammar: View {
         )
         .padding()
     }
-    .withPreviewGrammarStore(mode: .normal)
+    .withPreviewStores(mode: .normal)
 }
 
 #Preview("SRS Mode - Normal State") {
@@ -106,7 +106,7 @@ struct DailyGrammar: View {
         )
         .padding()
     }
-    .withPreviewGrammarStore(mode: .normal)
+    .withPreviewStores(mode: .normal)
 }
 
 #Preview("Error State") {
@@ -117,7 +117,7 @@ struct DailyGrammar: View {
         )
         .padding()
     }
-    .withPreviewGrammarStore(mode: .syncError)
+    .withPreviewStores(mode: .syncError)
 }
 
 #Preview("Empty State") {
@@ -128,5 +128,5 @@ struct DailyGrammar: View {
         )
         .padding()
     }
-    .withPreviewGrammarStore(mode: .emptyData)
+    .withPreviewStores(mode: .emptyData)
 }

@@ -41,7 +41,7 @@ enum DataState {
 
             case .emptyData, .syncError, .postgresConnectionError:
                 ContentUnavailableView {
-                    Label("Grammar Points Unavailable", systemImage: "exclamationmark.triangle")
+                    Label("Content Unavailable", systemImage: "exclamationmark.triangle")
                 } description: {
                     Text(description)
                         .foregroundColor(.red)

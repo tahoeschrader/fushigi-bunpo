@@ -130,30 +130,30 @@ struct ReferencePage: View {
 
 #Preview("Normal State") {
     ReferencePage(searchText: .constant(""))
-        .withPreviewGrammarStore()
+        .withPreviewStores()
         .withPreviewNavigation()
 }
 
 #Preview("With Search Results") {
     ReferencePage(searchText: .constant("Hello"))
-        .withPreviewGrammarStore()
+        .withPreviewStores()
         .withPreviewNavigation()
 }
 
 #Preview("No Search Results") {
     ReferencePage(searchText: .constant("nonexistent"))
-        .withPreviewGrammarStore()
+        .withPreviewStores()
         .withPreviewNavigation()
 }
 
 #Preview("Error State") {
     ReferencePage(searchText: .constant(""))
-        .withPreviewGrammarStore(mode: .syncError)
+        .withPreviewStores(mode: .syncError)
         .withPreviewNavigation()
 }
 
 #Preview("Empty Database") {
     ReferencePage(searchText: .constant(""))
-        .withPreviewGrammarStore(mode: .emptyData)
+        .withPreviewStores(mode: .emptyData)
         .withPreviewNavigation()
 }

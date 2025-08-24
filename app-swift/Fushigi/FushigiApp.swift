@@ -20,7 +20,7 @@ struct FushigiApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             GrammarPointLocal.self,
-            // JournalModel.self,
+            JournalEntryLocal.self,
             // TagModel.self,
             // SettingsModel.self
         ])
@@ -40,6 +40,9 @@ struct FushigiApp: App {
     /// Grammar store for user grammars, daily random, and SRS
     @StateObject private var grammarStore: GrammarStore
 
+    /// Grammar store for user grammars, daily random, and SRS
+    @StateObject private var journalStore: JournalStore
+
     // Journal store of all user journal entries
     // @StateObject private var journalStore: JournalStore
 
@@ -57,7 +60,7 @@ struct FushigiApp: App {
 
         let context = sharedModelContainer.mainContext
         _grammarStore = StateObject(wrappedValue: GrammarStore(modelContext: context))
-        // _journalStore = StateObject(wrappedValue: JournalStore(modelContext: context))
+        _journalStore = StateObject(wrappedValue: JournalStore(modelContext: context))
         // _tagStore = StateObject(wrappedValue: TagStore(modelContext: context))
         // _settingsStore = StateObject(wrappedValue: SettingsStore(modelContext: context))
     }
@@ -81,17 +84,17 @@ struct FushigiApp: App {
             ContentView()
                 .tint(.mint)
                 .environmentObject(grammarStore)
-                // .environmentObject(journalStore)
+                .environmentObject(journalStore)
                 // .environmentObject(tagStore)
                 // .environmentObject(settingsStore)
                 .task {
                     await configureTips()
-                    await grammarStore.loadLocal() // SwiftData objects
-                    await grammarStore.syncWithRemote() // PostgreSQL
-
-                    // make sure the grammar point subsets are checked for updates on startup too
+                    await grammarStore.loadLocal()
+                    await grammarStore.syncWithRemote()
                     grammarStore.updateRandomGrammarPoints()
                     await grammarStore.updateAlgorithmicGrammarPoints()
+                    await journalStore.loadLocal()
+                    await journalStore.syncWithRemote()
                 }
         }
         .modelContainer(sharedModelContainer)
@@ -108,7 +111,7 @@ func wipeSwiftData(container: ModelContainer) {
     do {
         try Tips.resetDatastore()
         try context.delete(model: GrammarPointLocal.self)
-        // try context.delete(model: JournalModel.self)
+        try context.delete(model: JournalEntryLocal.self)
         // try context.delete(model: TagModel.self)
         // try context.delete(model: SettingsModel.self)
 
@@ -123,5 +126,5 @@ func wipeSwiftData(container: ModelContainer) {
 
 #Preview {
     ContentView()
-        .withPreviewGrammarStore()
+        .withPreviewStores()
 }

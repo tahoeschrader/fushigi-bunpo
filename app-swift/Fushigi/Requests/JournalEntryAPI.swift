@@ -9,14 +9,14 @@ import Foundation
 
 /// Fetch all journal entries from FastAPI backend
 @MainActor
-func fetchJournalEntries() async -> Result<[JournalEntryResponse], Error> {
+func fetchJournalEntries() async -> Result<[JournalEntryRemote], Error> {
     guard let url = URL(string: "http://192.168.11.5:8000/api/journal") else {
         return .failure(URLError(.badURL))
     }
 
     do {
         let (data, _) = try await URLSession.shared.data(from: url)
-        let entries = try JSONDecoder.iso8601withFractionalSeconds.decode([JournalEntryResponse].self, from: data)
+        let entries = try JSONDecoder.iso8601withFractionalSeconds.decode([JournalEntryRemote].self, from: data)
         return .success(entries)
     } catch {
         return .failure(error)
@@ -43,7 +43,7 @@ func submitJournalEntry(
         )
     }
 
-    let journalEntry = JournalEntry(title: trimmedTitle, content: trimmedContent, private: isPrivate)
+    let journalEntry = JournalEntryCreate(title: trimmedTitle, content: trimmedContent, private: isPrivate)
 
     guard let url = URL(string: "http://192.168.11.5:8000/api/journal") else {
         return .failure(URLError(.badURL))
@@ -56,7 +56,7 @@ func submitJournalEntry(
         request.httpBody = try JSONEncoder().encode(journalEntry)
 
         let (data, _) = try await URLSession.shared.data(for: request)
-        let id = try JSONDecoder().decode(ResponseID.self, from: data)
+        let id = try JSONDecoder().decode(JournalEntryResponseID.self, from: data)
         return .success("Journal saved (ID: \(id.id))")
     } catch let jsonError as DecodingError {
         return .failure(

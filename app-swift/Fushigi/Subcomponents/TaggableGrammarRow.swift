@@ -20,19 +20,18 @@ struct TaggableGrammarRow: View {
     // MARK: - Main View
 
     var body: some View {
-        HStack(alignment: .center, spacing: UIConstants.Spacing.default) {
-            Text(grammarPoint.usage)
-
-            Spacer()
-
-            Button("Add Tag", systemImage: "plus.circle.fill") {
-                onTagSelected()
+        Button {
+            onTagSelected()
+        } label: {
+            HStack {
+                Text(grammarPoint.usage)
+                    .foregroundStyle(.foreground)
+                Spacer()
+                Image(systemName: "plus.circle.fill")
+                    .foregroundStyle(.mint)
             }
-            .labelStyle(.iconOnly)
-            .buttonStyle(.plain)
-            .foregroundStyle(.mint)
-            .help("Link this grammar point to selected text")
         }
+        .help("Link this grammar point to selected text")
     }
 }
 

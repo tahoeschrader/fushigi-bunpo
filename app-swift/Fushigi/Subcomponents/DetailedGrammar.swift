@@ -55,7 +55,7 @@ struct DetailedGrammar: View {
 // MARK: - Previews
 
 #Preview {
-    PreviewHelper.withStore { store in
+    PreviewHelper.withStore { store, _ in
         DetailedGrammar(
             isPresented: .constant(true),
             selectedGrammarID: .constant(store.grammarItems.first!.id),

@@ -95,7 +95,7 @@ struct PracticePage: View {
                 )
                 .layoutPriority(1) // TODO: should give text editor expansion priority
             }
-            .padding()
+            .padding() // default page padding to give breathing room off screen edge
         }
         .scrollDismissesKeyboard(.interactively)
         .sheet(isPresented: $showSettings) {
@@ -174,18 +174,18 @@ struct PracticePage: View {
 
 #Preview("Normal State") {
     PracticePage()
-        .withPreviewGrammarStore(mode: .normal)
+        .withPreviewStores(mode: .normal)
         .withPreviewNavigation()
 }
 
 #Preview("Error State") {
     PracticePage()
-        .withPreviewGrammarStore(mode: .syncError)
+        .withPreviewStores(mode: .syncError)
         .withPreviewNavigation()
 }
 
 #Preview("Empty Data") {
     PracticePage()
-        .withPreviewGrammarStore(mode: .emptyData)
+        .withPreviewStores(mode: .emptyData)
         .withPreviewNavigation()
 }

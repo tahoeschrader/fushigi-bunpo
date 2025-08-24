@@ -46,30 +46,19 @@ class GrammarStore: ObservableObject {
 
     // MARK: - All Grammar
 
-    /// Get all grammar points
-    func getAllGrammarPoints() -> [GrammarPointLocal] {
-        grammarItems
-    }
-
-    /// Get specific grammar point by ID
-    func getGrammarPoint(id: UUID?) -> GrammarPointLocal? {
-        guard let id else { return nil } // protect id
-        return getAllGrammarPoints().first { $0.id == id }
-    }
-
     /// Get subset of 5 grammar points depending on what UI SourceMode is selected
     func getGrammarPoints(for: SourceMode) -> [GrammarPointLocal] {
         switch `for` {
         case .random:
-            getRandomGrammarPoints()
+            randomGrammarItems
         case .srs:
-            getAlgorithmicGrammarPoints()
+            algorithmicGrammarItems
         }
     }
 
     /// Filter grammar points by search text across usage, meaning, context, and tags
     func filterGrammarPoints(containing searchText: String? = nil) -> [GrammarPointLocal] {
-        var filtered = getAllGrammarPoints()
+        var filtered = grammarItems
 
         if let searchText, !searchText.isEmpty {
             filtered = filtered.filter {
@@ -81,32 +70,26 @@ class GrammarStore: ObservableObject {
         }
 
         if filtered.isEmpty {
-            dataState = .emptyData
+            dataState = .emptyData // TODO: publishing changes from within view dates error... idk
         }
 
         return filtered
     }
 
-    // MARK: - Daily Grammar
-
-    /// Get all random grammar points for the day
-    func getRandomGrammarPoints() -> [GrammarPointLocal] {
-        randomGrammarItems
+    /// Get specific grammar point by ID
+    func getGrammarPoint(id: UUID?) -> GrammarPointLocal? {
+        guard let id else { return nil } // protect id
+        return grammarItems.first { $0.id == id }
     }
 
     /// Get specific random grammar point by ID
     func getRandomGrammarPoint(id: UUID?) -> GrammarPointLocal? {
-        getRandomGrammarPoints().first { $0.id == id }
-    }
-
-    /// Get all SRS grammar points for the day
-    func getAlgorithmicGrammarPoints() -> [GrammarPointLocal] {
-        algorithmicGrammarItems
+        randomGrammarItems.first { $0.id == id }
     }
 
     /// Get specific SRS grammar point by ID
     func getAlgorithmicGrammarPoint(id: UUID?) -> GrammarPointLocal? {
-        getAlgorithmicGrammarPoints().first { $0.id == id }
+        algorithmicGrammarItems.first { $0.id == id }
     }
 
     // MARK: - Internal sync logic
@@ -115,10 +98,10 @@ class GrammarStore: ObservableObject {
     func loadLocal() async {
         do {
             grammarItems = try modelContext.fetch(FetchDescriptor<GrammarPointLocal>())
-            print("Loaded \(grammarItems.count) items from local storage")
+            print("LOG: Loaded \(grammarItems.count) grammar points from local storage")
             dataState = .normal
         } catch {
-            print("Failed to load local grammar points:", error)
+            print("DEBUG: Failed to load local grammar points:", error)
             dataState = .syncError
         }
     }
@@ -137,7 +120,7 @@ class GrammarStore: ObservableObject {
             lastSyncDate = Date()
             dataState = .normal
         case let .failure(error):
-            print("Failed to sync grammar points from PostgreSQL:", error)
+            print("DEBUG: Failed to sync grammar points from PostgreSQL:", error)
             dataState = .postgresConnectionError
         }
     }
@@ -169,10 +152,10 @@ class GrammarStore: ObservableObject {
         // Save to commit to permanent SwiftData storage
         do {
             try modelContext.save()
-            print("Synced \(remotePoints.count) local grammar points with PostgreSQL.")
+            print("LOG: Synced \(remotePoints.count) local grammar points with PostgreSQL.")
             dataState = .normal
         } catch {
-            print("Failed to save to local SwiftData:", error)
+            print("DEBUG: Failed to save grammar points to local SwiftData:", error)
             dataState = .syncError
         }
     }
@@ -180,7 +163,7 @@ class GrammarStore: ObservableObject {
     /// Manual refresh for pull-to-refresh functionality
     func refresh() async {
         #if DEBUG
-            print("Preview mode: refresh skipped.")
+            print("PREVIEW: refresh skipped.")
         #else
             // first check if there are new grammar points, then update subsets
             await syncWithRemote()
@@ -206,7 +189,7 @@ class GrammarStore: ObservableObject {
             randomGrammarItems = Array(grammarItems.shuffled().prefix(5))
             lastRandomUpdate = today
             dataState = .normal
-            print("Loaded \(randomGrammarItems.count) new random grammar items from SwiftData.")
+            print("LOG: Loaded \(randomGrammarItems.count) new random grammar items from SwiftData.")
         }
     }
 
@@ -226,10 +209,10 @@ class GrammarStore: ObservableObject {
                 algorithmicGrammarItems = grammarItems.filter { idSubset.contains($0.id) }
                 lastAlgorithmicUpdate = today
                 dataState = .normal
-                print("Loaded \(algorithmicGrammarItems.count) SRS items from PostgreSQL.")
+                print("LOG: Loaded \(algorithmicGrammarItems.count) SRS items from PostgreSQL.")
             case let .failure(error):
                 dataState = .postgresConnectionError
-                print("Failed to fetch SRS points:", error)
+                print("DEBUG: Failed to fetch SRS points:", error)
             }
         }
     }
