@@ -11,6 +11,9 @@ import SwiftUI
 
 /// Responsive table component for displaying grammar points with adaptive layouts
 struct GrammarTable: View {
+    /// Centralized grammar data repository with synchronization capabilities
+    @EnvironmentObject var grammarStore: GrammarStore
+
     /// Currently selected grammar point ID
     @Binding var selectedGrammarID: UUID?
 
@@ -31,10 +34,13 @@ struct GrammarTable: View {
     var body: some View {
         Group {
             if isCompact {
-                Table(grammarPoints, selection: $selectedGrammarID) {
-                    TableColumn("Grammar Points") { point in
-                        CompactGrammarRow(grammarPoint: point)
-                    }
+                List(grammarPoints, id: \.id) { point in
+                    CompactGrammarRow(grammarPoint: point)
+                        .contentShape(.rect)
+                        .onTapGesture {
+                            selectedGrammarID = point.id
+                            showingInspector = true
+                        }
                 }
             } else {
                 Table(grammarPoints, selection: $selectedGrammarID) {
@@ -58,17 +64,20 @@ struct GrammarTable: View {
                 }
             }
         }
-        .onChange(of: selectedGrammarID) { _, newSelection in
-            showingInspector = newSelection != nil
-        }
-        .onChange(of: showingInspector) { _, newValue in
-            if !newValue {
-                selectedGrammarID = nil
+        .scrollContentBackground(.hidden)
+        .listRowBackground(Color.clear)
+        #if os(macOS)
+            .tableStyle(.inset(alternatesRowBackgrounds: false))
+        #endif
+            .onChange(of: selectedGrammarID) { _, newSelection in
+                // TODO: fix this to use gramamrStore selectedGrammarPoint
+                if newSelection != nil {
+                    showingInspector = true
+                }
             }
-        }
-        .refreshable {
-            await onRefresh()
-        }
+            .refreshable {
+                await onRefresh()
+            }
     }
 }
 
@@ -115,7 +124,7 @@ struct CompactGrammarRow: View {
     @Previewable @Environment(\.horizontalSizeClass) var horizontalSizeClass
     var isCompact: Bool { horizontalSizeClass == .compact }
 
-    PreviewHelper.withStore { store, _ in
+    PreviewHelper.withStore { store, _, _ in
         GrammarTable(
             selectedGrammarID: .constant(nil),
             showingInspector: .constant(true),

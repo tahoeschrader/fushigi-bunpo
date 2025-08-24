@@ -42,14 +42,14 @@ struct JournalEntryForm: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
-            // Title input
             VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
                 Text("Title").font(.headline)
                 TextField("Enter title", text: $entryTitle)
-                    .textFieldStyle(.plain)
+                    .font(.custom("HelveticaNeue", size: UIConstants.Sizing.fontSize))
                     .padding(UIConstants.Spacing.row)
-                    .background(
-                        Rectangle()
+                    .textFieldStyle(.plain)
+                    .overlay(
+                        RoundedRectangle(cornerSize: UIConstants.Sizing.cornerRadius)
                             .stroke(
                                 isTitleFocused ? .purple : .primary,
                                 lineWidth: UIConstants.Border.width,
@@ -63,24 +63,31 @@ struct JournalEntryForm: View {
                     .disabled(isSaving)
             }
 
-            // Content input
             VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
                 Text("Content").font(.headline)
-                TextEditor(text: $entryContent, selection: $textSelection)
-                    .font(.custom("HelveticaNeue", size: UIConstants.Sizing.fontSize))
-                    .frame(minHeight: UIConstants.Sizing.contentMinHeight, maxHeight: .infinity)
-                    .padding(UIConstants.Spacing.row)
-                    .scrollContentBackground(.hidden)
-                    .overlay(
-                        Rectangle()
-                            .stroke(
-                                isContentFocused ? .purple : .primary,
-                                lineWidth: UIConstants.Border.width,
-                            ),
-                    )
-                    .focused($isContentFocused)
-                    .disabled(isSaving)
-                    .layoutPriority(1) // TODO: why is this not autosizing
+                ZStack(alignment: .topLeading) {
+                    if entryContent.isEmpty {
+                        Text("Use grammar points above to write a journal entry!")
+                            .foregroundStyle(.tertiary)
+                            .font(.custom("HelveticaNeue", size: UIConstants.Sizing.fontSize))
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    }
+                    TextEditor(text: $entryContent, selection: $textSelection)
+                        .font(.custom("HelveticaNeue", size: UIConstants.Sizing.fontSize))
+                        .scrollContentBackground(.hidden)
+                }
+                .frame(minHeight: UIConstants.Sizing.contentMinHeight, maxHeight: .infinity)
+                .padding(UIConstants.Spacing.row)
+                .overlay(
+                    RoundedRectangle(cornerSize: UIConstants.Sizing.cornerRadius)
+                        .stroke(
+                            isContentFocused ? .purple : .primary,
+                            lineWidth: UIConstants.Border.width,
+                        ),
+                )
+                .focused($isContentFocused)
+                .disabled(isSaving)
+                .layoutPriority(1) // TODO: figure out why autoresize wont work
             }
 
             // Privacy toggle
@@ -163,6 +170,18 @@ struct JournalEntryForm: View {
     JournalEntryForm(
         entryTitle: .constant("Sample Title"),
         entryContent: .constant("Sample content with some text to show how the editor looks with content."),
+        textSelection: .constant(nil),
+        isPrivateEntry: .constant(false),
+        statusMessage: .constant(nil),
+        isSaving: .constant(false),
+    )
+    .padding()
+}
+
+#Preview("Empty Content") {
+    JournalEntryForm(
+        entryTitle: .constant(""),
+        entryContent: .constant(""),
         textSelection: .constant(nil),
         isPrivateEntry: .constant(false),
         statusMessage: .constant(nil),

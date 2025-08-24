@@ -61,7 +61,7 @@ extension View {
 extension View {
     /// Add fake datastore for Preview mode
     func withPreviewStores(mode: DataState = .normal) -> some View {
-        PreviewHelper.withStore(mode: mode) { _, _ in
+        PreviewHelper.withStore(mode: mode) { _, _, _ in
             self
         }
     }

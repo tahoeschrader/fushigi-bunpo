@@ -21,8 +21,8 @@ struct FushigiApp: App {
         let schema = Schema([
             GrammarPointLocal.self,
             JournalEntryLocal.self,
-            // TagModel.self,
-            // SettingsModel.self
+            SentenceLocal.self,
+            // SettingsLocal.self
         ])
 
         // For a real app, the data store should not only live in memory
@@ -43,11 +43,8 @@ struct FushigiApp: App {
     /// Grammar store for user grammars, daily random, and SRS
     @StateObject private var journalStore: JournalStore
 
-    // Journal store of all user journal entries
-    // @StateObject private var journalStore: JournalStore
-
-    // Tag store of all user created tags linking journal entry sentencies to grammar points
-    // @StateObject private var tagStore: TagStore
+    // Tag store of all user created tags linking journals to grammar
+    @StateObject private var sentenceStore: SentenceStore
 
     // Settings store of all user settings
     // @StateObject private var settingsStore: SettingsStore
@@ -61,7 +58,7 @@ struct FushigiApp: App {
         let context = sharedModelContainer.mainContext
         _grammarStore = StateObject(wrappedValue: GrammarStore(modelContext: context))
         _journalStore = StateObject(wrappedValue: JournalStore(modelContext: context))
-        // _tagStore = StateObject(wrappedValue: TagStore(modelContext: context))
+        _sentenceStore = StateObject(wrappedValue: SentenceStore(modelContext: context))
         // _settingsStore = StateObject(wrappedValue: SettingsStore(modelContext: context))
     }
 
@@ -85,7 +82,7 @@ struct FushigiApp: App {
                 .tint(.mint)
                 .environmentObject(grammarStore)
                 .environmentObject(journalStore)
-                // .environmentObject(tagStore)
+                .environmentObject(sentenceStore)
                 // .environmentObject(settingsStore)
                 .task {
                     await configureTips()
@@ -95,6 +92,8 @@ struct FushigiApp: App {
                     await grammarStore.updateAlgorithmicGrammarPoints()
                     await journalStore.loadLocal()
                     await journalStore.syncWithRemote()
+
+                    // TODO: Load sentences
                 }
         }
         .modelContainer(sharedModelContainer)
@@ -112,7 +111,7 @@ func wipeSwiftData(container: ModelContainer) {
         try Tips.resetDatastore()
         try context.delete(model: GrammarPointLocal.self)
         try context.delete(model: JournalEntryLocal.self)
-        // try context.delete(model: TagModel.self)
+        try context.delete(model: SentenceLocal.self)
         // try context.delete(model: SettingsModel.self)
 
         try context.save()

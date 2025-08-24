@@ -30,7 +30,9 @@ struct TaggableGrammarRow: View {
                 Image(systemName: "plus.circle.fill")
                     .foregroundStyle(.mint)
             }
+            .contentShape(.rect)
         }
+        .buttonStyle(.plain)
         .help("Link this grammar point to selected text")
     }
 }

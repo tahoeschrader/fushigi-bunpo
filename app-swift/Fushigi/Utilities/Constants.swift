@@ -24,6 +24,8 @@ enum UIConstants {
         static let defaultPadding: CGFloat = 10
         static let fontSize: CGFloat = 18
         static let icons: CGFloat = 60
+        static let bigIcons: CGFloat = 120
+        static let cornerRadius: CGSize = .init(width: 8, height: 8)
     }
 
     enum Border {
@@ -34,5 +36,6 @@ enum UIConstants {
     enum Padding {
         static let capsuleWidth: CGFloat = 8
         static let capsuleHeight: CGFloat = 2
+        static let largeIndent: CGFloat = 32
     }
 }

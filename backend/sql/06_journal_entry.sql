@@ -4,9 +4,7 @@ CREATE TABLE journal_entry (
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL,
     private BOOLEAN NOT NULL,
-    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    last_updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    deleted_at TIMESTAMPTZ
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE INDEX idx_journal_by_user ON journal_entry(user_id);

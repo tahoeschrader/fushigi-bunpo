@@ -10,6 +10,5 @@ CREATE TABLE grammar (
     examples JSONB NOT NULL,
     created_by UUID NULL REFERENCES users(id), -- NULL for official points
     created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    last_updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    deleted_at TIMESTAMPTZ
+    last_updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );

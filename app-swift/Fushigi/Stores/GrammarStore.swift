@@ -23,7 +23,7 @@ class GrammarStore: ObservableObject {
     @Published private(set) var algorithmicGrammarItems: [GrammarPointLocal] = []
 
     /// Current data state encompassing sync status, errors, and loading state
-    @Published var dataState: DataState = .emptyData
+    @Published var dataState: DataState = .networkLoading
 
     /// Last successful sync timestamp
     @Published var lastSyncDate: Date?
@@ -70,7 +70,7 @@ class GrammarStore: ObservableObject {
         }
 
         if filtered.isEmpty {
-            dataState = .emptyData // TODO: publishing changes from within view dates error... idk
+            dataState = .emptyData
         }
 
         return filtered

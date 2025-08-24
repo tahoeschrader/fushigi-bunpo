@@ -16,7 +16,7 @@ enum PreviewHelper {
     @MainActor
     static func withStore(
         mode: DataState = .normal,
-        @ViewBuilder content: @escaping (GrammarStore, JournalStore) -> some View,
+        @ViewBuilder content: @escaping (GrammarStore, JournalStore, SentenceStore) -> some View,
     ) -> some View {
         do {
             // for previews, we only want the data store to only live in memory while testing
@@ -26,14 +26,21 @@ enum PreviewHelper {
             )
             let grammarStore = GrammarStore(modelContext: container.mainContext)
             let journalStore = JournalStore(modelContext: container.mainContext)
+            let sentenceStore = SentenceStore(modelContext: container.mainContext)
 
             // Configure store with fake data based on preview mode
-            configureStoresForPreviewMode(grammarStore: grammarStore, journalStore: journalStore, mode: mode)
+            configureStoresForPreviewMode(
+                grammarStore: grammarStore,
+                journalStore: journalStore,
+                sentenceStore: sentenceStore,
+                mode: mode,
+            )
 
             return AnyView(
-                content(grammarStore, journalStore)
+                content(grammarStore, journalStore, sentenceStore)
                     .environmentObject(grammarStore)
                     .environmentObject(journalStore)
+                    .environmentObject(sentenceStore)
                     .modelContainer(container),
             )
         } catch {
@@ -49,19 +56,24 @@ enum PreviewHelper {
     private static func configureStoresForPreviewMode(
         grammarStore: GrammarStore,
         journalStore: JournalStore,
+        sentenceStore: SentenceStore,
         mode: DataState,
     ) {
         switch mode {
         case .emptyData:
             grammarStore.grammarItems = []
             journalStore.journalEntries = []
+            sentenceStore.sentences = []
             grammarStore.dataState = .emptyData
             journalStore.dataState = .emptyData
+            sentenceStore.dataState = .emptyData
         case .normal, .syncError, .networkLoading, .postgresConnectionError:
             setupGrammar(grammarStore)
             setupJournal(journalStore)
+            setupSentences(sentenceStore)
             grammarStore.dataState = mode
             journalStore.dataState = mode
+            sentenceStore.dataState = mode
         }
     }
 
@@ -123,5 +135,49 @@ enum PreviewHelper {
         ]
 
         store.journalEntries = fakeItems
+    }
+
+    /// Load preview store with fake sentence data
+    @MainActor
+    private static func setupSentences(_ store: SentenceStore) {
+        let fakeItems = [
+            SentenceLocal(
+                id: UUID(),
+                journalEntryId: UUID(),
+                grammarId: UUID(),
+                content: "Test sentence 2.",
+                createdAt: Date(),
+            ),
+            SentenceLocal(
+                id: UUID(),
+                journalEntryId: UUID(),
+                grammarId: UUID(),
+                content: "Test sentence 2.",
+                createdAt: Date(),
+            ),
+            SentenceLocal(
+                id: UUID(),
+                journalEntryId: UUID(),
+                grammarId: UUID(),
+                content: "Test sentence 3.",
+                createdAt: Date(),
+            ),
+            SentenceLocal(
+                id: UUID(),
+                journalEntryId: UUID(),
+                grammarId: UUID(),
+                content: "Test sentence 4.",
+                createdAt: Date(),
+            ),
+            SentenceLocal(
+                id: UUID(),
+                journalEntryId: UUID(),
+                grammarId: UUID(),
+                content: "Test sentence 5.",
+                createdAt: Date(),
+            ),
+        ]
+
+        store.sentences = fakeItems
     }
 }

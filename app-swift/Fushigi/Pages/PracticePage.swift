@@ -124,6 +124,14 @@ struct PracticePage: View {
             // TODO: fix tip showing up on other pages sheets
             .popoverTip(refreshTip, arrowEdge: .top)
         }
+        .background {
+            LinearGradient(
+                colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing,
+            )
+            .ignoresSafeArea()
+        }
     }
 
     // MARK: - Helper Methods

@@ -8,8 +8,7 @@ CREATE TABLE srs (
     due_date DATE NOT NULL DEFAULT CURRENT_DATE,
     last_reviewed DATE,
     created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    last_updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    deleted_at TIMESTAMPTZ
+    last_updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE INDEX idx_by_user_due ON srs(user_id, due_date);

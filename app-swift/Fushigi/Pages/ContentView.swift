@@ -15,6 +15,9 @@ struct ContentView: View {
     /// Responsive layout detection for adaptive navigation structure
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
 
+    /// Flag to gate app access until login is performed
+    @State private var isLoggedIn: Bool = false
+
     /// Currently active application section, coordinating tab/sidebar selection
     @State private var selectedPage: Page? = .practice
 
@@ -34,11 +37,15 @@ struct ContentView: View {
     // MARK: - Main View
 
     var body: some View {
-        if isCompact {
-            navigationAsTabs
-                .tabBarMinimizeOnScrollIfAvailable()
+        if isLoggedIn {
+            if isCompact {
+                navigationAsTabs
+                    .tabBarMinimizeOnScrollIfAvailable()
+            } else {
+                navigationAsSplitView
+            }
         } else {
-            navigationAsSplitView
+            LoginPage(isLoggedIn: $isLoggedIn)
         }
     }
 

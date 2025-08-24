@@ -15,7 +15,7 @@ class JournalStore: ObservableObject {
     @Published var journalEntries: [JournalEntryLocal] = []
 
     /// Current data state encompassing sync status, errors, and loading state
-    @Published var dataState: DataState = .emptyData
+    @Published var dataState: DataState = .networkLoading
 
     /// Last successful sync timestamp
     @Published var lastSyncDate: Date?
@@ -51,7 +51,7 @@ class JournalStore: ObservableObject {
     func loadLocal() async {
         do {
             journalEntries = try modelContext.fetch(FetchDescriptor<JournalEntryLocal>())
-            print("LOG: Loaded \(journalEntries.count) Journal items from local storage")
+            print("LOG: Loaded \(journalEntries.count) journal items from local storage")
             dataState = .normal
         } catch {
             print("DEBUG: Failed to load local journal entries:", error)

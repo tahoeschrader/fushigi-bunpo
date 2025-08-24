@@ -53,6 +53,7 @@ struct HistoryPage: View {
                 dataState.contentUnavailableView {}
             case .normal:
                 journalEntryList
+                    .scrollContentBackground(.hidden)
             }
         }
         .toolbar {
@@ -70,6 +71,14 @@ struct HistoryPage: View {
                 Button("This Week") { /* TODO: Implement filtering */ }
                 Button("This Month") { /* TODO: Implement filtering */ }
             }
+        }
+        .background {
+            LinearGradient(
+                colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing,
+            )
+            .ignoresSafeArea()
         }
     }
 

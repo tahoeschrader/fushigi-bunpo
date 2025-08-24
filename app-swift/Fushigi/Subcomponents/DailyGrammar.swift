@@ -26,7 +26,7 @@ struct DailyGrammar: View {
     }
 
     /// Current database state from data synchronization operations
-    var dataState: DataState {
+    private var dataState: DataState {
         grammarStore.dataState
     }
 

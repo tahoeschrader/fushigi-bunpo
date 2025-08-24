@@ -101,7 +101,7 @@ struct ReferencePage: View {
                 }
             }
         }
-        .inspector(isPresented: $showingInspector) {
+        .sheet(isPresented: $showingInspector) {
             if let selectedGrammarPoint {
                 DetailedGrammar(
                     isPresented: $showingInspector,
@@ -122,6 +122,14 @@ struct ReferencePage: View {
                 }
                 .presentationDetents([.medium])
             }
+        }
+        .background {
+            LinearGradient(
+                colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing,
+            )
+            .ignoresSafeArea()
         }
     }
 }
