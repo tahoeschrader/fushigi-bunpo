@@ -35,12 +35,35 @@ struct GrammarTable: View {
         Group {
             if isCompact {
                 List(grammarPoints, id: \.id) { point in
-                    CompactGrammarRow(grammarPoint: point)
-                        .contentShape(.rect)
-                        .onTapGesture {
-                            selectedGrammarID = point.id
-                            showingInspector = true
+                    VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                        HStack {
+                            Text(point.usage)
+                                .font(.body)
+                                .fontWeight(.medium)
+                                .foregroundStyle(.mint)
+
+                            Spacer()
+
+                            Text(point.context)
+                                .font(.caption2)
+                                .fontWeight(.medium)
+                                .foregroundStyle(.purple)
                         }
+
+                        Text(point.meaning)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+
+                        if !point.tags.isEmpty {
+                            coloredTagsText(tags: point.tags)
+                        }
+                    }
+                    .padding(UIConstants.Sizing.defaultPadding)
+                    .contentShape(.rect)
+                    .onTapGesture {
+                        selectedGrammarID = point.id
+                        showingInspector = true
+                    }
                 }
             } else {
                 Table(grammarPoints, selection: $selectedGrammarID) {
@@ -78,43 +101,6 @@ struct GrammarTable: View {
             .refreshable {
                 await onRefresh()
             }
-    }
-}
-
-// MARK: - Compact Grammar Row
-
-/// Optimized row layout for compact table presentations on mobile devices
-struct CompactGrammarRow: View {
-    /// Grammar point to display in compact format
-    let grammarPoint: GrammarPointLocal
-
-    // MARK: - Main View
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
-            HStack {
-                Text(grammarPoint.usage)
-                    .font(.body)
-                    .fontWeight(.medium)
-                    .foregroundStyle(.mint)
-
-                Spacer()
-
-                Text(grammarPoint.context)
-                    .font(.caption2)
-                    .fontWeight(.medium)
-                    .foregroundStyle(.purple)
-            }
-
-            Text(grammarPoint.meaning)
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-
-            if !grammarPoint.tags.isEmpty {
-                coloredTagsText(tags: grammarPoint.tags)
-            }
-        }
-        .padding(UIConstants.Sizing.defaultPadding)
     }
 }
 

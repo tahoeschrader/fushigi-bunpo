@@ -25,11 +25,6 @@ struct DailyGrammar: View {
         grammarStore.getGrammarPoints(for: selectedSource)
     }
 
-    /// Current database state from data synchronization operations
-    private var dataState: DataState {
-        grammarStore.dataState
-    }
-
     // MARK: - Main View
 
     var body: some View {
@@ -51,21 +46,18 @@ struct DailyGrammar: View {
 
             Divider()
 
-            switch dataState {
-            case .syncError, .postgresConnectionError, .emptyData:
-                dataState.contentUnavailableView { await grammarStore.refresh() }
-            case .networkLoading:
-                dataState.contentUnavailableView {}
-            case .normal:
-                VStack {
-                    ForEach(grammarPoints, id: \.id) { grammarPoint in
-                        TaggableGrammarRow(
-                            grammarPoint: grammarPoint,
-                            onTagSelected: {
-                                grammarStore.selectedGrammarPoint = grammarPoint
-                                showTagger = true
-                            },
-                        )
+            VStack {
+                ForEach(grammarPoints, id: \.id) { grammarPoint in
+                    TaggableGrammarRow(
+                        grammarPoint: grammarPoint,
+                        onTagSelected: {
+                            grammarStore.selectedGrammarPoint = grammarPoint
+                            showTagger = true
+                        },
+                    )
+
+                    // Hide last Divider for improved visuals
+                    if grammarPoint.id != grammarPoints.last?.id {
                         Divider()
                     }
                 }
@@ -77,56 +69,26 @@ struct DailyGrammar: View {
 
     /// Refresh grammar points based on current source mode
     private func refreshGrammarPoints() async {
-        if selectedSource == .random {
-            grammarStore.updateRandomGrammarPoints(force: true)
-        } else {
-            await grammarStore.updateAlgorithmicGrammarPoints(force: true)
-        }
+        grammarStore.forceDailyRefresh(currentMode: selectedSource)
     }
 }
 
 // MARK: - Previews
 
-#Preview("Random Mode - Normal State") {
-    VStack {
-        DailyGrammar(
-            showTagger: .constant(false),
-            selectedSource: .constant(SourceMode.random),
-        )
-        .padding()
-    }
-    .withPreviewStores(mode: .normal)
+#Preview("Random - Normal") {
+    DailyGrammar(
+        showTagger: .constant(false),
+        selectedSource: .constant(SourceMode.random),
+    )
+    .withPreviewNavigation()
+    .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
 }
 
-#Preview("SRS Mode - Normal State") {
-    VStack {
-        DailyGrammar(
-            showTagger: .constant(false),
-            selectedSource: .constant(SourceMode.srs),
-        )
-        .padding()
-    }
-    .withPreviewStores(mode: .normal)
-}
-
-#Preview("Error State") {
-    VStack {
-        DailyGrammar(
-            showTagger: .constant(false),
-            selectedSource: .constant(SourceMode.random),
-        )
-        .padding()
-    }
-    .withPreviewStores(mode: .syncError)
-}
-
-#Preview("Empty State") {
-    VStack {
-        DailyGrammar(
-            showTagger: .constant(false),
-            selectedSource: .constant(SourceMode.random),
-        )
-        .padding()
-    }
-    .withPreviewStores(mode: .emptyData)
+#Preview("SRS - Normal") {
+    DailyGrammar(
+        showTagger: .constant(false),
+        selectedSource: .constant(SourceMode.srs),
+    )
+    .withPreviewNavigation()
+    .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
 }

@@ -60,8 +60,10 @@ extension View {
 
 extension View {
     /// Add fake datastore for Preview mode
-    func withPreviewStores(mode: DataState = .normal) -> some View {
-        PreviewHelper.withStore(mode: mode) { _, _, _ in
+    func withPreviewStores(dataAvailability: DataAvailability = .available,
+                           systemHealth: SystemHealth = .healthy) -> some View
+    {
+        PreviewHelper.withStore(dataAvailability: dataAvailability, systemHealth: systemHealth) { _, _, _ in
             self
         }
     }

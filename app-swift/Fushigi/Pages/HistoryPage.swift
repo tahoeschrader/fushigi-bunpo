@@ -28,32 +28,122 @@ struct HistoryPage: View {
         journalStore.filterJournalEntries(containing: searchText)
     }
 
-    /// Current database state from data synchronization operations
-    var dataState: DataState {
-        journalStore.dataState
+    /// Current primary state for UI rendering decisions
+    var systemState: SystemState {
+        journalStore.systemState
     }
 
     // MARK: - Main View
 
     var body: some View {
         Group {
-            switch dataState {
-            case .syncError, .postgresConnectionError:
-                dataState.contentUnavailableView {
+            switch systemState {
+            case .loading, .emptyData, .criticalError:
+                systemState.contentUnavailableView {
+                    if case .emptyData = systemState {
+                        searchText = ""
+                    }
                     await journalStore.refresh()
                 }
-            case .emptyData:
-                dataState.contentUnavailableView {
-                    Task {
-                        searchText = ""
-                        await journalStore.refresh()
+            case .normal, .degradedOperation:
+                if case .degradedOperation = systemState {
+                    // TODO: improve warning
+                    VStack(spacing: UIConstants.Spacing.row) {
+                        // Compact warning for this component
+                        HStack {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .foregroundColor(.orange)
+                                .font(.caption)
+                            Text("Grammar points may not be current")
+                                .font(.caption2)
+                                .foregroundColor(.orange)
+                            Spacer()
+                        }
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(Color.orange.opacity(0.1))
+                        .clipShape(.capsule)
                     }
                 }
-            case .networkLoading:
-                dataState.contentUnavailableView {}
-            case .normal:
-                journalEntryList
-                    .scrollContentBackground(.hidden)
+                List {
+                    ForEach(journalEntries) { entry in
+                        VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(entry.title)
+                                        .font(.headline)
+                                    Text(entry.createdAt.formatted())
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+                                Spacer()
+                                Image(systemName: expanded.contains(entry.id) ?
+                                    "chevron.down" : "chevron.right")
+                                    .animation(.none, value: expanded.contains(entry.id))
+                            }
+
+                            if expanded.contains(entry.id) {
+                                VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                                    Text(entry.content)
+
+                                    VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
+                                        Text("Grammar Points:")
+                                            .font(.subheadline)
+                                            .foregroundStyle(.mint)
+                                        Text("• (placeholder) ～てしまう")
+                                        Text("• (placeholder) ～わけではない")
+                                    }
+
+                                    VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
+                                        Text("AI Feedback:")
+                                            .font(.subheadline)
+                                            .foregroundStyle(.purple)
+                                        Text("(placeholder) Try to avoid passive constructions.")
+                                    }
+                                }
+                                .padding(.leading)
+                            }
+                        }
+                        .contentShape(.rect)
+                        .onTapGesture { // hilarious animation...
+                            withAnimation(.bouncy(duration: 0.6, extraBounce: 0.3)) {
+                                toggleExpanded(for: entry.id)
+                            }
+                        }
+                        .listRowBackground(Color.clear)
+                        .swipeActions(edge: .trailing) {
+                            Button("Edit") {
+                                print("LOG: Share entry: \(entry.title)")
+                            }
+                            .tint(.gray)
+
+                            Button("Delete", role: .destructive) {
+                                if let index = journalEntries.firstIndex(where: { $0.id == entry.id }) {
+                                    deleteEntry(at: IndexSet(integer: index))
+                                }
+                            }
+                            .tint(.red)
+                        }
+                        .swipeActions(edge: .leading) {
+                            Button("Pin") {
+                                // Pin/favorite action
+                                print("LOG: Pin entry: \(entry.title)")
+                            }
+                            .tint(.mint)
+
+                            Button("Share") {
+                                // Edit action
+                                print("LOG: Edit entry: \(entry.title)")
+                            }
+                            .tint(.purple)
+                        }
+                    }
+                }
+                .scrollDismissesKeyboard(.interactively)
+                .refreshable {
+                    await journalStore.refresh()
+                }
+                .scrollContentBackground(.hidden)
             }
         }
         .toolbar {
@@ -100,88 +190,6 @@ struct HistoryPage: View {
             print("LOG: Pretending to delete: \(deletedEntry.title)")
         }
     }
-
-    @ViewBuilder
-    private var journalEntryList: some View {
-        List {
-            ForEach(journalEntries) { entry in
-                VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(entry.title)
-                                .font(.headline)
-                            Text(entry.createdAt.formatted())
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                        Spacer()
-                        Image(systemName: expanded.contains(entry.id) ?
-                            "chevron.down" : "chevron.right")
-                            .animation(.none, value: expanded.contains(entry.id))
-                    }
-
-                    if expanded.contains(entry.id) {
-                        VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
-                            Text(entry.content)
-
-                            VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
-                                Text("Grammar Points:")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.mint)
-                                Text("• (placeholder) ～てしまう")
-                                Text("• (placeholder) ～わけではない")
-                            }
-
-                            VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
-                                Text("AI Feedback:")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.purple)
-                                Text("(placeholder) Try to avoid passive constructions.")
-                            }
-                        }
-                        .padding(.leading)
-                    }
-                }
-                .contentShape(.rect)
-                .onTapGesture { // hilarious animation...
-                    withAnimation(.bouncy(duration: 0.6, extraBounce: 0.3)) {
-                        toggleExpanded(for: entry.id)
-                    }
-                }
-                .listRowBackground(Color.clear)
-                .swipeActions(edge: .trailing) {
-                    Button("Edit") {
-                        print("LOG: Share entry: \(entry.title)")
-                    }
-                    .tint(.gray)
-
-                    Button("Delete", role: .destructive) {
-                        if let index = journalEntries.firstIndex(where: { $0.id == entry.id }) {
-                            deleteEntry(at: IndexSet(integer: index))
-                        }
-                    }
-                    .tint(.red)
-                }
-                .swipeActions(edge: .leading) {
-                    Button("Pin") {
-                        // Pin/favorite action
-                        print("LOG: Pin entry: \(entry.title)")
-                    }
-                    .tint(.mint)
-
-                    Button("Share") {
-                        // Edit action
-                        print("LOG: Edit entry: \(entry.title)")
-                    }
-                    .tint(.purple)
-                }
-            }
-        }
-        .scrollDismissesKeyboard(.interactively)
-        .refreshable {
-            await journalStore.refresh()
-        }
-    }
 }
 
 // MARK: - Previews
@@ -189,17 +197,29 @@ struct HistoryPage: View {
 #Preview("Normal State") {
     HistoryPage(searchText: .constant(""))
         .withPreviewNavigation()
-        .withPreviewStores()
+        .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
+}
+
+#Preview("Degraded Operation") {
+    HistoryPage(searchText: .constant(""))
+        .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .available, systemHealth: .postgresError)
 }
 
 #Preview("No Search Results") {
     HistoryPage(searchText: .constant("nonexistent"))
         .withPreviewNavigation()
-        .withPreviewStores(mode: .emptyData)
+        .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
 }
 
-#Preview("Load State") {
+#Preview("Loading State") {
     HistoryPage(searchText: .constant(""))
         .withPreviewNavigation()
-        .withPreviewStores(mode: .networkLoading)
+        .withPreviewStores(dataAvailability: .loading, systemHealth: .healthy)
+}
+
+#Preview("Critical Error") {
+    HistoryPage(searchText: .constant(""))
+        .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .empty, systemHealth: .bothFailed)
 }

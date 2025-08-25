@@ -44,39 +44,56 @@ struct ReferencePage: View {
         grammarStore.getGrammarPoint(id: selectedGrammarID)
     }
 
-    /// Current database state from data synchronization operations
-    var dataState: DataState {
-        grammarStore.dataState
+    /// Current primary state for UI rendering decisions
+    var systemState: SystemState {
+        grammarStore.systemState
     }
 
     // MARK: - Main View
 
     var body: some View {
         Group {
-            switch dataState {
-            case .syncError, .postgresConnectionError:
-                dataState.contentUnavailableView {
+            switch systemState {
+            case .loading, .emptyData, .criticalError:
+                systemState.contentUnavailableView {
+                    if case .emptyData = systemState {
+                        searchText = ""
+                    }
                     await grammarStore.refresh()
                 }
-            case .emptyData:
-                dataState.contentUnavailableView {
-                    Task {
-                        searchText = ""
-                        await grammarStore.refresh()
+            case .normal, .degradedOperation:
+                if case .degradedOperation = systemState {
+                    // TODO: improve this warning location
+                    VStack(spacing: UIConstants.Spacing.row) {
+                        // Compact warning for this component
+                        HStack {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .foregroundColor(.orange)
+                                .font(.caption)
+                            Text("Grammar points may not be current")
+                                .font(.caption2)
+                                .foregroundColor(.orange)
+                            Spacer()
+                        }
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(Color.orange.opacity(0.1))
+                        .clipShape(.capsule)
                     }
                 }
-            case .networkLoading:
-                dataState.contentUnavailableView {}
-            case .normal:
-                GrammarTable(
-                    selectedGrammarID: $selectedGrammarID,
-                    showingInspector: $showingInspector,
-                    grammarPoints: grammarPoints,
-                    isCompact: isCompact,
-                    onRefresh: {
-                        await grammarStore.refresh()
-                    },
-                )
+                if grammarPoints.isEmpty, !searchText.isEmpty, !grammarStore.grammarItems.isEmpty {
+                    ContentUnavailableView.search(text: searchText)
+                } else {
+                    GrammarTable(
+                        selectedGrammarID: $selectedGrammarID,
+                        showingInspector: $showingInspector,
+                        grammarPoints: grammarPoints,
+                        isCompact: isCompact,
+                        onRefresh: {
+                            await grammarStore.refresh()
+                        },
+                    )
+                }
             }
         }
         .toolbar {
@@ -138,30 +155,42 @@ struct ReferencePage: View {
 
 #Preview("Normal State") {
     ReferencePage(searchText: .constant(""))
-        .withPreviewStores()
         .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
+}
+
+#Preview("Degraded Operation") {
+    ReferencePage(searchText: .constant(""))
+        .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .available, systemHealth: .postgresError)
 }
 
 #Preview("With Search Results") {
     ReferencePage(searchText: .constant("Hello"))
-        .withPreviewStores()
         .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
 }
 
 #Preview("No Search Results") {
     ReferencePage(searchText: .constant("nonexistent"))
-        .withPreviewStores()
         .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
 }
 
-#Preview("Error State") {
+#Preview("Loading State") {
     ReferencePage(searchText: .constant(""))
-        .withPreviewStores(mode: .syncError)
         .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .loading, systemHealth: .healthy)
 }
 
 #Preview("Empty Database") {
     ReferencePage(searchText: .constant(""))
-        .withPreviewStores(mode: .emptyData)
         .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .empty, systemHealth: .healthy)
+}
+
+#Preview("Critical Error") {
+    ReferencePage(searchText: .constant(""))
+        .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .empty, systemHealth: .bothFailed)
 }

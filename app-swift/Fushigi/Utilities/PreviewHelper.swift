@@ -15,7 +15,8 @@ enum PreviewHelper {
     /// Create fake data store for Preview mode with various configurations
     @MainActor
     static func withStore(
-        mode: DataState = .normal,
+        dataAvailability: DataAvailability = .available,
+        systemHealth: SystemHealth = .healthy,
         @ViewBuilder content: @escaping (GrammarStore, JournalStore, SentenceStore) -> some View,
     ) -> some View {
         do {
@@ -33,7 +34,8 @@ enum PreviewHelper {
                 grammarStore: grammarStore,
                 journalStore: journalStore,
                 sentenceStore: sentenceStore,
-                mode: mode,
+                dataAvailability: dataAvailability,
+                systemHealth: systemHealth,
             )
 
             return AnyView(
@@ -57,24 +59,27 @@ enum PreviewHelper {
         grammarStore: GrammarStore,
         journalStore: JournalStore,
         sentenceStore: SentenceStore,
-        mode: DataState,
+        dataAvailability: DataAvailability,
+        systemHealth: SystemHealth,
     ) {
-        switch mode {
-        case .emptyData:
+        switch dataAvailability {
+        case .empty, .loading:
             grammarStore.grammarItems = []
             journalStore.journalEntries = []
             sentenceStore.sentences = []
-            grammarStore.dataState = .emptyData
-            journalStore.dataState = .emptyData
-            sentenceStore.dataState = .emptyData
-        case .normal, .syncError, .networkLoading, .postgresConnectionError:
+        case .available:
             setupGrammar(grammarStore)
             setupJournal(journalStore)
             setupSentences(sentenceStore)
-            grammarStore.dataState = mode
-            journalStore.dataState = mode
-            sentenceStore.dataState = mode
         }
+
+        // Just force systemHealth to whatever was provided
+        grammarStore.dataAvailability = dataAvailability
+        journalStore.dataAvailability = dataAvailability
+        sentenceStore.dataAvailability = dataAvailability
+        grammarStore.systemHealth = systemHealth
+        journalStore.systemHealth = systemHealth
+        sentenceStore.systemHealth = systemHealth
     }
 
     /// Load preview store with fake grammar data

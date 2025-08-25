@@ -62,7 +62,7 @@ struct FushigiApp: App {
         // _settingsStore = StateObject(wrappedValue: SettingsStore(modelContext: context))
     }
 
-    /// Configure TipKit for user onboarding
+    /// Configure TipKit for user onboarding -- currently none
     func configureTips() async {
         do {
             try Tips.configure([
@@ -89,7 +89,7 @@ struct FushigiApp: App {
                     await grammarStore.loadLocal()
                     await grammarStore.syncWithRemote()
                     grammarStore.updateRandomGrammarPoints()
-                    await grammarStore.updateAlgorithmicGrammarPoints()
+                    grammarStore.updateAlgorithmicGrammarPoints()
                     await journalStore.loadLocal()
                     await journalStore.syncWithRemote()
 

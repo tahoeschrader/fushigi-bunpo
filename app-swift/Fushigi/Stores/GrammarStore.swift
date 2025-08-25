@@ -22,8 +22,11 @@ class GrammarStore: ObservableObject {
     /// Daily subset of SRS-selected grammar points for practice
     @Published private(set) var algorithmicGrammarItems: [GrammarPointLocal] = []
 
-    /// Current data state encompassing sync status, errors, and loading state
-    @Published var dataState: DataState = .networkLoading
+    /// Current data state (load, empty, normal)
+    @Published var dataAvailability: DataAvailability = .empty
+
+    /// Current system health (healthy, sync error, postgres error)
+    @Published var systemHealth: SystemHealth = .healthy
 
     /// Last successful sync timestamp
     @Published var lastSyncDate: Date?
@@ -44,7 +47,7 @@ class GrammarStore: ObservableObject {
         self.modelContext = modelContext
     }
 
-    // MARK: - All Grammar
+    // MARK: - Helper Functions
 
     /// Get subset of 5 grammar points depending on what UI SourceMode is selected
     func getGrammarPoints(for: SourceMode) -> [GrammarPointLocal] {
@@ -69,10 +72,6 @@ class GrammarStore: ObservableObject {
             }
         }
 
-        if filtered.isEmpty {
-            dataState = .emptyData
-        }
-
         return filtered
     }
 
@@ -92,36 +91,35 @@ class GrammarStore: ObservableObject {
         algorithmicGrammarItems.first { $0.id == id }
     }
 
-    // MARK: - Internal sync logic
+    // MARK: - Sync Boilerplate
 
     /// Load grammar points from local SwiftData storage
     func loadLocal() async {
         do {
             grammarItems = try modelContext.fetch(FetchDescriptor<GrammarPointLocal>())
-            print("LOG: Loaded \(grammarItems.count) grammar points from local storage")
-            dataState = .normal
+            print("LOG: Loaded \(grammarItems.count) grammar points from SwiftData")
         } catch {
             print("DEBUG: Failed to load local grammar points:", error)
-            dataState = .syncError
+            handleLocalLoadFailure()
         }
     }
 
     /// Sync grammar points from remote PostgreSQL database
     func syncWithRemote() async {
         // Proceed only if not already syncing, guarantee rest of code is safe
-        guard dataState != .networkLoading else { return }
+        guard dataAvailability != .loading else { return }
 
-        dataState = .networkLoading
+        setLoading()
 
         let result = await fetchGrammarPoints()
         switch result {
         case let .success(remotePoints):
             await processRemotePoints(remotePoints)
             lastSyncDate = Date()
-            dataState = .normal
+            handleSyncSuccess()
         case let .failure(error):
             print("DEBUG: Failed to sync grammar points from PostgreSQL:", error)
-            dataState = .postgresConnectionError
+            handleRemoteSyncFailure()
         }
     }
 
@@ -153,10 +151,8 @@ class GrammarStore: ObservableObject {
         do {
             try modelContext.save()
             print("LOG: Synced \(remotePoints.count) local grammar points with PostgreSQL.")
-            dataState = .normal
         } catch {
             print("DEBUG: Failed to save grammar points to local SwiftData:", error)
-            dataState = .syncError
         }
     }
 
@@ -165,57 +161,51 @@ class GrammarStore: ObservableObject {
         #if DEBUG
             print("PREVIEW: refresh skipped.")
         #else
-            // first check if there are new grammar points, then update subsets
+            await loadLocal()
             await syncWithRemote()
             updateRandomGrammarPoints()
-            await updateAlgorithmicGrammarPoints()
+            updateAlgorithmicGrammarPoints()
         #endif
     }
 
     /// Force refresh of daily grammar list based on current mode
-    func forceDailyRefresh(currentMode: SourceMode) async {
+    func forceDailyRefresh(currentMode: SourceMode) {
         switch currentMode {
         case .random:
             updateRandomGrammarPoints(force: true)
         case .srs:
-            await updateAlgorithmicGrammarPoints(force: true)
+            updateAlgorithmicGrammarPoints(force: true)
         }
     }
 
     /// Update random grammar points subset with optional force refresh
     func updateRandomGrammarPoints(force: Bool = false) {
+        // TODO: implement down filtering
         let today = Calendar.current.startOfDay(for: Date())
         if force || lastRandomUpdate != today || randomGrammarItems.isEmpty {
             randomGrammarItems = Array(grammarItems.shuffled().prefix(5))
             lastRandomUpdate = today
-            dataState = .normal
             print("LOG: Loaded \(randomGrammarItems.count) new random grammar items from SwiftData.")
         }
     }
 
     /// Update SRS-based grammar points subset with optional force refresh
-    func updateAlgorithmicGrammarPoints(force: Bool = false) async {
+    func updateAlgorithmicGrammarPoints(force: Bool = false) {
+        // TODO: implement srs based grammar pulling with down filtering
         let today = Calendar.current.startOfDay(for: Date())
         if force || lastAlgorithmicUpdate != today || algorithmicGrammarItems.isEmpty {
-            // Proceed only if not already syncing, guarantee rest of code is safe
-            guard dataState != .networkLoading else { return }
-
-            dataState = .networkLoading
-
-            let result = await fetchGrammarPointsRandom()
-            switch result {
-            case let .success(points):
-                let idSubset = Set(points.map(\.id))
-                algorithmicGrammarItems = grammarItems.filter { idSubset.contains($0.id) }
-                lastAlgorithmicUpdate = today
-                dataState = .normal
-                print("LOG: Loaded \(algorithmicGrammarItems.count) SRS items from PostgreSQL.")
-            case let .failure(error):
-                dataState = .postgresConnectionError
-                print("DEBUG: Failed to fetch SRS points:", error)
-            }
+            algorithmicGrammarItems = Array(grammarItems.shuffled().prefix(5))
+            lastAlgorithmicUpdate = today
+            print("LOG: Loaded \(algorithmicGrammarItems.count) new SRS grammar items from SwiftData.")
         }
     }
+}
+
+// Add on sync functionality
+extension GrammarStore: SyncableStore {
+    /// Main sync functionality is on GrammarPointLocal for this store
+    typealias DataType = GrammarPointLocal
+    var items: [GrammarPointLocal] { grammarItems }
 }
 
 // MARK: - Preview Helpers

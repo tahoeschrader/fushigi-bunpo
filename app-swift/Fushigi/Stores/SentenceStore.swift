@@ -8,11 +8,15 @@
 import Foundation
 import SwiftData
 
+@MainActor
 class SentenceStore: ObservableObject {
     @Published var sentences: [SentenceLocal] = []
 
-    /// Current data state encompassing sync status, errors, and loading state
-    @Published var dataState: DataState = .networkLoading
+    /// Current data state (load, empty, normal)
+    @Published var dataAvailability: DataAvailability = .empty
+
+    /// Current system health (healthy, sync error, postgres error)
+    @Published var systemHealth: SystemHealth = .healthy
 
     /// Last successful sync timestamp
     @Published var lastSyncDate: Date?
@@ -47,29 +51,28 @@ class SentenceStore: ObservableObject {
         do {
             sentences = try modelContext.fetch(FetchDescriptor<SentenceLocal>())
             print("LOG: Loaded \(sentences.count) sentence tags from local storage")
-            dataState = .normal
         } catch {
             print("DEBUG: Failed to load local sentence tags:", error)
-            dataState = .syncError
+            handleLocalLoadFailure()
         }
     }
 
     /// Sync sentences from remote PostgreSQL database
     func syncWithRemote() async {
         // Proceed only if not already syncing, guarantee rest of code is safe
-        guard dataState != .networkLoading else { return }
+        guard dataAvailability != .loading else { return }
 
-        dataState = .networkLoading
+        setLoading()
 
         let result = await fetchSentences()
         switch result {
         case let .success(remoteSentences):
             await processRemoteSentences(remoteSentences)
             lastSyncDate = Date()
-            dataState = .normal
+            handleSyncSuccess()
         case let .failure(error):
             print("DEBUG: Failed to sync sentence tags from PostgreSQL:", error)
-            dataState = .postgresConnectionError
+            handleRemoteSyncFailure()
         }
     }
 
@@ -101,10 +104,8 @@ class SentenceStore: ObservableObject {
         do {
             try modelContext.save()
             print("LOG: Synced \(remoteSentences.count) local sentence tags with PostgreSQL.")
-            dataState = .normal
         } catch {
             print("DEBUG: Failed to save sentence tags to local SwiftData:", error)
-            dataState = .syncError
         }
     }
 
@@ -116,6 +117,13 @@ class SentenceStore: ObservableObject {
             await syncWithRemote()
         #endif
     }
+}
+
+// Add on sync functionality
+extension SentenceStore: SyncableStore {
+    /// Main sync functionality is on SentenceLocal for this store
+    typealias DataType = SentenceLocal
+    var items: [SentenceLocal] { sentences }
 }
 
 // MARK: - Preview Helpers

@@ -179,25 +179,25 @@ struct ContentView: View {
 
 #Preview("Normal State") {
     ContentView()
-        .withPreviewStores(mode: .normal)
+        .withPreviewStores()
 }
 
 #Preview("Empty Data State") {
     ContentView()
-        .withPreviewStores(mode: .emptyData)
+        .withPreviewStores(dataAvailability: .empty)
 }
 
 #Preview("Sync Error State") {
     ContentView()
-        .withPreviewStores(mode: .syncError)
+        .withPreviewStores(systemHealth: .swiftDataError)
 }
 
 #Preview("Load State") {
     ContentView()
-        .withPreviewStores(mode: .networkLoading)
+        .withPreviewStores(dataAvailability: .loading)
 }
 
 #Preview("PostgreSQL Connection State") {
     ContentView()
-        .withPreviewStores(mode: .postgresConnectionError)
+        .withPreviewStores(systemHealth: .postgresError)
 }

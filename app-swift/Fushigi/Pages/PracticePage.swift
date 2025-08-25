@@ -53,11 +53,14 @@ struct PracticePage: View {
     /// Loading state flag to disable UI elements during async operations
     @State private var isSaving = false
 
-    @State private var refreshTip = RefreshTip()
-
     /// Determines layout strategy based on available horizontal space
     private var isCompact: Bool {
         horizontalSizeClass == .compact
+    }
+
+    /// Current primary state for UI rendering decisions
+    private var systemState: SystemState {
+        grammarStore.systemState
     }
 
     /// Extracts readable text from TextSelection objects for tagging
@@ -78,26 +81,56 @@ struct PracticePage: View {
     // MARK: - Main View
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: UIConstants.Spacing.default) {
-                DailyGrammar(
-                    showTagger: $showTagger,
-                    selectedSource: $selectedSource,
-                )
+        Group {
+            switch systemState {
+            case .loading, .emptyData, .criticalError:
+                systemState.contentUnavailableView {
+                    await grammarStore.refresh()
+                }
+            case .normal, .degradedOperation:
+                ScrollView {
+                    VStack(alignment: .leading, spacing:
+                        UIConstants.Spacing.default)
+                    {
+                        if case .degradedOperation = systemState {
+                            // TODO: improve warning
+                            VStack(spacing: UIConstants.Spacing.row) {
+                                // Compact warning for this component
+                                HStack {
+                                    Image(systemName: "exclamationmark.triangle.fill")
+                                        .foregroundColor(.orange)
+                                        .font(.caption)
+                                    Text("Grammar points may not be current")
+                                        .font(.caption2)
+                                        .foregroundColor(.orange)
+                                    Spacer()
+                                }
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(Color.orange.opacity(0.1))
+                                .clipShape(.capsule)
+                            }
+                        }
+                        DailyGrammar(
+                            showTagger: $showTagger,
+                            selectedSource: $selectedSource,
+                        )
 
-                JournalEntryForm(
-                    entryTitle: $entryTitle,
-                    entryContent: $entryContent,
-                    textSelection: $textSelection,
-                    isPrivateEntry: $isPrivateEntry,
-                    statusMessage: $statusMessage,
-                    isSaving: $isSaving,
-                )
-                .layoutPriority(1) // TODO: should give text editor expansion priority
+                        JournalEntryForm(
+                            entryTitle: $entryTitle,
+                            entryContent: $entryContent,
+                            textSelection: $textSelection,
+                            isPrivateEntry: $isPrivateEntry,
+                            statusMessage: $statusMessage,
+                            isSaving: $isSaving,
+                        )
+                        .layoutPriority(1)
+                    }
+                    .padding()
+                }
+                .scrollDismissesKeyboard(.interactively)
             }
-            .padding() // default page padding to give breathing room off screen edge
         }
-        .scrollDismissesKeyboard(.interactively)
         .sheet(isPresented: $showSettings) {
             if isCompact {
                 settingsView
@@ -114,15 +147,12 @@ struct PracticePage: View {
             }
             .help("Configure grammar filtering and source preferences")
             Button("Refresh", systemImage: "arrow.clockwise") {
-                refreshTip.invalidate(reason: .actionPerformed)
                 Task {
                     await refreshGrammarPoints()
                 }
             }
             .help("Refresh source of targeted grammar")
             .buttonStyle(.plain)
-            // TODO: fix tip showing up on other pages sheets
-            .popoverTip(refreshTip, arrowEdge: .top)
         }
         .background {
             LinearGradient(
@@ -138,7 +168,7 @@ struct PracticePage: View {
 
     /// Refreshes grammar points based on current source setting
     private func refreshGrammarPoints() async {
-        await grammarStore.forceDailyRefresh(currentMode: selectedSource)
+        grammarStore.forceDailyRefresh(currentMode: selectedSource)
         showSettings = false
     }
 
@@ -182,18 +212,30 @@ struct PracticePage: View {
 
 #Preview("Normal State") {
     PracticePage()
-        .withPreviewStores(mode: .normal)
         .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
 }
 
-#Preview("Error State") {
+#Preview("Degraded Operation") {
     PracticePage()
-        .withPreviewStores(mode: .syncError)
         .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .available, systemHealth: .postgresError)
+}
+
+#Preview("Loading State") {
+    PracticePage()
+        .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .loading, systemHealth: .healthy)
 }
 
 #Preview("Empty Data") {
     PracticePage()
-        .withPreviewStores(mode: .emptyData)
         .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .empty, systemHealth: .healthy)
+}
+
+#Preview("Critical Error") {
+    PracticePage()
+        .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .empty, systemHealth: .bothFailed)
 }

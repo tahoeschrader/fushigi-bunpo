@@ -8,14 +8,19 @@
 import Foundation
 import SwiftData
 
+// MARK: - Journal Store
+
 /// Observable store managing journal entries with local SwiftData storage and remote PostgreSQL sync
 @MainActor
 class JournalStore: ObservableObject {
     /// In-memory cache of all journal entries for quick UI access
     @Published var journalEntries: [JournalEntryLocal] = []
 
-    /// Current data state encompassing sync status, errors, and loading state
-    @Published var dataState: DataState = .networkLoading
+    /// Current data state (load, empty, normal)
+    @Published var dataAvailability: DataAvailability = .empty
+
+    /// Current system health (healthy, sync error, postgres error)
+    @Published var systemHealth: SystemHealth = .healthy
 
     /// Last successful sync timestamp
     @Published var lastSyncDate: Date?
@@ -38,43 +43,38 @@ class JournalStore: ObservableObject {
             }
         }
 
-        if filtered.isEmpty {
-            dataState = .emptyData
-        }
-
         return filtered
     }
 
-    // MARK: - Internal sync logic
+    // MARK: - Sync Boilerplate
 
     /// Load grammar points from local SwiftData storage
     func loadLocal() async {
         do {
             journalEntries = try modelContext.fetch(FetchDescriptor<JournalEntryLocal>())
             print("LOG: Loaded \(journalEntries.count) journal items from local storage")
-            dataState = .normal
         } catch {
             print("DEBUG: Failed to load local journal entries:", error)
-            dataState = .syncError
+            handleLocalLoadFailure()
         }
     }
 
     /// Sync journal entries from remote PostgreSQL database
     func syncWithRemote() async {
         // Proceed only if not already syncing, guarantee rest of code is safe
-        guard dataState != .networkLoading else { return }
+        guard dataAvailability != .loading else { return }
 
-        dataState = .networkLoading
+        setLoading()
 
         let result = await fetchJournalEntries()
         switch result {
         case let .success(remoteJournalEntries):
             await processRemoteJournalEntries(remoteJournalEntries)
             lastSyncDate = Date()
-            dataState = .normal
+            handleSyncSuccess()
         case let .failure(error):
             print("DEBUG: Failed to sync journal entries from PostgreSQL:", error)
-            dataState = .postgresConnectionError
+            handleRemoteSyncFailure()
         }
     }
 
@@ -106,10 +106,8 @@ class JournalStore: ObservableObject {
         do {
             try modelContext.save()
             print("LOG: Synced \(remoteJournalEntries.count) local journal entries with PostgreSQL.")
-            dataState = .normal
         } catch {
             print("DEBUG: Failed to save journal entries to local SwiftData:", error)
-            dataState = .syncError
         }
     }
 
@@ -121,6 +119,13 @@ class JournalStore: ObservableObject {
             await syncWithRemote()
         #endif
     }
+}
+
+// Add on sync functionality
+extension JournalStore: SyncableStore {
+    /// Main sync functionality is on JournalEntryLocal for this store
+    typealias DataType = JournalEntryLocal
+    var items: [JournalEntryLocal] { journalEntries }
 }
 
 // MARK: - Preview Helpers
