@@ -52,7 +52,8 @@ struct FushigiApp: App {
     /// Initialize app data stores
     init() {
         #if DEBUG
-            wipeSwiftData(container: sharedModelContainer)
+            // Comment out kill switch to wipe
+            // wipeSwiftData(container: sharedModelContainer)
         #endif
 
         let context = sharedModelContainer.mainContext
@@ -86,12 +87,9 @@ struct FushigiApp: App {
                 // .environmentObject(settingsStore)
                 .task {
                     await configureTips()
-                    await grammarStore.loadLocal()
-                    await grammarStore.syncWithRemote()
-                    grammarStore.updateRandomGrammarPoints()
-                    grammarStore.updateAlgorithmicGrammarPoints()
-                    await journalStore.loadLocal()
-                    await journalStore.syncWithRemote()
+                    await grammarStore.refresh()
+                    await journalStore.refresh()
+                    await sentenceStore.refresh()
 
                     // TODO: Load sentences
                 }

@@ -61,9 +61,6 @@ class JournalStore: ObservableObject {
 
     /// Sync journal entries from remote PostgreSQL database
     func syncWithRemote() async {
-        // Proceed only if not already syncing, guarantee rest of code is safe
-        guard dataAvailability != .loading else { return }
-
         setLoading()
 
         let result = await fetchJournalEntries()
@@ -113,11 +110,9 @@ class JournalStore: ObservableObject {
 
     /// Manual refresh for pull-to-refresh functionality
     func refresh() async {
-        #if DEBUG
-            print("PREVIEW: refresh skipped.")
-        #else
-            await syncWithRemote()
-        #endif
+        print("LOG: Refreshing data for JournalStore...")
+        await loadLocal()
+        await syncWithRemote()
     }
 }
 

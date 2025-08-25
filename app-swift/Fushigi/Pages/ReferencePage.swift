@@ -39,11 +39,6 @@ struct ReferencePage: View {
         grammarStore.filterGrammarPoints(containing: searchText)
     }
 
-    /// Currently selected grammar point object for detailed display
-    var selectedGrammarPoint: GrammarPointLocal? {
-        grammarStore.getGrammarPoint(id: selectedGrammarID)
-    }
-
     /// Current primary state for UI rendering decisions
     var systemState: SystemState {
         grammarStore.systemState
@@ -53,6 +48,7 @@ struct ReferencePage: View {
 
     var body: some View {
         Group {
+            // TODO: Figure out better ux for proper error views
             switch systemState {
             case .loading, .emptyData, .criticalError:
                 systemState.contentUnavailableView {
@@ -62,25 +58,6 @@ struct ReferencePage: View {
                     await grammarStore.refresh()
                 }
             case .normal, .degradedOperation:
-                if case .degradedOperation = systemState {
-                    // TODO: improve this warning location
-                    VStack(spacing: UIConstants.Spacing.row) {
-                        // Compact warning for this component
-                        HStack {
-                            Image(systemName: "exclamationmark.triangle.fill")
-                                .foregroundColor(.orange)
-                                .font(.caption)
-                            Text("Grammar points may not be current")
-                                .font(.caption2)
-                                .foregroundColor(.orange)
-                            Spacer()
-                        }
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .background(Color.orange.opacity(0.1))
-                        .clipShape(.capsule)
-                    }
-                }
                 if grammarPoints.isEmpty, !searchText.isEmpty, !grammarStore.grammarItems.isEmpty {
                     ContentUnavailableView.search(text: searchText)
                 } else {
@@ -118,28 +95,32 @@ struct ReferencePage: View {
                 }
             }
         }
-        .sheet(isPresented: $showingInspector) {
-            if let selectedGrammarPoint {
-                DetailedGrammar(
-                    isPresented: $showingInspector,
-                    selectedGrammarID: $selectedGrammarID,
-                    grammarPoint: selectedGrammarPoint,
-                )
-                .presentationDetents([.medium, .large], selection: .constant(.medium))
-            } else {
-                // Graceful handling of selection edge cases
-                ContentUnavailableView {
-                    Label("Selection Cleared", systemImage: "xmark.circle")
-                } description: {
-                    Text("Selection cleared. Choose another item to view details.")
-                } actions: {
-                    Button("Dismiss") {
-                        showingInspector = false
+        .sheet(
+            isPresented: $showingInspector,
+            onDismiss: {
+                selectedGrammarID = nil
+            },
+            content: {
+                if let selectedGP = grammarStore.selectedGrammarPoint {
+                    DetailedGrammar(
+                        isPresented: $showingInspector,
+                        grammarPoint: selectedGP,
+                    )
+                    .presentationDetents([.medium, .large], selection: .constant(.medium))
+                } else {
+                    ContentUnavailableView {
+                        Label("Error", systemImage: "xmark.circle")
+                    } description: {
+                        Text("Selected grammarID is null. Log bug.")
+                    } actions: {
+                        Button("Dismiss") {
+                            showingInspector = false
+                        }
                     }
+                    .presentationDetents([.medium])
                 }
-                .presentationDetents([.medium])
-            }
-        }
+            },
+        )
         .background {
             LinearGradient(
                 colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
@@ -159,10 +140,16 @@ struct ReferencePage: View {
         .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
 }
 
-#Preview("Degraded Operation") {
+#Preview("Degraded Operation Postgres") {
     ReferencePage(searchText: .constant(""))
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .available, systemHealth: .postgresError)
+}
+
+#Preview("Degraded Operation SwiftData") {
+    ReferencePage(searchText: .constant(""))
+        .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .available, systemHealth: .swiftDataError)
 }
 
 #Preview("With Search Results") {
@@ -189,8 +176,14 @@ struct ReferencePage: View {
         .withPreviewStores(dataAvailability: .empty, systemHealth: .healthy)
 }
 
-#Preview("Critical Error") {
+#Preview("Critical Error Postgres") {
     ReferencePage(searchText: .constant(""))
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .empty, systemHealth: .bothFailed)
+        .withPreviewStores(dataAvailability: .empty, systemHealth: .postgresError)
+}
+
+#Preview("Critical Error SwiftData") {
+    ReferencePage(searchText: .constant(""))
+        .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .empty, systemHealth: .swiftDataError)
 }

@@ -59,9 +59,6 @@ class SentenceStore: ObservableObject {
 
     /// Sync sentences from remote PostgreSQL database
     func syncWithRemote() async {
-        // Proceed only if not already syncing, guarantee rest of code is safe
-        guard dataAvailability != .loading else { return }
-
         setLoading()
 
         let result = await fetchSentences()
@@ -69,7 +66,6 @@ class SentenceStore: ObservableObject {
         case let .success(remoteSentences):
             await processRemoteSentences(remoteSentences)
             lastSyncDate = Date()
-            handleSyncSuccess()
         case let .failure(error):
             print("DEBUG: Failed to sync sentence tags from PostgreSQL:", error)
             handleRemoteSyncFailure()
@@ -104,6 +100,7 @@ class SentenceStore: ObservableObject {
         do {
             try modelContext.save()
             print("LOG: Synced \(remoteSentences.count) local sentence tags with PostgreSQL.")
+            handleSyncSuccess()
         } catch {
             print("DEBUG: Failed to save sentence tags to local SwiftData:", error)
         }
@@ -111,11 +108,9 @@ class SentenceStore: ObservableObject {
 
     /// Manual refresh for pull-to-refresh functionality
     func refresh() async {
-        #if DEBUG
-            print("PREVIEW: refresh skipped.")
-        #else
-            await syncWithRemote()
-        #endif
+        print("LOG: Refreshing data for SentenceStore...")
+        await loadLocal()
+        await syncWithRemote()
     }
 }
 

@@ -46,9 +46,6 @@ enum SystemHealth {
     /// Unable to establish connection to PostgreSQL database
     case postgresError
 
-    /// Both local and remote data sources failed
-    case bothFailed
-
     /// User friendly description of data availability
     var description: String {
         switch self {
@@ -58,8 +55,6 @@ enum SystemHealth {
             "Local SwiftData corruption/failure"
         case .postgresError:
             "Unable to establish connection to PostgreSQL database"
-        case .bothFailed:
-            "Both local and remote data sources failed"
         }
     }
 
@@ -96,10 +91,10 @@ enum SystemState {
             "Standard operation with full data set"
         case .emptyData:
             "No data available"
-        case let .degradedOperation(errorMessage):
-            "Operating with local data only: \(errorMessage)"
-        case let .criticalError(errorMessage):
-            "Critical error: \(errorMessage)"
+        case let .degradedOperation(error):
+            "Operating with potentially out of sync data: \(error)"
+        case let .criticalError(error):
+            "Critical error: \(error)"
         }
     }
 
@@ -125,6 +120,11 @@ enum SystemState {
                 } description: {
                     Text(description)
                         .foregroundStyle(.secondary)
+                } actions: {
+                    Button("Quit") {
+                        Task { await fixAction() }
+                    }
+                    .buttonStyle(.bordered)
                 }
 
             case .emptyData:
@@ -147,7 +147,7 @@ enum SystemState {
                     Text(error)
                         .foregroundColor(.orange)
                 } actions: {
-                    Button("Retry Sync") {
+                    Button("Retry") {
                         Task { await fixAction() }
                     }
                     .buttonStyle(.bordered)
@@ -165,6 +165,42 @@ enum SystemState {
                     }
                     .buttonStyle(.bordered)
                 }
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    /// Returns the appropriate potential error banner for the current state
+    @ViewBuilder
+    func errorBannerView(fixAction: @escaping () async -> Void) -> some View {
+        Group {
+            switch self {
+            case .normal, .loading, .emptyData:
+                // Not error states so don't need an error banner
+                EmptyView()
+
+            case let .degradedOperation(error), let .criticalError(error):
+                HStack {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .foregroundColor(.orange)
+                        .font(.caption)
+                    Text("Grammar points may not be current: \(error)")
+                        .font(.caption2)
+                        .foregroundColor(.orange)
+                    Spacer()
+                    Button("Retry") {
+                        Task { await fixAction() }
+                    }
+                    .padding(.horizontal, UIConstants.Padding.capsuleWidth)
+                    .padding(.vertical, UIConstants.Padding.capsuleHeight)
+                    .clipShape(.capsule)
+                }
+                .padding(.horizontal, UIConstants.Padding.capsuleWidth)
+                .padding(.vertical, UIConstants.Padding.capsuleHeight)
+                .background(Color.orange.opacity(0.1))
+                .clipShape(.capsule)
+                .listRowBackground(Color.clear)
+                .listRowSeparator(Visibility.hidden, edges: .all)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -192,11 +228,11 @@ extension SyncableStore {
             .loading
         case (.empty, .healthy):
             .emptyData
-        case (.empty, .swiftDataError), (.empty, .postgresError), (.empty, .bothFailed):
+        case (.empty, .swiftDataError), (.empty, .postgresError):
             .criticalError(systemHealth.description)
         case (.available, .healthy):
             .normal
-        case (.available, .swiftDataError), (.available, .postgresError), (.available, .bothFailed):
+        case (.available, .swiftDataError), (.available, .postgresError):
             .degradedOperation(systemHealth.description)
         }
     }
@@ -208,91 +244,24 @@ extension SyncableStore {
 
     /// Handle local load failure
     func handleLocalLoadFailure() {
-        systemHealth = (systemHealth == .postgresError) ? .bothFailed : .swiftDataError
+        systemHealth = .swiftDataError
         dataAvailability = items.isEmpty ? .empty : .available
     }
 
     /// Handle remote sync failure
     func handleRemoteSyncFailure() {
-        systemHealth = (systemHealth == .swiftDataError) ? .bothFailed : .postgresError
+        systemHealth = .postgresError
         dataAvailability = items.isEmpty ? .empty : .available
     }
 
     /// Handle successful sync
     func handleSyncSuccess() {
-        // Keep systemHealth if SwiftData previously failed, otherwise mark healthy
-        if systemHealth != .swiftDataError {
+        // Successful sync means PostgreSQL is working - clear postgres errors
+        // But keep SwiftData errors since remote sync doesn't fix local storage
+        if systemHealth == .postgresError {
             systemHealth = .healthy
         }
+
         dataAvailability = items.isEmpty ? .empty : .available
-    }
-}
-
-// MARK: - State View Wrapper
-
-/// Generic view for system state problems to simplify downstream logic
-struct SystemStateView<Content: View>: View {
-    let systemState: SystemState
-    let onRefresh: () async -> Void
-    let onEmptyData: (() -> Void)?
-    let content: () -> Content
-
-    init(
-        systemState: SystemState,
-        onRefresh: @escaping () async -> Void,
-        onEmptyData: (() -> Void)? = nil,
-        @ViewBuilder content: @escaping () -> Content,
-    ) {
-        self.systemState = systemState
-        self.onRefresh = onRefresh
-        self.onEmptyData = onEmptyData
-        self.content = content
-    }
-
-    var body: some View {
-        switch systemState {
-        case .normal:
-            content()
-
-        case let .degradedOperation(error):
-            VStack(spacing: UIConstants.Spacing.tightRow) {
-                WarningBanner(error: error, onRetry: onRefresh)
-                content()
-            }
-
-        case .loading, .emptyData, .criticalError:
-            systemState.contentUnavailableView {
-                if case .emptyData = systemState {
-                    onEmptyData?()
-                }
-                await onRefresh()
-            }
-        }
-    }
-}
-
-// MARK: - Reusable Warning Banner
-
-struct WarningBanner: View {
-    let error: String
-    let onRetry: () async -> Void
-
-    var body: some View {
-        HStack {
-            Image(systemName: "exclamationmark.triangle.fill")
-                .foregroundColor(.orange)
-            Text("Sync issues detected - showing local data only")
-                .font(.caption)
-                .foregroundColor(.orange)
-            Spacer()
-            Button("Retry") {
-                Task { await onRetry() }
-            }
-            .font(.caption)
-            .buttonStyle(.bordered)
-        }
-        .padding(.horizontal, UIConstants.Padding.capsuleWidth)
-        .padding(.vertical, UIConstants.Padding.capsuleWidth)
-        .background(Color.orange.opacity(0.1))
     }
 }

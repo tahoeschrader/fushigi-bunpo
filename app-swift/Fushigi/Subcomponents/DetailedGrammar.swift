@@ -14,9 +14,6 @@ struct DetailedGrammar: View {
     /// Controls view presentation state
     @Binding var isPresented: Bool
 
-    /// Currently selected grammar point ID
-    @Binding var selectedGrammarID: UUID?
-
     /// Grammar point to display
     let grammarPoint: GrammarPointLocal
 
@@ -27,7 +24,6 @@ struct DetailedGrammar: View {
             HStack(spacing: UIConstants.Spacing.default) {
                 Button("Dismiss") {
                     isPresented = false
-                    selectedGrammarID = nil
                 }
                 .buttonStyle(.bordered)
 
@@ -58,7 +54,6 @@ struct DetailedGrammar: View {
     PreviewHelper.withStore { store, _, _ in
         DetailedGrammar(
             isPresented: .constant(true),
-            selectedGrammarID: .constant(store.grammarItems.first!.id),
             grammarPoint: store.grammarItems.first!,
         )
     }

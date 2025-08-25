@@ -45,7 +45,6 @@ struct JournalEntryForm: View {
             VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
                 Text("Title").font(.headline)
                 TextField("Enter title", text: $entryTitle)
-                    .font(.custom("HelveticaNeue", size: UIConstants.Sizing.fontSize))
                     .padding(UIConstants.Spacing.row)
                     .textFieldStyle(.plain)
                     .overlay(
@@ -69,11 +68,9 @@ struct JournalEntryForm: View {
                     if entryContent.isEmpty {
                         Text("Use grammar points above to write a journal entry!")
                             .foregroundStyle(.tertiary)
-                            .font(.custom("HelveticaNeue", size: UIConstants.Sizing.fontSize))
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                     TextEditor(text: $entryContent, selection: $textSelection)
-                        .font(.custom("HelveticaNeue", size: UIConstants.Sizing.fontSize))
                         .scrollContentBackground(.hidden)
                 }
                 .frame(minHeight: UIConstants.Sizing.contentMinHeight, maxHeight: .infinity)
@@ -148,10 +145,10 @@ struct JournalEntryForm: View {
         case let .success(message):
             statusMessage = message
             clearForm()
-            print("Successfully posted journal entry.")
+            print("LOG: Successfully posted journal entry.")
         case let .failure(error):
             statusMessage = "Error: \(error.localizedDescription)"
-            print("Failed to post journal entry:", error)
+            print("DEBUG: Failed to post journal entry:", error)
         }
     }
 
@@ -161,6 +158,10 @@ struct JournalEntryForm: View {
         entryTitle = ""
         entryContent = ""
         isPrivateEntry = false
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            statusMessage = ""
+        }
     }
 }
 

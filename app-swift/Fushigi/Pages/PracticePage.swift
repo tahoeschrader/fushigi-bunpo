@@ -82,33 +82,16 @@ struct PracticePage: View {
 
     var body: some View {
         Group {
+            // TODO: Figure out better ux for proper error views
             switch systemState {
-            case .loading, .emptyData, .criticalError:
-                systemState.contentUnavailableView {
-                    await grammarStore.refresh()
-                }
-            case .normal, .degradedOperation:
+            default:
                 ScrollView {
                     VStack(alignment: .leading, spacing:
                         UIConstants.Spacing.default)
                     {
                         if case .degradedOperation = systemState {
-                            // TODO: improve warning
-                            VStack(spacing: UIConstants.Spacing.row) {
-                                // Compact warning for this component
-                                HStack {
-                                    Image(systemName: "exclamationmark.triangle.fill")
-                                        .foregroundColor(.orange)
-                                        .font(.caption)
-                                    Text("Grammar points may not be current")
-                                        .font(.caption2)
-                                        .foregroundColor(.orange)
-                                    Spacer()
-                                }
-                                .padding(.horizontal, 8)
-                                .padding(.vertical, 4)
-                                .background(Color.orange.opacity(0.1))
-                                .clipShape(.capsule)
+                            systemState.errorBannerView {
+                                await grammarStore.refresh()
                             }
                         }
                         DailyGrammar(
@@ -152,7 +135,6 @@ struct PracticePage: View {
                 }
             }
             .help("Refresh source of targeted grammar")
-            .buttonStyle(.plain)
         }
         .background {
             LinearGradient(
@@ -216,10 +198,16 @@ struct PracticePage: View {
         .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
 }
 
-#Preview("Degraded Operation") {
+#Preview("Degraded Operation Postgres") {
     PracticePage()
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .available, systemHealth: .postgresError)
+}
+
+#Preview("Degraded Operation SwiftData") {
+    PracticePage()
+        .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .available, systemHealth: .swiftDataError)
 }
 
 #Preview("Loading State") {
@@ -234,8 +222,14 @@ struct PracticePage: View {
         .withPreviewStores(dataAvailability: .empty, systemHealth: .healthy)
 }
 
-#Preview("Critical Error") {
+#Preview("Critical Error Postgres") {
     PracticePage()
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .empty, systemHealth: .bothFailed)
+        .withPreviewStores(dataAvailability: .empty, systemHealth: .postgresError)
+}
+
+#Preview("Critical Error SwiftData") {
+    PracticePage()
+        .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .empty, systemHealth: .swiftDataError)
 }

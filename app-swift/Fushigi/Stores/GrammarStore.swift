@@ -106,9 +106,6 @@ class GrammarStore: ObservableObject {
 
     /// Sync grammar points from remote PostgreSQL database
     func syncWithRemote() async {
-        // Proceed only if not already syncing, guarantee rest of code is safe
-        guard dataAvailability != .loading else { return }
-
         setLoading()
 
         let result = await fetchGrammarPoints()
@@ -156,19 +153,16 @@ class GrammarStore: ObservableObject {
         }
     }
 
-    /// Manual refresh for pull-to-refresh functionality
+    /// Manual force refresh for all grammar data with sync
     func refresh() async {
-        #if DEBUG
-            print("PREVIEW: refresh skipped.")
-        #else
-            await loadLocal()
-            await syncWithRemote()
-            updateRandomGrammarPoints()
-            updateAlgorithmicGrammarPoints()
-        #endif
+        print("LOG: Refreshing data for GrammarStore...")
+        await loadLocal()
+        await syncWithRemote()
+        updateRandomGrammarPoints(force: true)
+        updateAlgorithmicGrammarPoints(force: true)
     }
 
-    /// Force refresh of daily grammar list based on current mode
+    /// Manual force refresh of daily grammar only based on current mode without needing to sync
     func forceDailyRefresh(currentMode: SourceMode) {
         switch currentMode {
         case .random:
@@ -185,7 +179,7 @@ class GrammarStore: ObservableObject {
         if force || lastRandomUpdate != today || randomGrammarItems.isEmpty {
             randomGrammarItems = Array(grammarItems.shuffled().prefix(5))
             lastRandomUpdate = today
-            print("LOG: Loaded \(randomGrammarItems.count) new random grammar items from SwiftData.")
+            print("LOG: Picked \(randomGrammarItems.count) new random grammar items.")
         }
     }
 
@@ -196,7 +190,7 @@ class GrammarStore: ObservableObject {
         if force || lastAlgorithmicUpdate != today || algorithmicGrammarItems.isEmpty {
             algorithmicGrammarItems = Array(grammarItems.shuffled().prefix(5))
             lastAlgorithmicUpdate = today
-            print("LOG: Loaded \(algorithmicGrammarItems.count) new SRS grammar items from SwiftData.")
+            print("LOG: Picked \(algorithmicGrammarItems.count) new SRS grammar items.")
         }
     }
 }

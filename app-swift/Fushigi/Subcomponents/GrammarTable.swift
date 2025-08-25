@@ -61,7 +61,7 @@ struct GrammarTable: View {
                     .padding(UIConstants.Sizing.defaultPadding)
                     .contentShape(.rect)
                     .onTapGesture {
-                        selectedGrammarID = point.id
+                        grammarStore.selectedGrammarPoint = point
                         showingInspector = true
                     }
                 }
@@ -85,6 +85,12 @@ struct GrammarTable: View {
                             .fixedSize(horizontal: false, vertical: true)
                     }
                 }
+                .onChange(of: selectedGrammarID) { _, new in
+                    grammarStore.selectedGrammarPoint = grammarStore.getGrammarPoint(id: new)
+                    if new != nil {
+                        showingInspector = true
+                    }
+                }
             }
         }
         .scrollContentBackground(.hidden)
@@ -92,12 +98,6 @@ struct GrammarTable: View {
         #if os(macOS)
             .tableStyle(.inset(alternatesRowBackgrounds: false))
         #endif
-            .onChange(of: selectedGrammarID) { _, newSelection in
-                // TODO: fix this to use gramamrStore selectedGrammarPoint
-                if newSelection != nil {
-                    showingInspector = true
-                }
-            }
             .refreshable {
                 await onRefresh()
             }

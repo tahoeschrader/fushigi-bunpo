@@ -28,37 +28,47 @@ struct DailyGrammar: View {
     // MARK: - Main View
 
     var body: some View {
-        VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
-            HStack {
-                Text("Targeted Grammar")
-                    .font(.headline)
-
-                Spacer()
-
-                Text(selectedSource.id)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .padding(.horizontal, UIConstants.Padding.capsuleWidth)
-                    .padding(.vertical, UIConstants.Padding.capsuleHeight)
-                    .background(.quaternary)
-                    .clipShape(.capsule)
+        switch grammarStore.systemState {
+        case .loading, .emptyData, .criticalError:
+            grammarStore.systemState.contentUnavailableView {
+                if case .emptyData = grammarStore.systemState {
+                    // TODO: reset filters to default?
+                }
+                await grammarStore.refresh()
             }
+        case .normal, .degradedOperation:
+            VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                HStack {
+                    Text("Targeted Grammar")
+                        .font(.headline)
 
-            Divider()
+                    Spacer()
 
-            VStack {
-                ForEach(grammarPoints, id: \.id) { grammarPoint in
-                    TaggableGrammarRow(
-                        grammarPoint: grammarPoint,
-                        onTagSelected: {
-                            grammarStore.selectedGrammarPoint = grammarPoint
-                            showTagger = true
-                        },
-                    )
+                    Text(selectedSource.id)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .padding(.horizontal, UIConstants.Padding.capsuleWidth)
+                        .padding(.vertical, UIConstants.Padding.capsuleHeight)
+                        .background(.quaternary)
+                        .clipShape(.capsule)
+                }
 
-                    // Hide last Divider for improved visuals
-                    if grammarPoint.id != grammarPoints.last?.id {
-                        Divider()
+                Divider()
+
+                VStack {
+                    ForEach(grammarPoints, id: \.id) { grammarPoint in
+                        TaggableGrammarRow(
+                            grammarPoint: grammarPoint,
+                            onTagSelected: {
+                                grammarStore.selectedGrammarPoint = grammarPoint
+                                showTagger = true
+                            },
+                        )
+
+                        // Hide last Divider for improved visuals
+                        if grammarPoint.id != grammarPoints.last?.id {
+                            Divider()
+                        }
                     }
                 }
             }

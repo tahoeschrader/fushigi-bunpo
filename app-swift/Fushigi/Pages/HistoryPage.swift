@@ -46,26 +46,12 @@ struct HistoryPage: View {
                     await journalStore.refresh()
                 }
             case .normal, .degradedOperation:
-                if case .degradedOperation = systemState {
-                    // TODO: improve warning
-                    VStack(spacing: UIConstants.Spacing.row) {
-                        // Compact warning for this component
-                        HStack {
-                            Image(systemName: "exclamationmark.triangle.fill")
-                                .foregroundColor(.orange)
-                                .font(.caption)
-                            Text("Grammar points may not be current")
-                                .font(.caption2)
-                                .foregroundColor(.orange)
-                            Spacer()
-                        }
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .background(Color.orange.opacity(0.1))
-                        .clipShape(.capsule)
-                    }
-                }
                 List {
+                    if case .degradedOperation = systemState {
+                        systemState.errorBannerView {
+                            await journalStore.refresh()
+                        }
+                    }
                     ForEach(journalEntries) { entry in
                         VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
                             HStack {
@@ -141,6 +127,7 @@ struct HistoryPage: View {
                 }
                 .scrollDismissesKeyboard(.interactively)
                 .refreshable {
+                    // TODO: Janky, need to fix refreshable
                     await journalStore.refresh()
                 }
                 .scrollContentBackground(.hidden)
@@ -200,10 +187,22 @@ struct HistoryPage: View {
         .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
 }
 
-#Preview("Degraded Operation") {
+#Preview("Data Missing") {
+    HistoryPage(searchText: .constant(""))
+        .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .empty, systemHealth: .healthy)
+}
+
+#Preview("Degraded Operation Postgres") {
     HistoryPage(searchText: .constant(""))
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .available, systemHealth: .postgresError)
+}
+
+#Preview("Degraded Operation SwiftData") {
+    HistoryPage(searchText: .constant(""))
+        .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .available, systemHealth: .swiftDataError)
 }
 
 #Preview("No Search Results") {
@@ -218,8 +217,14 @@ struct HistoryPage: View {
         .withPreviewStores(dataAvailability: .loading, systemHealth: .healthy)
 }
 
-#Preview("Critical Error") {
+#Preview("Critical Postgres Error") {
     HistoryPage(searchText: .constant(""))
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .empty, systemHealth: .bothFailed)
+        .withPreviewStores(dataAvailability: .empty, systemHealth: .postgresError)
+}
+
+#Preview("Critical SwiftData Error") {
+    HistoryPage(searchText: .constant(""))
+        .withPreviewNavigation()
+        .withPreviewStores(dataAvailability: .empty, systemHealth: .swiftDataError)
 }
